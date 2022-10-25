@@ -10,6 +10,9 @@ import { UpdateRoomComponent } from "./update-room/update-room.component";
 import { DoctorAppointmentsComponent } from './doctor-appointments/doctor-appointments.component';
 import { DoctorCurrentAppComponent } from './doctor-current-app/doctor-current-app.component';
 import { DoctorPastAppComponent } from './doctor-past-app/doctor-past-app.component';
+import { AddAppointmentForDoctorComponent } from './add-appointment-for-doctor/add-appointment-for-doctor.component';
+import { EditAppointmentForDoctorComponent } from './edit-appointment-for-doctor/edit-appointment-for-doctor.component';
+import { DeleteAppointmentForDoctorComponent } from './delete-appointment-for-doctor/delete-appointment-for-doctor.component';
 
 const routes: Routes = [
   { path: 'rooms', component: RoomsComponent },
@@ -27,7 +30,10 @@ const routes: Routes = [
     UpdateRoomComponent,
     DoctorAppointmentsComponent,
     DoctorCurrentAppComponent,
-    DoctorPastAppComponent
+    DoctorPastAppComponent,
+    AddAppointmentForDoctorComponent,
+    EditAppointmentForDoctorComponent,
+    DeleteAppointmentForDoctorComponent
   ],
   imports: [
     CommonModule,

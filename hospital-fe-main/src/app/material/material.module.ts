@@ -8,6 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatTabsModule} from '@angular/material/tabs';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [],
@@ -20,7 +21,8 @@ import {MatTabsModule} from '@angular/material/tabs';
     MatIconModule,
     MatTooltipModule,
     MatFormFieldModule,
-    MatTabsModule
+    MatTabsModule,
+    MatDialogModule
   ],
   exports: [
     CommonModule,
@@ -31,7 +33,8 @@ import {MatTabsModule} from '@angular/material/tabs';
     MatIconModule,
     MatTooltipModule,
     MatFormFieldModule,
-    MatTabsModule
+    MatTabsModule,
+    MatDialogModule
   ]
 })
 export class MaterialModule {}
