@@ -1,0 +1,13 @@
+<div class="container">
+    <p>Svi doktorovi pregledi</p>
+    <div class="table-header">
+      <button class="add-button" mat-mini-fab matTooltip="New room">
+          <mat-icon>add</mat-icon>
+      </button>
+    </div>
+    
+    <mat-tab-group>
+        <mat-tab label="Pregledi"><app-doctor-current-app></app-doctor-current-app></mat-tab>
+        <mat-tab label="Prosli pregledi"><app-doctor-past-app></app-doctor-past-app></mat-tab>
+    </mat-tab-group>
+  </div>

@@ -1,0 +1,29 @@
+<table mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="number">
+        <th mat-header-cell *matHeaderCellDef class="cell-center"> Ime </th>
+        <td mat-cell *matCellDef="let room" class="clickable cell-center" >{{room.name}}</td>
+    </ng-container>
+    <ng-container matColumnDef="floor">
+        <th mat-header-cell *matHeaderCellDef class="cell-center"> Prezime </th>
+        <td mat-cell *matCellDef="let room" class="cell-center">{{room.surname}}</td>
+    </ng-container>
+    <ng-container matColumnDef="update">
+        <th mat-header-cell *matHeaderCellDef class="cell-center"></th>
+        <td mat-cell *matCellDef="let room" class="cell-center">
+            <button mat-icon-button>
+                <mat-icon matTooltip="update">edit</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+    <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef class="cell-center"></th>
+        <td mat-cell *matCellDef="let room" class="cell-center">
+            <button mat-icon-button>
+                <mat-icon matTooltip="delete">delete</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
