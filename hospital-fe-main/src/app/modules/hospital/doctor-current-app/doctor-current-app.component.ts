@@ -7,6 +7,7 @@ import { RoomService } from '../services/room.service';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 import { EditAppointmentForDoctorComponent } from '../edit-appointment-for-doctor/edit-appointment-for-doctor.component';
 import { DeleteAppointmentForDoctorComponent } from '../delete-appointment-for-doctor/delete-appointment-for-doctor.component';
+import { Appointment } from '../model/appointment.model';
 
 @Component({
   selector: 'app-doctor-current-app',
@@ -20,11 +21,12 @@ export class DoctorCurrentAppComponent implements OnInit {
   //noviPregledi!: Boolean;
   //condition = false;
 
-  public dataSource = new MatTableDataSource<any>();
+  public dataSource = new MatTableDataSource<Appointment>();
   public displayedColumns : string[] = [];
   //public isCurrentAppointment : boolean | undefined
   public doctors: Doctor[] = [];
   public rooms: Room[] = [];
+  public appointments: Appointment[] = [];
 
   constructor(private roomService: RoomService, public dialog: MatDialog) { }
 
@@ -47,16 +49,16 @@ export class DoctorCurrentAppComponent implements OnInit {
   }
 
   public showCurrentAppointment(): void {
-    this.roomService.getDoctors().subscribe(res => {
-      this.doctors = res;
-      this.dataSource.data = this.doctors;
+    this.roomService.getAppointments().subscribe(res => {
+      this.appointments = res;
+      this.dataSource.data = this.appointments;
     })
   }
 
   public showOldAppointment(): void {
-    this.roomService.getRooms().subscribe(res => {
-      this.rooms = res;
-      this.dataSource.data = this.rooms;
+    this.roomService.getAppointments().subscribe(res => {
+      this.appointments = res;
+      this.dataSource.data = this.appointments;
     })
   }
 
