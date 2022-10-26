@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
-import { AddAppointmentForDoctorComponent } from '../add-appointment-for-doctor/add-appointment-for-doctor.component';
+import { AddOrEditAppointmentDialogComponent } from '../add-or-edit-appointment-dialog/add-or-edit-appointment-dialog.component';
 
 @Component({
   selector: 'app-doctor-appointments',
@@ -14,9 +14,9 @@ export class DoctorAppointmentsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
   openAddDialog(): void {
-    const dialogRef = this.dialog.open(AddAppointmentForDoctorComponent, {
+    const dialogRef = this.dialog.open(AddOrEditAppointmentDialogComponent, {
+      data: {isAdd: true},
       height: '600px',
       width: '1000px',
       //data: {name: this.name, animal: this.animal},
@@ -27,5 +27,4 @@ export class DoctorAppointmentsComponent implements OnInit {
       //this.animal = result;
     });
   }
-
 }

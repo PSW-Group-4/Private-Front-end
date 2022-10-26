@@ -1,8 +1,9 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
+
 import { HomeComponent } from "./modules/pages/home/home.component";
 import { ManagerFeedbackComponent } from "./manager-feedback/manager-feedback.component";
-import { DoctorAppointmentsComponent } from "./modules/hospital/doctor-appointments/doctor-appointments.component";
+import { DoctorAppointmentsComponent } from "./modules/doctor-appointments/doctor-appointments/doctor-appointments.component";
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -15,3 +16,8 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+export const routingComponents = [
+  HomeComponent,
+  ManagerFeedbackComponent,
+  DoctorAppointmentsComponent
+]
