@@ -1,0 +1,13 @@
+<div class="container">
+    <p>Svi doktorovi pregledi</p>
+    <div class="table-header">
+      <button class="add-button" mat-mini-fab matTooltip="New room" (click)="openAddDialog()">
+          <mat-icon>add</mat-icon>
+      </button>
+    </div>
+    
+    <mat-tab-group>
+        <mat-tab label="Pregledi"><app-doctor-scheduler [isCurrentAppointment]="true"></app-doctor-scheduler></mat-tab>
+        <mat-tab label="Prosli pregledi"><app-doctor-scheduler [isCurrentAppointment]="false"></app-doctor-scheduler></mat-tab>
+    </mat-tab-group>
+  </div>
