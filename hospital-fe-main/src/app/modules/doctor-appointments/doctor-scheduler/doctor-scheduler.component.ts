@@ -16,6 +16,7 @@ export class DoctorSchedulerComponent implements OnInit {
   public dataSource = new MatTableDataSource<Appointment>();
   public displayedColumns : string[] = [];
   public appointments: Appointment[] = [];
+  doctorId = '1412c639-c5e1-47a1-b29b-1fe935536612';
   
   constructor(private doctorAppointmentService: DoctorAppointmentService, public dialog: MatDialog) { }
 
@@ -36,14 +37,14 @@ export class DoctorSchedulerComponent implements OnInit {
   }
 
   public showCurrentAppointment(): void {
-    this.doctorAppointmentService.getAppointments().subscribe(res => {
+    this.doctorAppointmentService.getDoctorsCurrentAppointments(this.doctorId).subscribe(res => {
       this.appointments = res;
       this.dataSource.data = this.appointments;
     })
   }
 
   public showOldAppointment(): void {
-    this.doctorAppointmentService.getAppointments().subscribe(res => {
+    this.doctorAppointmentService.getDoctorsOldAppointments(this.doctorId).subscribe(res => {
       this.appointments = res;
       this.dataSource.data = this.appointments;
     })
@@ -61,7 +62,7 @@ export class DoctorSchedulerComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       //console.log('The dialog was closed');
       //this.animal = result;
-      
+      this.showCurrentAppointment();
     });
   }
 
