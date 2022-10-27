@@ -13,6 +13,14 @@ export class DoctorAppointmentService {
 
   constructor(private http: HttpClient) { }
 
+  getDoctorsOldAppointments(id: String): Observable<Appointment[]> {
+    return this.http.get<Appointment[]>(this.apiHost + 'api/Appointment/Old/Doctor/' + id, {headers: this.headers});
+  }
+
+  getDoctorsCurrentAppointments(id: String): Observable<Appointment[]> {
+    return this.http.get<Appointment[]>(this.apiHost + 'api/Appointment/Current/Doctor/' + id, {headers: this.headers});
+  }
+
   getAppointments(): Observable<Appointment[]> {
     return this.http.get<Appointment[]>(this.apiHost + 'api/Appointment', {headers: this.headers});
   }
