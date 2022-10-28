@@ -40,7 +40,7 @@ export class ManagerFeedbackComponent implements OnInit {
     }
   }
 
-   Publish(id: string): void{
+  Publish(id: string): void{
       this.feedbackService.publishFeedback(id).subscribe(res => {
       this.fillFeedbackTable();
       })

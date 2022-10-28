@@ -11,24 +11,24 @@
         <td class="dateWidth">
           {{ feedback.date | date: "d/M/yyyy HH:mm" }}
         </td>
-        <td class="patientWidith">{{ feedback.patient.name }}</td>
+        <td class="patientWidith">{{ feedback.patientFullname }}</td>
         <td class="feedbackTextWidith">
           {{ feedback.text }}
         </td>
         <td class="desiredVisibilityWidth">
-          {{ convertIsPublic(feedback.isPublic) }}
+          {{ convertIsPublic(feedback.isDesiredPublic) }}
         </td>
         <td class="currentVisibilityWidth">
           {{ convertStatus(feedback.status) }}
           <button
-            *ngIf="feedback.status != 0 && feedback.isPublic"
+            *ngIf="feedback.status != 0 && feedback.isDesiredPublic"
             (click)="Publish(feedback.id)"
           >
             Publish
           </button>
           <p></p>
           <button
-            *ngIf="feedback.status != 1 && feedback.isPublic"
+            *ngIf="feedback.status != 1 && feedback.isDesiredPublic"
             (click)="Hide(feedback.id)"
           >
             Hide

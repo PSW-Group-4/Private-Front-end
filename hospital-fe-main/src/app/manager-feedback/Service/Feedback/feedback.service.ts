@@ -17,11 +17,11 @@ export class FeedbackService {
 
 
    publishFeedback(id: any): Observable<any> {
-    return this.http.get<any>(this.apiHost + 'api/feedback/public/' + id, {headers: this.headers});
+    return this.http.get<any>(this.apiHost + 'api/feedback/publish/' + id, {headers: this.headers});
    }
 
    hideFeedback(id: any): Observable<any> {
-    return this.http.get<any>(this.apiHost + 'api/feedback/private/' + id, {headers: this.headers});
+    return this.http.get<any>(this.apiHost + 'api/feedback/hide/' + id, {headers: this.headers});
   }
 
 
