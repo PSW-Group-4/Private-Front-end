@@ -21,6 +21,10 @@ export class DoctorAppointmentService {
     return this.http.get<Appointment[]>(this.apiHost + 'api/DoctorAppointment/Current/' + id, {headers: this.headers});
   }
 
+  deleteAppointmentEndSendNotification(id: any): Observable<any> {
+    return this.http.delete<any>(this.apiHost + 'api/DoctorAppointment/Email/' + id, {headers: this.headers});
+  }
+
   getAppointments(): Observable<Appointment[]> {
     return this.http.get<Appointment[]>(this.apiHost + 'api/Appointment', {headers: this.headers});
   }
