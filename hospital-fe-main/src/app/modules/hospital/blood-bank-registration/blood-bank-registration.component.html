@@ -1,5 +1,6 @@
 <div class="container">
     <div>
+        <h2>Blood Bank Registration</h2>
         <mat-form-field appearance="fill">
             <mat-label>Name</mat-label>
             <input matInput [(ngModel)]="bloodBank.Name">
@@ -12,7 +13,7 @@
             <mat-label>Server address</mat-label>
             <input matInput [(ngModel)]="bloodBank.ServerAddress">
         </mat-form-field><br>
-        <button mat-stroked-button (click)="createBloodBank()">
+        <button mat-stroked-button (click)="createBloodBank()" [disabled]="!bloodBank.EmailAddress.length || !bloodBank.Name.length || !bloodBank.ServerAddress">
             Submit
         </button>
     </div>
