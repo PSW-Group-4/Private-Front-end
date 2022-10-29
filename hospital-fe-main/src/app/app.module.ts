@@ -10,11 +10,13 @@ import { HospitalModule } from "./modules/hospital/hospital.module";
 import { PagesModule } from "./modules/pages/pages.module";
 import { ManagerFeedbackComponent } from './manager-feedback/manager-feedback.component';
 import { DoctorAppointmentsModule } from "./modules/doctor-appointments/doctor-appointments.module";
+import { MapComponent } from './modules/maps/mapDisplay/map/map.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ManagerFeedbackComponent
+    ManagerFeedbackComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,

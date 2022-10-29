@@ -4,11 +4,13 @@ import { Routes, RouterModule } from "@angular/router";
 import { HomeComponent } from "./modules/pages/home/home.component";
 import { ManagerFeedbackComponent } from "./manager-feedback/manager-feedback.component";
 import { DoctorAppointmentsComponent } from "./modules/doctor-appointments/doctor-appointments/doctor-appointments.component";
+import { MapComponent } from "./modules/maps/mapDisplay/map/map.component";
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'managerFeedback', component: ManagerFeedbackComponent },
-  { path: 'doctorAppointments', component: DoctorAppointmentsComponent}
+  { path: 'doctorAppointments', component: DoctorAppointmentsComponent},
+  { path: 'mapDisplay', component: MapComponent}
 ];
 
 @NgModule({
@@ -19,5 +21,6 @@ export class AppRoutingModule { }
 export const routingComponents = [
   HomeComponent,
   ManagerFeedbackComponent,
-  DoctorAppointmentsComponent
+  DoctorAppointmentsComponent,
+  MapComponent
 ]
