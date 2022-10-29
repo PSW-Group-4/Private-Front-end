@@ -11,7 +11,7 @@ import { BloodBankService } from 'src/app/modules/hospital/services/blood-bank.s
 })
 export class BloodBanksComponent implements OnInit {
   public dataSource = new MatTableDataSource<BloodBank>();
-  public displayedColumns = ['name', 'server address', 'email'];
+  public displayedColumns = ['Name', 'Server Address', 'Email Address'];
   public bloodBanks: BloodBank[] = [];
   
   constructor(private bloodBankService: BloodBankService, private router: Router) { }
