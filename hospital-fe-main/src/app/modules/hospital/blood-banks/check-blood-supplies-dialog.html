@@ -28,8 +28,18 @@
       </mat-autocomplete>
     </mat-form-field>
   </form>
+  <div *ngIf="!firstTime">
+    <div *ngIf="haveSupply; else elseBlock" class="bloodAvailable">
+      Blood is available for transfer
+    </div>
+    <ng-template #elseBlock>
+      <div class="bloodNotAvailable">
+        Blood is not available for transfer
+      </div>
+    </ng-template>
+  </div>
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Close</button>
-  <button mat-button [mat-dialog-close]="[data.quantity, data.bloodType]" cdkFocusInitial [disabled]="!data.bloodType.length">Check</button>
+  <button mat-button (click)="onCheckClick(data.quantity, data.bloodType)" cdkFocusInitial [disabled]="!data.bloodType.length">Check</button>
 </div>

@@ -34,15 +34,15 @@ export class BloodBankService {
     return this.http.put<any>(this.apiHost + 'api/bloodBanks/' + bloodBank.id, bloodBank, {headers: this.headers});
   }
 
-  checkBloodSupplies(location: string, bloodType: string, quantity?: number): Observable<Boolean>{
-    return this.http.get<Boolean>(location + 'api/BloodBank/', {headers: this.headers}).pipe(catchError(this.errorHandler));;
+  checkBloodSupplies(location: string, bloodType: string, quantity: number = 0): Observable<any>{
+    return this.http.get<any>(location + 'blood-supply/', {headers: this.headers, params: {bloodType, quantity}}).pipe(catchError(this.errorHandler));;
   }
 
   errorHandler(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.
       console.error('An error occurred:', error.error.message);
-      alert("Something very bad is happening plese contact Aca")
+      alert("Something very bad is happening please contact Aca")
     } else {
       // The backend returned an unsuccessful response code.
       // The response body may contain clues as to what went wrong,
