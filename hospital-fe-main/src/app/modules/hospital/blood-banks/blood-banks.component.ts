@@ -40,18 +40,21 @@ export class BloodBanksComponent implements OnInit {
   }
   
   openDialog(): void {
-    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+    const dialogRef = this.dialog.open(CheckBloodSuppliesDialog, {
       width: '250px',
       data: {bloodType: this.bloodType, quantity: this.quantity},
     });
 
-    dialogRef.componentInstance.location = 'http://localhost:4200';
+    dialogRef.componentInstance.location = 'http://localhost:4200/';
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       if (result){
         [this.quantity, this.bloodType] = result;
         console.log(this.quantity, this.bloodType);
+        this.bloodBankService.checkBloodSupplies(dialogRef.componentInstance.location, this.bloodType, this.quantity).subscribe(res => {
+          console.log(res)
+        })
       }
       [this.quantity, this.bloodType] = [0, ''];
     });
@@ -59,16 +62,16 @@ export class BloodBanksComponent implements OnInit {
 }
 
 @Component({
-  selector: 'dialog-overview-example-dialog',
-  templateUrl: 'dialog-overview-example-dialog.html',
+  selector: 'check-blood-supplies-dialog',
+  templateUrl: 'check-blood-supplies-dialog.html',
 })
-export class DialogOverviewExampleDialog {
+export class CheckBloodSuppliesDialog {
   myControl = new FormControl('');
   public location: string = '';
   filteredOptions: Observable<string[]> = EMPTY;
   options: string[] = ['0-', '0+', 'A-', 'A+', 'B-', 'B+', 'AB-', 'AB+'];
   constructor(
-    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
+    public dialogRef: MatDialogRef<CheckBloodSuppliesDialog>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
   ) {}
   ngOnInit(): void {

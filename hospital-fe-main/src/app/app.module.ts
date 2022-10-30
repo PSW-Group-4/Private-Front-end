@@ -15,13 +15,13 @@ import { HospitalModule } from "./modules/hospital/hospital.module";
 import { PagesModule } from "./modules/pages/pages.module";
 import { ManagerFeedbackComponent } from './manager-feedback/manager-feedback.component';
 import { DoctorAppointmentsModule } from "./modules/doctor-appointments/doctor-appointments.module";
-import { BloodBanksComponent, DialogOverviewExampleDialog } from './modules/hospital/blood-banks/blood-banks.component';
+import { BloodBanksComponent, CheckBloodSuppliesDialog } from './modules/hospital/blood-banks/blood-banks.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ManagerFeedbackComponent,
-    DialogOverviewExampleDialog
+    CheckBloodSuppliesDialog
   ],
   imports: [
     BrowserModule,
