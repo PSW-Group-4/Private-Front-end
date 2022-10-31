@@ -11,12 +11,18 @@ import { PagesModule } from "./modules/pages/pages.module";
 import { ManagerFeedbackComponent } from './manager-feedback/manager-feedback.component';
 import { DoctorAppointmentsModule } from "./modules/doctor-appointments/doctor-appointments.module";
 import { MapComponent } from './modules/maps/mapDisplay/map/map.component';
+import { BuildingsComponent } from "./modules/maps/mapDisplay/buildings/buildings.component";
+import { FloorsComponent } from "./modules/maps/mapDisplay/floors/floors.component";
+import { RoomsComponent } from './modules/maps/mapDisplay/rooms/rooms.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ManagerFeedbackComponent,
-    MapComponent
+    MapComponent,
+    BuildingsComponent,
+    FloorsComponent,
+    RoomsComponent
   ],
   imports: [
     BrowserModule,
