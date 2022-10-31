@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FeedbackManagerResponseDto } from './Model/feedbackManagerResponseDto.model';
 import { FeedbackService } from './Service/Feedback/feedback.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { FeedbackService } from './Service/Feedback/feedback.service';
   styleUrls: ['./manager-feedback.component.css']
 })
 export class ManagerFeedbackComponent implements OnInit {
-  feedbacksManager:any=[]
+  feedbacksManager:FeedbackManagerResponseDto[]=[]
   constructor(private feedbackService: FeedbackService, private router: Router) { }
 
   ngOnInit(): void {

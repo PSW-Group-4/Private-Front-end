@@ -7,7 +7,7 @@ export class Room {
         if (obj) {
             this.id = obj.id;
             this.number = obj.number;
-            this.floor = obj.floor;        
+            this.floor = obj.floor;
         }
     }
 }

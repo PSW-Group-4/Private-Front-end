@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { FeedbackManagerResponseDto } from '../../Model/feedbackManagerResponseDto.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,8 @@ export class FeedbackService {
 
   constructor(private http: HttpClient) { }
 
-    getAllFeedbacks(): Observable<Object> {
-    return this.http.get<Object[]>(this.apiHost + 'api/Feedback', { headers: this.headers });
+    getAllFeedbacks(): Observable<FeedbackManagerResponseDto[]> {
+    return this.http.get<FeedbackManagerResponseDto[]>(this.apiHost + 'api/Feedback', { headers: this.headers });
   }
 
 

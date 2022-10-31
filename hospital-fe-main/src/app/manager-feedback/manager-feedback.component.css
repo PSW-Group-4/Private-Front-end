@@ -61,10 +61,10 @@
   width: 50%;
 }
 .desiredVisibilityWidth {
-  width: 10%;
+  width: 5%;
 }
 .currentVisibilityWidth {
-  width: 10%;
+  width: auto;
 }
 
 button {
