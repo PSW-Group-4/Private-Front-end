@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ConstSettings } from '../../constSettings';
 
 @Injectable({
   providedIn: 'root'
@@ -12,16 +13,16 @@ export class FeedbackService {
   constructor(private http: HttpClient) { }
 
     getAllFeedbacks(): Observable<Object> {
-    return this.http.get<Object[]>(this.apiHost + 'api/Feedback', { headers: this.headers });
+    return this.http.get<Object[]>(ConstSettings.apiHost + 'api/Feedback', { headers: ConstSettings.standardHeader });
   }
 
 
    publishFeedback(id: any): Observable<any> {
-    return this.http.get<any>(this.apiHost + 'api/feedback/publish/' + id, {headers: this.headers});
+    return this.http.get<any>(ConstSettings.apiHost  + 'api/feedback/publish/' + id, {headers:  ConstSettings.standardHeader});
    }
 
    hideFeedback(id: any): Observable<any> {
-    return this.http.get<any>(this.apiHost + 'api/feedback/hide/' + id, {headers: this.headers});
+    return this.http.get<any>(ConstSettings.apiHost + 'api/feedback/hide/' + id, {headers:  ConstSettings.standardHeader});
   }
 
 
