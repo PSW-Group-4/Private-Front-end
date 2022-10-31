@@ -13,7 +13,7 @@ export class FloorMapService {
 
   constructor(private http: HttpClient) {}
 
-  getFloorMap(): Observable<FloorMap[]> {
+  getFloorMaps(): Observable<FloorMap[]> {
     return this.http.get<FloorMap[]>(this.API);
   }
 

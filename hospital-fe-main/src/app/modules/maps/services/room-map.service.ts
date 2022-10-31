@@ -12,7 +12,7 @@ export class RoomMapService {
 
   constructor(private http: HttpClient) {}
 
-  getRoomMap(): Observable<RoomMap[]> {
+  getRoomMaps(): Observable<RoomMap[]> {
     return this.http.get<RoomMap[]>(this.API);
   }
 

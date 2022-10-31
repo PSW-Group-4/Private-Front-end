@@ -14,7 +14,7 @@ export class BuildingMapService {
 
   constructor(private http: HttpClient) {}
 
-  getBuildingMap(): Observable<BuildingMap[]> {
+  getBuildingMaps(): Observable<BuildingMap[]> {
     return this.http.get<BuildingMap[]>(this.API);
   }
 
