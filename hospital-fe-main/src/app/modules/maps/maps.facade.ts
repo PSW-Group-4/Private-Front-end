@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Observable, tap } from "rxjs";
+import { Observable, pipe, tap } from "rxjs";
 import { BuildingMap } from "./models/building-map.model";
 import { FloorMap } from "./models/floor-map.model";
 import { RoomMap } from "./models/room-map.model";
@@ -8,7 +8,11 @@ import { FloorMapService } from "./services/floor-map.service";
 import { RoomMapService } from "./services/room-map.service";
 import { MapsState } from "./state/maps.state";
 
-@Injectable()
+
+
+@Injectable({
+    providedIn: 'root'
+})
 export class MapsFacade {
     constructor(private buildingMapService: BuildingMapService, private floorMapService: FloorMapService,
          private roomMapService: RoomMapService, private mapsState: MapsState) { }
@@ -20,20 +24,40 @@ export class MapsFacade {
   getRoomMaps$(): Observable<RoomMap[]> {
     return this.mapsState.getRoomMaps$();
   }
+  
+  getFloorMaps$(): Observable<FloorMap[]> {
+    return this.mapsState.getFloorMaps$();
+  }
+  
+  getBuildingMaps$(): Observable<BuildingMap[]> {
+    return this.mapsState.getBuildingMaps$();
+  }
 
   loadRoomMaps() {
-    return this.roomMapService.getRoomMaps()
-      .pipe(tap(entities => this.mapsState.setRoomMaps(entities)));
+    this.mapsState.setUpdating(true);
+    this.roomMapService.getRoomMaps().subscribe({
+        next: (v) => this.mapsState.setRoomMaps(v),
+        error: (e) => console.log(e),
+        complete: () => this.mapsState.setUpdating(false)
+    });
   }
 
   loadFloorMaps() {
-    return this.floorMapService.getFloorMaps()
-      .pipe(tap(entities => this.mapsState.setFloorMaps(entities)));
+    this.mapsState.setUpdating(true);
+    this.floorMapService.getFloorMaps().subscribe({
+        next: (v) => this.mapsState.setFloorMaps(v),
+        error: (e) => console.log(e),
+        complete: () => this.mapsState.setUpdating(false)
+    });
   }
 
   loadBuildingMaps() {
-    return this.buildingMapService.getBuildingMaps()
-      .pipe(tap(entities => this.mapsState.setBuildingMaps(entities)));
+    this.mapsState.setUpdating(true);
+    this.buildingMapService.getBuildingMaps().subscribe({
+        next: (v) => this.mapsState.setBuildingMaps(v),
+        error: (e) => console.log(e),
+        complete: () => this.mapsState.setUpdating(false)
+    });
   }
 
   // pessimistic update

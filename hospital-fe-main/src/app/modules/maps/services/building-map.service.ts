@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BuildingMap } from '../models/building-map.model';
@@ -10,15 +10,17 @@ import { BuildingMap } from '../models/building-map.model';
 })
 export class BuildingMapService {
 
-  readonly API = '/api/BuildingMap';
+  apiHost: string = 'http://localhost:5000/';
+  headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
+  readonly API = 'api/BuildingMap';
 
   constructor(private http: HttpClient) {}
 
   getBuildingMaps(): Observable<BuildingMap[]> {
-    return this.http.get<BuildingMap[]>(this.API);
+    return this.http.get<BuildingMap[]>(this.apiHost + this.API, {headers: this.headers});
   }
 
   updateBuildingMap(buildingMap: BuildingMap): Observable<any> {
-    return this.http.put(`${this.API}/${buildingMap.id}`, buildingMap);
+    return this.http.put(`${this.apiHost}${this.API}/${buildingMap.id}`, buildingMap);
   }
 }

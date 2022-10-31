@@ -4,7 +4,9 @@ import { BuildingMap } from "../models/building-map.model";
 import { FloorMap } from "../models/floor-map.model";
 import { RoomMap } from "../models/room-map.model";
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class MapsState {
     private updating$ = new BehaviorSubject<boolean>(false);
 

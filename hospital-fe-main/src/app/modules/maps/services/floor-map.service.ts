@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { FloorMap } from '../models/floor-map.model';
@@ -9,15 +9,17 @@ import { FloorMap } from '../models/floor-map.model';
 })
 export class FloorMapService {
 
-  readonly API = '/api/FloorMap';
+  apiHost: string = 'http://localhost:5000/';
+  headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
+  readonly API = 'api/FloorMap';
 
   constructor(private http: HttpClient) {}
 
   getFloorMaps(): Observable<FloorMap[]> {
-    return this.http.get<FloorMap[]>(this.API);
+    return this.http.get<FloorMap[]>(this.apiHost + this.API, {headers: this.headers});
   }
 
   updateFloorMap(floorMap: FloorMap): Observable<any> {
-    return this.http.put(`${this.API}/${floorMap.id}`, floorMap);
+    return this.http.put(`${this.apiHost}${this.API}/${floorMap.id}`, floorMap);
   }
 }
