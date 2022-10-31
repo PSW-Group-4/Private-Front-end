@@ -15,6 +15,7 @@ import { HospitalModule } from "./modules/hospital/hospital.module";
 import { PagesModule } from "./modules/pages/pages.module";
 import { ManagerFeedbackComponent } from './manager-feedback/manager-feedback.component';
 import { DoctorAppointmentsModule } from "./modules/doctor-appointments/doctor-appointments.module";
+import { MapsModule } from "./modules/maps/maps.module";
 import { BloodBanksComponent, CheckBloodSuppliesDialog } from './modules/hospital/blood-banks/blood-banks.component';
 
 @NgModule({
@@ -38,7 +39,8 @@ import { BloodBanksComponent, CheckBloodSuppliesDialog } from './modules/hospita
     HospitalModule,
     MatNativeDateModule,
     
-    DoctorAppointmentsModule
+    DoctorAppointmentsModule,
+    MapsModule
   ],
   providers: [],
   bootstrap: [AppComponent, BloodBanksComponent]
