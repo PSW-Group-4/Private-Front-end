@@ -10,6 +10,7 @@ import { HospitalModule } from "./modules/hospital/hospital.module";
 import { PagesModule } from "./modules/pages/pages.module";
 import { ManagerFeedbackComponent } from './manager-feedback/manager-feedback.component';
 import { DoctorAppointmentsModule } from "./modules/doctor-appointments/doctor-appointments.module";
+import { MapsModule } from "./modules/maps/maps.module";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { DoctorAppointmentsModule } from "./modules/doctor-appointments/doctor-a
     PagesModule,
     HospitalModule,
     
-    DoctorAppointmentsModule
+    DoctorAppointmentsModule,
+    MapsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

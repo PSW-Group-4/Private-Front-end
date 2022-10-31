@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-edit-item',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./edit-item.component.css']
 })
 export class EditItemComponent implements OnInit {
-
-  constructor() { }
+  // this.router.navigate(["id", id]); in parret component
+  id: string = '';
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.route.params.subscribe((params: Params) => this.id = params['id']);
   }
 
 }
