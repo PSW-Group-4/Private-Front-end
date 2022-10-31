@@ -1,11 +1,10 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { Router } from '@angular/router';
 import { BloodBank } from 'src/app/modules/hospital/model/blood-bank.model';
 import { BloodBankService } from 'src/app/modules/hospital/services/blood-bank.service';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { FormControl, FormGroup } from '@angular/forms';
 import { EMPTY, Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -45,32 +44,24 @@ export class BloodBanksComponent implements OnInit {
       data: {bloodType: this.bloodType, quantity: this.quantity},
     });
 
-    dialogRef.componentInstance.location = 'http://localhost:4200/';
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      if (result){
-        [this.quantity, this.bloodType] = result;
-        console.log(this.quantity, this.bloodType);
-        this.bloodBankService.checkBloodSupplies(dialogRef.componentInstance.location, this.bloodType, this.quantity).subscribe(res => {
-          console.log(res)
-        })
-      }
-      [this.quantity, this.bloodType] = [0, ''];
-    });
+    dialogRef.componentInstance.location = 'http://localhost:8082/';
   }
 }
 
 @Component({
   selector: 'check-blood-supplies-dialog',
   templateUrl: 'check-blood-supplies-dialog.html',
+  styleUrls: ['./check-blood-supplies-dialog.css']
 })
 export class CheckBloodSuppliesDialog {
   myControl = new FormControl('');
   public location: string = '';
   filteredOptions: Observable<string[]> = EMPTY;
   options: string[] = ['0-', '0+', 'A-', 'A+', 'B-', 'B+', 'AB-', 'AB+'];
+  haveSupply: boolean = false;
+  firstTime: boolean = true;
   constructor(
+    private bloodBankService: BloodBankService,
     public dialogRef: MatDialogRef<CheckBloodSuppliesDialog>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
   ) {}
@@ -79,11 +70,18 @@ export class CheckBloodSuppliesDialog {
       startWith(''),
       map(value => this._filter(value || '')),
     );
-      console.log(this.location);
   }
   
   onNoClick(): void {
     this.dialogRef.close();
+  }
+
+    
+  onCheckClick(quantity: number, bloodType: string): void {
+    this.bloodBankService.checkBloodSupplies('http://localhost:8082/', bloodType, quantity).subscribe(res => {
+    this.firstTime = false
+    this.haveSupply = res
+    })
   }
 
   public form: FormGroup = new FormGroup({
