@@ -10,6 +10,7 @@ import { HospitalModule } from "./modules/hospital/hospital.module";
 import { PagesModule } from "./modules/pages/pages.module";
 import { ManagerFeedbackComponent } from './manager-feedback/manager-feedback.component';
 import { DoctorAppointmentsModule } from "./modules/doctor-appointments/doctor-appointments.module";
+import { MatNativeDateModule } from "@angular/material/core";
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { DoctorAppointmentsModule } from "./modules/doctor-appointments/doctor-a
     BrowserAnimationsModule,
     HttpClientModule,
     MaterialModule,
+    MatNativeDateModule,
 
     PagesModule,
     HospitalModule,
