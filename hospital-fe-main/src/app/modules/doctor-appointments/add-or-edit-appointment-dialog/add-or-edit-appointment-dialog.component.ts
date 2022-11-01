@@ -7,6 +7,7 @@ import {FormControl} from '@angular/forms';
 import { Doctor } from '../../hospital/model/doctor.model';
 import { AcceptAppointmentScheduleDialogComponent } from '../accept-appointment-schedule-dialog/accept-appointment-schedule-dialog.component';
 import { WrongInputDialogComponent } from './wrong-input-dialog/wrong-input-dialog.component';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-add-or-edit-appointment-dialog',
@@ -23,12 +24,13 @@ export class AddOrEditAppointmentDialogComponent implements OnInit {
 
   test?:string;
   selectedPatient = new Patient;
-  selectedTermin = Date();
+  selectedDate = new Date();
+  selectedTermin = new Date();
   doctor = new Doctor;
   minDate = new Date();
   isDate = true;
   doctorId = '1412c639-c5e1-47a1-b29b-1fe935536612';
-  isedit = false;
+  isEdit = false;
 
   ngOnInit(): void {
     this.isDate = true;
@@ -37,10 +39,26 @@ export class AddOrEditAppointmentDialogComponent implements OnInit {
     })
 
     if(this.data.isAdd){
-      this.test="Kreiranje pregleda !"
+      this.test="Kreiranje pregleda"
     }else{
-      this.test="Izmena pregleda !"
-      this.isedit = true;
+      this.test="Izmena pregleda"
+      this.isEdit = true;
+      this.doctorAppointmentService.getAppointment(this.data.appointmentId).subscribe(res => {
+        this.selectedDate = new Date(res.dateTime);
+
+        var formatedDate = this.selectedDate.toDateString();
+        this.doctorAppointmentService.getTermins(formatedDate).subscribe(res => {
+          this.termins= res;
+          this.termins.push(this.selectedDate);
+          this.selectedTermin = this.termins[this.termins.length - 1];
+        })
+        this.isDate = false;
+        
+        this.doctorAppointmentService.getPatient(res.patientId).subscribe(res => {
+          this.patients[0] = res
+          this.selectedPatient = res;
+        })
+      })
     }
   }
 
@@ -59,7 +77,7 @@ export class AddOrEditAppointmentDialogComponent implements OnInit {
   }
 
   checkAppointment = () =>{
-    if((this.appointment.patientid != '') && (this.appointment.dateTime != this.minDate.toString()) && (this.appointment.roomid != ''))
+    if((this.appointment.patientId != '') && (this.appointment.dateTime != this.minDate.toString()) && (this.appointment.roomId != ''))
       this.createAppointment();
     else {
       const dialogRef = this.dialog.open(WrongInputDialogComponent, {
@@ -76,26 +94,28 @@ export class AddOrEditAppointmentDialogComponent implements OnInit {
       this.doctor = res;
       this.setAppointment();
     })
-    
   }
 
   setAppointment = () => {
-    this.appointment.doctorid = this.doctor.id;
-    this.appointment.patientid = this.selectedPatient.id;
-    this.appointment.roomid = this.doctor.room.id.toString();
+    if (this.isEdit){
+      this.appointment.Id = this.data.appointmentId;
+      console.log(this.appointment.Id);
+    }
+    this.appointment.doctorId = this.doctor.id;
+    this.appointment.patientId = this.selectedPatient.id;
+    this.appointment.roomId = this.doctor.room.id.toString();
     this.appointment.dateTime = this.selectedTermin.toString();
     this.checkAppointment();
-    
   }
 
   createAppointment = () =>{
     const dialogRef = this.dialog.open(AcceptAppointmentScheduleDialogComponent, {
       data: {appointment: this.appointment,
-             dialog: this},
+             dialog: this,
+            isEdit: this.isEdit},
       height: '200px',
       width: '400px',
       //data: {name: this.name, animal: this.animal},
     });
   }
-
 }

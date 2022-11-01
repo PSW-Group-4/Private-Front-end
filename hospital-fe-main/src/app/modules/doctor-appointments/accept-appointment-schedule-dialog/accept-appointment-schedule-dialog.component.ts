@@ -20,4 +20,12 @@ export class AcceptAppointmentScheduleDialogComponent implements OnInit {
       this.data.dialog.close();
     })
   }
+
+  rescheduleAppointment = () => {
+    console.log(this.data.appointment.Id);
+    this.doctorAppointmentService.updateAppointment(this.data.appointment).subscribe(res =>{
+      this.dialogRef.close();
+      //this.data.dialog.close();
+    })
+  }
 }

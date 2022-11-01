@@ -44,11 +44,15 @@ export class DoctorAppointmentService {
   }
 
   updateAppointment(appointment: any): Observable<any> {
-    return this.http.put<any>(this.apiHost + 'api/Appointment/' + appointment.id, appointment, {headers: this.headers});
+    return this.http.put<any>(this.apiHost + 'api/Appointment/' + appointment.Id, appointment, {headers: this.headers});
   }
 
   getPatients(): Observable<Patient[]> {
     return this.http.get<Patient[]>(this.apiHost + 'api/Patient', {headers: this.headers});
+  }
+
+  getPatient(id: any): Observable<Patient> {
+    return this.http.get<Patient>(this.apiHost + 'api/Patient/' + id, {headers: this.headers});
   }
 
   getTermins(date : any): Observable<Date[]> {

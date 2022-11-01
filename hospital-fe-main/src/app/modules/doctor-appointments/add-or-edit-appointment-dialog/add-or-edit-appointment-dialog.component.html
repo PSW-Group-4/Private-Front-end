@@ -3,7 +3,7 @@
 <div class="container mt-5">
     <mat-form-field appearance="fill">
         <mat-label>Odaberite pacijenta</mat-label>
-        <mat-select [disabled]="isedit" [(ngModel)]="selectedPatient" name="patient">
+        <mat-select [disabled]="isEdit" [(ngModel)]="selectedPatient" name="patient">
           <mat-option *ngFor="let n of patients" [value]="n">
             {{n.name + " " + n.surname}}
           </mat-option>
@@ -14,7 +14,7 @@
 <div class="container mt-5">
   <mat-form-field appearance="fill">
     <mat-label>Izaberite datum</mat-label>
-    <input matInput [matDatepicker]="picker" [min]="minDate" (dateChange)="getTermins($event)">
+    <input matInput [matDatepicker]="picker" [min]="minDate" (dateChange)="getTermins($event)" [(ngModel)]="selectedDate">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
@@ -29,7 +29,8 @@
 </mat-form-field>
 </div>
 <div class="container mt-5 ml-5">
-<button mat-raised-button color="primary" (click)="scheduleAppointment()">Zakazi</button>
+<button mat-raised-button color="primary" *ngIf="!isEdit" (click)="scheduleAppointment()">Zakazi</button>
+<button mat-raised-button color="primary" *ngIf="isEdit" (click)="scheduleAppointment()">Pomeri</button>
 </div>
 
 </div>
