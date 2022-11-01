@@ -28,10 +28,10 @@ export class DoctorSchedulerComponent implements OnInit {
 
   changeDispledTable() {
     if(this.isCurrentAppointment){
-      this.displayedColumns = ['doctorName', 'patientName', 'room', 'date', 'update', 'delete'];
+      this.displayedColumns = ['doctorName', 'patientName', 'room', 'date','time', 'update', 'delete'];
       this.showCurrentAppointment();
     }else{
-      this.displayedColumns = ['doctorName', 'patientName', 'room', 'date'];
+      this.displayedColumns = ['doctorName', 'patientName', 'room', 'date', 'time'];
       this.showOldAppointment();
     }
   }
@@ -54,14 +54,12 @@ export class DoctorSchedulerComponent implements OnInit {
     const dialogRef = this.dialog.open(AddOrEditAppointmentDialogComponent, {
       data: {isAdd: false,
             appointmentId: id},
-      height: '600px',
-      width: '1000px',
+      height: '400px',
+      width: '600px',
       //data: {name: this.name, animal: this.animal},
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      //console.log('The dialog was closed');
-      //this.animal = result;
       this.showCurrentAppointment();
     });
   }

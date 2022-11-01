@@ -8,6 +8,8 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule, Routes } from "@angular/router";
 import { MaterialModule } from "src/app/material/material.module";
 import { AppRoutingModule } from "src/app/app-routing.module";
+import { AcceptAppointmentScheduleDialogComponent } from './accept-appointment-schedule-dialog/accept-appointment-schedule-dialog.component';
+import { WrongInputDialogComponent } from './add-or-edit-appointment-dialog/wrong-input-dialog/wrong-input-dialog.component';
 
 
 
@@ -16,7 +18,9 @@ import { AppRoutingModule } from "src/app/app-routing.module";
     DoctorAppointmentsComponent,
     DoctorSchedulerComponent,
     CancelAppointmentDialogComponent,
-    AddOrEditAppointmentDialogComponent
+    AddOrEditAppointmentDialogComponent,
+    AcceptAppointmentScheduleDialogComponent,
+    WrongInputDialogComponent
   ],
   imports: [
     AppRoutingModule,

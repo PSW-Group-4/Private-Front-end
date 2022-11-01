@@ -9,12 +9,12 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {MatNativeDateModule} from '@angular/material/core';
 
 import { HospitalModule } from "./modules/hospital/hospital.module";
 import { PagesModule } from "./modules/pages/pages.module";
 import { ManagerFeedbackComponent } from './manager-feedback/manager-feedback.component';
 import { DoctorAppointmentsModule } from "./modules/doctor-appointments/doctor-appointments.module";
+import { MatNativeDateModule } from "@angular/material/core";
 import { MapsModule } from "./modules/maps/maps.module";
 import { BloodBanksComponent, CheckBloodSuppliesDialog } from './modules/hospital/blood-banks/blood-banks.component';
 
@@ -30,6 +30,7 @@ import { BloodBanksComponent, CheckBloodSuppliesDialog } from './modules/hospita
     BrowserAnimationsModule,
     HttpClientModule,
     MaterialModule,
+
     MatAutocompleteModule,
     MatFormFieldModule,
     ReactiveFormsModule,

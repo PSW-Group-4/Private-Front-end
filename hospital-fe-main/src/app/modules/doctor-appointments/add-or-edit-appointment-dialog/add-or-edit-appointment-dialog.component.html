@@ -1,2 +1,35 @@
-<p>add-or-edit-appointment-dialog works!</p>
+<div class="container mt-5 ml-5" >
 <p>{{test}}</p>
+<div class="container mt-5">
+    <mat-form-field appearance="fill">
+        <mat-label>Odaberite pacijenta</mat-label>
+        <mat-select [disabled]="isedit" [(ngModel)]="selectedPatient" name="patient">
+          <mat-option *ngFor="let n of patients" [value]="n">
+            {{n.name + " " + n.surname}}
+          </mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
+
+<div class="container mt-5">
+  <mat-form-field appearance="fill">
+    <mat-label>Izaberite datum</mat-label>
+    <input matInput [matDatepicker]="picker" [min]="minDate" (dateChange)="getTermins($event)">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field  appearance="fill" >
+    <mat-label>Odaberite termin</mat-label>
+    <mat-select [disabled]="isDate" [(ngModel)]="selectedTermin" name="termins">
+      <mat-option  *ngFor="let n of termins" [value]="n">
+        {{n | date:"h:mm"}}
+      </mat-option>
+    </mat-select>
+</mat-form-field>
+</div>
+<div class="container mt-5 ml-5">
+<button mat-raised-button color="primary" (click)="scheduleAppointment()">Zakazi</button>
+</div>
+
+</div>
