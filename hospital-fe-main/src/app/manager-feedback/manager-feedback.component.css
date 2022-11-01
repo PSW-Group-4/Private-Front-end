@@ -20,6 +20,7 @@
 }
 .feedbackSection td {
   padding: 10px;
+  max-width: auto;
 }
 
 .feedbackSection td:first-child {
@@ -64,7 +65,7 @@
   width: 10%;
 }
 .currentVisibilityWidth {
-  width: 10%;
+  width: 10;
 }
 
 button {

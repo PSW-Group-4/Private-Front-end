@@ -18,6 +18,12 @@
             <th mat-header-cell *matHeaderCellDef class="cell-center"> Email Address </th>
             <td mat-cell *matCellDef="let bloodBank" class="cell-center">{{bloodBank.EmailAddress}}</td>
         </ng-container>
+        <ng-container matColumnDef="Blood supplies">
+            <th mat-header-cell *matHeaderCellDef class="cell-center"> Blood supplies </th>
+            <td mat-cell *matCellDef="let bloodBank" class="cell-center">
+                <button mat-raised-button (click)="openDialog()">Check</button>
+            </td>
+        </ng-container>
         
         <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
