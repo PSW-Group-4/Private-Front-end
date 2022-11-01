@@ -1,54 +1,38 @@
 <div class="feedbackSection">
   <table>
     <th>Date:</th>
-    <th>Patient:</th>
-    <th>Feedback:</th>
-    <th>Visibility:</th>
+    <th>Patient</th>
+    <th>Feedback</th>
+    <th>Desired visibility</th>
+    <th>Current visibility</th>
 
     <tbody>
-      <tr>
-        <td class="dateWidth">01.11.2012.</td>
-        <td class="patientWidith">PERA GAS</td>
-        <td class="feedbackTextWidith">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora nulla
-          hic et molestias asperiores reprehenderit. Nemo eum beatae maxime
-          sequi consequuntur, minima ad iure tempore corporis, dolores, magnam
-          provident obcaecati.
+      <tr *ngFor="let feedback of feedbacksManager">
+        <td class="dateWidth">
+          {{ feedback.date | date: "d/M/yyyy HH:mm" }}
         </td>
-        <td class="visibilityWidth">Private <button>Change</button></td>
-      </tr>
-      <tr>
-        <td class="dateWidth">01.11.2012.</td>
-        <td class="patientWidith">PERA GAS</td>
+        <td class="patientWidith">{{ feedback.patientFullname }}</td>
         <td class="feedbackTextWidith">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora nulla
-          hic et molestias asperiores reprehenderit. Nemo eum beatae maxime
-          sequi consequuntur, minima ad iure tempore corporis, dolores, magnam
-          provident obcaecati.
+          {{ feedback.text }}
         </td>
-        <td class="visibilityWidth">Public <button>Change</button></td>
-      </tr>
-      <tr>
-        <td class="dateWidth">01.11.2012.</td>
-        <td class="patientWidith">PERA GAS</td>
-        <td class="feedbackTextWidith">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora nulla
-          hic et molestias asperiores reprehenderit. Nemo eum beatae maxime
-          sequi consequuntur, minima ad iure tempore corporis, dolores, magnam
-          provident obcaecati.
+        <td class="desiredVisibilityWidth">
+          {{ convertIsPublic(feedback.isDesiredPublic) }}
         </td>
-        <td class="visibilityWidth">Private <button>Change</button></td>
-      </tr>
-      <tr>
-        <td class="dateWidth">01.11.2012.</td>
-        <td class="patientWidith">PERA GAS</td>
-        <td class="feedbackTextWidith">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora nulla
-          hic et molestias asperiores reprehenderit. Nemo eum beatae maxime
-          sequi consequuntur, minima ad iure tempore corporis, dolores, magnam
-          provident obcaecati.
+        <td class="currentVisibilityWidth">
+          {{ convertStatus(feedback.status) }}
+          <button
+            *ngIf="feedback.status != 0 && feedback.isDesiredPublic"
+            (click)="Publish(feedback.id)"
+          >
+            Publish
+          </button>
+          <button
+            *ngIf="feedback.status != 1 && feedback.isDesiredPublic"
+            (click)="Hide(feedback.id)"
+          >
+            Hide
+          </button>
         </td>
-        <td class="visibilityWidth">Private <button>Change</button></td>
       </tr>
     </tbody>
   </table>

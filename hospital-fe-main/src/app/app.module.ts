@@ -1,28 +1,28 @@
 import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
-import { AppRoutingModule,routingComponents } from "./app-routing.module";
+import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { MaterialModule } from "./material/material.module";
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatFormFieldModule } from "@angular/material/form-field";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatNativeDateModule} from '@angular/material/core';
 
 import { HospitalModule } from "./modules/hospital/hospital.module";
 import { PagesModule } from "./modules/pages/pages.module";
 import { ManagerFeedbackComponent } from './manager-feedback/manager-feedback.component';
 import { DoctorAppointmentsModule } from "./modules/doctor-appointments/doctor-appointments.module";
-import { MapComponent } from './modules/maps/mapDisplay/map/map.component';
-import { BuildingsComponent } from "./modules/maps/mapDisplay/buildings/buildings.component";
-import { FloorsComponent } from "./modules/maps/mapDisplay/floors/floors.component";
-import { RoomsComponent } from './modules/maps/mapDisplay/rooms/rooms.component';
+import { MapsModule } from "./modules/maps/maps.module";
+import { BloodBanksComponent, CheckBloodSuppliesDialog } from './modules/hospital/blood-banks/blood-banks.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ManagerFeedbackComponent,
-    MapComponent,
-    BuildingsComponent,
-    FloorsComponent,
-    RoomsComponent
+    CheckBloodSuppliesDialog
   ],
   imports: [
     BrowserModule,
@@ -30,13 +30,19 @@ import { RoomsComponent } from './modules/maps/mapDisplay/rooms/rooms.component'
     BrowserAnimationsModule,
     HttpClientModule,
     MaterialModule,
-
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    NgbModule,
+    FormsModule,
     PagesModule,
     HospitalModule,
+    MatNativeDateModule,
     
-    DoctorAppointmentsModule
+    DoctorAppointmentsModule,
+    MapsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent, BloodBanksComponent]
 })
 export class AppModule { }

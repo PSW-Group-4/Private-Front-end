@@ -16,7 +16,7 @@ export class CancelAppointmentDialogComponent implements OnInit {
   }
 
   cancelAppointment(){
-    this.doctorAppointmentService.deleteAppointment(this.data.appointmentId).subscribe(res =>{
+    this.doctorAppointmentService.deleteAppointmentEndSendNotification(this.data.appointmentId).subscribe(res =>{
       this.dialogRef.close();
     })
   }
