@@ -1,12 +1,12 @@
-import { Floor } from "./floor.model";
+import { Room } from "../../hospital/model/room.model";
 
-export class FloorMap {
+export class RoomMap {
     id: string = '';
     description: string = '';
     name: string = '';    
     number: number = 0;
-    floor: Floor = new Floor();
-
+    room: Room = new Room();
+    
     public constructor(obj?: any) {
         if (obj) {  
         }

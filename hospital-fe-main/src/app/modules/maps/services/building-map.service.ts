@@ -10,7 +10,7 @@ import { BuildingMap } from '../models/building-map.model';
 })
 export class BuildingMapService {
 
-  apiHost: string = 'http://localhost:5000/';
+  apiHost: string = 'http://localhost:16177/';
   headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
   readonly API = 'api/BuildingMap';
 

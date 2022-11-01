@@ -8,7 +8,7 @@ import { RoomMap } from '../models/room-map.model';
 })
 export class RoomMapService {
 
-  apiHost: string = 'http://localhost:5000/';
+  apiHost: string = 'http://localhost:16177/';
   headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
   readonly API = 'api/RoomMap';
 
