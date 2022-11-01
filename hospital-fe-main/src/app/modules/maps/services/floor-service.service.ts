@@ -49,7 +49,6 @@ export class FloorServiceService {
   }
 
   createObjects(svg:any, data1:any, id:any){
-    //data1.filter((a:any) => a.parent == id)
     return svg.selectAll("rect")
           .data(data1.filter((a:any) => a.v == id))
           .enter()
