@@ -38,8 +38,10 @@ export class EditItemComponent implements OnInit {
     this.roomMaps$.forEach(element => {
       element.forEach(element => {
         console.log(element)
+        console.log(this.mapsFacade.getBuildingMapById$(element.id));
         console.log(element.building.floorList)
     })
   } )
+  
   }
 }
