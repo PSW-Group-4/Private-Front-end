@@ -17,8 +17,8 @@ export class DoctorAppointmentsComponent implements OnInit {
   openAddDialog(): void {
     const dialogRef = this.dialog.open(AddOrEditAppointmentDialogComponent, {
       data: {isAdd: true},
-      height: '600px',
-      width: '1000px',
+      height: '400px',
+      width: '600px',
       //data: {name: this.name, animal: this.animal},
     });
 
