@@ -62,23 +62,34 @@ export class MapsFacade {
     });
   }
 
-  /* TO BE DETERMINED IF ITS USEFUL
-  getFloorMapsByBuildingMapId$(id: string): Observable<FloorMap[]> | null {
-    var returnValue : FloorMap[] | null = null;
-    this.getBuildingMapById$(id)?.building.floorList.forEach(floors => {
-      floors.forEach( floor => {
+
+  getFloorMapsByBuildingMapId$(id: string): FloorMap[]{
+    var returnValue : FloorMap[]  = [];
+    this.getBuildingMapById$(id)?.building.floorList.forEach(floor => {
         this.getFloorMaps$().forEach(floorMaps => {
           floorMaps.forEach(floorMap => {
-            if(floorMap.floor.id == floor.id) {
-              returnValue?.push(floorMap);
+            if(floorMap.floor.id === floor.id) {
+              returnValue.push(floorMap);
             }
           })
         })
-      });
     });
     return returnValue;
   }
-  */
+  
+  getRoomMapsByFloorMapId$(id: string): RoomMap[]{
+    var returnValue : RoomMap[]  = [];
+    this.getFloorMapById$(id)?.floor.roomList.forEach(room => {
+        this.getRoomMaps$().forEach(roomMaps => {
+          roomMaps.forEach(roomMap => {
+            if(roomMap.room.id === room.id) {
+              returnValue.push(roomMap);
+            }
+          })
+        })
+    });
+    return returnValue;
+  }
 
   getBuildingMapById$(id : string): BuildingMap | null {
     var returnValue : BuildingMap | null = null;
