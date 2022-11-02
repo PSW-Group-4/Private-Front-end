@@ -14,7 +14,7 @@ export class FloorMap {
             this.coordinateX = obj.coordinateX;
             this.height = obj.height;
             this.width = obj.width;
-            this.floor = obj.floor;
+            this.floor = obj.floor
         }
     }
 }

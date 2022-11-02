@@ -1,10 +1,10 @@
 export class Room {
-    equipmentList:[] = []
+    
     id: string = '';
     description: string = '';
     name: string = '';    
     number: number = 0;
-
+    equipmentList:[] = [];
     public constructor(obj?: any) {
         if (obj) {  
         }

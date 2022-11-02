@@ -3,13 +3,14 @@ import { Building } from "./building.model";
 import { FloorMap } from "./floor-map.model";
 
 export class BuildingMap {
-    building: Building = new Building();
-    id: string = '';
+    
+    
     coordinateX: number = 0;
     coordinateY: number = 0;  
     height: number = 0;
+    id: string = '';
     width: number = 0;
-    
+    building: Building = new Building;
 
     public constructor(obj?: any) {
         if (obj) {  

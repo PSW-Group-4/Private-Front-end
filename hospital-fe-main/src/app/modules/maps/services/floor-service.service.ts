@@ -16,7 +16,7 @@ export class FloorServiceService {
       "w" : "100",
       "h" : "100",
       "color" : "orange",
-      "v" : 0
+      "v" : "bf9fefb6-d1d8-47f9-b97f-50e099d63f90"
 
     },
     {
@@ -26,7 +26,7 @@ export class FloorServiceService {
       "w" : "200",
       "h" : "200",
       "color" : "blue",
-      "v" : 1
+      "v" : "i"
     },{
       "id" : 4,
       "x" : "300.0",
@@ -34,7 +34,7 @@ export class FloorServiceService {
       "w" : "300",
       "h" : "100",
       "color" : "yellow",
-      "v" : 0
+      "v" : "bf9fefb6-d1d8-47f9-b97f-50e099d63f90"
 
     }]
     

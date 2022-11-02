@@ -4,13 +4,14 @@ import { Observable } from 'rxjs';
 import { BuildingMap } from '../models/building-map.model';
 import { Router } from '@angular/router';
 import * as d3 from 'd3';
+import { MapsFacade } from '../maps.facade';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BuildingMapService {
 
-  apiHost: string = 'http://localhost:5000/';
+  apiHost: string = 'http://localhost:16177/';
   headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
   readonly API = 'api/BuildingMap';
 
@@ -51,18 +52,18 @@ export class BuildingMapService {
   }
 
   createObjects(svg:any, data1:any){
-
+    
     return svg.selectAll("rect")
             .data(data1)
             .enter()
             .append("rect")
-            .attr("height", function(d:any){ return d.height;})
-            .attr("width", function(d:any){ return d.width;})
+            .attr("height", function(d:any){ return 100;})
+            .attr("width", function(d:any){ return 100;})
             .attr("fill", function(d:any){ return "red";})
             .attr("stroke", "black")
-            .attr("x", function(d:any){ return d.coordinateX;})
-            .attr("y", function(d:any){ return d.coordinateY;})
-            .attr("id", function(d:any){return d.id})
+            .attr("x", function(d:any){ return 0;})
+            .attr("y", function(d:any){ return 0;})
+            .attr("id", function(d:any){return 'a';})
             .on('click',this.onClickk(svg) )
           
           
