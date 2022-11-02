@@ -9,7 +9,7 @@ import { FloorMap } from '../models/floor-map.model';
 })
 export class FloorMapService {
 
-  apiHost: string = 'http://localhost:5000/';
+  apiHost: string = 'http://localhost:16177/';
   headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
   readonly API = 'api/FloorMap';
 

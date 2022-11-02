@@ -2,6 +2,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Appointment } from '../hospital/model/appointment.model';
+import { Doctor } from '../hospital/model/doctor.model';
+import { Patient } from '../hospital/model/patient.model';
 
 @Injectable({
   providedIn: 'root'
@@ -43,5 +45,17 @@ export class DoctorAppointmentService {
 
   updateAppointment(appointment: any): Observable<any> {
     return this.http.put<any>(this.apiHost + 'api/Appointment/' + appointment.id, appointment, {headers: this.headers});
+  }
+
+  getPatients(): Observable<Patient[]> {
+    return this.http.get<Patient[]>(this.apiHost + 'api/Patient', {headers: this.headers});
+  }
+
+  getTermins(date : any): Observable<Date[]> {
+    return this.http.get<Date[]>(this.apiHost + 'api/Scheduling/' + date, {headers: this.headers});
+  }
+
+  getDoctor(id: any): Observable<Doctor> {
+    return this.http.get<Doctor>(this.apiHost + 'api/Doctor/' + id, {headers: this.headers});
   }
 }

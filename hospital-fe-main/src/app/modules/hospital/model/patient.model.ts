@@ -1,6 +1,4 @@
-import { Room } from "./room.model";
-
-export class Doctor {
+export class Patient{
     id: string = '';
     numLicenceNumber: string = '';
     speciality: string = '';
@@ -14,7 +12,6 @@ export class Doctor {
     jmbg: string = '';
     email: string = '';
     phoneNumber: string = '';
-    room:Room = new Room();
 
     public constructor(obj?: any) {
         if (obj) {
@@ -30,8 +27,7 @@ export class Doctor {
             this.addressId = obj.addressId;
             this.jmbg = obj.jmbg;
             this.email = obj.email;
-            this.phoneNumber = obj.phoneNumber;    
-            this.room = obj.room;   
+            this.phoneNumber = obj.phoneNumber;       
         }
 
     }

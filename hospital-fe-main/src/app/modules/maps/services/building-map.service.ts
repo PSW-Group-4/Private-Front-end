@@ -10,7 +10,7 @@ import * as d3 from 'd3';
 })
 export class BuildingMapService {
 
-  apiHost: string = 'http://localhost:5000/';
+  apiHost: string = 'http://localhost:16177/';
   headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
   readonly API = 'api/BuildingMap';
 

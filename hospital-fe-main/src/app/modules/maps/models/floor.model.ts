@@ -1,11 +1,12 @@
-import { Floor } from "./floor.model";
+import { Observable } from "rxjs/internal/Observable";
+import { Room } from "./room.model";
 
-export class FloorMap {
+export class Floor {
     id: string = '';
     description: string = '';
     name: string = '';    
     number: number = 0;
-    floor: Floor = new Floor();
+    roomList: Observable<Room[]> = new Observable<Room[]>();
 
     public constructor(obj?: any) {
         if (obj) {  

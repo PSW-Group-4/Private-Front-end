@@ -1,7 +1,9 @@
+import { ListKeyManager } from "@angular/cdk/a11y";
 import { Injectable } from "@angular/core";
 import { Observable, pipe, tap } from "rxjs";
 import { BuildingMap } from "./models/building-map.model";
 import { FloorMap } from "./models/floor-map.model";
+import { Floor } from "./models/floor.model";
 import { RoomMap } from "./models/room-map.model";
 import { BuildingMapService } from "./services/building-map.service";
 import { FloorMapService } from "./services/floor-map.service";
@@ -58,6 +60,60 @@ export class MapsFacade {
         error: (e) => console.log(e),
         complete: () => this.mapsState.setUpdating(false)
     });
+  }
+
+  /* TO BE DETERMINED IF ITS USEFUL
+  getFloorMapsByBuildingMapId$(id: string): Observable<FloorMap[]> | null {
+    var returnValue : FloorMap[] | null = null;
+    this.getBuildingMapById$(id)?.building.floorList.forEach(floors => {
+      floors.forEach( floor => {
+        this.getFloorMaps$().forEach(floorMaps => {
+          floorMaps.forEach(floorMap => {
+            if(floorMap.floor.id == floor.id) {
+              returnValue?.push(floorMap);
+            }
+          })
+        })
+      });
+    });
+    return returnValue;
+  }
+  */
+
+  getBuildingMapById$(id : string): BuildingMap | null {
+    var returnValue : BuildingMap | null = null;
+    this.getBuildingMaps$().forEach(buildingMaps => {
+      buildingMaps.forEach(buildingMap => {
+        if (buildingMap.id == id) {
+          returnValue = buildingMap;
+        }
+      })
+    });
+    return returnValue;
+  }
+
+  getFloorMapById$(id : string): FloorMap | null {
+    var returnValue : FloorMap | null = null;
+    this.getFloorMaps$().forEach(floorMaps => {
+      floorMaps.forEach(floorMap => {
+        if (floorMap.id == id) {
+          returnValue = floorMap;
+        }
+      })
+    });
+    return returnValue;
+  }
+
+  getRoomMapById$(id : string): RoomMap | null {
+    var returnValue : RoomMap | null = null;
+    this.getRoomMaps$().forEach(roomMaps => {
+      roomMaps.forEach(roomMap => {
+        if (roomMap.id == id) {
+          returnValue = roomMap;
+        }
+      })
+    });
+    return returnValue;
   }
 
   // pessimistic update

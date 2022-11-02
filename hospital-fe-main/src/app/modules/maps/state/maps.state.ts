@@ -61,7 +61,7 @@ export class MapsState {
         this.buildingMaps$.next(buildingMaps);
     }
 
-    updateBuildingMaps(updatedBuildingMap: RoomMap) {
+    updateBuildingMaps(updatedBuildingMap: BuildingMap) {
         const buildingMaps = this.buildingMaps$.getValue();
         const indexOfUpdated = buildingMaps.findIndex(entity => entity.id === updatedBuildingMap.id);
         buildingMaps[indexOfUpdated] = updatedBuildingMap;

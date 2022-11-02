@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Observable } from 'rxjs/internal/Observable';
 import { MapsFacade } from '../../maps.facade';
+import { BuildingMap } from '../../models/building-map.model';
 import { RoomMap } from '../../models/room-map.model';
 
 @Component({
@@ -13,12 +14,12 @@ export class EditItemComponent implements OnInit {
   // this.router.navigate(["id", id]); in parret component
   id: string = '';
 
-  roomMaps$: Observable<RoomMap[]>;
+  roomMaps$: Observable<BuildingMap[]>;
   isUpdating$: Observable<boolean>;
 
   // Only for illustration purposes atm
   constructor(private route: ActivatedRoute, private mapsFacade: MapsFacade) { 
-    this.roomMaps$ = mapsFacade.getRoomMaps$();
+    this.roomMaps$ = mapsFacade.getBuildingMaps$();
     this.isUpdating$ = mapsFacade.isUpdating$();
   }
 
@@ -36,8 +37,11 @@ export class EditItemComponent implements OnInit {
   openDialog() {
     this.roomMaps$.forEach(element => {
       element.forEach(element => {
-        console.log(element.id)
+        console.log(element)
+        console.log(this.mapsFacade.getBuildingMapById$(element.id));
+        console.log(element.building.floorList)
     })
   } )
+  
   }
 }
