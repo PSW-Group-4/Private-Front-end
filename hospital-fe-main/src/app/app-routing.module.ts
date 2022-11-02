@@ -7,6 +7,8 @@ import { DoctorAppointmentsComponent } from "./modules/doctor-appointments/docto
 import { MapComponent } from "./modules/maps/mapDisplay/map/map.component";
 import { BuildingsComponent } from "./modules/maps/mapDisplay/buildings/buildings.component";
 import { FloorsComponent } from "./modules/maps/mapDisplay/floors/floors.component";
+
+
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'managerFeedback', component: ManagerFeedbackComponent },

@@ -7,11 +7,10 @@ import { MaterialModule } from './../../material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
-
 @NgModule({
   declarations: [
     EditItemComponent,
-    MapItemInformationComponent
+    MapItemInformationComponent,
   ],
   imports: [
     CommonModule,
