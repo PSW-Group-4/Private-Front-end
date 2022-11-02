@@ -10,7 +10,7 @@ import * as d3 from 'd3';
 })
 export class BuildingMapService {
 
-  apiHost: string = 'http://localhost:16177/';
+  apiHost: string = 'http://localhost:5000/';
   headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
   readonly API = 'api/BuildingMap';
 
@@ -51,17 +51,17 @@ export class BuildingMapService {
   }
 
   createObjects(svg:any, data1:any){
-   
+
     return svg.selectAll("rect")
-            .data(this.getDataA())
+            .data(data1)
             .enter()
             .append("rect")
             .attr("height", function(d:any){ return d.height;})
             .attr("width", function(d:any){ return d.width;})
             .attr("fill", function(d:any){ return "red";})
             .attr("stroke", "black")
-            .attr("x", function(d:any){ return d.x;})
-            .attr("y", function(d:any){ return d.y;})
+            .attr("x", function(d:any){ return d.coordinateX;})
+            .attr("y", function(d:any){ return d.coordinateY;})
             .attr("id", function(d:any){return d.id})
             .on('click',this.onClickk(svg) )
           

@@ -1,4 +1,5 @@
 export class Room {
+    equipmentList:[] = []
     id: string = '';
     description: string = '';
     name: string = '';    
