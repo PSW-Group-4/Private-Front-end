@@ -8,15 +8,15 @@
     <table mat-table [dataSource]="dataSource">
         <ng-container matColumnDef="Name">
             <th mat-header-cell *matHeaderCellDef class="cell-center"> Name </th>
-            <td mat-cell *matCellDef="let bloodBank" class="cell-center">{{bloodBank.Name}}</td>
+            <td mat-cell *matCellDef="let bloodBank" class="cell-center">{{bloodBank.name}}</td>
         </ng-container>
         <ng-container matColumnDef="Server Address">
             <th mat-header-cell *matHeaderCellDef class="cell-center"> Server Address </th>
-            <td mat-cell *matCellDef="let bloodBank" class="cell-center">{{bloodBank.ServerAddress}}</td>
+            <td mat-cell *matCellDef="let bloodBank" class="cell-center">{{bloodBank.serverAddress}}</td>
         </ng-container>
         <ng-container matColumnDef="Email Address">
             <th mat-header-cell *matHeaderCellDef class="cell-center"> Email Address </th>
-            <td mat-cell *matCellDef="let bloodBank" class="cell-center">{{bloodBank.EmailAddress}}</td>
+            <td mat-cell *matCellDef="let bloodBank" class="cell-center">{{bloodBank.emailAddress}}</td>
         </ng-container>
         <ng-container matColumnDef="Blood supplies">
             <th mat-header-cell *matHeaderCellDef class="cell-center"> Blood supplies </th>
