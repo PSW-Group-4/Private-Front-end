@@ -63,10 +63,13 @@ export class MapsFacade {
   }
 
 
+
   getFloorMapsByBuildingMapId$(id: string): FloorMap[]{
     var returnValue : FloorMap[]  = [];
     this.getBuildingMapById$(id)?.building.floorList.forEach(floor => {
+
         this.getFloorMaps$().forEach(floorMaps => {
+          console.log('8')
           floorMaps.forEach(floorMap => {
             if(floorMap.floor.id === floor.id) {
               returnValue.push(floorMap);
@@ -84,6 +87,7 @@ export class MapsFacade {
           roomMaps.forEach(roomMap => {
             if(roomMap.room.id === room.id) {
               returnValue.push(roomMap);
+
             }
           })
         })
@@ -127,6 +131,55 @@ export class MapsFacade {
     return returnValue;
   }
 
+  /*getFloorsByBuilding(id:string): FloorMap[] {
+    var returnValue:  FloorMap[] = [];
+    console.log('2');
+    var floors: Observable<Floor[]> | null =  null;
+    this.loadBuildingMaps();
+    this.getBuildingMaps$().forEach(buildingsMap =>{
+      console.log('1');
+      console.log(buildingsMap.toString())
+      buildingsMap.forEach(buildingMap => {
+        console.log(buildingMap);
+        console.log('3');
+        if(buildingMap.id == id){
+          floors = buildingMap.building.floorList;
+          returnValue= this.getFloorMapsByFloors(floors);
+          
+        }
+      })
+    })
+    
+    return returnValue;
+  }
+
+  getFloorMapsByFloors(floors : Observable<Floor[]>):FloorMap[] {
+    var returnValue:  FloorMap[] =[];
+    console.log('4');
+    var f:  Floor[] =[];;
+    this.loadFloorMaps();
+    console.log('floors',floors)
+   
+    console.log('a',f);
+    floors.forEach(floor=>{
+      
+      console.log('5');
+      console.log(floor)
+      console.log(floor.length)
+      for(let i =0; i <1; i++){
+        console.log('6');
+        this.getFloorMaps$().forEach(floorsMap=> {
+          floorsMap.forEach(floorMap=> {
+            if(floorMap.id == floor[i].id){
+              
+              returnValue?.concat(floorMap);
+            }
+          })
+        })
+      }      
+    })
+    return returnValue;
+  }*/
   // pessimistic update
   // 1. call API
   // 2. update UI state

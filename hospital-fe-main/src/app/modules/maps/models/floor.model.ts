@@ -3,7 +3,6 @@ import { Room } from "./room.model";
 
 export class Floor {
     id: string = '';
-    description: string = '';
     name: string = '';    
     number: number = 0;
     roomList: Room[] = [];
