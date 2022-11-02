@@ -5,8 +5,8 @@ export class Building {
     id: string = '';
     name: string = '';    
     number: number = 0;
-    floorList: Observable<Floor[]> = new Observable<Floor[]>();
-    
+    floorList: Floor[] = [];
+
     public constructor(obj?: any) {
         if (obj) {  
         }
