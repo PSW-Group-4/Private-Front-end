@@ -21,7 +21,7 @@
 
   <mat-form-field  appearance="fill" >
     <mat-label>Odaberite termin</mat-label>
-    <mat-select [disabled]="isDate" [(ngModel)]="selectedTermin" name="termins">
+    <mat-select [disabled]="isDate" [(ngModel)]="selectedTermin" name="termins" (selectionChange)="checkTerminUpdate($event)">
       <mat-option  *ngFor="let n of termins" [value]="n">
         {{n | date:"h:mm"}}
       </mat-option>
@@ -30,7 +30,7 @@
 </div>
 <div class="container mt-5 ml-5">
 <button mat-raised-button color="primary" *ngIf="!isEdit" (click)="scheduleAppointment()">Zakazi</button>
-<button mat-raised-button color="primary" *ngIf="isEdit" (click)="scheduleAppointment()">Pomeri</button>
+<button mat-raised-button color="primary" *ngIf="isEdit" [disabled]="!isTerminChanged" (click)="scheduleAppointment()">Pomeri</button>
 </div>
 
 </div>

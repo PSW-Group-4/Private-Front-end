@@ -26,11 +26,13 @@ export class AddOrEditAppointmentDialogComponent implements OnInit {
   selectedPatient = new Patient;
   selectedDate = new Date();
   selectedTermin = new Date();
+  oldSelectedTermin = new Date();
   doctor = new Doctor;
   minDate = new Date();
   isDate = true;
   doctorId = '1412c639-c5e1-47a1-b29b-1fe935536612';
   isEdit = false;
+  isTerminChanged = false;
 
   ngOnInit(): void {
     this.isDate = true;
@@ -45,19 +47,8 @@ export class AddOrEditAppointmentDialogComponent implements OnInit {
       this.isEdit = true;
       this.doctorAppointmentService.getAppointment(this.data.appointmentId).subscribe(res => {
         this.selectedDate = new Date(res.dateTime);
-
-        var formatedDate = this.selectedDate.toDateString();
-        this.doctorAppointmentService.getTermins(formatedDate).subscribe(res => {
-          this.termins= res;
-          this.termins.push(this.selectedDate);
-          this.selectedTermin = this.termins[this.termins.length - 1];
-        })
-        this.isDate = false;
-        
-        this.doctorAppointmentService.getPatient(res.patientId).subscribe(res => {
-          this.patients[0] = res
-          this.selectedPatient = res;
-        })
+        this.getSelectedDate();
+        this.getSelectedPatient(res);
       })
     }
   }
@@ -96,10 +87,36 @@ export class AddOrEditAppointmentDialogComponent implements OnInit {
     })
   }
 
+  getSelectedPatient = async (res: Appointment) => {
+    this.doctorAppointmentService.getPatient(res.patientId).subscribe(res => {
+      this.patients[0] = res
+      this.selectedPatient = res;
+    })
+  }
+
+  getSelectedDate = async () => {
+    var formatedDate = this.selectedDate.toDateString();
+    this.doctorAppointmentService.getTermins(formatedDate).subscribe(res => {
+      this.termins= res;
+      this.termins.push(this.selectedDate);
+      this.selectedTermin = this.termins[this.termins.length - 1];
+      this.termins.sort((a, b) => new Date(a).getTime() - new Date(b).getTime());
+      this.oldSelectedTermin = this.selectedTermin;
+    })
+    this.isDate = false;
+  }
+
+  checkTerminUpdate = (event: any) => {
+    if (new Date(this.oldSelectedTermin).getTime() !== new Date(event.value).getTime())
+      this.isTerminChanged = true;
+    
+    else
+      this.isTerminChanged = false;
+  }
+
   setAppointment = () => {
     if (this.isEdit){
       this.appointment.Id = this.data.appointmentId;
-      console.log(this.appointment.Id);
     }
     this.appointment.doctorId = this.doctor.id;
     this.appointment.patientId = this.selectedPatient.id;
@@ -111,7 +128,7 @@ export class AddOrEditAppointmentDialogComponent implements OnInit {
   createAppointment = () =>{
     const dialogRef = this.dialog.open(AcceptAppointmentScheduleDialogComponent, {
       data: {appointment: this.appointment,
-             dialog: this,
+            dialog: this.dialogRef,
             isEdit: this.isEdit},
       height: '200px',
       width: '400px',
