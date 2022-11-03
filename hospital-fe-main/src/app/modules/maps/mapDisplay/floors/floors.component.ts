@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FloorServiceService } from '../../services/floor-service.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FloorMapService } from '../../services/floor-map.service';
 import { FloorMap } from '../../models/floor-map.model';
@@ -22,34 +21,34 @@ export class FloorsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.mapsFacade.loadBuildingMaps();
-    this.mapsFacade.loadFloorMaps();
+    
     this.route.params.subscribe((params: Params) => {
       this.id = params['id'];
     }); 
 
     console.log ("id ", this.id );
-    this.mapsFacade.getFloorMapsByBuildingMapId$(this.id).subscribe(v => {
-      this.map$ = v;
-    })
-    
-      console.log('mapa', this.map$);
-      var svg = d3.select("body")
+    this.service.getFloorMapsByBuildingMapId(this.id).subscribe(res=>{
+      this.map$ = res;
+      console.log(this.map$);
+      var svg = d3.select("#floorMap")
+      .classed('container', true)
       .append("svg")
-      .attr("height", 1000)
-      .attr("width", 1000)
+      .attr("height", 600)
+      .attr("width", 600)
 
       var router:Router = this.router;
-        var buildings = svg.selectAll("rect")
+        var buildings = svg.selectAll("g")
         .data(this.map$)
         .enter()
-        .append("rect")
+        .append("g")
+
+        buildings.append('rect')
         .attr("fill", '#04AA6D')
         .attr("x", d => d.coordinateX)
         .attr("y", d => d.coordinateY)
-        //-500 because width and height in database isn't suitable
-        .attr("width", d => d.width-500)
-        .attr("height", d => d.height-500)
+        //-100 because width and height in database isn't suitable
+        .attr("width", d => d.width-100)
+        .attr("height", d => d.height-100)
         .attr("stroke", "black")
         .attr("id", d=> d.id)
         //Go to the floors of the building
@@ -59,7 +58,7 @@ export class FloorsComponent implements OnInit {
                     .on('click', function(e, d) {
                       var id = d3.select(this).attr("id");
                       d3.select(this)
-                        router.navigate(['/floors',id]) .then(() => {
+                        router.navigate(['/rooms',id]) .then(() => {
                           window.location.reload();
                         });
                         
@@ -67,13 +66,10 @@ export class FloorsComponent implements OnInit {
           })
         } )
         
-        
+    })
+    
   }
-  
-  data() {
-    console.log(this.map$)
-  }
-   
+
     
   }
 
