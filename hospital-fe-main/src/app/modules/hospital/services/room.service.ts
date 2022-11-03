@@ -19,7 +19,7 @@ export class RoomService {
     return this.http.get<Room[]>(this.apiHost + 'api/rooms', {headers: this.headers});
   }
 
-  getRoom(id: number): Observable<Room> {
+  getRoom(id: any): Observable<Room> {
     return this.http.get<Room>(this.apiHost + 'api/rooms/' + id, {headers: this.headers});
   }
 

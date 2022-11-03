@@ -9,12 +9,14 @@
             <mat-card-content>
             <p>X coordinate: {{temp.coordinateX}}</p>
             <p>Y coordinate: {{temp.coordinateY}}</p>
-            <p>Name: {{temp.room.name}}</p>
+            <p>Name: {{temp.room.name}}</p> 
             <p>Description: {{temp.room.description}}</p>
             <p>Number: {{temp.room.number}}</p>
             <p>Equipment List: {{temp.room.equipmentList.length}}</p>
+            <p>{{temp.room.id}}</p>
             </mat-card-content>
         </mat-card>
+        <app-edit-item [room]="temp.room"></app-edit-item>
         <button class="add-button" mat-mini-fab matTooltip="Edit room" (click)="openEditDialog()">Update</button>
     </div>
 </div>

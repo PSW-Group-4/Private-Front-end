@@ -1,8 +1,12 @@
+import { UpdateRoomComponent } from './../../../hospital/update-room/update-room.component';
+import { Room } from './../../models/room.model';
+import { RoomMapService } from './../../services/room-map.service';
 import { RoomService } from './../../../hospital/services/room.service';
-import { Room } from './../../../hospital/model/room.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { FloorMap } from '../../models/floor-map.model';
+import { Observable } from 'rxjs/internal/Observable';
 
 
 @Component({
@@ -12,29 +16,23 @@ import { FormsModule } from '@angular/forms';
 })
 export class EditItemComponent implements OnInit {
   // this.router.navigate(["id", id]); in parret component
-  public room: Room | undefined = undefined;
+  @Input() room : Room = new Room();
 
-  // roomMaps$: Observable<FloorMap[]>;
-  // isUpdating$: Observable<boolean>;
 
   constructor(private route: ActivatedRoute, private router: Router,
-     private roomService: RoomService) {}
+     private roomService: RoomMapService) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
-      this.roomService.getRoom(params['id']).subscribe(res => {
-        this.room = res;
-      })
+      // this.roomService.getRoomMaps().subscribe(res => {
+      //   room = res;
+      // })
     });
   }
 
-  // updateRoomMap(entity: RoomMap) {
-  //   this.mapsFacade.updateRoomMap(entity);
-  // }
-
   public updateRoom(): void {
     this.roomService.updateRoom(this.room).subscribe(res => {
-      this.router.navigate(['/rooms']);
+      this.router.navigate(['/buildings']);
     });
   }
 

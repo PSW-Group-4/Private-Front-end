@@ -61,7 +61,9 @@ export class RoomsComponent implements OnInit {
                         
                     });
           })
-          .on('click', d => this.FooTemp(d.srcElement.__data__));
+          .on('click', d => this.FooTemp(d.srcElement.__data__)
+
+          );
         } )
 
 

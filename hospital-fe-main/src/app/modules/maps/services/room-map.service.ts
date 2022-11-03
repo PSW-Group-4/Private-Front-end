@@ -1,3 +1,4 @@
+import { Room } from './../models/room.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -22,6 +23,9 @@ export class RoomMapService {
     return this.http.get<RoomMap[]>(this.apiHost + this.API+"/ByFloor/"+id, {headers: this.headers});
   }
 
+  updateRoom(room: Room): Observable<any> {
+    return this.http.put(`${this.apiHost}${this.API}/${room.id}`, room);
+  }
 
   updateRoomMap(roomMap: RoomMap): Observable<any> {
     return this.http.put(`${this.apiHost}${this.API}/${roomMap.id}`, roomMap);
