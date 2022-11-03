@@ -13,7 +13,9 @@ import * as d3 from 'd3';
 export class BuildingsComponent implements OnInit {
 
   map:BuildingMap[]=[];
-  constructor(private service:BuildingMapService, private router: Router, private mapsFacade:MapsFacade ) { 
+  temp : BuildingMap = new BuildingMap();
+  public showBuildingDetailComponent = false;
+  constructor(private service:BuildingMapService, private router: Router, private mapsFacade:MapsFacade) { 
     
   }
   
@@ -49,20 +51,26 @@ export class BuildingsComponent implements OnInit {
         .on('mouseover', function(){
           svg.on('mouseover', function(){
             d3.selectAll('rect')
-                    .on('click', function(e, d) {
+                    .on('dblclick', function(e, d) {
                       var id = d3.select(this).attr("id");
                       d3.select(this)
                         router.navigate(['/floors',id]) .then(() => {
                           window.location.reload();
                         });
                         
-                    });
+                    })
           })
         } )
+        .on('click', d => this.FooTemp(d.srcElement.__data__));
 
         
   })
   
+  }
+
+  FooTemp(t : BuildingMap) : void {
+    this.showBuildingDetailComponent = true;
+    this.temp = t;
   }
   
 }
