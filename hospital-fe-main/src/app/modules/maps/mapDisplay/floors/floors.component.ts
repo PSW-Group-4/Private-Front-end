@@ -13,7 +13,7 @@ import { Observable, pipe, tap } from "rxjs";
   styleUrls: ['./floors.component.css']
 })
 export class FloorsComponent implements OnInit {
-  map:FloorMap[]=[];
+  map$:FloorMap[]=[];
   id:string ='';
   building:BuildingMap=new BuildingMap();
   constructor(private service: FloorMapService, private route: ActivatedRoute, private router:Router, private mapsFacade:MapsFacade) { 
@@ -28,18 +28,21 @@ export class FloorsComponent implements OnInit {
 
     console.log ("id ", this.id );
     this.service.getFloorMapsByBuildingMapId(this.id).subscribe(res=>{
-      this.map = res;
-      console.log(this.map);
-      var svg = d3.select("body")
+      this.map$ = res;
+      console.log(this.map$);
+      var svg = d3.select("#floorMap")
+      .classed('container', true)
       .append("svg")
-      .attr("height", 1000)
-      .attr("width", 1000)
+      .attr("height", 600)
+      .attr("width", 600)
 
       var router:Router = this.router;
-        var buildings = svg.selectAll("rect")
-        .data(this.map)
+        var buildings = svg.selectAll("g")
+        .data(this.map$)
         .enter()
-        .append("rect")
+        .append("g")
+
+        buildings.append('rect')
         .attr("fill", '#04AA6D')
         .attr("x", d => d.coordinateX)
         .attr("y", d => d.coordinateY)
@@ -65,16 +68,8 @@ export class FloorsComponent implements OnInit {
         
     })
     
-    
-      
-      
-        
   }
-  
-  data() {
-    console.log(this.map)
-  }
-   
+
     
   }
 

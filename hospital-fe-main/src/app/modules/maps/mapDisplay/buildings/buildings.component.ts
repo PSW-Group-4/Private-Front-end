@@ -23,16 +23,20 @@ export class BuildingsComponent implements OnInit {
       this.map = res;
       console.log('mapa', this.map);
 
-      var svg = d3.select("body")
+      var svg = d3.select("#buildingMap")
+      .classed('container', true)
       .append("svg")
-      .attr("height", 1000)
-      .attr("width", 1000)
+      .attr("height", 600)
+      .attr("width", 600)
 
       var router:Router = this.router;
-        var buildings = svg.selectAll("rect")
+        var buildings = svg.selectAll("g")
         .data(this.map)
         .enter()
-        .append("rect")
+        .append("g")
+
+        
+        buildings.append('rect')
         .attr("fill", '#04AA6D')
         .attr("x", d => d.coordinateX)
         .attr("y", d => d.coordinateY)
