@@ -19,6 +19,11 @@ export class FloorMapService {
     return this.http.get<FloorMap[]>(this.apiHost + this.API, {headers: this.headers});
   }
 
+  getFloorMapsByBuildingMapId(id: string): Observable<FloorMap[]> {
+    return this.http.get<FloorMap[]>(this.apiHost + this.API+"/ByBuilding/"+id, {headers: this.headers});
+  }
+
+
   updateFloorMap(floorMap: FloorMap): Observable<any> {
     return this.http.put(`${this.apiHost}${this.API}/${floorMap.id}`, floorMap);
   }

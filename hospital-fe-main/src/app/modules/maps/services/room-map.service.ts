@@ -18,6 +18,11 @@ export class RoomMapService {
     return this.http.get<RoomMap[]>(this.apiHost + this.API, {headers: this.headers});
   }
 
+  getRoomMapsByFloorMapId(id: string): Observable<RoomMap[]> {
+    return this.http.get<RoomMap[]>(this.apiHost + this.API+"InFloor/"+id, {headers: this.headers});
+  }
+
+
   updateRoomMap(roomMap: RoomMap): Observable<any> {
     return this.http.put(`${this.apiHost}${this.API}/${roomMap.id}`, roomMap);
   }
