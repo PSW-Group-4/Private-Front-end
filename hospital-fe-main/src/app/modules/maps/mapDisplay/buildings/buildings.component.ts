@@ -1,3 +1,4 @@
+import { EditItemComponent } from './../../containers/edit-item/edit-item.component';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BuildingMapService } from '../../services/building-map.service';
@@ -5,6 +6,8 @@ import { BuildingMap } from '../../models/building-map.model';
 import { MapsFacade } from '../../maps.facade';
 import { Observable, pipe, tap } from "rxjs";
 import * as d3 from 'd3';
+import {MatDialog, MatDialogRef} from '@angular/material/dialog';
+
 @Component({
   selector: 'app-buildings',
   templateUrl: './buildings.component.html',
@@ -13,7 +16,7 @@ import * as d3 from 'd3';
 export class BuildingsComponent implements OnInit {
 
   map:BuildingMap[]=[];
-  constructor(private service:BuildingMapService, private router: Router, private mapsFacade:MapsFacade ) { 
+  constructor(private service:BuildingMapService, private router: Router, private mapsFacade:MapsFacade, public dialog: MatDialog ) { 
     
   }
   
@@ -62,7 +65,20 @@ export class BuildingsComponent implements OnInit {
 
         
   })
+
+  
+  
   
   }
-  
+
+  openEditDialog(): void {
+    const dialogRef = this.dialog.open(EditItemComponent, {
+      data: {isAdd: true},
+      height: '400px',
+      width: '600px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+    });
+  }
 }

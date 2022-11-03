@@ -4,6 +4,9 @@ import { RoomMap } from '../../models/room-map.model';
 import { RoomMapService } from '../../services/room-map.service';
 import * as d3 from 'd3';
 import { MapsFacade } from '../../maps.facade';
+import {MatDialog, MatDialogRef} from '@angular/material/dialog';
+import { EditItemComponent } from '../../containers/edit-item/edit-item.component';
+
 @Component({
   selector: 'app-rooms',
   templateUrl: './rooms.component.html',
@@ -12,7 +15,7 @@ import { MapsFacade } from '../../maps.facade';
 export class RoomsComponent implements OnInit {
   map$:RoomMap[]=[];
   id:string='';
-  constructor(private service:RoomMapService,  private route: ActivatedRoute, private router:Router) { }
+  constructor(private service:RoomMapService,  private route: ActivatedRoute, private router: Router, private mapsFacade:MapsFacade, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
@@ -58,6 +61,20 @@ export class RoomsComponent implements OnInit {
           })
         } )
 
+
+
   }
+
+  openEditDialog(): void {
+    const dialogRef = this.dialog.open(EditItemComponent, {
+      data: {isAdd: true},
+      height: '400px',
+      width: '600px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+    });
+  }
+
 
 }
