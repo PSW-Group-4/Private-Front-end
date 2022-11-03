@@ -5,10 +5,13 @@ import { MapItemInformationComponent } from './components/map-item-information/m
 import { MapsRoutingModule } from './maps-routing.module';
 import { MaterialModule } from './../../material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { BuildingsComponent } from './mapDisplay/buildings/buildings.component';
 import { FloorsComponent } from './mapDisplay/floors/floors.component';
 import { RoomsComponent } from './mapDisplay/rooms/rooms.component';
 import { FormsModule } from '@angular/forms';
+
+
 
 
 @NgModule({
@@ -25,6 +28,7 @@ import { FormsModule } from '@angular/forms';
     MaterialModule,
     BrowserAnimationsModule,
     FormsModule
+
   ]
 })
 export class MapsModule { }

@@ -43,8 +43,8 @@ export class RoomsComponent implements OnInit {
         
         buildings.append('rect')
         .attr("fill", '#04AA6D')
-        .attr("x", d => d.coordinateX)
-        .attr("y", d => d.coordinateY)
+        .attr("x", d => d.coordinateX+100)
+        .attr("y", d => d.coordinateY+100)
         .attr("width", d => d.width)
         .attr("height", d => d.height)
         .attr("stroke", "black")
