@@ -1,6 +1,6 @@
 import { ListKeyManager } from "@angular/cdk/a11y";
 import { Injectable } from "@angular/core";
-import { Observable, pipe, tap } from "rxjs";
+import { observable, Observable, pipe, tap } from "rxjs";
 import { BuildingMap } from "./models/building-map.model";
 import { FloorMap } from "./models/floor-map.model";
 import { Floor } from "./models/floor.model";
@@ -36,63 +36,24 @@ export class MapsFacade {
   }
 
   loadRoomMaps() {
-    this.mapsState.setUpdating(true);
-    this.roomMapService.getRoomMaps().subscribe({
-        next: (v) => this.mapsState.setRoomMaps(v),
-        error: (e) => console.log(e),
-        complete: () => this.mapsState.setUpdating(false)
-    });
   }
 
   loadFloorMaps() {
-    this.mapsState.setUpdating(true);
-    this.floorMapService.getFloorMaps().subscribe({
-        next: (v) => this.mapsState.setFloorMaps(v),
-        error: (e) => console.log(e),
-        complete: () => this.mapsState.setUpdating(false)
-    });
+    return this.floorMapService.getFloorMaps()
+    .pipe(tap(floorMaps => this.mapsState.setFloorMaps(floorMaps)));
   }
 
   loadBuildingMaps() {
-    this.mapsState.setUpdating(true);
-    this.buildingMapService.getBuildingMaps().subscribe({
-        next: (v) => this.mapsState.setBuildingMaps(v),
-        error: (e) => console.log(e),
-        complete: () => this.mapsState.setUpdating(false)
-    });
+    return this.buildingMapService.getBuildingMaps()
+    .pipe(tap(floorMaps => this.mapsState.setBuildingMaps(floorMaps)));
   }
 
-
-
-  getFloorMapsByBuildingMapId$(id: string): FloorMap[]{
-    var returnValue : FloorMap[]  = [];
-    this.getBuildingMapById$(id)?.building.floorList.forEach(floor => {
-
-        this.getFloorMaps$().forEach(floorMaps => {
-          console.log('8')
-          floorMaps.forEach(floorMap => {
-            if(floorMap.floor.id === floor.id) {
-              returnValue.push(floorMap);
-            }
-          })
-        })
-    });
-    return returnValue;
+  getFloorMapsByBuildingMapId$(id: string): Observable<FloorMap[]>{
+    return this.floorMapService.getFloorMapsByBuildingMapId(id);
   }
   
-  getRoomMapsByFloorMapId$(id: string): RoomMap[]{
-    var returnValue : RoomMap[]  = [];
-    this.getFloorMapById$(id)?.floor.roomList.forEach(room => {
-        this.getRoomMaps$().forEach(roomMaps => {
-          roomMaps.forEach(roomMap => {
-            if(roomMap.room.id === room.id) {
-              returnValue.push(roomMap);
-
-            }
-          })
-        })
-    });
-    return returnValue;
+  getRoomMapsByFloorMapId$(id: string): Observable<RoomMap[]>{
+    return this.roomMapService.getRoomMapsByFloorMapId(id);
   }
 
   getBuildingMapById$(id : string): BuildingMap | null {
@@ -184,7 +145,7 @@ export class MapsFacade {
   // 1. call API
   // 2. update UI state
   updateRoomMap(roomMap: RoomMap) {
-    this.mapsState.setUpdating(true);
+    this.mapsState.setUpdating(true)
     this.roomMapService.updateRoomMap(roomMap)
       .subscribe({
         next: (v) => this.mapsState.updateRooomMaps(roomMap),
@@ -194,7 +155,7 @@ export class MapsFacade {
   }
 
   updateFloorMap(floorMap: FloorMap) {
-    this.mapsState.setUpdating(true);
+    this.mapsState.setUpdating(true)
     this.floorMapService.updateFloorMap(floorMap)
       .subscribe({
         next: (v) => this.mapsState.updateFloorMaps(floorMap),
@@ -204,7 +165,7 @@ export class MapsFacade {
   }
 
   updateBuildingMap(buildingMap: BuildingMap) {
-    this.mapsState.setUpdating(true);
+    this.mapsState.setUpdating(true)
     this.buildingMapService.updateBuildingMap(buildingMap)
       .subscribe({
         next: (v) => this.mapsState.updateBuildingMaps(buildingMap),

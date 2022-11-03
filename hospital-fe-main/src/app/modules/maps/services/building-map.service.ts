@@ -21,6 +21,10 @@ export class BuildingMapService {
     return this.http.get<BuildingMap[]>(this.apiHost + this.API, {headers: this.headers});
   }
 
+  getBuildingMapById(id: string): Observable<BuildingMap> {
+    return this.http.get<BuildingMap>(this.apiHost + this.API+"/"+id, {headers: this.headers});
+  }
+
   updateBuildingMap(buildingMap: BuildingMap): Observable<any> {
     return this.http.put(`${this.apiHost}${this.API}/${buildingMap.id}`, buildingMap);
   }
