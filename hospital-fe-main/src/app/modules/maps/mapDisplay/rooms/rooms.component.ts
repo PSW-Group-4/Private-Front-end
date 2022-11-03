@@ -15,6 +15,8 @@ import { EditItemComponent } from '../../containers/edit-item/edit-item.componen
 export class RoomsComponent implements OnInit {
   map$:RoomMap[]=[];
   id:string='';
+  temp: RoomMap = new RoomMap();
+  public showRoomDetailComponent = false;
   constructor(private service:RoomMapService,  private route: ActivatedRoute, private router: Router, private mapsFacade:MapsFacade, public dialog: MatDialog) { }
 
   ngOnInit(): void {
@@ -51,7 +53,7 @@ export class RoomsComponent implements OnInit {
         .on('mouseover', function(){
           svg.on('mouseover', function(){
             d3.selectAll('rect')
-                    .on('click', function(e, d) {
+                    .on('dblclick', function(e, d) {
                       var id = d3.select(this).attr("id");
                       d3.select(this)
                         
@@ -59,10 +61,16 @@ export class RoomsComponent implements OnInit {
                         
                     });
           })
+          .on('click', d => this.FooTemp(d.srcElement.__data__));
         } )
 
 
 
+  }
+
+  FooTemp(t : RoomMap) : void {
+    this.showRoomDetailComponent = true;
+    this.temp = t;
   }
 
   openEditDialog(): void {

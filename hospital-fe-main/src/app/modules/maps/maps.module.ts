@@ -6,6 +6,8 @@ import { MapsRoutingModule } from './maps-routing.module';
 import { MaterialModule } from './../../material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BuildingsComponent } from './mapDisplay/buildings/buildings.component';
+import { FloorsComponent } from './mapDisplay/floors/floors.component';
+import { RoomsComponent } from './mapDisplay/rooms/rooms.component';
 import { FormsModule } from '@angular/forms';
 
 
@@ -13,7 +15,9 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     EditItemComponent,
     MapItemInformationComponent,
-    BuildingsComponent
+    BuildingsComponent,
+    RoomsComponent,
+    FloorsComponent
   ],
   imports: [
     CommonModule,
