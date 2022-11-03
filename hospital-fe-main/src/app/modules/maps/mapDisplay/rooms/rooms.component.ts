@@ -6,7 +6,7 @@ import { RoomMap } from '../../models/room-map.model';
 import { RoomMapService } from '../../services/room-map.service';
 import * as d3 from 'd3';
 import { MapsFacade } from '../../maps.facade';
-import {MatDialog, MatDialogRef} from '@angular/material/dialog';
+import {MatDialog, MatDialogConfig, MatDialogRef} from '@angular/material/dialog';
 import { EditItemComponent } from '../../containers/edit-item/edit-item.component';
 
 @Component({
@@ -79,11 +79,16 @@ export class RoomsComponent implements OnInit {
   }
 
   openEditDialog(): void {
-    const dialogRef = this.dialog.open(EditItemComponent, {
-      data: {isAdd: true},
-      height: '400px',
-      width: '600px',
-    });
+    const dialogConf = new MatDialogConfig();
+
+    dialogConf.data = {
+      room: this.temp,
+    };
+    dialogConf.height = "400px";
+    dialogConf.width = "600px";
+
+    const dialogRef = this.dialog.open(EditItemComponent , dialogConf);
+    
 
     dialogRef.afterClosed().subscribe(result => {
     });

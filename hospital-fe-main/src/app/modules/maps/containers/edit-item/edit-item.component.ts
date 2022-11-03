@@ -1,12 +1,9 @@
-import { UpdateRoomComponent } from './../../../hospital/update-room/update-room.component';
 import { Room } from './../../models/room.model';
 import { RoomMapService } from './../../services/room-map.service';
-import { RoomService } from './../../../hospital/services/room.service';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { FormsModule } from '@angular/forms';
-import { FloorMap } from '../../models/floor-map.model';
-import { Observable } from 'rxjs/internal/Observable';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { RoomMap } from '../../models/room-map.model';
 
 
 @Component({
@@ -17,11 +14,14 @@ import { Observable } from 'rxjs/internal/Observable';
 export class EditItemComponent implements OnInit {
   //public room: Room = new Room();
   
-  @Input() room = new Room;
-
+  @Input() room: RoomMap;
+  @Output() roomOutput = new Room;
 
   constructor(private route: ActivatedRoute, private router: Router,
-     private roomService: RoomMapService) {}
+     private roomService: RoomMapService, private dialogRef: MatDialogRef<EditItemComponent>, @Inject(MAT_DIALOG_DATA) data : any) {
+        this.room = data.room
+        this.roomOutput = data.room
+     }
 
   ngOnInit(): void {
     
@@ -29,8 +29,7 @@ export class EditItemComponent implements OnInit {
 }
 
   public updateRoom(): void {
-    this.roomService.updateRoom(this.room).subscribe(res => {
-      this.router.navigate(['/buildings']);
+    this.roomService.updateRoom(this.roomOutput).subscribe(res => {
     });
   }
 
