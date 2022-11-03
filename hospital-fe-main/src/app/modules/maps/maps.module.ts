@@ -5,7 +5,7 @@ import { MapItemInformationComponent } from './components/map-item-information/m
 import { MapsRoutingModule } from './maps-routing.module';
 import { MaterialModule } from './../../material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { BrowserModule } from "@angular/platform-browser";
 
 
 @NgModule({
@@ -18,6 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MapsRoutingModule,
     MaterialModule,
     BrowserAnimationsModule,
+    BrowserModule
   ]
 })
 export class MapsModule { }

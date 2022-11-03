@@ -44,11 +44,10 @@ export class FloorsComponent implements OnInit {
 
         buildings.append('rect')
         .attr("fill", '#04AA6D')
-        .attr("x", d => d.coordinateX)
-        .attr("y", d => d.coordinateY)
-        //-100 because width and height in database isn't suitable
-        .attr("width", d => d.width-100)
-        .attr("height", d => d.height-100)
+        .attr("x", d => d.coordinateX+100)
+        .attr("y", d => d.coordinateY+100)
+        .attr("width", d => d.width)
+        .attr("height", d => d.height)
         .attr("stroke", "black")
         .attr("id", d=> d.id)
         //Go to the floors of the building
