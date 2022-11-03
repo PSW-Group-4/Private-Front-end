@@ -15,20 +15,18 @@ import { Observable } from 'rxjs/internal/Observable';
   styleUrls: ['./edit-item.component.css'],
 })
 export class EditItemComponent implements OnInit {
-  // this.router.navigate(["id", id]); in parret component
-  @Input() room : Room = new Room();
+  //public room: Room = new Room();
+  
+  @Input() room = new Room;
 
 
   constructor(private route: ActivatedRoute, private router: Router,
      private roomService: RoomMapService) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe((params: Params) => {
-      // this.roomService.getRoomMaps().subscribe(res => {
-      //   room = res;
-      // })
-    });
-  }
+    
+
+}
 
   public updateRoom(): void {
     this.roomService.updateRoom(this.room).subscribe(res => {

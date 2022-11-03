@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Room } from './../../models/room.model';
+import { RoomService } from 'src/app/modules/hospital/services/room.service';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { RoomMap } from '../../models/room-map.model';
 import { RoomMapService } from '../../services/room-map.service';
@@ -17,6 +19,7 @@ export class RoomsComponent implements OnInit {
   id:string='';
   temp: RoomMap = new RoomMap();
   public showRoomDetailComponent = false;
+
   constructor(private service:RoomMapService,  private route: ActivatedRoute, private router: Router, private mapsFacade:MapsFacade, public dialog: MatDialog) { }
 
   ngOnInit(): void {
@@ -61,14 +64,14 @@ export class RoomsComponent implements OnInit {
                         
                     });
           })
-          .on('click', d => this.FooTemp(d.srcElement.__data__)
+          .on('click', d => this.FooTemp(d.srcElement.__data__),
 
           );
         } )
-
-
-
+        
   }
+
+  
 
   FooTemp(t : RoomMap) : void {
     this.showRoomDetailComponent = true;
