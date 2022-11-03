@@ -1,10 +1,11 @@
+import { Room } from './../../../hospital/model/room.model';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { RoomMap } from '../../models/room-map.model';
 import { RoomMapService } from '../../services/room-map.service';
 import * as d3 from 'd3';
 import { MapsFacade } from '../../maps.facade';
-import {MatDialog, MatDialogRef} from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { EditItemComponent } from '../../containers/edit-item/edit-item.component';
 
 @Component({
@@ -13,6 +14,8 @@ import { EditItemComponent } from '../../containers/edit-item/edit-item.componen
   styleUrls: ['./rooms.component.css']
 })
 export class RoomsComponent implements OnInit {
+  temp : RoomMap = new RoomMap();
+  public showRoomUpdate = false;
   map$:RoomMap[]=[];
   id:string='';
   constructor(private service:RoomMapService,  private route: ActivatedRoute, private router: Router, private mapsFacade:MapsFacade, public dialog: MatDialog) { }
@@ -51,19 +54,21 @@ export class RoomsComponent implements OnInit {
         .on('mouseover', function(){
           svg.on('mouseover', function(){
             d3.selectAll('rect')
-                    .on('click', function(e, d) {
-                      var id = d3.select(this).attr("id");
-                      d3.select(this)
-                        
-                        });
-                        
+                    .on('dblclick', function(e, d) {
+                      var id = d3.select(this).attr("id");        
+                        });   
                     });
           })
+          .on('click', d => this.FooTemp(d.srcElement.__data__));
         } )
+        
+
+        
 
 
 
   }
+  
 
   openEditDialog(): void {
     const dialogRef = this.dialog.open(EditItemComponent, {
@@ -74,6 +79,11 @@ export class RoomsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
     });
+  }
+
+  FooTemp(t: RoomMap) : void {
+    this.showRoomUpdate = true;
+    this.temp = t;
   }
 
 
