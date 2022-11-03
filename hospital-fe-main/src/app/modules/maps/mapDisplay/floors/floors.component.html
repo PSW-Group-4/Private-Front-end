@@ -2,8 +2,19 @@
     <div class="col" id="floorMap">
         
     </div>
-    <div class="col">
+    <div class="col position" *ngIf="showFloorDetailComponent">
         <!--Deo za info-->
-        <p>Desna strana</p>
+        <mat-card>
+            <mat-card-title>
+                Floor informations:
+            </mat-card-title>
+            <mat-card-content>
+            <p>X coordinate: {{temp.coordinateX}}</p>
+            <p>Y coordinate: {{temp.coordinateY}}</p>
+            <p>Description: {{temp.floor.name}}</p>
+            <p>Number: {{temp.floor.number}}</p>
+            <p>Number of rooms: {{temp.floor.roomList.length}}</p>
+            </mat-card-content>
+        </mat-card>
     </div>
 </div>

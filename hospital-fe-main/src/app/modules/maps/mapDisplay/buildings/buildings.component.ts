@@ -77,8 +77,6 @@ export class BuildingsComponent implements OnInit {
     this.showBuildingDetailComponent = true;
     this.temp = t;
   }
-  
-  }
 
   openEditDialog(): void {
     const dialogRef = this.dialog.open(EditItemComponent, {

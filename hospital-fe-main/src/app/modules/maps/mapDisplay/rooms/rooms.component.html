@@ -1,9 +1,20 @@
 <div class = "row">
     <div class="col" id="roomMap">
     </div>
-    <div class="col">
-        <!--Deo za info-->
-        <p>Desna strana</p>
+    <div class="col position" *ngIf="showRoomDetailComponent">
+        <mat-card>
+            <mat-card-title>
+                Building informations:
+            </mat-card-title>
+            <mat-card-content>
+            <p>X coordinate: {{temp.coordinateX}}</p>
+            <p>Y coordinate: {{temp.coordinateY}}</p>
+            <p>Name: {{temp.room.name}}</p>
+            <p>Description: {{temp.room.description}}</p>
+            <p>Number: {{temp.room.number}}</p>
+            <p>Equipment List: {{temp.room.equipmentList.length}}</p>
+            </mat-card-content>
+        </mat-card>
         <button class="add-button" mat-mini-fab matTooltip="Edit room" (click)="openEditDialog()">Update</button>
     </div>
 </div>

@@ -15,7 +15,9 @@ import { Observable, pipe, tap } from "rxjs";
 export class FloorsComponent implements OnInit {
   map$:FloorMap[]=[];
   id:string ='';
+  temp : FloorMap = new FloorMap();
   building:BuildingMap=new BuildingMap();
+  public showFloorDetailComponent = false;
   constructor(private service: FloorMapService, private route: ActivatedRoute, private router:Router, private mapsFacade:MapsFacade) { 
     
   }
@@ -55,7 +57,7 @@ export class FloorsComponent implements OnInit {
         .on('mouseover', function(){
           svg.on('mouseover', function(){
             d3.selectAll('rect')
-                    .on('click', function(e, d) {
+                    .on('dblclick', function(e, d) {
                       var id = d3.select(this).attr("id");
                       d3.select(this)
                         router.navigate(['/rooms',id]) .then(() => {
@@ -65,9 +67,15 @@ export class FloorsComponent implements OnInit {
                     });
           })
         } )
+        .on('click', d => this.FooTemp(d.srcElement.__data__));
         
     })
     
+  }
+
+  FooTemp(t : FloorMap) : void {
+    this.showFloorDetailComponent = true;
+    this.temp = t;
   }
 
     
