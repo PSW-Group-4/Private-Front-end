@@ -1,10 +1,9 @@
+import { RoomService } from './../../../hospital/services/room.service';
+import { Room } from './../../../hospital/model/room.model';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
-import { Observable } from 'rxjs/internal/Observable';
-import { MapsFacade } from '../../maps.facade';
-import { BuildingMap } from '../../models/building-map.model';
-import { FloorMap } from '../../models/floor-map.model';
-import { RoomMap } from '../../models/room-map.model';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-edit-item',
@@ -13,36 +12,30 @@ import { RoomMap } from '../../models/room-map.model';
 })
 export class EditItemComponent implements OnInit {
   // this.router.navigate(["id", id]); in parret component
-  id: string = '';
+  public room: Room | undefined = undefined;
 
-  roomMaps$: Observable<FloorMap[]>;
-  isUpdating$: Observable<boolean>;
+  // roomMaps$: Observable<FloorMap[]>;
+  // isUpdating$: Observable<boolean>;
 
-  // Only for illustration purposes atm
-  constructor(private route: ActivatedRoute, private mapsFacade: MapsFacade) { 
-    this.roomMaps$ = mapsFacade.getFloorMaps$();
-    this.isUpdating$ = mapsFacade.isUpdating$();
-  }
+  constructor(private route: ActivatedRoute, private router: Router,
+     private roomService: RoomService) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe((params: Params) => this.id = params['id']);
-    this.mapsFacade.loadRoomMaps();
-    this.mapsFacade.loadFloorMaps();
-    this.mapsFacade.loadBuildingMaps();
+    this.route.params.subscribe((params: Params) => {
+      this.roomService.getRoom(params['id']).subscribe(res => {
+        this.room = res;
+      })
+    });
   }
 
-  updateRoomMap(entity: RoomMap) {
-    this.mapsFacade.updateRoomMap(entity);
+  // updateRoomMap(entity: RoomMap) {
+  //   this.mapsFacade.updateRoomMap(entity);
+  // }
+
+  public updateRoom(): void {
+    this.roomService.updateRoom(this.room).subscribe(res => {
+      this.router.navigate(['/rooms']);
+    });
   }
 
-  openDialog() {
-    this.roomMaps$.forEach(element => {
-      element.forEach(element => {
-        console.log(element)
-        console.log(this.mapsFacade.getRoomMapsByFloorMapId$(element.id));
-        console.log(element.floor.roomList)
-    })
-  } )
-  
-  }
 }
