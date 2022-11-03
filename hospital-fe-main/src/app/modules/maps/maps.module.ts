@@ -5,13 +5,15 @@ import { MapItemInformationComponent } from './components/map-item-information/m
 import { MapsRoutingModule } from './maps-routing.module';
 import { MaterialModule } from './../../material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BuildingsComponent } from './mapDisplay/buildings/buildings.component';
 import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
     EditItemComponent,
-    MapItemInformationComponent
+    MapItemInformationComponent,
+    BuildingsComponent
   ],
   imports: [
     CommonModule,
