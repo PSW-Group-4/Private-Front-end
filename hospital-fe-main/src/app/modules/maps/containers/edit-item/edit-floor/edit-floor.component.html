@@ -1,0 +1,20 @@
+<div>
+    <mat-form-field appearance="fill">
+        <mat-label>Id</mat-label>
+        <input matInput [(ngModel)]="floor.floor.id" disabled>
+    </mat-form-field><br>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput [(ngModel)]="floor.floor.name">
+    </mat-form-field><br>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Number</mat-label>
+        <input type="number" matInput [(ngModel)]="floor.floor.number">
+    </mat-form-field><br>
+
+    <button mat-stroked-button (click)="updateFloor()">
+        Submit
+    </button>
+</div>

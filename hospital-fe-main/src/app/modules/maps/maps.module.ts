@@ -10,6 +10,8 @@ import { BuildingsComponent } from './mapDisplay/buildings/buildings.component';
 import { FloorsComponent } from './mapDisplay/floors/floors.component';
 import { RoomsComponent } from './mapDisplay/rooms/rooms.component';
 import { FormsModule } from '@angular/forms';
+import { EditBuildingComponent } from './containers/edit-item/edit-building/edit-building.component';
+import { EditFloorComponent } from './containers/edit-item/edit-floor/edit-floor.component';
 
 
 
@@ -20,7 +22,9 @@ import { FormsModule } from '@angular/forms';
     MapItemInformationComponent,
     BuildingsComponent,
     RoomsComponent,
-    FloorsComponent
+    FloorsComponent,
+    EditBuildingComponent,
+    EditFloorComponent
   ],
   imports: [
     CommonModule,

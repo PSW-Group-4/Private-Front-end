@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { FloorMap } from '../models/floor-map.model';
+import { Floor } from '../models/floor.model';
 
 
 @Injectable({
@@ -23,6 +24,9 @@ export class FloorMapService {
     return this.http.get<FloorMap[]>(this.apiHost + this.API+"/ByBuilding/"+id, {headers: this.headers});
   }
 
+  updateFloor(floor: Floor): Observable<any>{
+    return this.http.put(`${this.apiHost}${this.API}/${floor.id}`, floor);
+  }
 
   updateFloorMap(floorMap: FloorMap): Observable<any> {
     return this.http.put(`${this.apiHost}${this.API}/${floorMap.id}`, floorMap);

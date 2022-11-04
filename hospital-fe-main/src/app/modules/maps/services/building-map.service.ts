@@ -5,6 +5,7 @@ import { BuildingMap } from '../models/building-map.model';
 import { Router } from '@angular/router';
 import * as d3 from 'd3';
 import { MapsFacade } from '../maps.facade';
+import { Building } from '../models/building.model';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +30,9 @@ export class BuildingMapService {
     return this.http.put(`${this.apiHost}${this.API}/${buildingMap.id}`, buildingMap);
   }
 
+  updateBuilding(building: Building): Observable<any>{
+    return this.http.put(`${this.apiHost}${this.API}/${building.id}`, building);
+  }
   
  
 }

@@ -1,3 +1,4 @@
+import { EditFloorComponent } from './../../containers/edit-item/edit-floor/edit-floor.component';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FloorMapService } from '../../services/floor-map.service';
@@ -7,18 +8,24 @@ import { BuildingMap } from '../../models/building-map.model';
 import { BuildingMapService } from '../../services/building-map.service';
 import { MapsFacade } from '../../maps.facade';
 import { Observable, pipe, tap } from "rxjs";
+
+import {MatDialog, MatDialogRef, MatDialogConfig} from '@angular/material/dialog';
+
+import { Floor } from '../../models/floor.model';
+
 @Component({
   selector: 'app-floors',
   templateUrl: './floors.component.html',
   styleUrls: ['./floors.component.css']
 })
 export class FloorsComponent implements OnInit {
+  floor:Floor = new Floor;
   map$:FloorMap[]=[];
   id:string ='';
   temp : FloorMap = new FloorMap();
   building:BuildingMap=new BuildingMap();
   public showFloorDetailComponent = false;
-  constructor(private service: FloorMapService, private route: ActivatedRoute, private router:Router, private mapsFacade:MapsFacade) { 
+  constructor(private service: FloorMapService, private route: ActivatedRoute, private router:Router, private mapsFacade:MapsFacade, public dialog: MatDialog) { 
     
   }
 
@@ -77,6 +84,21 @@ export class FloorsComponent implements OnInit {
     this.temp = t;
   }
 
+  openEditDialog(): void {
+    const dialogConf = new MatDialogConfig();
+
+    dialogConf.data = {
+      floor: this.temp,
+    };
+    dialogConf.height = "400px";
+    dialogConf.width = "600px";
+
+    const dialogRef = this.dialog.open(EditFloorComponent , dialogConf);
     
+
+    dialogRef.afterClosed().subscribe(result => {
+    });
   }
+    
+}
 

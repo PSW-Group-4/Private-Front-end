@@ -15,7 +15,8 @@
             <p>Equipment List: {{temp.room.equipmentList.length}}</p>
             <p>{{temp.room.id}}</p>
             </mat-card-content>
+            <button class="add-button" mat-mini-fab matTooltip="Edit room" (click)="openEditDialog()">Edit</button>
         </mat-card>
-        <button class="add-button" mat-mini-fab matTooltip="Edit room" (click)="openEditDialog()">Update</button>
+        
     </div>
 </div>

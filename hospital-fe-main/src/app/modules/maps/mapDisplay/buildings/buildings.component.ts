@@ -1,3 +1,4 @@
+import { EditBuildingComponent } from './../../containers/edit-item/edit-building/edit-building.component';
 import { EditItemComponent } from './../../containers/edit-item/edit-item.component';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -7,7 +8,7 @@ import { MapsFacade } from '../../maps.facade';
 import { Observable, pipe, tap } from "rxjs";
 import * as d3 from 'd3';
 
-import {MatDialog, MatDialogRef} from '@angular/material/dialog';
+import {MatDialog, MatDialogRef, MatDialogConfig} from '@angular/material/dialog';
 
 import { Building } from '../../models/building.model';
 
@@ -73,8 +74,8 @@ export class BuildingsComponent implements OnInit {
         } )
 
         .on('click', d => this.FooTemp(d.srcElement.__data__));
+ 
 
-        
 
         
   })
@@ -89,11 +90,16 @@ export class BuildingsComponent implements OnInit {
   }
 
   openEditDialog(): void {
-    const dialogRef = this.dialog.open(EditItemComponent, {
-      data: {isAdd: true},
-      height: '400px',
-      width: '600px',
-    });
+    const dialogConf = new MatDialogConfig();
+
+    dialogConf.data = {
+      building: this.temp,
+    };
+    dialogConf.height = "400px";
+    dialogConf.width = "600px";
+
+    const dialogRef = this.dialog.open(EditBuildingComponent , dialogConf);
+    
 
     dialogRef.afterClosed().subscribe(result => {
     });

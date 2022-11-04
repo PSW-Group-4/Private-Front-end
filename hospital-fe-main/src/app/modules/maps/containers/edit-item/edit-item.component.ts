@@ -25,9 +25,8 @@ export class EditItemComponent implements OnInit {
 
   ngOnInit(): void {
     
-
-}
-
+  }
+  
   public updateRoom(): void {
     this.roomService.updateRoom(this.roomOutput).subscribe(res => {
     });
