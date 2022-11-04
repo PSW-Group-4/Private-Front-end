@@ -46,37 +46,43 @@ export class FloorsComponent implements OnInit {
       .attr("width", 600)
 
       var router:Router = this.router;
-        var buildings = svg.selectAll("g")
-        .data(this.map$)
-        .enter()
-        .append("g")
 
-        buildings.append('rect')
-        .attr("fill", '#04AA6D')
-        .attr("x", d => d.coordinateX+100)
-        .attr("y", d => d.coordinateY+100)
-        .attr("width", d => d.width)
-        .attr("height", d => d.height)
-        .attr("stroke", "black")
-        .attr("id", d=> d.id)
-        //Go to the floors of the building
-        .on('mouseover', function(){
-          svg.on('mouseover', function(){
-            d3.selectAll('rect')
-                    .on('dblclick', function(e, d) {
-                      var id = d3.select(this).attr("id");
-                      d3.select(this)
-                        router.navigate(['/rooms',id]) .then(() => {
-                          window.location.reload();
-                        });
-                        
-                    });
-          })
-        } )
-        .on('click', d => this.FooTemp(d.srcElement.__data__));
-        
+      var buildings = svg.selectAll("g")
+      .data(this.map$)
+      .enter()
+      .append("g")
+      .on('mouseover', function(){
+        svg.on('mouseover', function(){
+          d3.selectAll('rect')
+                  .on('dblclick', function(e, d) {
+                    var id = d3.select(this).attr("id");
+                    d3.select(this)
+                      router.navigate(['/rooms',id]) .then(() => {
+                        window.location.reload();
+                      });
+                      
+                  });
+        })
+      } )
+      .on('click', d => this.FooTemp(d.srcElement.__data__));
+
+      buildings.append('rect')
+      .attr("fill", '#61B1DC')
+      .attr("x", d => d.coordinateX+100)
+      .attr("y", d => d.coordinateY+100)
+      .attr("width", d => d.width)
+      .attr("height", d => d.height)
+      .attr("stroke", "black")
+      .attr("id", d=> d.id)
+      
+      buildings.append('text')
+      .style("fill", "black")
+      .text(function(d) {
+        return d.floor.name;
+      })
+      .attr('x', d => d.coordinateX+100 )
+      .attr('y', d=> d.coordinateY+100 + d.height/2)
     })
-    
   }
 
   FooTemp(t : FloorMap) : void {

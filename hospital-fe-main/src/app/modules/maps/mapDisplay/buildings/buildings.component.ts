@@ -43,19 +43,6 @@ export class BuildingsComponent implements OnInit {
         .data(this.map)
         .enter()
         .append("g")
-
-        
-        buildings.append('rect')
-        .attr("fill", '#04AA6D')
-        .attr("x", d => d.coordinateX)
-        .attr("y", d => d.coordinateY)
-        .attr("width", d => d.width)
-        .attr("height", d => d.height)
-        .attr("stroke", "black")
-        .attr("id", d=> d.id)
-        .attr("name", d=> d.building.name)
-        
-        //Go to the floors of the building
         .on('mouseover', function(){
           var name = d3.select(this).attr("name");
           console.log(name);
@@ -72,12 +59,26 @@ export class BuildingsComponent implements OnInit {
                     })
           })
         } )
-
         .on('click', d => this.FooTemp(d.srcElement.__data__));
  
-
-
+        buildings.append('rect')
+        .attr("fill", '#04AA6D')
+        .attr("x", d => d.coordinateX)
+        .attr("y", d => d.coordinateY)
+        .attr("width", d => d.width)
+        .attr("height", d => d.height)
+        .attr("stroke", "black")
+        .attr("id", d=> d.id)
+        .attr("name", d=> d.building.name)
         
+        buildings.append('text')
+        .style("fill", "black")
+        .text(function(d) {
+          return d.building.name;
+        })
+        .attr('x', d => d.coordinateX )
+        .attr('y', d=> d.coordinateY + d.height+10)
+
   })
 
   
