@@ -17,14 +17,7 @@ export class FeedbackService {
   }
 
 
-   publishFeedback(id: any): Observable<any> {
-    return this.http.get<any>(ConstSettings.apiHost + 'api/feedback/publish/' + id, {headers: ConstSettings.standardHeader});
+   publishHideFeedback(id: any,PublishHideDTO: any): Observable<any> {
+    return this.http.patch<any>(ConstSettings.apiHost + 'api/feedback/publishhide/' + id,PublishHideDTO, {headers: ConstSettings.patchHeader});
    }
-
-   hideFeedback(id: any): Observable<any> {
-    return this.http.get<any>(ConstSettings.apiHost  + 'api/feedback/hide/' + id, {headers: ConstSettings.standardHeader});
-  }
-
-
-
 }
