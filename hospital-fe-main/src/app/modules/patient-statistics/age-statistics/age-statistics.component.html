@@ -1,0 +1,30 @@
+<div class="grid">
+  <div class="header">Patient Statistics</div>
+  <mat-grid-list cols="2" rowHeight="2:1">
+    <mat-grid-tile>
+      <table>
+        <tr>
+          <th>Age Group</th>
+          <th>0-12</th>
+          <th>12-20</th>
+          <th>21-40</th>
+          <th>41-70</th>
+          <th>71+</th>
+        </tr>
+        <tr>
+          <th>Num of Patients</th>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+      </table>
+    </mat-grid-tile>
+    <mat-grid-tile>CHART AGE</mat-grid-tile>
+    <mat-grid-tile>
+      <app-gender-statistics></app-gender-statistics>
+    </mat-grid-tile>
+    <mat-grid-tile>CHART GENDER</mat-grid-tile>
+  </mat-grid-list>
+</div>
