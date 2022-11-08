@@ -1,15 +1,12 @@
 import { EditFloorComponent } from './../../containers/edit-item/edit-floor/edit-floor.component';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { FloorMapService } from '../../services/floor-map.service';
 import { FloorMap } from '../../models/floor-map.model';
 import * as d3 from 'd3';
 import { BuildingMap } from '../../models/building-map.model';
-import { BuildingMapService } from '../../services/building-map.service';
 import { MapsFacade } from '../../maps.facade';
-import { Observable, pipe, tap } from "rxjs";
 
-import {MatDialog, MatDialogRef, MatDialogConfig} from '@angular/material/dialog';
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 
 import { Floor } from '../../models/floor.model';
 
@@ -25,8 +22,8 @@ export class FloorsComponent implements OnInit {
   temp : FloorMap = new FloorMap();
   building:BuildingMap=new BuildingMap();
   public showFloorDetailComponent = false;
-  constructor(private service: FloorMapService, private route: ActivatedRoute, private router:Router, private mapsFacade:MapsFacade, public dialog: MatDialog) { 
-    
+  constructor(private route: ActivatedRoute, private router:Router, private mapsFacade:MapsFacade, public dialog: MatDialog) { 
+      
   }
 
   ngOnInit(): void {
@@ -35,18 +32,25 @@ export class FloorsComponent implements OnInit {
       this.id = params['id'];
     }); 
 
+
     console.log ("id ", this.id );
-    this.service.getFloorMapsByBuildingMapId(this.id).subscribe(res=>{
+    this.mapsFacade.getFloorMapsByBuildingMapId$(this.id).subscribe(res=>{
       this.map$ = res;
       console.log(this.map$);
+
+      if (d3.select("#maps") != null) {
+        d3.select("#maps").remove()
+      } 
+
+
       var svg = d3.select("#floorMap")
       .classed('container', true)
       .append("svg")
+      .attr("id", "maps")
       .attr("height", 600)
       .attr("width", 600)
 
       var router:Router = this.router;
-
       var buildings = svg.selectAll("g")
       .data(this.map$)
       .enter()
@@ -57,7 +61,7 @@ export class FloorsComponent implements OnInit {
                   .on('dblclick', function(e, d) {
                     var id = d3.select(this).attr("id");
                     d3.select(this)
-                      router.navigate(['/rooms',id]) .then(() => {
+                      router.navigate(['/room-maps',id]) .then(() => {
                         window.location.reload();
                       });
                       

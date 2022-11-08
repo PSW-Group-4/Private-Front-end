@@ -1,15 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { EditItemComponent } from './containers/edit-item/edit-item.component';
+import { BuildingsComponent } from './mapDisplay/buildings/buildings.component';
+import { FloorsComponent } from './mapDisplay/floors/floors.component';
+import { RoomsComponent } from './mapDisplay/rooms/rooms.component';
 
 const routes: Routes = [
-  {   path: 'maps',        component: EditItemComponent,
-      children: [
-        {   path: 'edit-maps/:id',   component: EditItemComponent   }
-      ]
-
-  },
-  
+  {   path: 'building-maps',        component: BuildingsComponent },
+  {   path: 'floor-maps/:id',       component: FloorsComponent },
+  {   path: 'room-maps/:id',        component: RoomsComponent },
 ];
 
 
@@ -19,5 +17,7 @@ const routes: Routes = [
 })
 export class MapsRoutingModule { }
 export const routingComponents = [
-  EditItemComponent
+  BuildingsComponent,
+  FloorsComponent,
+  RoomsComponent
 ]
