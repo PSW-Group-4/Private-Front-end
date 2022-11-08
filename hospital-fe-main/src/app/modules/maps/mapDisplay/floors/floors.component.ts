@@ -33,10 +33,8 @@ export class FloorsComponent implements OnInit {
     }); 
 
 
-    console.log ("id ", this.id );
     this.mapsFacade.getFloorMapsByBuildingMapId$(this.id).subscribe(res=>{
       this.map$ = res;
-      console.log(this.map$);
 
       if (d3.select("#maps") != null) {
         d3.select("#maps").remove()
@@ -51,7 +49,8 @@ export class FloorsComponent implements OnInit {
       .attr("width", 600)
 
       var router:Router = this.router;
-      var buildings = svg.selectAll("g")
+
+      var floors = svg.selectAll("g")
       .data(this.map$)
       .enter()
       .append("g")
@@ -70,7 +69,7 @@ export class FloorsComponent implements OnInit {
       } )
       .on('click', d => this.FooTemp(d.srcElement.__data__));
 
-      buildings.append('rect')
+      floors.append('rect')
       .attr("fill", '#61B1DC')
       .attr("x", d => d.coordinateX+100)
       .attr("y", d => d.coordinateY+100)
@@ -79,7 +78,7 @@ export class FloorsComponent implements OnInit {
       .attr("stroke", "black")
       .attr("id", d=> d.id)
       
-      buildings.append('text')
+      floors.append('text')
       .style("fill", "black")
       .text(function(d) {
         return d.floor.name;
