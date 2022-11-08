@@ -26,7 +26,6 @@ export class BuildingsComponent implements OnInit {
   ngOnInit(): void {
   this.mapsFacade.getBuildingMaps$().subscribe(res=>{
       this.map = res;
-      console.log('mapa', this.map);
 
       var svg = d3.select("#buildingMap")
       .classed('container', true)
@@ -40,8 +39,6 @@ export class BuildingsComponent implements OnInit {
         .enter()
         .append("g")
         .on('mouseover', function(){
-          var name = d3.select(this).attr("name");
-          console.log(name);
           svg.on('mouseover', function(){
             d3.selectAll('rect')
                     .on('dblclick', function(e, d) {

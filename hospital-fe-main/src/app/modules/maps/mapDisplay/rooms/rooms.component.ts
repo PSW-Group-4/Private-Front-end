@@ -18,7 +18,7 @@ export class RoomsComponent implements OnInit {
   public showRoomDetailComponent = false;
 
   constructor( private route: ActivatedRoute, private router: Router, private mapsFacade:MapsFacade, public dialog: MatDialog) { 
-    console.log("adsasdadads")
+
   }
 
   ngOnInit(): void {
@@ -29,7 +29,7 @@ export class RoomsComponent implements OnInit {
 
     this.mapsFacade.getRoomMapsByFloorMapId$(this.id).subscribe(res=>{
       this.map$ = res;
-      console.log('mapa', this.map$);
+      
 
       var svg = d3.select("#roomMap")
       .classed('container', true)
@@ -39,7 +39,7 @@ export class RoomsComponent implements OnInit {
 
       var router:Router = this.router;
 
-      var buildings = svg.selectAll("g")
+      var rooms = svg.selectAll("g")
       .data(this.map$)
       .enter()
       .append("g")
@@ -54,7 +54,7 @@ export class RoomsComponent implements OnInit {
         })
       .on('click', d => this.FooTemp(d.srcElement.__data__));
 
-      buildings.append('rect')
+      rooms.append('rect')
       .attr("fill", '#999999')
       .attr("x", d => d.coordinateX+100)
       .attr("y", d => d.coordinateY+100)
@@ -63,7 +63,7 @@ export class RoomsComponent implements OnInit {
       .attr("stroke", "black")
       .attr("id", d=> d.id)
       
-      buildings.append('text')
+      rooms.append('text')
       .style("fill", "black")
       .text(function(d) {
         return d.room.name;
