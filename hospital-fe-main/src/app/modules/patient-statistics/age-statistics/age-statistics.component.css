@@ -13,6 +13,10 @@ mat-grid-tile {
   margin-bottom: 2%;
   font-size: xx-large;
   font-weight: bolder;
-  color: black;
+  color: white;
   text-align: center;
+}
+
+.cell {
+  padding: 5%;
 }

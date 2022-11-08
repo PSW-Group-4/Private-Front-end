@@ -4,6 +4,25 @@
     <mat-grid-tile>
       <table>
         <tr>
+          <th>
+            <label for="doctor">Choose a doctor</label>
+          </th>
+          <th class="cell">
+            <select name="doctor" id="doctor">
+              <option value="noSelected" (click)="changeStatistics('all')">
+                all
+              </option>
+              <option
+                *ngFor="let item of doctors"
+                value="{{ item }}"
+                (click)="changeStatistics(item)"
+              >
+                {{ item }}
+              </option>
+            </select>
+          </th>
+        </tr>
+        <tr>
           <th>Age Group</th>
           <th>0-12</th>
           <th>12-20</th>
@@ -13,18 +32,20 @@
         </tr>
         <tr>
           <th>Num of Patients</th>
-          <td>0</td>
-          <td>0</td>
-          <td>0</td>
-          <td>0</td>
-          <td>0</td>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+          <td>4</td>
+          <td>5</td>
         </tr>
       </table>
     </mat-grid-tile>
-    <mat-grid-tile>CHART AGE</mat-grid-tile>
+    <mat-grid-tile
+      ><app-bar-chart [doctor]="doctor"></app-bar-chart
+    ></mat-grid-tile>
     <mat-grid-tile>
       <app-gender-statistics></app-gender-statistics>
     </mat-grid-tile>
-    <mat-grid-tile>CHART GENDER</mat-grid-tile>
+    <mat-grid-tile><app-bar-chart-gender></app-bar-chart-gender></mat-grid-tile>
   </mat-grid-list>
 </div>

@@ -21,6 +21,7 @@ import {
   BloodBanksComponent,
   CheckBloodSuppliesDialog,
 } from './modules/hospital/blood-banks/blood-banks.component';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import {
     DoctorAppointmentsModule,
     MapsModule,
     PatientStatisticsModule,
+    NgChartsModule,
   ],
   providers: [],
   bootstrap: [AppComponent, BloodBanksComponent],
