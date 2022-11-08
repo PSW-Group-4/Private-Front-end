@@ -1,14 +1,11 @@
 import { EditBuildingComponent } from './../../containers/edit-item/edit-building/edit-building.component';
-import { EditItemComponent } from './../../containers/edit-item/edit-item.component';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { BuildingMapService } from '../../services/building-map.service';
 import { BuildingMap } from '../../models/building-map.model';
 import { MapsFacade } from '../../maps.facade';
-import { Observable, pipe, tap } from "rxjs";
 import * as d3 from 'd3';
 
-import {MatDialog, MatDialogRef, MatDialogConfig} from '@angular/material/dialog';
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 
 import { Building } from '../../models/building.model';
 
@@ -22,13 +19,12 @@ export class BuildingsComponent implements OnInit {
   map:BuildingMap[]=[];
   temp : BuildingMap = new BuildingMap();
   public showBuildingDetailComponent = false;
-  constructor(private service:BuildingMapService, private router: Router, private mapsFacade:MapsFacade, public dialog: MatDialog ) { 
-    
+  constructor(private router: Router, private mapsFacade:MapsFacade, public dialog: MatDialog ) { 
   }
   
+  
   ngOnInit(): void {
-   
-  this.service.getBuildingMaps().subscribe(res=>{
+  this.mapsFacade.getBuildingMaps$().subscribe(res=>{
       this.map = res;
       console.log('mapa', this.map);
 
@@ -52,7 +48,7 @@ export class BuildingsComponent implements OnInit {
                       var id = d3.select(this).attr("id");
                      
                       d3.select(this)
-                        router.navigate(['/floors',id]) .then(() => {
+                        router.navigate(['/floor-maps',id]) .then(() => {
                           window.location.reload();
                         }); 
                         
@@ -81,6 +77,7 @@ export class BuildingsComponent implements OnInit {
 
   })
 
+  
   
   
   }
