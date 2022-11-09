@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { EditBuildingComponent } from './containers/edit-item/edit-building/edit-building.component';
 import { EditFloorComponent } from './containers/edit-item/edit-floor/edit-floor.component';
 import { EquiptmentDialogComponent } from './containers/equiptment-dialog/equiptment-dialog.component';
+import { SearchComponent } from './mapDisplay/search/search.component';
 
 
 
@@ -23,7 +24,8 @@ import { EquiptmentDialogComponent } from './containers/equiptment-dialog/equipt
     FloorsComponent,
     EditBuildingComponent,
     EditFloorComponent,
-    EquiptmentDialogComponent
+    EquiptmentDialogComponent,
+    SearchComponent
   ],
   imports: [
     CommonModule,
