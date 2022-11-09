@@ -17,10 +17,9 @@
     <mat-form-field appearance="fill">
         <mat-label>Description</mat-label>
         <textarea  matInput [(ngModel)]="room.room.description" disabled></textarea>
-    </mat-form-field>
-
-    <button mat-stroked-button (click)="updateRoom()">
+    </mat-form-field><br>
+    <button mat-stroked-button (click)="updateRoom()" [mat-dialog-close]="">
         Submit
-    </button>
+    </button><br>
 </div>
 

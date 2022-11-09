@@ -14,7 +14,7 @@
         <input type="number" matInput [(ngModel)]="floor.floor.number">
     </mat-form-field><br>
 
-    <button mat-stroked-button (click)="updateFloor()">
+    <button mat-stroked-button (click)="updateFloor()" [mat-dialog-close]="">
         Submit
     </button>
 </div>

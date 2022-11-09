@@ -2,7 +2,7 @@ import { RoomService } from '../../services/RoomService/room.service';
 import { Room } from './../../models/room.model';
 import { Component, Inject, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA, _closeDialogVia } from '@angular/material/dialog';
 import { RoomMap } from '../../models/room-map.model';
 import { RoomMapService } from '../../services/room-map.service';
 
@@ -33,6 +33,7 @@ export class EditItemComponent implements OnInit {
   public updateRoom(): void {
     this.roomService.updateRoom(this.roomOutput).subscribe(res => {
     });
+    
   }
 
 }
