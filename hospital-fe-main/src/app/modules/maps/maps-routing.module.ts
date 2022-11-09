@@ -7,7 +7,7 @@ import { RoomsComponent } from './mapDisplay/rooms/rooms.component';
 const routes: Routes = [
   {   path: 'building-maps',        component: BuildingsComponent },
   {   path: 'floor-maps/:id',       component: FloorsComponent },
-  {   path: 'room-maps/:id',        component: RoomsComponent },
+  {   path: 'room-maps/:id/:buildingId',        component: RoomsComponent },
 ];
 
 

@@ -39,7 +39,7 @@ export class FloorsComponent implements OnInit {
       if (d3.select("#maps") != null) {
         d3.select("#maps").remove()
       } 
-
+      var buildingId = this.id;
 
       var svg = d3.select("#floorMap")
       .classed('container', true)
@@ -60,7 +60,7 @@ export class FloorsComponent implements OnInit {
                   .on('dblclick', function(e, d) {
                     var id = d3.select(this).attr("id");
                     d3.select(this)
-                      router.navigate(['/room-maps',id]) .then(() => {
+                      router.navigate(['/room-maps',id,buildingId]) .then(() => {
                         window.location.reload();
                       });
                       
@@ -107,6 +107,10 @@ export class FloorsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
     });
+  }
+
+  goBack():void{
+    this.router.navigate(['/building-maps']);
   }
     
 }

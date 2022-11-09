@@ -5,3 +5,9 @@
 .equipment-button {
     margin-left: 30px;
 }
+
+.mat-primary{
+    background-color:#61B1DC;
+    color: #fff
+
+}

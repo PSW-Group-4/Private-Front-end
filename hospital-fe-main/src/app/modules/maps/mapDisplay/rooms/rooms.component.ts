@@ -16,6 +16,7 @@ export class RoomsComponent implements OnInit {
   map$:RoomMap[]=[];
   id:string='';
   temp: RoomMap = new RoomMap();
+  buildingId:string = ''
   public showRoomDetailComponent = false;
 
   constructor( private route: ActivatedRoute, private router: Router, private mapsFacade:MapsFacade, public dialog: MatDialog) { 
@@ -23,11 +24,14 @@ export class RoomsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    var buildingId = '';
     console.log(this.route)
     this.route.params.subscribe((params: Params) => {
       this.id = params['id'];
+      buildingId = params['buildingId']
     }); 
-
+    this.buildingId = buildingId;
+    console.log(this.id);
     this.mapsFacade.getRoomMapsByFloorMapId$(this.id).subscribe(res=>{
       this.map$ = res;
       
@@ -110,5 +114,9 @@ export class RoomsComponent implements OnInit {
     
   }
 
+
+  goBack():void{
+    this.router.navigate(['/floor-maps',this.buildingId]); 
+  }
 
 }
