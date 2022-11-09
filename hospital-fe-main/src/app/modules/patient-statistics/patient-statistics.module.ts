@@ -1,3 +1,4 @@
+import { StatisticsService } from './services/statistics.service';
 import { MaterialModule } from './../../material/material.module';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { NgModule } from '@angular/core';
@@ -15,5 +16,6 @@ import { BarChartGenderComponent } from './bar-chart-gender/bar-chart-gender.com
     BarChartGenderComponent,
   ],
   imports: [CommonModule, AppRoutingModule, MaterialModule],
+  providers: [StatisticsService],
 })
 export class PatientStatisticsModule {}

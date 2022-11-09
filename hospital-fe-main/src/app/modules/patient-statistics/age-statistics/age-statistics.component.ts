@@ -1,4 +1,6 @@
+import { StatisticsService } from './../services/statistics.service';
 import { Component, OnInit } from '@angular/core';
+import { DoctorDto } from '../model/doctorDto.model';
 
 @Component({
   selector: 'app-age-statistics',
@@ -6,16 +8,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./age-statistics.component.css'],
 })
 export class AgeStatisticsComponent implements OnInit {
-  doctors: string[] = ['Dr1', 'Dr2', 'Dr3'];
-  doctor = '';
+  service: StatisticsService;
+  doctors: DoctorDto[] = [];
+  numOfPatientsByAgreGroup: any;
 
-  constructor() {}
+  constructor(service: StatisticsService) {
+    this.service = service;
+  }
 
   ngOnInit(): void {
-    this.doctor = 'all';
+    this.doctors = this.service.getAllDoctors();
+    this.numOfPatientsByAgreGroup = this.service.getNumOfPatientsByAgeGroup();
   }
 
   changeStatistics(input: string) {
-    this.doctor = input;
+    if (input !== 'all') {
+      input = input.toString();
+    }
+    this.numOfPatientsByAgreGroup =
+      this.service.getNumOfPatientsByAgeGroupByDoctor(input);
   }
 }

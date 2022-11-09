@@ -2,46 +2,42 @@
   <div class="header">Patient Statistics</div>
   <mat-grid-list cols="2" rowHeight="2:1">
     <mat-grid-tile>
-      <table>
-        <tr>
-          <th>
-            <label for="doctor">Choose a doctor</label>
-          </th>
-          <th class="cell">
-            <select name="doctor" id="doctor">
-              <option value="noSelected" (click)="changeStatistics('all')">
-                all
-              </option>
-              <option
-                *ngFor="let item of doctors"
-                value="{{ item }}"
-                (click)="changeStatistics(item)"
-              >
-                {{ item }}
-              </option>
-            </select>
-          </th>
-        </tr>
-        <tr>
-          <th>Age Group</th>
-          <th>0-12</th>
-          <th>12-20</th>
-          <th>21-40</th>
-          <th>41-70</th>
-          <th>71+</th>
-        </tr>
-        <tr>
-          <th>Num of Patients</th>
-          <td>1</td>
-          <td>2</td>
-          <td>3</td>
-          <td>4</td>
-          <td>5</td>
-        </tr>
-      </table>
+      <div>
+        <div>
+          <label for="doctor">Choose a doctor&nbsp;&nbsp;&nbsp;</label>
+          <select name="doctor" id="doctor">
+            <option value="noSelected" (click)="changeStatistics('all')">
+              all
+            </option>
+            <option
+              *ngFor="let item of doctors"
+              value="{{ item.id }}"
+              (click)="changeStatistics(item.id)"
+            >
+              {{ item.fullname }}
+            </option>
+          </select>
+        </div>
+        <div>
+          <table id="test">
+            <tr>
+              <th>Age Group</th>
+              <th *ngFor="let item of numOfPatientsByAgreGroup">
+                {{ item.ageGroup }}
+              </th>
+            </tr>
+            <tr>
+              <th>Num of Patients</th>
+              <td *ngFor="let item of numOfPatientsByAgreGroup">
+                {{ item.numb }}
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
     </mat-grid-tile>
     <mat-grid-tile
-      ><app-bar-chart [doctor]="doctor"></app-bar-chart
+      ><app-bar-chart [chartData]="numOfPatientsByAgreGroup"></app-bar-chart
     ></mat-grid-tile>
     <mat-grid-tile>
       <app-gender-statistics></app-gender-statistics>

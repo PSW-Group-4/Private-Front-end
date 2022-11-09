@@ -2,3 +2,23 @@
   width: 80%;
   margin: auto;
 }
+
+#test {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  margin: 3%;
+}
+
+#test td,
+#test th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#test th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: rgb(33, 38, 40);
+  color: rgb(201, 201, 201);
+}
