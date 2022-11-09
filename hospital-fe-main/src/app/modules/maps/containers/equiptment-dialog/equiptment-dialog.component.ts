@@ -14,16 +14,22 @@ import { Room } from '../../models/room.model';
 })
 export class EquiptmentDialogComponent implements OnInit {
   displayedColumns = ['id', 'name', 'amount'];
-  dataSource : MatTableDataSource<Equipment>;
-  clickedRoom: Room;  
+  dataSource : MatTableDataSource<Equipment> = new MatTableDataSource();
+  isUpdating : boolean = true;
+  clickedRoom: Room = new Room;  
   
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   // good dialog size 700x800 wxh
   constructor(private mapsFacade: MapsFacade, private dialogRef: MatDialogRef<EquiptmentDialogComponent>, @Inject(MAT_DIALOG_DATA) data : any) { 
     // maybe give id and then pull data from service if we change dto not to transfer everything
-    this.clickedRoom = data.room
-    this.dataSource = new MatTableDataSource<Equipment>(this.clickedRoom.equipmentList);
+    mapsFacade.getRoomMapById$(data.id).subscribe({
+      next: (v) => {
+        this.clickedRoom = v.room
+        this.dataSource = new MatTableDataSource<Equipment>(this.clickedRoom.equipmentList);
+        this.isUpdating = false;
+      }
+    })
   }
 
   ngOnInit(): void {

@@ -6,6 +6,9 @@ export class Equipment {
 
     public constructor(obj?: any) {
         if (obj) {  
+            this.id = obj.id;
+            this.name = obj.name;
+            this.amount = obj.amount;
         }
     }
 }

@@ -9,6 +9,10 @@ export class Room {
     equipmentList:Equipment[] = [];
     public constructor(obj?: any) {
         if (obj) {  
+            this.id = obj.id;
+            this.description = obj.description;
+            this.name = obj.name;
+            this.equipmentList = obj.equipmentList;
         }
     }
 }

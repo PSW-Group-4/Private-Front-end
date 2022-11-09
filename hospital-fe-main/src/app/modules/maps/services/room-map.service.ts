@@ -19,6 +19,10 @@ export class RoomMapService {
     return this.http.get<RoomMap[]>(this.apiHost + this.API, {headers: this.headers});
   }
 
+  getRoomMapById(id: string): Observable<RoomMap> {
+    return this.http.get<RoomMap>(this.apiHost + this.API+"/"+id, {headers: this.headers});
+  }
+
   getRoomMapsByFloorMapId(id: string): Observable<RoomMap[]> {
     return this.http.get<RoomMap[]>(this.apiHost + this.API+"/ByFloor/"+id, {headers: this.headers});
   }
