@@ -39,6 +39,10 @@ export class MapsFacade {
     return this.floorMaps$;
   }
   
+  getRoomMapById$(id: string): Observable<RoomMap> {
+    return this.roomMapService.getRoomMapById(id);
+  }
+
   getBuildingMaps$(): Observable<BuildingMap[]> {
     return this.buildingMaps$;
   }
