@@ -14,7 +14,7 @@
                         </th>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let room of maps$  | filter:searchText">
+                        <tr *ngFor="let room of maps$  | filter:searchText" (click)="highlight(room)">
                             <td>{{ room.room.name }}</td>
                             <td>{{ room.room.number }}</td>
                           </tr>
@@ -35,10 +35,10 @@
                         </th>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let room of maps$  | filterequipment:searchText">
+                        <tr *ngFor="let room of maps$  | filterequipment:searchText" (click)="highlight(room)">
                             <td>{{ room.room.name }}</td>
                             <td>{{ room.room.number }}</td>
-                          </tr>
+                        </tr>
                     </tbody>
                   </table>
             </mat-tab>

@@ -17,6 +17,7 @@ export class RoomsComponent implements OnInit {
   id:string='';
   temp: RoomMap = new RoomMap();
   buildingId:string = ''
+  someId: string = '';
   public showRoomDetailComponent = false;
 
   constructor( private route: ActivatedRoute, private router: Router, private mapsFacade:MapsFacade, public dialog: MatDialog) { 
@@ -30,11 +31,13 @@ export class RoomsComponent implements OnInit {
       this.id = params['id'];
       buildingId = params['buildingId']
     }); 
+
     this.buildingId = buildingId;
     console.log(this.id);
     this.mapsFacade.getRoomMapsByFloorMapId$(this.id).subscribe(res=>{
       this.map$ = res;
       
+      d3.select("#roomMap").selectChildren().remove();
 
       var svg = d3.select("#roomMap")
       .classed('container', true)
@@ -66,7 +69,15 @@ export class RoomsComponent implements OnInit {
       .attr("width", d => d.width)
       .attr("height", d => d.height)
       .attr("stroke", "black")
-      .attr("id", d=> d.id)
+      .attr("id", d=> "rect"+d.id)
+
+      d3.selectAll("rect")
+        .attr("stroke","black")
+        .attr('stroke-width', '1')
+
+      d3.select("#rect"+this.someId)
+        .attr("stroke","red")
+        .attr('stroke-width', '3')
       
       rooms.append('text')
       .style("fill", "black")
@@ -77,6 +88,16 @@ export class RoomsComponent implements OnInit {
       .attr('y', d=> d.coordinateY+100 + d.height/2)      
       } )
 
+  }
+
+  ngAfterViewInit() {
+    this.mapsFacade.getSelectedRoomMap$().subscribe({
+      next : (v) => 
+      {
+        this.someId = v.id;
+        this.ngOnInit();
+      }
+    })
   }
 
   

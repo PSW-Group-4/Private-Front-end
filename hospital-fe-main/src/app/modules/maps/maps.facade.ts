@@ -6,6 +6,7 @@ import { RoomMap } from "./models/room-map.model";
 import { BuildingMapService } from "./services/building-map.service";
 import { FloorMapService } from "./services/floor-map.service";
 import { RoomMapService } from "./services/room-map.service";
+import { MapsState } from "./state/maps.state";
 
 
 
@@ -19,7 +20,7 @@ export class MapsFacade {
   private buildingMaps$: Observable<BuildingMap[]>;
   
   constructor(private buildingMapService: BuildingMapService, private floorMapService: FloorMapService,
-         private roomMapService: RoomMapService) { 
+         private roomMapService: RoomMapService, private mapsState: MapsState) { 
           this.roomMaps$ = this.roomMapService
             .getRoomMaps()
             .pipe(shareReplay(1)); // cache the data
@@ -53,6 +54,14 @@ export class MapsFacade {
   
   getRoomMapsByFloorMapId$(id: string): Observable<RoomMap[]>{
     return this.roomMapService.getRoomMapsByFloorMapId(id);
+  }
+
+  setSelectedRoomMap(roomMap : RoomMap) {
+    return this.mapsState.setSelectedRoomMap(roomMap);
+  }
+
+  getSelectedRoomMap$() : Observable<RoomMap> {
+    return this.mapsState.getSelectedRoomMap$();
   }
 
 }
