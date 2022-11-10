@@ -1,0 +1,14 @@
+<div class="container">
+    <p>Svi doktorovi odmori</p>
+    <div class="table-header">
+      <button class="add-button" mat-mini-fab matTooltip="New vacation" (click)="openAddDialog()">
+          <mat-icon>add</mat-icon>
+      </button>
+    </div>
+    
+    <mat-tab-group>
+        <mat-tab label="Trenutni zahtjevi za odmor"><app-vacation-scheduler whatVacationIs='now'></app-vacation-scheduler></mat-tab>
+        <mat-tab label="Odbijeni zahtjevi za odmor"><app-vacation-scheduler whatVacationIs="denied"></app-vacation-scheduler></mat-tab>
+        <mat-tab label="Prosli odmori"><app-vacation-scheduler whatVacationIs="past"></app-vacation-scheduler></mat-tab>
+    </mat-tab-group>
+  </div>

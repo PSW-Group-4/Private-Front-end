@@ -1,0 +1,49 @@
+<table mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="doctorName">
+        <th mat-header-cell *matHeaderCellDef class="cell-center"> Doktor </th>
+        <td mat-cell *matCellDef="let app" class="clickable cell-center" >{{app.doctor.name + ' ' + app.doctor.surname}}</td>
+    </ng-container>
+    <ng-container matColumnDef="reason">
+        <th mat-header-cell *matHeaderCellDef class="cell-center"> Razlog </th>
+        <td mat-cell *matCellDef="let app" class="cell-center">{{app.reason}}</td>
+    </ng-container>
+    <ng-container matColumnDef="urgent">
+        <th mat-header-cell *matHeaderCellDef class="cell-center"> Hitno </th>
+        <td mat-cell *matCellDef="let app" class="clickable cell-center" >{{app.urgent? 'DA' : 'NE'}}</td>
+    </ng-container>
+    <ng-container matColumnDef="dateStart">
+        <th mat-header-cell *matHeaderCellDef class="cell-center"> Pocetak </th>
+        <td mat-cell *matCellDef="let app" class="cell-center">{{app.dateStart | date : 'dd.MM.yyyy'}}</td>
+    </ng-container>
+    <ng-container matColumnDef="dateEnd">
+        <th mat-header-cell *matHeaderCellDef class="cell-center"> Kraj </th>
+        <td mat-cell *matCellDef="let app" class="cell-center">{{app.dateEnd | date : 'dd.MM.yyyy'}}</td>
+    </ng-container>
+    <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef class="cell-center"> Status </th>
+        <td mat-cell *matCellDef="let app" class="cell-center">
+            <ng-container *ngIf="app.vacationStatus === 0;else second">Ceka se</ng-container>
+            <ng-template #second>
+                <ng-container *ngIf="app.vacationStatus === 1;else third">Prihvacen</ng-container>
+            </ng-template>
+            <ng-template #third>Odbijen</ng-template>
+        </td>
+
+        
+    </ng-container>
+    <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef class="cell-center"> Obrisi </th>
+        <td mat-cell *matCellDef="let app" class="cell-center">
+            <button mat-icon-button (click)="openDeleteDialog(app.id)" >
+                <mat-icon matTooltip="delete">delete</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+    <ng-container matColumnDef="deniedReason">
+        <th mat-header-cell *matHeaderCellDef class="cell-center"> Odbijenica </th>
+        <td mat-cell *matCellDef="let app" class="cell-center">{{app.deniedReason}}</td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+

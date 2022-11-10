@@ -17,6 +17,7 @@ import { MatNativeDateModule } from "@angular/material/core";
 import { MapsModule } from "./modules/maps/maps.module";
 import { CommonModule } from '@angular/common'; 
 import { BloodBanksComponent, CheckBloodSuppliesDialog } from './modules/hospital/blood-banks/blood-banks.component';
+import { DoctorVacationModule } from "./modules/doctor-vacation/doctor-vacation.module";
 import { Ng2SearchPipeModule } from "ng2-search-filter";
 
 @NgModule({
@@ -42,7 +43,8 @@ import { Ng2SearchPipeModule } from "ng2-search-filter";
     MatNativeDateModule,
     Ng2SearchPipeModule,
     DoctorAppointmentsModule,
-    MapsModule
+    MapsModule,
+    DoctorVacationModule
   ],
   providers: [],
   bootstrap: [AppComponent, BloodBanksComponent]
