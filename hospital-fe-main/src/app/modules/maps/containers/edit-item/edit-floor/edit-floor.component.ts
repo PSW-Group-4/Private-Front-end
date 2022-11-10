@@ -29,6 +29,7 @@ export class EditFloorComponent implements OnInit {
   public updateFloor(): void {
     this.floorService.updateFloor(this.floorOutput).subscribe(res => {
     });
+    window.location.reload();
   }
 
 }
