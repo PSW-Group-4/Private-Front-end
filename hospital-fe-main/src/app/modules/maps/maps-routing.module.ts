@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { BuildingsComponent } from './mapDisplay/buildings/buildings.component';
 import { FloorsComponent } from './mapDisplay/floors/floors.component';
 import { RoomsComponent } from './mapDisplay/rooms/rooms.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
 
 const routes: Routes = [
   {   path: 'building-maps',        component: BuildingsComponent },
@@ -12,7 +14,7 @@ const routes: Routes = [
 
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forChild(routes), Ng2SearchPipeModule],
   exports: [RouterModule]
 })
 export class MapsRoutingModule { }
