@@ -1,0 +1,47 @@
+<mat-card>
+    <mat-card-content>
+        <mat-tab-group mat-align-tabs="center">
+            <mat-tab  label="Room search">
+                <mat-form-field appearance="fill" style="width: 100%;">
+                    <mat-label>Room name</mat-label>
+                    <input type="tel" matInput placeholder="Search" name= "searchRoom" [(ngModel)]="searchText">
+                </mat-form-field>
+                <table class="styled-table">
+                    <thead>
+                        <th>Name
+                        </th>
+                        <th>Number
+                        </th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let room of maps$  | filter:searchText">
+                            <td>{{ room.room.name }}</td>
+                            <td>{{ room.room.number }}</td>
+                          </tr>
+                    </tbody>
+                    
+                  </table>
+            </mat-tab>
+            <mat-tab  label="Equipment search">
+                <mat-form-field appearance="fill" style="width: 100%;">
+                    <mat-label>Equipment name</mat-label>
+                    <input type="search" matInput placeholder="Search" name= "searchEquipment" [(ngModel)]="searchText">
+                </mat-form-field>
+                <table class="styled-table">
+                    <thead>
+                        <th>Name
+                        </th>
+                        <th>Number
+                        </th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let room of maps$  | filterequipment:searchText">
+                            <td>{{ room.room.name }}</td>
+                            <td>{{ room.room.number }}</td>
+                          </tr>
+                    </tbody>
+                  </table>
+            </mat-tab>
+        </mat-tab-group>
+    </mat-card-content>
+</mat-card>

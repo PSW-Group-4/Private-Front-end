@@ -3,17 +3,17 @@
         <h2>Blood Bank Registration</h2>
         <mat-form-field appearance="fill">
             <mat-label>Name</mat-label>
-            <input matInput [(ngModel)]="bloodBank.Name">
+            <input matInput [(ngModel)]="bloodBank.name">
         </mat-form-field><br>
         <mat-form-field appearance="fill">
             <mat-label>Email</mat-label>
-            <input matInput [(ngModel)]="bloodBank.EmailAddress">
+            <input matInput [(ngModel)]="bloodBank.emailAddress">
         </mat-form-field><br>
         <mat-form-field appearance="fill">
             <mat-label>Server address</mat-label>
-            <input matInput [(ngModel)]="bloodBank.ServerAddress">
+            <input matInput [(ngModel)]="bloodBank.serverAddress">
         </mat-form-field><br>
-        <button mat-stroked-button (click)="createBloodBank()" [disabled]="!bloodBank.EmailAddress.length || !bloodBank.Name.length || !bloodBank.ServerAddress">
+        <button mat-stroked-button (click)="createBloodBank()" [disabled]="!bloodBank.emailAddress.length || !bloodBank.name.length || !bloodBank.serverAddress">
             Submit
         </button>
     </div>

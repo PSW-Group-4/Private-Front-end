@@ -23,7 +23,7 @@ export  class BloodBankRegistrationComponent implements OnInit {
   }
 
   private isValidInput(): boolean {
-    return this.bloodBank?.EmailAddress != '' && this.bloodBank?.Name != '' && this.bloodBank?.ServerAddress!= '';
+    return this.bloodBank?.emailAddress != '' && this.bloodBank?.name != '' && this.bloodBank?.serverAddress!= '';
   }
 
 }

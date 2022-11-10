@@ -1,23 +1,25 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { EditItemComponent } from './containers/edit-item/edit-item.component';
+import { BuildingsComponent } from './mapDisplay/buildings/buildings.component';
+import { FloorsComponent } from './mapDisplay/floors/floors.component';
+import { RoomsComponent } from './mapDisplay/rooms/rooms.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
 
 const routes: Routes = [
-  {   path: 'maps',        component: EditItemComponent,
-      children: [
-        {   path: 'edit-maps/:id',   component: EditItemComponent   }
-      ]
-
-  },
-  
+  {   path: 'building-maps',        component: BuildingsComponent },
+  {   path: 'floor-maps/:id',       component: FloorsComponent },
+  {   path: 'room-maps/:id/:buildingId',        component: RoomsComponent },
 ];
 
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forChild(routes), Ng2SearchPipeModule],
   exports: [RouterModule]
 })
 export class MapsRoutingModule { }
 export const routingComponents = [
-  EditItemComponent
+  BuildingsComponent,
+  FloorsComponent,
+  RoomsComponent
 ]

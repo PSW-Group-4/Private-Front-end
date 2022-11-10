@@ -27,7 +27,7 @@ export class BloodBanksComponent implements OnInit {
   bloodType: string = "";
 
   constructor(private bloodBankService: BloodBankService, private router: Router, private modalService: NgbModal, public dialog: MatDialog) { }
-  
+
   ngOnInit(): void {
     this.bloodBankService.getBloodBanks().subscribe(res => {
     this.bloodBanks = res;
@@ -37,14 +37,14 @@ export class BloodBanksComponent implements OnInit {
   public addBloodBank() {
     this.router.navigate(['/bloodBanks/add']);
   }
-  
+
   openDialog(): void {
     const dialogRef = this.dialog.open(CheckBloodSuppliesDialog, {
       width: '250px',
       data: {bloodType: this.bloodType, quantity: this.quantity},
     });
 
-    dialogRef.componentInstance.location = 'http://localhost:8082/';
+    dialogRef.componentInstance.location = 'http://localhost:8080/';
   }
 }
 
@@ -71,14 +71,14 @@ export class CheckBloodSuppliesDialog {
       map(value => this._filter(value || '')),
     );
   }
-  
+
   onNoClick(): void {
     this.dialogRef.close();
   }
 
-    
+
   onCheckClick(quantity: number, bloodType: string): void {
-    this.bloodBankService.checkBloodSupplies('http://localhost:8082/', bloodType, quantity).subscribe(res => {
+    this.bloodBankService.checkBloodSupplies('http://localhost:8080/', bloodType, quantity).subscribe(res => {
     this.firstTime = false
     this.haveSupply = res
     })

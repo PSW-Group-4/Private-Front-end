@@ -1,1 +1,29 @@
-<p>buildings works!</p>
+<div class = "row">
+
+    <div class="col" id="buildingMap">   
+    </div>
+    <div class="col">
+            <div class="row">
+                <div class="col position">
+                    <mat-card  *ngIf="showBuildingDetailComponent">
+                        <mat-card-title>
+                            Building informations:
+                        </mat-card-title>
+                        <mat-card-content>
+                        <p>Name: {{temp.building.name}}</p>
+                        <p>Number of floors: {{temp.building.floorList.length}}</p>
+                        </mat-card-content>
+                        <button class="add-button" mat-mini-fab matTooltip="Edit building" (click)="openEditDialog()">Edit</button>
+                    </mat-card>   
+                </div>
+                <div class="col">
+                    <app-search></app-search>
+                </div>
+                
+            </div>
+
+
+    </div>
+    
+</div>
+

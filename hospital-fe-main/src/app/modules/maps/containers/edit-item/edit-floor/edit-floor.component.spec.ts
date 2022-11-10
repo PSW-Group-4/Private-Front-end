@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MapComponent } from './map.component';
+import { EditFloorComponent } from './edit-floor.component';
 
-describe('MapComponent', () => {
-  let component: MapComponent;
-  let fixture: ComponentFixture<MapComponent>;
+describe('EditFloorComponent', () => {
+  let component: EditFloorComponent;
+  let fixture: ComponentFixture<EditFloorComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MapComponent ]
+      declarations: [ EditFloorComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(MapComponent);
+    fixture = TestBed.createComponent(EditFloorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

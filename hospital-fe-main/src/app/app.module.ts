@@ -9,15 +9,16 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 import { HospitalModule } from "./modules/hospital/hospital.module";
 import { PagesModule } from "./modules/pages/pages.module";
 import { ManagerFeedbackComponent } from './manager-feedback/manager-feedback.component';
 import { DoctorAppointmentsModule } from "./modules/doctor-appointments/doctor-appointments.module";
 import { MatNativeDateModule } from "@angular/material/core";
 import { MapsModule } from "./modules/maps/maps.module";
+import { CommonModule } from '@angular/common'; 
 import { BloodBanksComponent, CheckBloodSuppliesDialog } from './modules/hospital/blood-banks/blood-banks.component';
 import { DoctorVacationModule } from "./modules/doctor-vacation/doctor-vacation.module";
+import { Ng2SearchPipeModule } from "ng2-search-filter";
 
 @NgModule({
   declarations: [
@@ -26,12 +27,12 @@ import { DoctorVacationModule } from "./modules/doctor-vacation/doctor-vacation.
     CheckBloodSuppliesDialog
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
     MaterialModule,
-
     MatAutocompleteModule,
     MatFormFieldModule,
     ReactiveFormsModule,
@@ -40,7 +41,7 @@ import { DoctorVacationModule } from "./modules/doctor-vacation/doctor-vacation.
     PagesModule,
     HospitalModule,
     MatNativeDateModule,
-    
+    Ng2SearchPipeModule,
     DoctorAppointmentsModule,
     MapsModule,
     DoctorVacationModule

@@ -1,1 +1,32 @@
-<p>rooms works!</p>
+<div class = "row">
+    <div>
+        <button style="margin-left:0;"  mat-raised-button color="primary" id ="button" matTooltip="Go back to floors" (click)="goBack()"><mat-icon>arrow_back</mat-icon> Floors</button>
+    </div>
+    <div class="col" id="roomMap">
+    </div>
+    <div class="col ">
+        <div class="row">
+            <div class="col position">
+                <mat-card  *ngIf="showRoomDetailComponent">
+                    <mat-card-title>
+                        Room informations:
+                    </mat-card-title>
+                    <mat-card-content>
+                    <p>Name: {{temp.room.name}}</p> 
+                    <p>Description: {{temp.room.description}}</p>
+                    <p>Number: {{temp.room.number}}</p>
+                    <p>Equipment List: {{temp.room.equipmentList.length}}</p>
+                    </mat-card-content>
+                    <button class="add-button" mat-mini-fab matTooltip="Edit room" (click)="openEditDialog()">Edit</button>
+                    <button class="equipment-button" mat-raised-button matTooltip="Show equipment" color="primary" id ="button" (click)="openEqipmentDialog()">Equipment</button>
+        
+                </mat-card>
+            </div>
+            <div class="col">
+                <app-search></app-search>
+            </div> 
+        </div>
+        
+        
+    </div>
+</div>

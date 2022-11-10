@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
-import { Observable } from 'rxjs/internal/Observable';
-import { MapsFacade } from '../../maps.facade';
-import { BuildingMap } from '../../models/building-map.model';
+import { RoomService } from '../../services/RoomService/room.service';
+import { Room } from './../../models/room.model';
+import { Component, Inject, Input, OnInit, Output } from '@angular/core';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { MatDialogRef, MAT_DIALOG_DATA, _closeDialogVia } from '@angular/material/dialog';
 import { RoomMap } from '../../models/room-map.model';
+import { RoomMapService } from '../../services/room-map.service';
+
 
 @Component({
   selector: 'app-edit-item',
@@ -11,37 +13,27 @@ import { RoomMap } from '../../models/room-map.model';
   styleUrls: ['./edit-item.component.css'],
 })
 export class EditItemComponent implements OnInit {
-  // this.router.navigate(["id", id]); in parret component
-  id: string = '';
+  //public room: Room = new Room();
+  
+  @Input() room: RoomMap;
+  @Output() roomOutput = new Room;
 
-  roomMaps$: Observable<BuildingMap[]>;
-  isUpdating$: Observable<boolean>;
-
-  // Only for illustration purposes atm
-  constructor(private route: ActivatedRoute, private mapsFacade: MapsFacade) { 
-    this.roomMaps$ = mapsFacade.getBuildingMaps$();
-    this.isUpdating$ = mapsFacade.isUpdating$();
-  }
+  constructor(private route: ActivatedRoute, private router: Router,
+     private roomService: RoomMapService,
+     private dialogRef: MatDialogRef<EditItemComponent>,
+     @Inject(MAT_DIALOG_DATA) data : any) {
+        this.room = data.room
+        this.roomOutput = data.room
+     }
 
   ngOnInit(): void {
-    this.route.params.subscribe((params: Params) => this.id = params['id']);
-    this.mapsFacade.loadRoomMaps();
-    this.mapsFacade.loadFloorMaps();
-    this.mapsFacade.loadBuildingMaps();
+    
   }
-
-  updateRoomMap(entity: RoomMap) {
-    this.mapsFacade.updateRoomMap(entity);
-  }
-
-  openDialog() {
-    this.roomMaps$.forEach(element => {
-      element.forEach(element => {
-        console.log(element)
-        console.log(this.mapsFacade.getBuildingMapById$(element.id));
-        console.log(element.building.floorList)
-    })
-  } )
   
+  public updateRoom(): void {
+    this.roomService.updateRoom(this.roomOutput).subscribe(res => {
+    });
+    
   }
+
 }

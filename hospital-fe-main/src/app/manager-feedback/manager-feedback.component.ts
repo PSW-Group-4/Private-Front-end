@@ -42,13 +42,29 @@ export class ManagerFeedbackComponent implements OnInit {
   }
 
   Publish(id: string): void{
-      this.feedbackService.publishFeedback(id).subscribe(res => {
+         let PublishHideDTO =[ {
+      "op": "replace",
+      "path": "status",
+      "value":"0"
+
+    }]
+
+
+      this.feedbackService.publishHideFeedback(id,PublishHideDTO).subscribe(res => {
       this.fillFeedbackTable();
       })
    }
 
   Hide(id: string): void {
-  this.feedbackService.hideFeedback(id).subscribe(res => {
+         let PublishHideDTO =[ {
+      "op": "replace",
+      "path": "status",
+      "value": "1"
+
+    }]
+
+
+  this.feedbackService.publishHideFeedback(id,PublishHideDTO).subscribe(res => {
       this.fillFeedbackTable();
       })
   }
