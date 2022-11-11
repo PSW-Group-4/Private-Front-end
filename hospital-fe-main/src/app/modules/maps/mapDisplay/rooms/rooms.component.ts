@@ -6,6 +6,7 @@ import { MapsFacade } from '../../maps.facade';
 import { MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import { EditItemComponent } from '../../containers/edit-item/edit-item.component';
 import { EquiptmentDialogComponent } from '../../containers/equiptment-dialog/equiptment-dialog.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-rooms',
@@ -17,24 +18,27 @@ export class RoomsComponent implements OnInit {
   id:string='';
   temp: RoomMap = new RoomMap();
   buildingId:string = ''
+  someId: string = '';
   public showRoomDetailComponent = false;
+  sub: Subscription = new Subscription;
 
   constructor( private route: ActivatedRoute, private router: Router, private mapsFacade:MapsFacade, public dialog: MatDialog) { 
 
   }
 
   ngOnInit(): void {
+
     var buildingId = '';
-    console.log(this.route)
     this.route.params.subscribe((params: Params) => {
       this.id = params['id'];
       buildingId = params['buildingId']
     }); 
+
     this.buildingId = buildingId;
-    console.log(this.id);
     this.mapsFacade.getRoomMapsByFloorMapId$(this.id).subscribe(res=>{
       this.map$ = res;
       
+      d3.select("#roomMap").selectChildren().remove();
 
       var svg = d3.select("#roomMap")
       .classed('container', true)
@@ -66,7 +70,15 @@ export class RoomsComponent implements OnInit {
       .attr("width", d => d.width)
       .attr("height", d => d.height)
       .attr("stroke", "black")
-      .attr("id", d=> d.id)
+      .attr("id", d=> "rect"+d.id)
+
+      d3.selectAll("rect")
+        .attr("stroke","black")
+        .attr('stroke-width', '1')
+
+      d3.select("#rect"+this.someId)
+        .attr("stroke","red")
+        .attr('stroke-width', '3')
       
       rooms.append('text')
       .style("fill", "black")
@@ -77,6 +89,19 @@ export class RoomsComponent implements OnInit {
       .attr('y', d=> d.coordinateY+100 + d.height/2)      
       } )
 
+  }
+
+  ngAfterViewInit() {
+    this.sub = this.mapsFacade.getSelectedRoomMap$().subscribe({
+      next : (v) => 
+      {
+        if(v.id != "") {
+          this.someId = v.id;
+          this.FooTemp(v);
+          this.ngOnInit();
+        }
+      }
+    })
   }
 
   
@@ -116,7 +141,9 @@ export class RoomsComponent implements OnInit {
 
 
   goBack():void{
-    this.router.navigate(['/floor-maps',this.buildingId]); 
+    this.showRoomDetailComponent = false;
+    this.sub.unsubscribe();
+    this.router.navigate(["maps/building",this.buildingId]); 
   }
 
 }

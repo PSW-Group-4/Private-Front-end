@@ -9,6 +9,7 @@ import { MapsFacade } from '../../maps.facade';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 
 import { Floor } from '../../models/floor.model';
+import { isString } from '@ng-bootstrap/ng-bootstrap/util/util';
 
 @Component({
   selector: 'app-floors',
@@ -27,12 +28,13 @@ export class FloorsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
-    this.route.params.subscribe((params: Params) => {
-      this.id = params['id'];
-    }); 
+    var v = this.route.snapshot.paramMap.get("id");
+    if (v != null){
+      this.id = v
+    }
+  }
 
-
+  ngAfterViewInit() {
     this.mapsFacade.getFloorMapsByBuildingMapId$(this.id).subscribe(res=>{
       this.map$ = res;
 
@@ -60,10 +62,7 @@ export class FloorsComponent implements OnInit {
                   .on('dblclick', function(e, d) {
                     var id = d3.select(this).attr("id");
                     d3.select(this)
-                      router.navigate(['/room-maps',id,buildingId]) .then(() => {
-                        window.location.reload();
-                      });
-                      
+                      router.navigate([router.url,"floor",id])        
                   });
         })
       } )
@@ -110,7 +109,7 @@ export class FloorsComponent implements OnInit {
   }
 
   goBack():void{
-    this.router.navigate(['/building-maps']);
+    this.router.navigate(['/maps']);
   }
     
 }
