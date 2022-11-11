@@ -1,0 +1,12 @@
+<div class="container text-center">
+    <button class="m-4" mat-fab color="accent" matTooltip="Kreiraj novu evidenciju o potrošnji krvi" (click)="displayBloodConsumptionRecord()">
+        <mat-icon>add_circle</mat-icon>
+    </button>
+    <button class="m-4" mat-fab color="warn" matTooltip="Zatraži još krvi" (click)="displayMoreBlood()">
+        <mat-icon>note_add</mat-icon>
+    </button>
+    <div>
+        <app-create-blood-consumption-record [hidden]="isDisplayingMoreBlood"></app-create-blood-consumption-record>
+        <app-request-more-blood [hidden]="!isDisplayingMoreBlood"></app-request-more-blood>
+    </div>
+</div>
