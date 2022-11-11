@@ -17,14 +17,17 @@ import { MatNativeDateModule } from "@angular/material/core";
 import { MapsModule } from "./modules/maps/maps.module";
 import { CommonModule } from '@angular/common'; 
 import { BloodBanksComponent, CheckBloodSuppliesDialog } from './modules/hospital/blood-banks/blood-banks.component';
+import { AdmissionComponent } from './admission/admission.component';
 import { DoctorVacationModule } from "./modules/doctor-vacation/doctor-vacation.module";
 import { Ng2SearchPipeModule } from "ng2-search-filter";
+
 
 @NgModule({
   declarations: [
     AppComponent,
     ManagerFeedbackComponent,
-    CheckBloodSuppliesDialog
+    CheckBloodSuppliesDialog,
+    AdmissionComponent
   ],
   imports: [
     CommonModule,
