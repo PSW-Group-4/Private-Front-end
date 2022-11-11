@@ -14,6 +14,7 @@ import { EquiptmentDialogComponent } from './containers/equiptment-dialog/equipt
 import { SearchComponent } from './mapDisplay/search/search.component';
 import { FilterPipe } from './mapDisplay/search/filter-pipes/filter-pipe';
 import { FilterPipeEquipment } from './mapDisplay/search/filter-pipes/filter-equipment-pipe';
+import { MapsMainContainerComponent } from './containers/maps-main-container/maps-main-container.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { FilterPipeEquipment } from './mapDisplay/search/filter-pipes/filter-equ
     EquiptmentDialogComponent,
     SearchComponent,
     FilterPipe,
-    FilterPipeEquipment
+    FilterPipeEquipment,
+    MapsMainContainerComponent
   ],
   imports: [
     CommonModule,
