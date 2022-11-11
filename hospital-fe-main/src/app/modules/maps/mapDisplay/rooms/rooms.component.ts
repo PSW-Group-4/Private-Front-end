@@ -137,7 +137,7 @@ export class RoomsComponent implements OnInit {
 
 
   goBack():void{
-    this.router.navigate(['/floor-maps',this.buildingId]); 
+    this.router.navigate(["maps/building",this.buildingId]); 
   }
 
 }

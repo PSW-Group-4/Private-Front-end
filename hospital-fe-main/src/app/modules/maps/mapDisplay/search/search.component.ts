@@ -33,11 +33,10 @@ export class SearchComponent implements OnInit {
     })
   }
 
-  async highlight(room: RoomMap): Promise<void> {
-    this.router.navigate([this.getUrl(room)]);
-    await delay(100)
-    this.mapsFacade.setSelectedRoomMap(room);
-    
+  highlight(room: RoomMap){
+    this.router.navigate([this.getUrl(room)]).then(() => 
+      this.mapsFacade.setSelectedRoomMap(room)
+    );
   }
 
   getUrl(roomMap: RoomMap): string {
@@ -61,7 +60,7 @@ export class SearchComponent implements OnInit {
       });
     });
 
-    return "room-maps/"+floorId+"/"+buildingId;
+    return "maps/building/"+buildingId+"/floor/"+floorId;
   }
 
 }

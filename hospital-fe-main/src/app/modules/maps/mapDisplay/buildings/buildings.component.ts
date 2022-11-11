@@ -42,12 +42,9 @@ export class BuildingsComponent implements OnInit {
           svg.on('mouseover', function(){
             d3.selectAll('rect')
                     .on('dblclick', function(e, d) {
-                      var id = d3.select(this).attr("id");
-                     
+                      var id = d3.select(this).attr("id");   
                       d3.select(this)
-                        router.navigate(['/floor-maps',id]) .then(() => {
-                          window.location.reload();
-                        }); 
+                        router.navigate([router.url,"building",id])
                         
                     })
           })
