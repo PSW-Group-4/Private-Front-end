@@ -25,15 +25,14 @@ export class RoomsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     var buildingId = '';
-    console.log(this.route)
     this.route.params.subscribe((params: Params) => {
       this.id = params['id'];
       buildingId = params['buildingId']
     }); 
 
     this.buildingId = buildingId;
-    console.log(this.id);
     this.mapsFacade.getRoomMapsByFloorMapId$(this.id).subscribe(res=>{
       this.map$ = res;
       
@@ -94,8 +93,11 @@ export class RoomsComponent implements OnInit {
     this.mapsFacade.getSelectedRoomMap$().subscribe({
       next : (v) => 
       {
-        this.someId = v.id;
-        this.ngOnInit();
+        if(v.id != "") {
+          this.someId = v.id;
+          this.FooTemp(v);
+          this.ngOnInit();
+        }
       }
     })
   }
