@@ -6,6 +6,7 @@ import { MapsFacade } from '../../maps.facade';
 import { MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import { EditItemComponent } from '../../containers/edit-item/edit-item.component';
 import { EquiptmentDialogComponent } from '../../containers/equiptment-dialog/equiptment-dialog.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-rooms',
@@ -19,6 +20,7 @@ export class RoomsComponent implements OnInit {
   buildingId:string = ''
   someId: string = '';
   public showRoomDetailComponent = false;
+  sub: Subscription = new Subscription;
 
   constructor( private route: ActivatedRoute, private router: Router, private mapsFacade:MapsFacade, public dialog: MatDialog) { 
 
@@ -90,7 +92,7 @@ export class RoomsComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    this.mapsFacade.getSelectedRoomMap$().subscribe({
+    this.sub = this.mapsFacade.getSelectedRoomMap$().subscribe({
       next : (v) => 
       {
         if(v.id != "") {
@@ -139,6 +141,8 @@ export class RoomsComponent implements OnInit {
 
 
   goBack():void{
+    this.showRoomDetailComponent = false;
+    this.sub.unsubscribe();
     this.router.navigate(["maps/building",this.buildingId]); 
   }
 
