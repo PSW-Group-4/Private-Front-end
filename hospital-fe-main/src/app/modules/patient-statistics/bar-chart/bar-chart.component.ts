@@ -25,13 +25,11 @@ export class BarChartComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    //this.chart.destroy();
     this.createChart();
   }
 
   ngOnInit(): void {
-    this.chartData = this.service.getNumOfPatientsByAgeGroup();
-    this.createChart();
+    //this.createChart();
   }
 
   createChart() {
@@ -41,8 +39,8 @@ export class BarChartComponent implements OnInit, OnChanges {
     this.chartValues = [];
     this.chartLabels = [];
     for (let item of this.chartData) {
-      this.chartValues.push(item.numb);
-      this.chartLabels.push(item.ageGroup);
+      this.chartValues.push(item.patientCount);
+      this.chartLabels.push(item.ageGroup.gropuName);
     }
 
     this.chart = new Chart('MyChart', {

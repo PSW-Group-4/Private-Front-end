@@ -1,6 +1,8 @@
+import { NumberOfPatientsByGenderDto } from './../model/numOfPatientsByGenderDto.model';
 import { StatisticsService } from './../services/statistics.service';
 import { Component, OnInit } from '@angular/core';
 import { DoctorDto } from '../model/doctorDto.model';
+import { NumberOfPatientsByAgeGroupDto } from '../model/numOfPatientsByAgeGroupDto.model';
 
 @Component({
   selector: 'app-age-statistics',
@@ -10,22 +12,29 @@ import { DoctorDto } from '../model/doctorDto.model';
 export class AgeStatisticsComponent implements OnInit {
   service: StatisticsService;
   doctors: DoctorDto[] = [];
-  numOfPatientsByAgreGroup: any;
+  numOfPatientsByAgreGroup: NumberOfPatientsByAgeGroupDto[] = [];
+  numOfPatientsByGender: NumberOfPatientsByGenderDto[] = [];
 
   constructor(service: StatisticsService) {
     this.service = service;
   }
 
   ngOnInit(): void {
-    this.doctors = this.service.getAllDoctors();
-    this.numOfPatientsByAgreGroup = this.service.getNumOfPatientsByAgeGroup();
+    this.service.getAllDoctors().subscribe((res) => {
+      this.doctors = res;
+    });
+    this.service.getNumOfPatientsByAgeGroup().subscribe((res) => {
+      this.numOfPatientsByAgreGroup = res;
+    });
+
+    this.service.getNumOfPatientsByGender().subscribe((res) => {
+      this.numOfPatientsByGender = res;
+    });
   }
 
   changeStatistics(input: string) {
-    if (input !== 'all') {
-      input = input.toString();
-    }
-    this.numOfPatientsByAgreGroup =
-      this.service.getNumOfPatientsByAgeGroupByDoctor(input);
+    this.service.getNumOfPatientsByAgeGroupByDoctor(input).subscribe((res) => {
+      this.numOfPatientsByAgreGroup = res;
+    });
   }
 }

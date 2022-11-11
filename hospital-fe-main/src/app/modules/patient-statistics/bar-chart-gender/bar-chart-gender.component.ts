@@ -1,6 +1,7 @@
 import { StatisticsService } from './../services/statistics.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { Chart } from 'chart.js';
+import { NumberOfPatientsByGenderDto } from '../model/numOfPatientsByGenderDto.model';
 
 @Component({
   selector: 'app-bar-chart-gender',
@@ -9,19 +10,30 @@ import { Chart } from 'chart.js';
 })
 export class BarChartGenderComponent implements OnInit {
   service: StatisticsService;
-  private chartValues: any;
+  @Input() chartData: any;
+  private chartValues: number[] = [];
   public chart: any;
 
   constructor(service: StatisticsService) {
     this.service = service;
   }
 
-  ngOnInit(): void {
-    this.chartValues = this.service.getNumOfPatientsByGender();
+  ngOnInit(): void {}
+
+  ngOnChanges(changes: SimpleChanges): void {
     this.createChart();
   }
 
   createChart() {
+    if (this.chart !== undefined) {
+      this.chart.destroy();
+    }
+
+    this.chartValues = [];
+    for (let item of this.chartData) {
+      this.chartValues.push(item.patientCount);
+    }
+
     this.chart = new Chart('MyChart1', {
       type: 'bar', //this denotes tha type of chart
 
@@ -31,7 +43,7 @@ export class BarChartGenderComponent implements OnInit {
         datasets: [
           {
             label: 'Num of Patients',
-            data: [this.chartValues.male, this.chartValues.female],
+            data: this.chartValues,
             backgroundColor: 'rgb(87, 127, 219)',
           },
         ],

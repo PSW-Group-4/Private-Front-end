@@ -14,7 +14,7 @@
               value="{{ item.id }}"
               (click)="changeStatistics(item.id)"
             >
-              {{ item.fullname }}
+              {{ item.name + " " + item.surname }}
             </option>
           </select>
         </div>
@@ -23,13 +23,18 @@
             <tr>
               <th>Age Group</th>
               <th *ngFor="let item of numOfPatientsByAgreGroup">
-                {{ item.ageGroup }}
+                {{ item.ageGroup.gropuName }} ({{ item.ageGroup.minAge }}
+                {{
+                  item.ageGroup.maxAge == 999
+                    ? "+"
+                    : "- " + item.ageGroup.maxAge
+                }})
               </th>
             </tr>
             <tr>
               <th>Num of Patients</th>
               <td *ngFor="let item of numOfPatientsByAgreGroup">
-                {{ item.numb }}
+                {{ item.patientCount }}
               </td>
             </tr>
           </table>
@@ -42,6 +47,10 @@
     <mat-grid-tile>
       <app-gender-statistics></app-gender-statistics>
     </mat-grid-tile>
-    <mat-grid-tile><app-bar-chart-gender></app-bar-chart-gender></mat-grid-tile>
+    <mat-grid-tile
+      ><app-bar-chart-gender
+        [chartData]="numOfPatientsByGender"
+      ></app-bar-chart-gender
+    ></mat-grid-tile>
   </mat-grid-list>
 </div>
