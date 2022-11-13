@@ -12,8 +12,9 @@ import { EditBuildingComponent } from './containers/edit-item/edit-building/edit
 import { EditFloorComponent } from './containers/edit-item/edit-floor/edit-floor.component';
 import { EquiptmentDialogComponent } from './containers/equiptment-dialog/equiptment-dialog.component';
 import { SearchComponent } from './mapDisplay/search/search.component';
-
-
+import { FilterPipe } from './mapDisplay/search/filter-pipes/filter-pipe';
+import { FilterPipeEquipment } from './mapDisplay/search/filter-pipes/filter-equipment-pipe';
+import { MapsMainContainerComponent } from './containers/maps-main-container/maps-main-container.component';
 
 
 @NgModule({
@@ -25,7 +26,10 @@ import { SearchComponent } from './mapDisplay/search/search.component';
     EditBuildingComponent,
     EditFloorComponent,
     EquiptmentDialogComponent,
-    SearchComponent
+    SearchComponent,
+    FilterPipe,
+    FilterPipeEquipment,
+    MapsMainContainerComponent
   ],
   imports: [
     CommonModule,

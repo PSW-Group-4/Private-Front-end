@@ -33,7 +33,7 @@ export class EditItemComponent implements OnInit {
   public updateRoom(): void {
     this.roomService.updateRoom(this.roomOutput).subscribe(res => {
     });
-    
+    window.location.reload();
   }
 
 }
