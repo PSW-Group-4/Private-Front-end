@@ -5,7 +5,7 @@
         <div class="my-2">
             <mat-form-field appearance="fill">
                 <mat-label>Količina</mat-label>
-                <input type="number" matInput>
+                <input type="number" matInput [(ngModel)]="amount">
             </mat-form-field>
         </div>
         <div class="my-2">
@@ -19,11 +19,14 @@
         <div class="my-2">
             <mat-form-field appearance="fill">
                 <mat-label>Razlog</mat-label>
-                <textarea matInput></textarea>
+                <textarea matInput [(ngModel)]="reason"></textarea>
             </mat-form-field>
         </div>
         <div class="mb-4">
-            <button mat-raised-button color="primary">Kreiraj</button>
+            <button mat-raised-button color="primary" (click)="createRecord()">Kreiraj</button>
+        </div>
+        <div style="color: {{statusColor}}">
+            <h3>{{statusText}}</h3>
         </div>
     </mat-card>
 </div>
