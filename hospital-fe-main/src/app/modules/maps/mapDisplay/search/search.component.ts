@@ -25,43 +25,24 @@ export class SearchComponent implements OnInit {
       this.mapsFacade.getBuildingMaps$().subscribe({
         next : (v) => this.buildings = v
       })
+      this.mapsFacade.getRoomMaps$().subscribe(res=>{
+        this.maps$ = res;
+      })
    }
 
   ngOnInit(): void {
-    this.mapsFacade.getRoomMaps$().subscribe(res=>{
-      this.maps$ = res;
-    })
+   
   }
 
-  async highlight(room: RoomMap): Promise<void> {
-    this.router.navigate([this.getUrl(room)]);
-    await delay(100)
-    this.mapsFacade.setSelectedRoomMap(room);
-    
+  highlight(room: RoomMap){
+    this.router.navigate([this.getUrl(room)]).then(() => 
+      this.mapsFacade.setSelectedRoomMap(room)
+    );
   }
 
   getUrl(roomMap: RoomMap): string {
-    var buildingId = '';
-    this.buildings.forEach(building => {
-      building.building.floorList.forEach(floor => {
-        floor.roomList.forEach(room => {
-          if(roomMap.room.id == room.id) {
-            buildingId = building.id;
-          }
-        });
-      });
-    });
-
-    var floorId = '';
-    this.floors.forEach(floor => {
-      floor.floor.roomList.forEach(room => {
-        if(roomMap.room.id == room.id) {
-          floorId = floor.id;
-        }
-      });
-    });
-
-    return "room-maps/"+floorId+"/"+buildingId;
+    var data = this.mapsFacade.getDataByRoomMapId(roomMap.id);
+    return "maps/building/"+data[2]+"/floor/"+data[1];
   }
 
 }

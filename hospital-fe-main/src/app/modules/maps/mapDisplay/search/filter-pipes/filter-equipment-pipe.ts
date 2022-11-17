@@ -15,6 +15,7 @@ export class FilterPipeEquipment implements PipeTransform {
             for (let eq of user.room.equipmentList){
                 if (eq.name.toLowerCase().includes(filterString.toLowerCase())) {
                     filteredUsers.push(user);
+                    break;
                   }
             }
         }
