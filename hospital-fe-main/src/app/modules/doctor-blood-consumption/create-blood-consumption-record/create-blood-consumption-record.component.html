@@ -1,0 +1,32 @@
+<div class="d-flex justify-content-center">
+    <mat-card class="border rounded-3 border-3 mt-5 w-50">
+        <h2>Kreiraj novu evidenciju o potrošnji krvi</h2>
+        <hr>
+        <div class="my-2">
+            <mat-form-field appearance="fill">
+                <mat-label>Količina</mat-label>
+                <input type="number" matInput [(ngModel)]="amount">
+            </mat-form-field>
+        </div>
+        <div class="my-2">
+            <mat-form-field appearance="fill">
+                <mat-label>Tip krvi</mat-label>
+                <mat-select name="bloodType" [(ngModel)]="selectedBloodType">
+                    <mat-option *ngFor="let bt of bloodTypes" [value]="bt">{{bt}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="my-2">
+            <mat-form-field appearance="fill">
+                <mat-label>Razlog</mat-label>
+                <textarea matInput [(ngModel)]="reason"></textarea>
+            </mat-form-field>
+        </div>
+        <div class="mb-4">
+            <button mat-raised-button color="primary" (click)="createRecord()">Kreiraj</button>
+        </div>
+        <div style="color: {{statusColor}}">
+            <h3>{{statusText}}</h3>
+        </div>
+    </mat-card>
+</div>
