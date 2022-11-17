@@ -24,6 +24,7 @@ import { DoctorBloodConsumptionComponent } from './modules/doctor-blood-consumpt
 import { CreateBloodConsumptionRecordComponent } from './modules/doctor-blood-consumption/create-blood-consumption-record/create-blood-consumption-record.component';
 import { RequestMoreBloodComponent } from './modules/doctor-blood-consumption/request-more-blood/request-more-blood.component';
 import { AdmissionViewComponent } from "./modules/admission-view/admission-view.component";
+import { EquipmentMoveModule } from "./modules/equipment-move/equipment-move.module";
 
 
 @NgModule({
@@ -56,6 +57,7 @@ import { AdmissionViewComponent } from "./modules/admission-view/admission-view.
     Ng2SearchPipeModule,
     DoctorAppointmentsModule,
     MapsModule,
+    EquipmentMoveModule,
     DoctorVacationModule
   ],
   providers: [],
