@@ -31,7 +31,7 @@ import { RequestMoreBloodComponent } from './modules/doctor-blood-consumption/re
     AppComponent,
     ManagerFeedbackComponent,
     CheckBloodSuppliesDialog,
-    AdmissionViewComponent
+    AdmissionViewComponent,
     DoctorBloodConsumptionComponent,
     CreateBloodConsumptionRecordComponent,
     RequestMoreBloodComponent,
