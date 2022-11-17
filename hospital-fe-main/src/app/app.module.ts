@@ -13,6 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HospitalModule } from './modules/hospital/hospital.module';
 import { PagesModule } from './modules/pages/pages.module';
 import { ManagerFeedbackComponent } from './manager-feedback/manager-feedback.component';
+import { NgChartsModule } from 'ng2-charts';
 import { DoctorAppointmentsModule } from './modules/doctor-appointments/doctor-appointments.module';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MapsModule } from './modules/maps/maps.module';
@@ -21,13 +22,24 @@ import {
   BloodBanksComponent,
   CheckBloodSuppliesDialog,
 } from './modules/hospital/blood-banks/blood-banks.component';
-import { NgChartsModule } from 'ng2-charts';
+import { AdmissionComponent } from './admission/admission.component';
+import { DoctorVacationModule } from './modules/doctor-vacation/doctor-vacation.module';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { DoctorBloodConsumptionComponent } from './modules/doctor-blood-consumption/doctor-blood-consumption.component';
+import { CreateBloodConsumptionRecordComponent } from './modules/doctor-blood-consumption/create-blood-consumption-record/create-blood-consumption-record.component';
+import { RequestMoreBloodComponent } from './modules/doctor-blood-consumption/request-more-blood/request-more-blood.component';
+import { AdmissionViewComponent } from './modules/admission-view/admission-view.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ManagerFeedbackComponent,
     CheckBloodSuppliesDialog,
+    AdmissionViewComponent,
+    DoctorBloodConsumptionComponent,
+    CreateBloodConsumptionRecordComponent,
+    RequestMoreBloodComponent,
+    AdmissionComponent,
   ],
   imports: [
     CommonModule,
@@ -44,11 +56,12 @@ import { NgChartsModule } from 'ng2-charts';
     PagesModule,
     HospitalModule,
     MatNativeDateModule,
-
-    DoctorAppointmentsModule,
-    MapsModule,
     PatientStatisticsModule,
     NgChartsModule,
+    Ng2SearchPipeModule,
+    DoctorAppointmentsModule,
+    MapsModule,
+    DoctorVacationModule,
   ],
   providers: [],
   bootstrap: [AppComponent, BloodBanksComponent],

@@ -9,6 +9,7 @@ import { MapsFacade } from '../../maps.facade';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 
 import { Floor } from '../../models/floor.model';
+import { isString } from '@ng-bootstrap/ng-bootstrap/util/util';
 
 @Component({
   selector: 'app-floors',
@@ -27,21 +28,20 @@ export class FloorsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
-    this.route.params.subscribe((params: Params) => {
-      this.id = params['id'];
-    }); 
+    var v = this.route.snapshot.paramMap.get("id");
+    if (v != null){
+      this.id = v
+    }
+  }
 
-
-    console.log ("id ", this.id );
+  ngAfterViewInit() {
     this.mapsFacade.getFloorMapsByBuildingMapId$(this.id).subscribe(res=>{
       this.map$ = res;
-      console.log(this.map$);
 
       if (d3.select("#maps") != null) {
         d3.select("#maps").remove()
       } 
-
+      var buildingId = this.id;
 
       var svg = d3.select("#floorMap")
       .classed('container', true)
@@ -51,7 +51,8 @@ export class FloorsComponent implements OnInit {
       .attr("width", 600)
 
       var router:Router = this.router;
-      var buildings = svg.selectAll("g")
+
+      var floors = svg.selectAll("g")
       .data(this.map$)
       .enter()
       .append("g")
@@ -61,16 +62,13 @@ export class FloorsComponent implements OnInit {
                   .on('dblclick', function(e, d) {
                     var id = d3.select(this).attr("id");
                     d3.select(this)
-                      router.navigate(['/room-maps',id]) .then(() => {
-                        window.location.reload();
-                      });
-                      
+                      router.navigate([router.url,"floor",id])        
                   });
         })
       } )
       .on('click', d => this.FooTemp(d.srcElement.__data__));
 
-      buildings.append('rect')
+      floors.append('rect')
       .attr("fill", '#61B1DC')
       .attr("x", d => d.coordinateX+100)
       .attr("y", d => d.coordinateY+100)
@@ -79,7 +77,7 @@ export class FloorsComponent implements OnInit {
       .attr("stroke", "black")
       .attr("id", d=> d.id)
       
-      buildings.append('text')
+      floors.append('text')
       .style("fill", "black")
       .text(function(d) {
         return d.floor.name;
@@ -108,6 +106,10 @@ export class FloorsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
     });
+  }
+
+  goBack():void{
+    this.router.navigate(['/maps']);
   }
     
 }

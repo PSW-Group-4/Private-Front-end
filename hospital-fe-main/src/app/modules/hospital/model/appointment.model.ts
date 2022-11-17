@@ -16,6 +16,5 @@ export class Appointment {
             this.roomId = obj.roomId;
             this.dateTime = obj.dateTime;     
         }
-
     }
 }

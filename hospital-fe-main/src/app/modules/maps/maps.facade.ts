@@ -1,11 +1,13 @@
 import { Injectable } from "@angular/core";
-import { Observable, shareReplay } from "rxjs";
+import { map, Observable, shareReplay } from "rxjs";
 import { BuildingMap } from "./models/building-map.model";
 import { FloorMap } from "./models/floor-map.model";
+import { HashMap } from "./models/maps-hashmap.model";
 import { RoomMap } from "./models/room-map.model";
 import { BuildingMapService } from "./services/building-map.service";
 import { FloorMapService } from "./services/floor-map.service";
 import { RoomMapService } from "./services/room-map.service";
+import { MapsState } from "./state/maps.state";
 
 
 
@@ -17,9 +19,10 @@ export class MapsFacade {
   private roomMaps$: Observable<RoomMap[]>;
   private floorMaps$: Observable<FloorMap[]>;
   private buildingMaps$: Observable<BuildingMap[]>;
+  private hashm: HashMap[] = [];
   
   constructor(private buildingMapService: BuildingMapService, private floorMapService: FloorMapService,
-         private roomMapService: RoomMapService) { 
+         private roomMapService: RoomMapService, private mapsState: MapsState) { 
           this.roomMaps$ = this.roomMapService
             .getRoomMaps()
             .pipe(shareReplay(1)); // cache the data
@@ -39,6 +42,10 @@ export class MapsFacade {
     return this.floorMaps$;
   }
   
+  getRoomMapById$(id: string): Observable<RoomMap> {
+    return this.roomMapService.getRoomMapById(id);
+  }
+
   getBuildingMaps$(): Observable<BuildingMap[]> {
     return this.buildingMaps$;
   }
@@ -51,4 +58,66 @@ export class MapsFacade {
     return this.roomMapService.getRoomMapsByFloorMapId(id);
   }
 
+  setSelectedRoomMap(roomMap : RoomMap) {
+    return this.mapsState.setSelectedRoomMap(roomMap);
+  }
+
+  getSelectedRoomMap$() : Observable<RoomMap> {
+    return this.mapsState.getSelectedRoomMap$();
+  }
+
+  getDataByRoomMapId(roomId: string) : string[]{
+    if(this.hashm.length == 0) {
+      this.createMap();
+    }
+    
+    var rv :string[] = [];
+    for (let element of this.hashm) {
+      if(element.roomMapId == roomId) {
+        rv.push(element.roomMapId);
+        rv.push(element.floorMapId);
+        rv.push(element.buildingMapId);
+        break;
+      }
+    }
+    return rv;
+  }
+
+  createMap() {
+    var buildingId = '';
+    var roomId = '';
+    var floorId = '';
+
+    this.roomMaps$.forEach(roomMaps => {
+      roomMaps.forEach(roomMap => {
+        roomId = roomMap.id;
+        this.buildingMaps$.forEach(buildings => {
+          buildings.forEach(building => {
+            building.building.floorList.forEach(floor => {
+              floor.roomList.forEach(room => {
+                if(roomMap.room.id == room.id) {
+                  buildingId = building.id;
+                }
+              });
+            });
+          });
+        });
+        this.floorMaps$.forEach(floors => {
+          floors.forEach(floor => {
+            floor.floor.roomList.forEach(room => {
+              if(roomMap.room.id == room.id) {
+                floorId = floor.id;
+              }
+            });
+          })
+         })
+         var temp = new HashMap();
+          temp.roomMapId = roomId;
+          temp.floorMapId = floorId;
+          temp.buildingMapId = buildingId;
+          this.hashm.push(temp);
+      });
+    });
+  
+  }
 }

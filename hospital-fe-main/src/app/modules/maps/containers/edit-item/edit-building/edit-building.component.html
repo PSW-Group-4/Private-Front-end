@@ -9,7 +9,7 @@
         <input matInput [(ngModel)]="building.building.name">
     </mat-form-field><br>
 
-    <button mat-stroked-button (click)="updateBuilding()">
+    <button mat-stroked-button (click)="updateBuilding()" [mat-dialog-close]="">
         Submit
     </button>
 </div>
