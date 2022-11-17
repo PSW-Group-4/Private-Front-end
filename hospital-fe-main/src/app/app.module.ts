@@ -20,10 +20,10 @@ import { BloodBanksComponent, CheckBloodSuppliesDialog } from './modules/hospita
 import { AdmissionComponent } from './admission/admission.component';
 import { DoctorVacationModule } from "./modules/doctor-vacation/doctor-vacation.module";
 import { Ng2SearchPipeModule } from "ng2-search-filter";
-import { AdmissionViewComponent } from './modules/admission-view/admission-view.component';
 import { DoctorBloodConsumptionComponent } from './modules/doctor-blood-consumption/doctor-blood-consumption.component';
 import { CreateBloodConsumptionRecordComponent } from './modules/doctor-blood-consumption/create-blood-consumption-record/create-blood-consumption-record.component';
 import { RequestMoreBloodComponent } from './modules/doctor-blood-consumption/request-more-blood/request-more-blood.component';
+import { AdmissionViewComponent } from "./modules/admission-view/admission-view.component";
 
 
 @NgModule({
