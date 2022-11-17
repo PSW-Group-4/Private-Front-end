@@ -20,6 +20,7 @@ import { BloodBanksComponent, CheckBloodSuppliesDialog } from './modules/hospita
 import { AdmissionComponent } from './admission/admission.component';
 import { DoctorVacationModule } from "./modules/doctor-vacation/doctor-vacation.module";
 import { Ng2SearchPipeModule } from "ng2-search-filter";
+import { AdmissionViewComponent } from './modules/admission-view/admission-view.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { Ng2SearchPipeModule } from "ng2-search-filter";
     AppComponent,
     ManagerFeedbackComponent,
     CheckBloodSuppliesDialog,
-    AdmissionComponent
+    AdmissionComponent,
+    AdmissionViewComponent
   ],
   imports: [
     CommonModule,

@@ -6,6 +6,7 @@ import { ManagerFeedbackComponent } from "./manager-feedback/manager-feedback.co
 import { DoctorAppointmentsComponent } from "./modules/doctor-appointments/doctor-appointments/doctor-appointments.component";
 import { AdmissionComponent } from "./admission/admission.component";
 import { DoctorVacationsComponent } from "./modules/doctor-vacation/doctor-vacations/doctor-vacations.component";
+import { AdmissionViewComponent } from "./modules/admission-view/admission-view.component";
 
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'doctorAppointments', component: DoctorAppointmentsComponent},
   { path: 'admission', component: AdmissionComponent},
   { path: 'vacations', component: DoctorVacationsComponent},
+  { path: 'admissionView', component: AdmissionViewComponent}
 ];
 
 @NgModule({
