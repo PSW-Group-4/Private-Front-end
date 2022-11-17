@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Room } from '../../models/room.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Room } from '../model/room.model';
+
 
 
 @Injectable({

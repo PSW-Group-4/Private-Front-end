@@ -3,9 +3,11 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { EquipmentList } from 'src/app/modules/shared/model/equipment-list.model';
+import { Equipment } from 'src/app/modules/shared/model/equipment.model';
+import { Room } from 'src/app/modules/shared/model/room.model';
 import { MapsFacade } from '../../maps.facade';
-import { Equipment } from '../../models/equipment.model';
-import { Room } from '../../models/room.model';
+
 
 @Component({
   selector: 'app-equiptment-dialog',
@@ -14,7 +16,7 @@ import { Room } from '../../models/room.model';
 })
 export class EquiptmentDialogComponent implements OnInit {
   displayedColumns = ['id', 'name', 'amount'];
-  dataSource : MatTableDataSource<Equipment> = new MatTableDataSource();
+  dataSource : MatTableDataSource<EquipmentList> = new MatTableDataSource();
   isUpdating : boolean = true;
   clickedRoom: Room = new Room;  
   
@@ -26,7 +28,7 @@ export class EquiptmentDialogComponent implements OnInit {
     mapsFacade.getRoomMapById$(data.id).subscribe({
       next: (v) => {
         this.clickedRoom = v.room
-        this.dataSource = new MatTableDataSource<Equipment>(this.clickedRoom.equipmentList);
+        this.dataSource = new MatTableDataSource<EquipmentList>(this.clickedRoom.roomsEquipment);
         this.isUpdating = false;
       }
     })

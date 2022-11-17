@@ -1,3 +1,4 @@
+import { EquipmentList } from "./equipment-list.model";
 import { Equipment } from "./equipment.model";
 
 export class Room {
@@ -6,13 +7,13 @@ export class Room {
     description: string = '';
     name: string = '';    
     number: number = 0;
-    equipmentList:Equipment[] = [];
+    roomsEquipment:EquipmentList[] = [];
     public constructor(obj?: any) {
         if (obj) {  
             this.id = obj.id;
             this.description = obj.description;
             this.name = obj.name;
-            this.equipmentList = obj.equipmentList;
+            this.roomsEquipment = obj.equipmentList;
         }
     }
 }

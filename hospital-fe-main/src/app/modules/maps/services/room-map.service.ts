@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { RoomMap } from '../models/room-map.model';
-import { Room } from '../models/room.model';
+import { Room } from '../../shared/model/room.model';
 
 @Injectable({
   providedIn: 'root'

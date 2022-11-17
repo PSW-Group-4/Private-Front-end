@@ -15,6 +15,7 @@ import { SearchComponent } from './mapDisplay/search/search.component';
 import { FilterPipe } from './mapDisplay/search/filter-pipes/filter-pipe';
 import { FilterPipeEquipment } from './mapDisplay/search/filter-pipes/filter-equipment-pipe';
 import { MapsMainContainerComponent } from './containers/maps-main-container/maps-main-container.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { MapsMainContainerComponent } from './containers/maps-main-container/map
     CommonModule,
     MapsRoutingModule,
     MaterialModule,
+    SharedModule,
     BrowserAnimationsModule,
     FormsModule
   ]
