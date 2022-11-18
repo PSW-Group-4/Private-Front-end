@@ -1,1 +1,30 @@
-<p>move-equipment works!</p>
+<div>
+    <mat-stepper linear #stepper>
+        <mat-step [editable]="true">
+            <ng-template matStepLabel>Choose source room</ng-template>
+            <app-show-room-info></app-show-room-info>
+        </mat-step>
+        <mat-step [editable]="true">
+            <ng-template matStepLabel>Choose equipment and quantity</ng-template>
+            <app-select-equipment></app-select-equipment>
+        </mat-step>
+        <mat-step [editable]="true">
+            <ng-template matStepLabel>Choose destination room</ng-template>
+            <app-show-room-info></app-show-room-info>
+        </mat-step>
+        <mat-step [editable]="true">
+            <ng-template matStepLabel>Choose date and duration</ng-template>
+        </mat-step>
+        <mat-step [editable]="true">
+            <ng-template matStepLabel>Choose appointment</ng-template>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Done</ng-template>
+          <p>You are now done.</p>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="stepper.reset()">Reset</button>
+          </div>
+        </mat-step>
+    </mat-stepper>
+</div>

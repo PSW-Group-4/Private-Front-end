@@ -1,0 +1,14 @@
+<div class="col position">
+    <mat-card>
+        <mat-card-title>
+            Room information:
+        </mat-card-title>
+        <mat-card-content>
+        <p>Name: {{selectedRoom.name}}</p> 
+        <p>Description: {{selectedRoom.description}}</p>
+        <p>Number: {{selectedRoom.number}}</p>
+        <p>Equipment List: {{selectedRoom.roomsEquipment.length}}</p>
+        </mat-card-content>
+        <button class="equipment-button" mat-raised-button matTooltip="Show equipment" color="primary" id ="button" (click)="openEqipmentDialog()">Equipment</button>
+    </mat-card>
+</div>
