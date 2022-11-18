@@ -26,7 +26,6 @@ import { SharedModule } from '../shared/shared.module';
     FloorsComponent,
     EditBuildingComponent,
     EditFloorComponent,
-    EquiptmentDialogComponent,
     SearchComponent,
     FilterPipe,
     FilterPipeEquipment,
