@@ -9,7 +9,7 @@ const routes: Routes = [
   children:[
     {path: "feedbacks", component:ManagerFeedbackComponent}
   ] },
-  { path: '', redirectTo: 'login', pathMatch: 'full' }
+  { path: '', redirectTo: 'manager', pathMatch: 'full' },
 ];
 
 
