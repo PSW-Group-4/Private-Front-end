@@ -13,6 +13,7 @@ import { ManagerRootComponent } from "./modules/manager/manager-root/manager-roo
 import { LoginComponent } from "./modules/login/login.component";
 import { IncognitoGuard } from "./auth/guards/incognito-guard.service";
 import { RoleGuardService as RoleGuard } from "./auth/guards/role-guard.service";
+import { DoctorRootComponent } from "./modules/doctor/doctor-root/doctor-root.component";
 
 
 
@@ -20,7 +21,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent, canActivate : [IncognitoGuard] },
   { path: 'home', component: HomeComponent }, // Jel ovo treba nekome?
   { path: 'manager', component: ManagerRootComponent, canActivate : [RoleGuard], data : {expectedRole : "Manager"} },
-  { path: 'doctorAppointments', component: DoctorAppointmentsComponent, canActivate : [RoleGuard], data : {expectedRole : "Doctor"}},
+  { path: 'doctor', component: DoctorRootComponent, canActivate : [RoleGuard], data : {expectedRole : "Doctor"}},
   { path: 'admission', component: AdmissionComponent},
   { path: 'vacations', component: DoctorVacationsComponent},
   { path: 'admissionView', component: AdmissionViewComponent},
@@ -29,7 +30,6 @@ const routes: Routes = [
   { path: '', redirectTo:'login', pathMatch : 'full'},
 ];
 
-  //{ path: '', redirectTo: 'landingPage', pathMatch: 'full' },
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

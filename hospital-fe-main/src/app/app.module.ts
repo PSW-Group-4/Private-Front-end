@@ -30,6 +30,9 @@ import { LoginModule } from "./modules/login/login.module";
 import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
 import { AuthInterceptor } from "./auth/auth.interceptor";
 import { ManagerRoutingModule } from "./modules/manager/manager-routing.module";
+import { DoctorRoutingModule } from "./modules/doctor/doctor-routing.module";
+import { DoctorRootComponent } from "./modules/doctor/doctor-root/doctor-root.component";
+import { DoctorModule } from "./modules/doctor/doctor.module";
 
 
 @NgModule({
@@ -64,9 +67,11 @@ import { ManagerRoutingModule } from "./modules/manager/manager-routing.module";
     DoctorAppointmentsModule,
     MapsModule,
     DoctorVacationModule,
-    ManagerModule,
     LoginModule,
-    ManagerRoutingModule
+    ManagerModule,
+    ManagerRoutingModule,
+    DoctorModule,
+    DoctorRoutingModule
   ],
   providers: [
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
