@@ -5,6 +5,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { MaterialModule } from "./material/material.module";
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -33,7 +34,7 @@ import { ManagerRoutingModule } from "./modules/manager/manager-routing.module";
 import { DoctorRoutingModule } from "./modules/doctor/doctor-routing.module";
 import { DoctorRootComponent } from "./modules/doctor/doctor-root/doctor-root.component";
 import { DoctorModule } from "./modules/doctor/doctor.module";
-
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,6 @@ import { DoctorModule } from "./modules/doctor/doctor.module";
     RequestMoreBloodComponent,
     AdmissionComponent,
     ManagerNewsPreviewComponent
-
   ],
   imports: [
     CommonModule,
@@ -57,6 +57,7 @@ import { DoctorModule } from "./modules/doctor/doctor.module";
     MaterialModule,
     MatAutocompleteModule,
     MatFormFieldModule,
+    MatButtonModule,
     ReactiveFormsModule,
     NgbModule,
     FormsModule,
@@ -71,7 +72,8 @@ import { DoctorModule } from "./modules/doctor/doctor.module";
     ManagerModule,
     ManagerRoutingModule,
     DoctorModule,
-    DoctorRoutingModule
+    DoctorRoutingModule,
+    FlexLayoutModule
   ],
   providers: [
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
