@@ -32,8 +32,16 @@ export class DoctorVacationService {
     return this.http.get<Vacation[]>(this.apiHost + 'api/Vacation/AllVacationsRequests/' + id, {headers: this.headers});
   }
 
+  getVacationByID(id: string): Observable<Vacation> {
+    return this.http.get<Vacation>(this.apiHost + 'api/Vacation/' + id, {headers: this.headers});
+  }
+
   getVacations(): Observable<Vacation[]> {
     return this.http.get<Vacation[]>(this.apiHost + 'api/Vacation', {headers: this.headers});
+  }
+
+  updateVacation(vacation: Vacation): Observable<Vacation> {
+    return this.http.put<Vacation>(this.apiHost + 'api/Vacation/' + vacation.Id, vacation, {headers: this.headers});
   }
 
   deleteAppointment(id: any): Observable<any> {
