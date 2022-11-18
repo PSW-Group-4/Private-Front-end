@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { DoctorRootComponent } from './doctor-root/doctor-root.component';
 import { RoleGuardService as RoleGuard } from 'src/app/auth/guards/role-guard.service';
-import { DoctorAppointmentsComponent } from '../doctor-appointments/doctor-appointments/doctor-appointments.component';
+import { DoctorAppointmentsComponent } from './doctor-appointments/doctor-appointments/doctor-appointments.component';
 
 
 const routes: Routes = [

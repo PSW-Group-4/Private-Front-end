@@ -12,7 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HospitalModule } from "./modules/hospital/hospital.module";
 import { PagesModule } from "./modules/pages/pages.module";
 import { ManagerFeedbackComponent } from './modules/manager/manager-feedback/manager-feedback.component';
-import { DoctorAppointmentsModule } from "./modules/doctor-appointments/doctor-appointments.module";
+import { DoctorAppointmentsModule } from "./modules/doctor/doctor-appointments/doctor-appointments.module";
 import { MatNativeDateModule } from "@angular/material/core";
 import { MapsModule } from "./modules/maps/maps.module";
 import { CommonModule } from '@angular/common'; 
