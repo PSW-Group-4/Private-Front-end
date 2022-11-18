@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { Room } from 'src/app/modules/shared/model/room.model';
+import { EquipmentMoveFacade } from '../../equipment-move.facade';
 
 @Component({
   selector: 'app-move-equipment',
@@ -7,9 +10,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MoveEquipmentComponent implements OnInit {
 
-  constructor() { }
+
+  
+  roomList : Room[] = [];
+  selectedSource: BehaviorSubject<Room> = new BehaviorSubject(new Room);
+  source : Room = new Room();
+
+  selectedDestination : BehaviorSubject<Room> = new BehaviorSubject(new Room);
+  destination : Room = new Room();
+
+  constructor(private facade : EquipmentMoveFacade) { }
 
   ngOnInit(): void {
+    this.facade.getRooms$().subscribe({
+      next : (v) => {
+        this.roomList = v;
+      }
+    })
+  }
+
+  resestSourceForm() {
+    this.selectedSource.next(this.source);
+  }
+  resestDestinationForm() {
+    this.selectedDestination.next(this.destination);
   }
 
 }

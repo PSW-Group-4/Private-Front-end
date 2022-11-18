@@ -2,15 +2,26 @@
     <mat-stepper linear #stepper>
         <mat-step [editable]="true">
             <ng-template matStepLabel>Choose source room</ng-template>
-            <app-show-room-info></app-show-room-info>
+            <mat-select placeholder="Choose room" [(ngModel)]="source" (ngModelChange)="resestSourceForm()">
+                <mat-option *ngFor="let r of roomList" [value]="r">
+                   {{r.name}}
+                </mat-option>
+             </mat-select>
+            <app-show-room-info [selectedRoom]="selectedSource"></app-show-room-info>
         </mat-step>
+        
         <mat-step [editable]="true">
             <ng-template matStepLabel>Choose equipment and quantity</ng-template>
             <app-select-equipment></app-select-equipment>
         </mat-step>
         <mat-step [editable]="true">
             <ng-template matStepLabel>Choose destination room</ng-template>
-            <app-show-room-info></app-show-room-info>
+            <mat-select placeholder="Choose room" [(ngModel)]="destination" (ngModelChange)="resestDestinationForm()">
+                <mat-option *ngFor="let r of roomList" [value]="r">
+                   {{r.name}}
+                </mat-option>
+             </mat-select>
+            <app-show-room-info [selectedRoom]="selectedDestination"></app-show-room-info>
         </mat-step>
         <mat-step [editable]="true">
             <ng-template matStepLabel>Choose date and duration</ng-template>

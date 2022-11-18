@@ -1,4 +1,7 @@
 import { Injectable } from "@angular/core";
+import { Observable, shareReplay } from "rxjs";
+import { Room } from "../shared/model/room.model";
+import { RoomService } from "../shared/service/room.service";
 
 
 
@@ -6,5 +9,15 @@ import { Injectable } from "@angular/core";
     providedIn: 'root'
 })
 export class EquipmentMoveFacade {
-    constructor() { }
+    rooms$ : Observable<Room[]>;
+    constructor(private roomService : RoomService) {
+        this.rooms$ = this.roomService
+            .getRooms()
+            .pipe(shareReplay(1)); // cache the data
+    }
+
+    getRooms$(): Observable<Room[]> {
+        return this.rooms$;
+    }
+      
 }

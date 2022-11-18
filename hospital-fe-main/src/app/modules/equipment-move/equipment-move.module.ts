@@ -5,6 +5,8 @@ import { MoveEquipmentComponent } from './containers/move-equipment/move-equipme
 import { MaterialModule } from 'src/app/material/material.module';
 import { ShowRoomInfoComponent } from './components/show-room-info/show-room-info.component';
 import { SelectEquipmentComponent } from './components/select-equipment/select-equipment.component';
+import { FormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -17,6 +19,8 @@ import { SelectEquipmentComponent } from './components/select-equipment/select-e
   imports: [
     CommonModule,
     MaterialModule,
+    SharedModule,
+    FormsModule,
     EquipmentMoveRoutingModule
   ]
 })
