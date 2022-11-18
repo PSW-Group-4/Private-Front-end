@@ -1,19 +1,18 @@
-import { Doctor } from "./doctor.model";
-import { Patient } from "./patient.model";
-
-export class Appointment {
+export class BloodConsumptionRecord {
     Id: string = "";
     doctorId: string = '';
-    patientId: string = '';
-    roomId: string = '';
+    amount: number = 0;
+    bloodType: string = '';
+    reason: string = '';
     dateTime: string = '';
 
     public constructor(obj?: any) {
         if (obj) {
             this.Id = obj.Id;
             this.doctorId = obj.doctorId;
-            this.patientId = obj.patientId;
-            this.roomId = obj.roomId;
+            this.amount = obj.amount;
+            this.bloodType = obj.bloodType;
+            this.reason = obj.reason;
             this.dateTime = obj.dateTime;     
         }
     }

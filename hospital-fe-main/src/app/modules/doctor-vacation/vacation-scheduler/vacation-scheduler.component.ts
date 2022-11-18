@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
-import { CancelAppointmentDialogComponent } from '../../doctor-appointments/cancel-appointment-dialog/cancel-appointment-dialog.component';
+import { CancelAppointmentDialogComponent } from '../../doctor/doctor-appointments/cancel-appointment-dialog/cancel-appointment-dialog.component';
 import { Vacation } from '../../hospital/model/vacation.model';
 import { CancelVacationRequestDialogComponent } from '../cancel-vacation-request-dialog/cancel-vacation-request-dialog.component';
 import { DoctorVacationService } from '../doctor-vacation.service';
