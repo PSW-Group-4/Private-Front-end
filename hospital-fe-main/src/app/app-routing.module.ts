@@ -2,7 +2,7 @@ import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 
 import { HomeComponent } from "./modules/pages/home/home.component";
-import { ManagerFeedbackComponent } from "./manager-feedback/manager-feedback.component";
+import { ManagerFeedbackComponent } from "./modules/manager/manager-feedback/manager-feedback.component";
 import { DoctorAppointmentsComponent } from "./modules/doctor-appointments/doctor-appointments/doctor-appointments.component";
 import { AdmissionComponent } from "./admission/admission.component";
 import { DoctorVacationsComponent } from "./modules/doctor-vacation/doctor-vacations/doctor-vacations.component";

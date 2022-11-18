@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { RoleGuardService as RoleGuard } from 'src/app/auth/guards/role-guard.service';
-import { ManagerFeedbackComponent } from '../../manager-feedback/manager-feedback.component';
+import { ManagerFeedbackComponent } from './manager-feedback/manager-feedback.component';
 import { ManagerRootComponent } from './manager-root/manager-root.component';
 
 const routes: Routes = [
