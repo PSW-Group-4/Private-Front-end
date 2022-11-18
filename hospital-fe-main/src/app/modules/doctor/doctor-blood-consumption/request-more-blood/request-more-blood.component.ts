@@ -48,10 +48,11 @@ export class RequestMoreBloodComponent implements OnInit {
   }
 
   createRequestObject() {
-    this.bloodRequest.bloodType = this.bloodTypes.indexOf(this.selectedBloodType);
+    this.bloodRequest.bloodType = Math.floor(((this.bloodTypes.indexOf(this.selectedBloodType) / 2 ) + 1) % 4);
+    this.bloodRequest.rhfactor = this.bloodTypes.indexOf(this.selectedBloodType) % 2;
     this.bloodRequest.bloodAmountInMilliliters = this.amount;
     this.bloodRequest.reasonsWhyBloodIsNeeded = this.reason;
-    this.bloodRequest.dateTime = this.selectedDate.toDateString();
+    this.bloodRequest.dateTime = new Date(this.selectedDate).toISOString();
     this.bloodRequest.doctorId = '5c036fba-1118-4f4b-b153-90d75e60625e';
   }
 }

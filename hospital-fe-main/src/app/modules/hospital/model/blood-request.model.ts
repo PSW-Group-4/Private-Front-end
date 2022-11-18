@@ -3,6 +3,7 @@ export class BloodRequest {
     doctorId: string = '';
     bloodAmountInMilliliters: number = 0;
     bloodType: number = 0;
+    rhfactor: number = 0;
     reasonsWhyBloodIsNeeded: string = '';
     dateTime: string = '';
 
@@ -12,6 +13,7 @@ export class BloodRequest {
             this.doctorId = obj.doctorId;
             this.bloodAmountInMilliliters = obj.amount;
             this.bloodType = obj.bloodType;
+            this.rhfactor = obj.rhfactor;
             this.reasonsWhyBloodIsNeeded = obj.reason;
             this.dateTime = obj.dateTime;     
         }
