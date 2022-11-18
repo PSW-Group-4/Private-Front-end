@@ -14,6 +14,7 @@ import { LoginComponent } from "./modules/login/login.component";
 import { IncognitoGuard } from "./auth/guards/incognito-guard.service";
 import { RoleGuardService as RoleGuard } from "./auth/guards/role-guard.service";
 import { DoctorRootComponent } from "./modules/doctor/doctor-root/doctor-root.component";
+import { ManagerRoutingModule } from "./modules/manager/manager-routing.module";
 
 
 const routes: Routes = [
@@ -25,15 +26,17 @@ const routes: Routes = [
   { path: 'vacations', component: DoctorVacationsComponent},
   { path: 'login', component: LoginComponent, canActivate : [IncognitoGuard] },
   { path: 'home', component: HomeComponent }, // Jel ovo treba nekome?
-  { path: 'manager', component: ManagerRootComponent, canActivate : [RoleGuard], data : {expectedRole : "Manager"} },
-  { path: 'doctor', component: DoctorRootComponent, canActivate : [RoleGuard], data : {expectedRole : "Doctor"}},
+  { path: 'manager', component: ManagerRootComponent, canActivate : [RoleGuard], data : {expectedRole : "Manager"},
+    loadChildren: () => import('./modules/manager/manager-routing.module').then(m => m.ManagerRoutingModule)},
+  { path: 'doctor', component: DoctorRootComponent, canActivate : [RoleGuard], data : {expectedRole : "Doctor"},
+    loadChildren: () => import('./modules/doctor/doctor-routing.module').then(m => m.DoctorRoutingModule)},
   { path: 'admission', component: AdmissionComponent},
   { path: 'vacations', component: DoctorVacationsComponent},
   { path: 'admissionView', component: AdmissionViewComponent},
   { path: 'bloodConsumption', component: DoctorBloodConsumptionComponent},
   { path: 'managerNews', component: ManagerNewsPreviewComponent},
   { path: '', redirectTo:'login', pathMatch : 'full'},
-
+  { path: '**', redirectTo:'login', pathMatch : 'full'}
 ];
 
 @NgModule({
