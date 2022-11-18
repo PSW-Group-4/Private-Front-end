@@ -5,7 +5,7 @@ import * as d3 from 'd3';
 import { MapsFacade } from '../../maps.facade';
 import { MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import { EditItemComponent } from '../../containers/edit-item/edit-item.component';
-import { EquiptmentDialogComponent } from '../../containers/equiptment-dialog/equiptment-dialog.component';
+import { EquiptmentDialogComponent } from '../../../shared/components/equiptment-dialog/equiptment-dialog.component';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -131,7 +131,7 @@ export class RoomsComponent implements OnInit {
     const dialogConf = new MatDialogConfig();
 
     dialogConf.data = {
-      id: this.temp.id,
+      room: this.temp.room,
     };
     dialogConf.width = "700px";
     dialogConf.height = "800px";
