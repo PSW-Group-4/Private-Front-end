@@ -12,7 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HospitalModule } from "./modules/hospital/hospital.module";
 import { PagesModule } from "./modules/pages/pages.module";
 import { ManagerFeedbackComponent } from './modules/manager/manager-feedback/manager-feedback.component';
-import { DoctorAppointmentsModule } from "./modules/doctor-appointments/doctor-appointments.module";
+import { DoctorAppointmentsModule } from "./modules/doctor/doctor-appointments/doctor-appointments.module";
 import { MatNativeDateModule } from "@angular/material/core";
 import { MapsModule } from "./modules/maps/maps.module";
 import { CommonModule } from '@angular/common'; 
@@ -30,6 +30,9 @@ import { LoginModule } from "./modules/login/login.module";
 import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
 import { AuthInterceptor } from "./auth/auth.interceptor";
 import { ManagerRoutingModule } from "./modules/manager/manager-routing.module";
+import { DoctorRoutingModule } from "./modules/doctor/doctor-routing.module";
+import { DoctorRootComponent } from "./modules/doctor/doctor-root/doctor-root.component";
+import { DoctorModule } from "./modules/doctor/doctor.module";
 
 
 @NgModule({
@@ -64,9 +67,11 @@ import { ManagerRoutingModule } from "./modules/manager/manager-routing.module";
     DoctorAppointmentsModule,
     MapsModule,
     DoctorVacationModule,
-    ManagerModule,
     LoginModule,
-    ManagerRoutingModule
+    ManagerModule,
+    ManagerRoutingModule,
+    DoctorModule,
+    DoctorRoutingModule
   ],
   providers: [
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },

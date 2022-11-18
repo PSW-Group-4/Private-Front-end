@@ -21,7 +21,7 @@ export class IncognitoGuard implements CanActivate {
   private redirectToMainPage = () =>
   {
     var roleLandingPages = new Map<string, string>([
-      ['Doctor', 'doctorAppointments'],
+      ['Doctor', 'doctor'],
       ['Manager', 'manager']
     ]);
 

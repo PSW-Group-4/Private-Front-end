@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DoctorAppointmentService } from '../modules/doctor-appointments/doctor-appointment.service';
+import { DoctorAppointmentService } from '../modules/doctor/doctor-appointments/doctor-appointment.service';
 import { Patient } from '../modules/hospital/model/patient.model';
 import { Room } from '../modules/hospital/model/room.model';
 import { RoomService } from '../modules/hospital/services/room.service';
