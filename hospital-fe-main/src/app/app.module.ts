@@ -1,4 +1,4 @@
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { AppRoutingModule } from "./app-routing.module";
@@ -25,6 +25,11 @@ import { CreateBloodConsumptionRecordComponent } from './modules/doctor-blood-co
 import { RequestMoreBloodComponent } from './modules/doctor-blood-consumption/request-more-blood/request-more-blood.component';
 import { AdmissionViewComponent } from "./modules/admission-view/admission-view.component";
 import { ManagerNewsPreviewComponent } from './modules/hospital/manager-news-preview/manager-news-preview.component';
+import { ManagerModule } from "./modules/manager/manager.module";
+import { LoginModule } from "./modules/login/login.module";
+import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
+import { AuthInterceptor } from "./auth/auth.interceptor";
+import { ManagerRoutingModule } from "./modules/manager/manager-routing.module";
 
 
 @NgModule({
@@ -58,9 +63,20 @@ import { ManagerNewsPreviewComponent } from './modules/hospital/manager-news-pre
     Ng2SearchPipeModule,
     DoctorAppointmentsModule,
     MapsModule,
-    DoctorVacationModule
+    DoctorVacationModule,
+    ManagerModule,
+    LoginModule,
+    ManagerRoutingModule
   ],
-  providers: [],
+  providers: [
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+      JwtHelperService,
+    {
+      provide : HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent, BloodBanksComponent]
 })
 export class AppModule { }
