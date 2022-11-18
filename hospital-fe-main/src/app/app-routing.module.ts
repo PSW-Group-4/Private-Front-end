@@ -7,7 +7,6 @@ import { DoctorAppointmentsComponent } from "./modules/doctor/doctor-appointment
 import { AdmissionComponent } from "./admission/admission.component";
 import { DoctorVacationsComponent } from "./modules/doctor-vacation/doctor-vacations/doctor-vacations.component";
 import { AdmissionViewComponent } from "./modules/admission-view/admission-view.component";
-import { DoctorBloodConsumptionComponent } from "./modules/doctor-blood-consumption/doctor-blood-consumption.component";
 import { ManagerNewsPreviewComponent } from "./modules/hospital/manager-news-preview/manager-news-preview.component";
 import { ManagerRootComponent } from "./modules/manager/manager-root/manager-root.component";
 import { LoginComponent } from "./modules/login/login.component";
@@ -28,7 +27,6 @@ const routes: Routes = [
   { path: 'admission', component: AdmissionComponent},
   { path: 'vacations', component: DoctorVacationsComponent},
   { path: 'admissionView', component: AdmissionViewComponent},
-  { path: 'bloodConsumption', component: DoctorBloodConsumptionComponent},
   { path: 'managerNews', component: ManagerNewsPreviewComponent},
   { path: '', redirectTo:'login', pathMatch : 'full'},
   { path: '**', redirectTo:'login', pathMatch : 'full'}
@@ -43,7 +41,6 @@ export const routingComponents = [
   HomeComponent,
   ManagerFeedbackComponent,
   DoctorAppointmentsComponent,
-  DoctorBloodConsumptionComponent,
   AdmissionComponent,
   ManagerNewsPreviewComponent,
   LoginComponent,

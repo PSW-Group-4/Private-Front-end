@@ -131,8 +131,7 @@ export class AddOrEditAppointmentDialogComponent implements OnInit {
             dialog: this.dialogRef,
             isEdit: this.isEdit},
       height: '200px',
-      width: '400px',
-      //data: {name: this.name, animal: this.animal},
+      width: '400px'
     });
   }
 }
