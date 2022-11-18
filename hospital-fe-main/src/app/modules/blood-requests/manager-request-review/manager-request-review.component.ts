@@ -4,7 +4,9 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { BloodRequest } from '../blood-request.model';
+import { RejectionDialogComponent } from '../rejection-dialog/rejection-dialog.component';
 import { BloodRequestService } from './service/blood-request.service';
+
 
 
 @Component({
@@ -18,13 +20,27 @@ export class ManagerRequestReviewComponent implements OnInit {
   public bloodRequests: BloodRequest[] = [];
   bloodType: string = "";
 
+
   constructor(private bloodRequestService: BloodRequestService, private router: Router, private modalService: NgbModal, public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.bloodRequestService.getBloodRequests().subscribe(res => {
+    this.bloodRequestService.getUnapproved().subscribe(res => {
     this.bloodRequests = res;
     this.dataSource.data = this.bloodRequests;
     })
+  }
+  approveRequest(bloodRequest: BloodRequest) : void {
+    bloodRequest.isApproved = true;
+    this.bloodRequestService.update(bloodRequest).subscribe(res=>{
+      this.bloodRequestService.getUnapproved().subscribe(res =>{
+        this.bloodRequests = res;
+        this.dataSource.data = this.bloodRequests;
+      })
+
+    })
+  }
+  rejectRequest(bloodRequest: BloodRequest): void{
+    this.dialog.open(RejectionDialogComponent,{data :{bloodRequest}} );
   }
 
 }

@@ -1,0 +1,14 @@
+<div class="container">
+    <div>
+        <h2>Blood Bank Registration</h2>
+            <mat-label>Name</mat-label>
+            <input matInput [(ngModel)]="bloodRequest.rejectionComment">
+        <br>
+        <button mat-stroked-button (click)="rejectRequest()" mat-dialog-close [disabled]="!bloodRequest.rejectionComment.length">
+            Submit
+        </button>
+        <button mat-stroked-button mat-dialog-close>
+            Cancel
+        </button>
+    </div>
+</div>
