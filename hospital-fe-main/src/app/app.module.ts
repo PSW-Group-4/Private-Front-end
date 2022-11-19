@@ -1,20 +1,21 @@
 import { PatientStatisticsModule } from './modules/patient-statistics/patient-statistics.module';
-import { HttpClientModule } from '@angular/common/http';
+import { NgChartsModule } from 'ng2-charts';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MaterialModule } from './material/material.module';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HospitalModule } from './modules/hospital/hospital.module';
 import { PagesModule } from './modules/pages/pages.module';
-import { ManagerFeedbackComponent } from './manager-feedback/manager-feedback.component';
-import { NgChartsModule } from 'ng2-charts';
-import { DoctorAppointmentsModule } from './modules/doctor-appointments/doctor-appointments.module';
+import { ManagerFeedbackComponent } from './modules/manager/manager-feedback/manager-feedback.component';
+import { DoctorAppointmentsModule } from './modules/doctor/doctor-appointments/doctor-appointments.module';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MapsModule } from './modules/maps/maps.module';
 import { CommonModule } from '@angular/common';
@@ -29,6 +30,16 @@ import { DoctorBloodConsumptionComponent } from './modules/doctor-blood-consumpt
 import { CreateBloodConsumptionRecordComponent } from './modules/doctor-blood-consumption/create-blood-consumption-record/create-blood-consumption-record.component';
 import { RequestMoreBloodComponent } from './modules/doctor-blood-consumption/request-more-blood/request-more-blood.component';
 import { AdmissionViewComponent } from './modules/admission-view/admission-view.component';
+import { ManagerNewsPreviewComponent } from './modules/hospital/manager-news-preview/manager-news-preview.component';
+import { ManagerModule } from './modules/manager/manager.module';
+import { LoginModule } from './modules/login/login.module';
+import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { AuthInterceptor } from './auth/auth.interceptor';
+import { ManagerRoutingModule } from './modules/manager/manager-routing.module';
+import { DoctorRoutingModule } from './modules/doctor/doctor-routing.module';
+import { DoctorRootComponent } from './modules/doctor/doctor-root/doctor-root.component';
+import { DoctorModule } from './modules/doctor/doctor.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -40,6 +51,7 @@ import { AdmissionViewComponent } from './modules/admission-view/admission-view.
     CreateBloodConsumptionRecordComponent,
     RequestMoreBloodComponent,
     AdmissionComponent,
+    ManagerNewsPreviewComponent,
   ],
   imports: [
     CommonModule,
@@ -50,6 +62,7 @@ import { AdmissionViewComponent } from './modules/admission-view/admission-view.
     MaterialModule,
     MatAutocompleteModule,
     MatFormFieldModule,
+    MatButtonModule,
     ReactiveFormsModule,
     NgbModule,
     FormsModule,
@@ -62,8 +75,22 @@ import { AdmissionViewComponent } from './modules/admission-view/admission-view.
     DoctorAppointmentsModule,
     MapsModule,
     DoctorVacationModule,
+    LoginModule,
+    ManagerModule,
+    ManagerRoutingModule,
+    DoctorModule,
+    DoctorRoutingModule,
+    FlexLayoutModule,
   ],
-  providers: [],
+  providers: [
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+    JwtHelperService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent, BloodBanksComponent],
 })
 export class AppModule {}

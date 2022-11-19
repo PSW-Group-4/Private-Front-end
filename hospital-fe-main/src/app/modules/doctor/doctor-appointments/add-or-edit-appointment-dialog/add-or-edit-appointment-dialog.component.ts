@@ -1,10 +1,10 @@
 import { Component, getModuleFactory, Inject, Input, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, _closeDialogVia } from '@angular/material/dialog';
-import { Appointment } from '../../hospital/model/appointment.model';
-import { Patient } from '../../hospital/model/patient.model';
+import { Appointment } from '../../../hospital/model/appointment.model';
+import { Patient } from '../../../hospital/model/patient.model';
 import { DoctorAppointmentService } from '../doctor-appointment.service';
 import {FormControl} from '@angular/forms';
-import { Doctor } from '../../hospital/model/doctor.model';
+import { Doctor } from '../../../hospital/model/doctor.model';
 import { AcceptAppointmentScheduleDialogComponent } from '../accept-appointment-schedule-dialog/accept-appointment-schedule-dialog.component';
 import { WrongInputDialogComponent } from './wrong-input-dialog/wrong-input-dialog.component';
 import { formatDate } from '@angular/common';
