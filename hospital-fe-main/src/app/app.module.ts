@@ -1,4 +1,4 @@
-import { PatientStatisticsModule } from './modules/patient-statistics/patient-statistics.module';
+//import { PatientStatisticsModule } from './modules/patient-statistics/patient-statistics.module';
 import { NgChartsModule } from 'ng2-charts';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
@@ -69,7 +69,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     PagesModule,
     HospitalModule,
     MatNativeDateModule,
-    PatientStatisticsModule,
+    //PatientStatisticsModule,
     NgChartsModule,
     Ng2SearchPipeModule,
     DoctorAppointmentsModule,

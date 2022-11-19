@@ -1,4 +1,4 @@
-//import { AgeStatisticsComponent } from './modules/patient-statistics/age-statistics/age-statistics.component';
+//import { AgeStatisticsComponent } from './modules/patient-statistics/age-stManagerFeedbackComponentatistics/age-statistics.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 

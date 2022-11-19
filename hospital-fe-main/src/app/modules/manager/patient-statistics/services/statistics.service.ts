@@ -1,10 +1,10 @@
+import { ConstSettings } from 'src/app/constSettings';
 import { NumberOfPatientsByGenderDto } from './../model/numOfPatientsByGenderDto.model';
 import { DoctorDto } from './../model/doctorDto.model';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { NumberOfPatientsByAgeGroupDto } from '../model/numOfPatientsByAgeGroupDto.model';
-import { ConstSettings } from 'src/app/manager-feedback/constSettings';
 
 @Injectable({
   providedIn: 'root',
