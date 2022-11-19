@@ -11,22 +11,41 @@ import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition
   styleUrls: ['./manager-news-preview.component.css']
 })
 export class ManagerNewsPreviewComponent implements OnInit {
-  public dataSource = new MatTableDataSource<ManagerNews>();
   public displayedColumns = ['BloodBank', 'Title', 'Body', 'Date', 'Time'];
   public news: ManagerNews[] = [];
+  public newsPubl: ManagerNews[] = [];
+  public newsArch: ManagerNews[] = [];
 
   constructor(private managerNewsService : ManagerNewsService, private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
-    this.managerNewsService.getManagerNews().subscribe(res => {
+    this.managerNewsService.getManagerNewsPending().subscribe(res => {
       this.news = res;
-      this.dataSource.data = this.news;
     })
+    this.managerNewsService.getManagerNewsPublished().subscribe(res => {
+      this.newsPubl = res;
+    })
+    this.managerNewsService.getManagerNewsArchived().subscribe(res => {
+      this.newsArch = res;
+    })
+    // this.managerNewsService.getManagerNews().subscribe(res => {
+    //   this.news = res;
+    //   this.dataSource.data = this.news;
+    // })
   }
 
   archive(id: any): void {
     this.managerNewsService.archiveNews(id).subscribe(res => {
       this.openSnackBar('News successfully archived!', 'Close');
+      this.managerNewsService.getManagerNewsPending().subscribe(res => {
+        this.news = res;
+      })
+      this.managerNewsService.getManagerNewsPublished().subscribe(res => {
+        this.newsPubl = res;
+      })
+      this.managerNewsService.getManagerNewsArchived().subscribe(res => {
+        this.newsArch = res;
+      })
     },
     error => {
       if (error.status = 500){
@@ -38,6 +57,15 @@ export class ManagerNewsPreviewComponent implements OnInit {
   publish(id: any): void {
     this.managerNewsService.publishNews(id).subscribe(res => {
       this.openSnackBar('News successfully published!', 'Close');
+      this.managerNewsService.getManagerNewsPending().subscribe(res => {
+        this.news = res;
+      })
+      this.managerNewsService.getManagerNewsPublished().subscribe(res => {
+        this.newsPubl = res;
+      })
+      this.managerNewsService.getManagerNewsArchived().subscribe(res => {
+        this.newsArch = res;
+      })
     },
     error => {
       if (error.status = 500){
