@@ -16,4 +16,12 @@ export class ManagerNewsService {
   getManagerNews(): Observable<ManagerNews[]> {
     return this.http.get<ManagerNews[]>(this.apiHost + 'api/News', {headers: this.headers});
   }
+
+  publishNews(id: any): Observable<any> {
+    return new Observable;
+  }
+
+  archiveNews(id: any): Observable<any> {
+    return new Observable;
+  }
 }
