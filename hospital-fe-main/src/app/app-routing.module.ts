@@ -22,7 +22,6 @@ const routes: Routes = [
   { path: 'admissionView', component: AdmissionViewComponent},
   { path: 'bloodConsumption', component: DoctorBloodConsumptionComponent},
   { path: 'managerNews', component: ManagerNewsPreviewComponent},
-  { path: 'managerVacation', component: ManagerVacationComponent}
 ];
 
 @NgModule({
@@ -36,6 +35,5 @@ export const routingComponents = [
   DoctorAppointmentsComponent,
   DoctorBloodConsumptionComponent,
   AdmissionComponent,
-  ManagerNewsPreviewComponent,
-  ManagerVacationComponent
+  ManagerNewsPreviewComponent
 ]

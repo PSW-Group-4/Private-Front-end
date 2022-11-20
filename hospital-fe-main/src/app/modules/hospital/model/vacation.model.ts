@@ -27,9 +27,7 @@ export class Vacation {
             this.reason = obj.reason;
             this.urgency = obj.urgency;
             this.vacationStatus = obj.status;
-            this.DeniedRequestReason = obj.deniedComment;
-            
+            this.DeniedRequestReason = obj.deniedComment;   
         }
-
     }
 }

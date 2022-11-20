@@ -40,8 +40,8 @@ export class DoctorVacationService {
     return this.http.get<Vacation[]>(this.apiHost + 'api/Vacation', {headers: this.headers});
   }
 
-  updateVacation(vacation: Vacation): Observable<Vacation> {
-    return this.http.put<Vacation>(this.apiHost + 'api/Vacation/' + vacation.Id, vacation, {headers: this.headers});
+  updateVacation(vacation: any): Observable<Vacation> {
+    return this.http.put<Vacation>(this.apiHost + `api/Vacation/${vacation.Id}` , vacation, {headers: this.headers});
   }
 
   deleteAppointment(id: any): Observable<any> {

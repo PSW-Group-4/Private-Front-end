@@ -34,12 +34,13 @@ export class ManagerVacationComponent implements OnInit {
   public acceptVacationRequest(id: string): void {
     this.doctorVacationService.getVacationByID(id).subscribe(res => {
       this.updatedVacation = res;
-      this.updatedVacation.vacationStatus = 1; //znaci prihvacen
-      this.updatedVacation.reason = "Voleo bih godisnji";
-      this.doctorVacationService.updateVacation(this.updatedVacation);
+      //this.updatedVacation.reason = "TESTTEST";
+      console.log(this.updatedVacation.Id);
 
-      console.log(this.updatedVacation);
-      alert("Zahtev za godisnji odmor za doktora sa id-jem: " + this.updatedVacation.doctorId + "je prihvacen");
+      // this.doctorVacationService.updateVacation(this.updatedVacation).subscribe(res => {
+      // });;
+
+      alert("Zahtev za godisnji odmor sa id-jem: " + this.updatedVacation.Id + " je prihvacen");
     })
   }
 

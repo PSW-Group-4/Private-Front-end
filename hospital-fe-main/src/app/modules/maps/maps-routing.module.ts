@@ -5,6 +5,7 @@ import { FloorsComponent } from './mapDisplay/floors/floors.component';
 import { RoomsComponent } from './mapDisplay/rooms/rooms.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { MapsMainContainerComponent } from './containers/maps-main-container/maps-main-container.component';
+import { ManagerVacationComponent } from './containers/managerVacations/manager-vacation/manager-vacation.component';
 
 
 const routes: Routes = [
@@ -13,7 +14,8 @@ const routes: Routes = [
                  { path: 'building/:id', component: FloorsComponent},
                  { path: '', component: BuildingsComponent},
                  ]
-  }
+  },
+  { path: 'managerVacation', component: ManagerVacationComponent}
 ];
 
 
@@ -25,5 +27,6 @@ export class MapsRoutingModule { }
 export const routingComponents = [
   BuildingsComponent,
   FloorsComponent,
-  RoomsComponent
+  RoomsComponent,
+  ManagerVacationComponent
 ]
