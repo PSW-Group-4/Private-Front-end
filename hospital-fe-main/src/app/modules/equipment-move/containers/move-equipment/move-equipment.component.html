@@ -8,11 +8,18 @@
                 </mat-option>
              </mat-select>
             <app-show-room-info [selectedRoom]="selectedSource"></app-show-room-info>
+            <div>
+                <button mat-button matStepperNext>Next</button>
+            </div>
         </mat-step>
         
         <mat-step [editable]="true">
             <ng-template matStepLabel>Choose equipment and quantity</ng-template>
             <app-select-equipment></app-select-equipment>
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+            </div>
         </mat-step>
         <mat-step [editable]="true">
             <ng-template matStepLabel>Choose destination room</ng-template>
@@ -22,12 +29,24 @@
                 </mat-option>
              </mat-select>
             <app-show-room-info [selectedRoom]="selectedDestination"></app-show-room-info>
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+            </div>
         </mat-step>
         <mat-step [editable]="true">
             <ng-template matStepLabel>Choose date and duration</ng-template>
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+            </div>
         </mat-step>
         <mat-step [editable]="true">
             <ng-template matStepLabel>Choose appointment</ng-template>
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+            </div>
         </mat-step>
         <mat-step>
           <ng-template matStepLabel>Done</ng-template>

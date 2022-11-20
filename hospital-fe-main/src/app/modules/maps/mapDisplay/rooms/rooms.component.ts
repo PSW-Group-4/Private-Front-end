@@ -146,4 +146,9 @@ export class RoomsComponent implements OnInit {
     this.router.navigate(["maps/building",this.buildingId]); 
   }
 
+  moveEquipmentRedirect() {
+    this.mapsFacade.setSelectedRoom(this.temp.room);
+    this.router.navigate(["/move-equipment"])
+  }
+
 }

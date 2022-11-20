@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, shareReplay, Subject } from 'rxjs';
 import { Room } from 'src/app/modules/shared/model/room.model';
 import { EquipmentMoveFacade } from '../../equipment-move.facade';
 
@@ -25,6 +25,12 @@ export class MoveEquipmentComponent implements OnInit {
     this.facade.getRooms$().subscribe({
       next : (v) => {
         this.roomList = v;
+      }
+    })
+    this.facade.getSelectedRoom$().subscribe({
+      next: (v) => {
+        this.source = v;
+        this.resestSourceForm();
       }
     })
   }
