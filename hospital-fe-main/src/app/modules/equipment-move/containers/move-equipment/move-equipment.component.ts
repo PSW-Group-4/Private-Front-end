@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject, Observable, shareReplay, Subject } from 'rxjs';
+import { EquipmentList } from 'src/app/modules/shared/model/equipment-list.model';
+import { Equipment } from 'src/app/modules/shared/model/equipment.model';
 import { Room } from 'src/app/modules/shared/model/room.model';
 import { EquipmentMoveFacade } from '../../equipment-move.facade';
 
@@ -19,6 +21,12 @@ export class MoveEquipmentComponent implements OnInit {
   selectedDestination : BehaviorSubject<Room> = new BehaviorSubject(new Room);
   destination : Room = new Room();
 
+  selectedEquipment : EquipmentList = new EquipmentList();
+  amount : number = 0;
+
+  amountList : number[] = []
+  
+
   constructor(private facade : EquipmentMoveFacade) { }
 
   ngOnInit(): void {
@@ -37,9 +45,18 @@ export class MoveEquipmentComponent implements OnInit {
 
   resestSourceForm() {
     this.selectedSource.next(this.source);
+    this.selectedEquipment = new EquipmentList();
+    this.amountList = [];
   }
+
   resestDestinationForm() {
     this.selectedDestination.next(this.destination);
   }
+
+  setEquipment($event: EquipmentList) {
+    this.selectedEquipment = $event;
+    this.amountList = Array(this.selectedEquipment.amount).fill(this.selectedEquipment.amount).map((x,i) => i + 1);
+  }
+    
 
 }

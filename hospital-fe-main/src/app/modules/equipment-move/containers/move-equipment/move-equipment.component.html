@@ -7,7 +7,7 @@
                    {{r.name}}
                 </mat-option>
              </mat-select>
-            <app-show-room-info [selectedRoom]="selectedSource"></app-show-room-info>
+            <app-show-room-info [selectedRoom]="selectedSource" ></app-show-room-info>
             <div>
                 <button mat-button matStepperNext>Next</button>
             </div>
@@ -15,7 +15,12 @@
         
         <mat-step [editable]="true">
             <ng-template matStepLabel>Choose equipment and quantity</ng-template>
-            <app-select-equipment></app-select-equipment>
+            <app-select-equipment [equipmentList]="source.roomsEquipment" (selectedEquipment)="setEquipment($event)"></app-select-equipment>
+            <mat-select placeholder="Choose amount" [(ngModel)]="amount">
+                <mat-option *ngFor="let i of amountList " [value]="i">
+                   {{i}}
+                </mat-option>
+             </mat-select>
             <div>
                 <button mat-button matStepperPrevious>Back</button>
                 <button mat-button matStepperNext>Next</button>
