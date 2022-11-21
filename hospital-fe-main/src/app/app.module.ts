@@ -30,6 +30,7 @@ import { DoctorBloodConsumptionComponent } from './modules/doctor/doctor-blood-c
 import { CreateBloodConsumptionRecordComponent } from './modules/doctor/doctor-blood-consumption/create-blood-consumption-record/create-blood-consumption-record.component';
 import { RequestMoreBloodComponent } from './modules/doctor/doctor-blood-consumption/request-more-blood/request-more-blood.component';
 import { AdmissionViewComponent } from "./modules/admission-view/admission-view.component";
+import { EquipmentMoveModule } from "./modules/equipment-move/equipment-move.module";
 import { ManagerNewsPreviewComponent } from './modules/hospital/manager-news-preview/manager-news-preview.component';
 import { ManagerModule } from './modules/manager/manager.module';
 import { LoginModule } from './modules/login/login.module';
@@ -74,6 +75,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     Ng2SearchPipeModule,
     DoctorAppointmentsModule,
     MapsModule,
+    EquipmentMoveModule,
     DoctorVacationModule,
     LoginModule,
     ManagerModule,
@@ -90,6 +92,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
       useClass: AuthInterceptor,
       multi: true,
     },
+
   ],
   bootstrap: [AppComponent, BloodBanksComponent],
 })

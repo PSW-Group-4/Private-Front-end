@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Room } from '../../models/room.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Room } from '../model/room.model';
+
 
 
 @Injectable({
@@ -17,6 +18,10 @@ export class RoomService {
 
   updateRoom(room: Room): Observable<any> {
     return this.http.put(`${this.apiHost}${this.API}/${room.id}`, room);
+  }
+
+  getRooms(): Observable<Room[]> {
+    return this.http.get<Room[]>(this.apiHost + this.API, {headers: this.headers});
   }
 
 }

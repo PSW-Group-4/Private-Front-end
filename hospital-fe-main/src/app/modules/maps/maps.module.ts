@@ -10,11 +10,12 @@ import { RoomsComponent } from './mapDisplay/rooms/rooms.component';
 import { FormsModule } from '@angular/forms';
 import { EditBuildingComponent } from './containers/edit-item/edit-building/edit-building.component';
 import { EditFloorComponent } from './containers/edit-item/edit-floor/edit-floor.component';
-import { EquiptmentDialogComponent } from './containers/equiptment-dialog/equiptment-dialog.component';
+import { EquiptmentDialogComponent } from '../shared/components/equiptment-dialog/equiptment-dialog.component';
 import { SearchComponent } from './mapDisplay/search/search.component';
 import { FilterPipe } from './mapDisplay/search/filter-pipes/filter-pipe';
 import { FilterPipeEquipment } from './mapDisplay/search/filter-pipes/filter-equipment-pipe';
 import { MapsMainContainerComponent } from './containers/maps-main-container/maps-main-container.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -25,7 +26,6 @@ import { MapsMainContainerComponent } from './containers/maps-main-container/map
     FloorsComponent,
     EditBuildingComponent,
     EditFloorComponent,
-    EquiptmentDialogComponent,
     SearchComponent,
     FilterPipe,
     FilterPipeEquipment,
@@ -35,6 +35,7 @@ import { MapsMainContainerComponent } from './containers/maps-main-container/map
     CommonModule,
     MapsRoutingModule,
     MaterialModule,
+    SharedModule,
     BrowserAnimationsModule,
     FormsModule
   ]

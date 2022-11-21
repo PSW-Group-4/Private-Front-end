@@ -42,7 +42,7 @@ export class SearchComponent implements OnInit {
 
   getUrl(roomMap: RoomMap): string {
     var data = this.mapsFacade.getDataByRoomMapId(roomMap.id);
-    return "maps/building/"+data[2]+"/floor/"+data[1];
+    return "manager/maps/building/"+data[2]+"/floor/"+data[1];
   }
 
 }

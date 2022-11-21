@@ -1,5 +1,7 @@
 import { Injectable } from "@angular/core";
 import { map, Observable, shareReplay } from "rxjs";
+import { Room } from "../shared/model/room.model";
+import { MoveEquipmentRoomState } from "../shared/state/room-for-move.state";
 import { BuildingMap } from "./models/building-map.model";
 import { FloorMap } from "./models/floor-map.model";
 import { HashMap } from "./models/maps-hashmap.model";
@@ -22,7 +24,7 @@ export class MapsFacade {
   private hashm: HashMap[] = [];
   
   constructor(private buildingMapService: BuildingMapService, private floorMapService: FloorMapService,
-         private roomMapService: RoomMapService, private mapsState: MapsState) { 
+         private roomMapService: RoomMapService, private mapsState: MapsState, private moveEquipmentState : MoveEquipmentRoomState ) { 
           this.roomMaps$ = this.roomMapService
             .getRoomMaps()
             .pipe(shareReplay(1)); // cache the data
@@ -37,6 +39,11 @@ export class MapsFacade {
   getRoomMaps$(): Observable<RoomMap[]> {
     return this.roomMaps$;
   }
+
+
+  setSelectedRoom(room : Room) {
+      return this.moveEquipmentState.setSelectedRoom(room);
+  } 
   
   getFloorMaps$(): Observable<FloorMap[]> {
     return this.floorMaps$;

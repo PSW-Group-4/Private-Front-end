@@ -5,8 +5,8 @@ import * as d3 from 'd3';
 import { MapsFacade } from '../../maps.facade';
 import { MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import { EditItemComponent } from '../../containers/edit-item/edit-item.component';
-import { EquiptmentDialogComponent } from '../../containers/equiptment-dialog/equiptment-dialog.component';
-import { Subscription } from 'rxjs';
+import { EquiptmentDialogComponent } from '../../../shared/components/equiptment-dialog/equiptment-dialog.component';
+import { shareReplay, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-rooms',
@@ -23,7 +23,6 @@ export class RoomsComponent implements OnInit {
   sub: Subscription = new Subscription;
 
   constructor( private route: ActivatedRoute, private router: Router, private mapsFacade:MapsFacade, public dialog: MatDialog) { 
-
   }
 
   ngOnInit(): void {
@@ -90,6 +89,9 @@ export class RoomsComponent implements OnInit {
       } )
 
   }
+  ngOnDestroy() {
+    this.sub.unsubscribe();
+  }
 
   ngAfterViewInit() {
     this.sub = this.mapsFacade.getSelectedRoomMap$().subscribe({
@@ -131,7 +133,7 @@ export class RoomsComponent implements OnInit {
     const dialogConf = new MatDialogConfig();
 
     dialogConf.data = {
-      id: this.temp.id,
+      room: this.temp.room,
     };
     dialogConf.width = "700px";
     dialogConf.height = "800px";
@@ -141,9 +143,12 @@ export class RoomsComponent implements OnInit {
 
 
   goBack():void{
-    this.showRoomDetailComponent = false;
-    this.sub.unsubscribe();
-    this.router.navigate(["maps/building",this.buildingId]); 
+    this.router.navigate(["/manager/maps/building",this.buildingId]); 
+  }
+
+  moveEquipmentRedirect() {
+    this.mapsFacade.setSelectedRoom(this.temp.room);
+    this.router.navigate(["/manager/move-equipment"])
   }
 
 }

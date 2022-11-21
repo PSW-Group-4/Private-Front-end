@@ -1,0 +1,14 @@
+<div>
+    <mat-card *ngIf="room.id != ''">
+        <mat-card-title>
+            Room information:
+        </mat-card-title>
+        <mat-card-content>
+        <p>Name: {{room.name}}</p> 
+        <p>Description: {{room.description}}</p>
+        <p>Number: {{room.number}}</p>
+        <p>Equipment List: {{room.roomsEquipment.length}}</p>
+        </mat-card-content>
+        <button class="equipment-button" mat-raised-button matTooltip="Show equipment" color="primary" id ="button" (click)="openEqipmentDialog()">Equipment</button>
+    </mat-card>
+</div>
