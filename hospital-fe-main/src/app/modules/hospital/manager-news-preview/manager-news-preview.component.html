@@ -1,29 +1,29 @@
-<div class="container">
-    <div class="table-header">
-        <p class="table-title">News</p>
-    </div>
-    <table mat-table [dataSource]="dataSource">
-        <ng-container matColumnDef="BloodBank">
-            <th mat-header-cell *matHeaderCellDef class="cell-center"> BloodBank </th>
-            <td mat-cell *matCellDef="let news" class="cell-center">{{news.bloodBank.name}}</td>
-        </ng-container>
-        <ng-container matColumnDef="Title">
-            <th mat-header-cell *matHeaderCellDef class="cell-center"> Title </th>
-            <td mat-cell *matCellDef="let news" class="cell-center">{{news.title}}</td>
-        </ng-container>
-        <ng-container matColumnDef="Body">
-            <th mat-header-cell *matHeaderCellDef class="cell-center"> Body </th>
-            <td mat-cell *matCellDef="let news" class="cell-center">{{news.body}}</td>
-        </ng-container>
-        <ng-container matColumnDef="Date">
-            <th mat-header-cell *matHeaderCellDef class="cell-center"> Date </th>
-            <td mat-cell *matCellDef="let news" class="cell-center">{{news.timestamp| date: "MM-dd-yyyy"}}</td>
-        </ng-container>
-        <ng-container matColumnDef="Time">
-            <th mat-header-cell *matHeaderCellDef class="cell-center"> Time </th>
-            <td mat-cell *matCellDef="let news" class="cell-center">{{news.timestamp| date: "HH:mm:ss"}}</td>
-        </ng-container>
-        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
+ <div class="basic-container">
+    <h1>
+        News
+    </h1>
+    <mat-grid-list  cols="4" rowHeight="400px" gutterSize="20px">
+        <mat-grid-tile *ngFor="let i of news" >
+            <mat-card [style.width]="'100%'" class="tile">
+                <div [style.height]="'100%'" fxLayout="row">
+
+                    <div [style.height]="'100%'" fxFlex fxFlexAlign="center" fxLayout="column">
+                        <div fxLayout="row">
+                            <small>{{i.timestamp| date: "MM-dd-yyyy HH:mm:ss"}}</small>
+                        </div>
+                        <h1>
+                            {{i.title}}
+                        </h1>
+                        <div fxLayout="row" [style.flex]="'1'">
+                            {{i.body}}
+                        </div>
+                        <div mat-dialog-actions class = 'myBtn'>
+                            <button class = 'btnArc' mat-button (click)="archive(i.id)">Archive</button>
+                            <button class = 'btnPbl' mat-button (click)="publish(i.id)">Publish</button>
+                          </div>
+                    </div>
+                </div>
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
 </div>

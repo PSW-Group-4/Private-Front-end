@@ -53,3 +53,27 @@ p {
   .example-full-width {
     width: 100%;
   }
+
+  .basic-container {
+    padding: 2rem;
+  }
+  .myBtn {
+    text-align: center;
+    /* margin-top: 3rem; */
+  }
+  .btnArc {
+    color: white;
+    background: #9c9c97;
+    margin-right: 1rem;
+  }
+  .btnPbl {
+    color: white;
+    background: #42b652;
+  }
+  small {
+    color: #b3b3aa;
+  }
+
+  .tile {
+   height: 95%;
+  }
