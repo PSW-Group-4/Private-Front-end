@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BloodConsumptionRecord } from '../../hospital/model/blood-consumption-record.model';
+import { BloodConsumptionRecord } from '../../../hospital/model/blood-consumption-record.model';
 import { BloodConsumptionRecordService } from '../doctor-blood-consumption.service';
 
 @Component({
@@ -36,6 +36,10 @@ export class CreateBloodConsumptionRecordComponent implements OnInit {
           this.statusText = 'Nema dovoljno krvi u bazi!';
         }
       })
+    }
+    else{
+      this.statusColor = 'red';
+      this.statusText = 'Polja ne mogu biti prazna!';
     }
   }
 
