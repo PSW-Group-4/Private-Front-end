@@ -1,0 +1,56 @@
+<div class="grid">
+  <div class="header">Patient Statistics</div>
+  <mat-grid-list cols="2" rowHeight="2:1">
+    <mat-grid-tile>
+      <div>
+        <div>
+          <label for="doctor">Choose a doctor&nbsp;&nbsp;&nbsp;</label>
+          <select name="doctor" id="doctor">
+            <option value="noSelected" (click)="changeStatistics('all')">
+              all
+            </option>
+            <option
+              *ngFor="let item of doctors"
+              value="{{ item.id }}"
+              (click)="changeStatistics(item.id)"
+            >
+              {{ item.name + " " + item.surname }}
+            </option>
+          </select>
+        </div>
+        <div>
+          <table id="test">
+            <tr>
+              <th>Age Group</th>
+              <th *ngFor="let item of numOfPatientsByAgreGroup">
+                {{ item.ageGroup.gropuName }} ({{ item.ageGroup.minAge }}
+                {{
+                  item.ageGroup.maxAge == 999
+                    ? "+"
+                    : "- " + item.ageGroup.maxAge
+                }})
+              </th>
+            </tr>
+            <tr>
+              <th>Num of Patients</th>
+              <td *ngFor="let item of numOfPatientsByAgreGroup">
+                {{ item.patientCount }}
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile
+      ><app-bar-chart [chartData]="numOfPatientsByAgreGroup"></app-bar-chart
+    ></mat-grid-tile>
+    <mat-grid-tile>
+      <app-gender-statistics></app-gender-statistics>
+    </mat-grid-tile>
+    <mat-grid-tile
+      ><app-bar-chart-gender
+        [chartData]="numOfPatientsByGender"
+      ></app-bar-chart-gender
+    ></mat-grid-tile>
+  </mat-grid-list>
+</div>
