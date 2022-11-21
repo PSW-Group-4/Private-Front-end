@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { BehaviorSubject, Observable, shareReplay, Subject } from 'rxjs';
 import { EquipmentList } from 'src/app/modules/shared/model/equipment-list.model';
 import { Equipment } from 'src/app/modules/shared/model/equipment.model';
@@ -12,8 +13,6 @@ import { EquipmentMoveFacade } from '../../equipment-move.facade';
 })
 export class MoveEquipmentComponent implements OnInit {
 
-
-  
   roomList : Room[] = [];
   selectedSource: BehaviorSubject<Room> = new BehaviorSubject(new Room);
   source : Room = new Room();
@@ -25,7 +24,13 @@ export class MoveEquipmentComponent implements OnInit {
   amount : number = 0;
 
   amountList : number[] = []
+  minDate : Date = new Date(new Date().getFullYear(),new Date().getMonth(), new Date().getDate() + 2);
+  duration: number = 0;
   
+  numberValidator = new FormControl('', [
+    Validators.required,
+    Validators.pattern('[0-9]+'),
+  ]);
 
   constructor(private facade : EquipmentMoveFacade) { }
 

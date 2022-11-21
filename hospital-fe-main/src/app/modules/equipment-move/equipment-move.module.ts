@@ -5,8 +5,9 @@ import { MoveEquipmentComponent } from './containers/move-equipment/move-equipme
 import { MaterialModule } from 'src/app/material/material.module';
 import { ShowRoomInfoComponent } from './components/show-room-info/show-room-info.component';
 import { SelectEquipmentComponent } from './components/select-equipment/select-equipment.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
+import { BrowserModule } from '@angular/platform-browser';
 
 
 
@@ -21,6 +22,8 @@ import { SharedModule } from '../shared/shared.module';
     MaterialModule,
     SharedModule,
     FormsModule,
+    ReactiveFormsModule,
+    BrowserModule,
     EquipmentMoveRoutingModule
   ]
 })
