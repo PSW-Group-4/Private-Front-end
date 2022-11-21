@@ -4,7 +4,7 @@ import { MoveEquipmentComponent } from './containers/move-equipment/move-equipme
 
 const routes: Routes = [
   {   
-    path: 'move-equipment', component: MoveEquipmentComponent,
+    path: '', component: MoveEquipmentComponent,
   }
 ];
 

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { MoveEquipmentComponent } from '../equipment-move/containers/move-equipment/move-equipment.component';
 import { MapsMainContainerComponent } from '../maps/containers/maps-main-container/maps-main-container.component';
 import { ManagerFeedbackComponent } from './manager-feedback/manager-feedback.component';
 import { ManagerRootComponent } from './manager-root/manager-root.component';
@@ -12,6 +13,12 @@ const routes: Routes = [
     loadChildren: () =>
         import('../maps/maps-routing.module').then(
           (m) => m.MapsRoutingModule
+        ),
+  },
+  { path: 'move-equipment', component: MoveEquipmentComponent,
+    loadChildren: () =>
+        import('../equipment-move/equipment-move-routing.module').then(
+          (m) => m.EquipmentMoveRoutingModule
         ),
   }
 ];
