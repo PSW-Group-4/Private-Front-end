@@ -143,12 +143,12 @@ export class RoomsComponent implements OnInit {
   goBack():void{
     this.showRoomDetailComponent = false;
     this.sub.unsubscribe();
-    this.router.navigate(["maps/building",this.buildingId]); 
+    this.router.navigate(["/manager/maps/building",this.buildingId]); 
   }
 
   moveEquipmentRedirect() {
     this.mapsFacade.setSelectedRoom(this.temp.room);
-    this.router.navigate(["/move-equipment"])
+    this.router.navigate(["/manager/move-equipment"])
   }
 
 }
