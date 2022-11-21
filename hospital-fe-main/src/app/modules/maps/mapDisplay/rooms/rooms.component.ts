@@ -6,7 +6,7 @@ import { MapsFacade } from '../../maps.facade';
 import { MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import { EditItemComponent } from '../../containers/edit-item/edit-item.component';
 import { EquiptmentDialogComponent } from '../../../shared/components/equiptment-dialog/equiptment-dialog.component';
-import { Subscription } from 'rxjs';
+import { shareReplay, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-rooms',
@@ -23,7 +23,6 @@ export class RoomsComponent implements OnInit {
   sub: Subscription = new Subscription;
 
   constructor( private route: ActivatedRoute, private router: Router, private mapsFacade:MapsFacade, public dialog: MatDialog) { 
-
   }
 
   ngOnInit(): void {
@@ -90,6 +89,9 @@ export class RoomsComponent implements OnInit {
       } )
 
   }
+  ngOnDestroy() {
+    this.sub.unsubscribe();
+  }
 
   ngAfterViewInit() {
     this.sub = this.mapsFacade.getSelectedRoomMap$().subscribe({
@@ -141,8 +143,6 @@ export class RoomsComponent implements OnInit {
 
 
   goBack():void{
-    this.showRoomDetailComponent = false;
-    this.sub.unsubscribe();
     this.router.navigate(["/manager/maps/building",this.buildingId]); 
   }
 
