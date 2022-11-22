@@ -1,3 +1,4 @@
+import { CommentComponent } from './comment/comment.component';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
@@ -31,31 +32,23 @@ export class ManagerVacationComponent implements OnInit {
   }
 
 
-  public acceptVacationRequest(id: string): void {
-    this.doctorVacationService.getVacationByID(id).subscribe(res => {
-      this.updatedVacation = res;
-      //this.updatedVacation.reason = "TESTTEST";
-      console.log(this.updatedVacation.Id);
+  public acceptVacationRequest(selectedVacation: Vacation): void {
+    selectedVacation.vacationStatus = 1; //znaci potvrdjen
+    selectedVacation.deniedRequestReason = '';
 
-      // this.doctorVacationService.updateVacation(this.updatedVacation).subscribe(res => {
-      // });;
-
-      alert("Zahtev za godisnji odmor sa id-jem: " + this.updatedVacation.Id + " je prihvacen");
-    })
+    this.doctorVacationService.updateVacation(selectedVacation).subscribe(res => {
+      alert("Zahtev za godisnji odmor za doktora sa id-jem doktora " + selectedVacation.doctorId + " je uspesno prihvacen!");
+    });
+    
   }
 
-
-  public denyVacationRequest(id: string): void {
-    this.doctorVacationService.getVacationByID(id).subscribe(res => {
-      this.updatedVacation = res;
-
-      this.updatedVacation.vacationStatus = 2; //0 je na cekanju, 1 je prihvacen, sve ostalo je odbijen
-
-      this.doctorVacationService.updateVacation(this.updatedVacation);
-
-      alert("Zahtev za godisnji odmor za doktora sa id-jem: " + this.updatedVacation.doctorId + "je odbijen");
-    })
+  public denyVacationRequest(selectedVacation: Vacation): void {
+    this.dialog.open(CommentComponent, {
+      width:'50%',
+      data: selectedVacation
+    });
   }
+
 
 
 }

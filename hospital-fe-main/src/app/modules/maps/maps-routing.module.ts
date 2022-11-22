@@ -1,3 +1,4 @@
+import { CommentComponent } from './containers/managerVacations/manager-vacation/comment/comment.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BuildingsComponent } from './mapDisplay/buildings/buildings.component';
@@ -15,7 +16,8 @@ const routes: Routes = [
                  { path: '', component: BuildingsComponent},
                  ]
   },
-  { path: 'managerVacation', component: ManagerVacationComponent}
+  { path: 'managerVacation', component: ManagerVacationComponent},
+  { path: 'comment', component: CommentComponent}
 ];
 
 
@@ -28,5 +30,6 @@ export const routingComponents = [
   BuildingsComponent,
   FloorsComponent,
   RoomsComponent,
-  ManagerVacationComponent
+  ManagerVacationComponent,
+  CommentComponent
 ]

@@ -16,6 +16,7 @@ import { FilterPipe } from './mapDisplay/search/filter-pipes/filter-pipe';
 import { FilterPipeEquipment } from './mapDisplay/search/filter-pipes/filter-equipment-pipe';
 import { MapsMainContainerComponent } from './containers/maps-main-container/maps-main-container.component';
 import { ManagerVacationComponent } from './containers/managerVacations/manager-vacation/manager-vacation.component';
+import { CommentComponent } from './containers/managerVacations/manager-vacation/comment/comment.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { ManagerVacationComponent } from './containers/managerVacations/manager-
     FilterPipe,
     FilterPipeEquipment,
     MapsMainContainerComponent,
-    ManagerVacationComponent
+    ManagerVacationComponent,
+    CommentComponent
   ],
   imports: [
     CommonModule,

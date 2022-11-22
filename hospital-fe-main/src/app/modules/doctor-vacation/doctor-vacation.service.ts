@@ -1,3 +1,4 @@
+import { Doctor } from './../hospital/model/doctor.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -40,8 +41,8 @@ export class DoctorVacationService {
     return this.http.get<Vacation[]>(this.apiHost + 'api/Vacation', {headers: this.headers});
   }
 
-  updateVacation(vacation: any): Observable<Vacation> {
-    return this.http.put<Vacation>(this.apiHost + `api/Vacation/${vacation.Id}` , vacation, {headers: this.headers});
+  updateVacation(vacation: any): Observable<any> {
+    return this.http.put<any>(this.apiHost + 'api/Vacation/' + vacation.id, vacation, {headers: this.headers});
   }
 
   deleteAppointment(id: any): Observable<any> {
@@ -53,6 +54,6 @@ export class DoctorVacationService {
   }
 
   updateAppointment(vacation: any): Observable<any> {
-    return this.http.put<any>(this.apiHost + 'api/AppoinDoctorVacationtment/' + vacation.Id, vacation, {headers: this.headers});
+    return this.http.put<any>(this.apiHost + 'api/AppoinDoctorVacationtment/' + vacation.id, vacation, {headers: this.headers});
   }
 }
