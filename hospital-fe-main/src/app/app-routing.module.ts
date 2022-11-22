@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 //import { AgeStatisticsComponent } from './modules/patient-statistics/age-stManagerFeedbackComponentatistics/age-statistics.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -16,6 +17,27 @@ import { IncognitoGuard } from './auth/guards/incognito-guard.service';
 import { RoleGuardService as RoleGuard } from './auth/guards/role-guard.service';
 import { DoctorRootComponent } from './modules/doctor/doctor-root/doctor-root.component';
 import { ManagerRoutingModule } from './modules/manager/manager-routing.module';
+=======
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
+
+import { HomeComponent } from "./modules/pages/home/home.component";
+import { ManagerFeedbackComponent } from "./modules/manager/manager-feedback/manager-feedback.component";
+import { DoctorAppointmentsComponent } from "./modules/doctor/doctor-appointments/doctor-appointments/doctor-appointments.component";
+import { AdmissionComponent } from "./modules/doctor/admission/admission.component";
+import { DoctorVacationsComponent } from "./modules/doctor-vacation/doctor-vacations/doctor-vacations.component";
+import { DoctorBloodConsumptionComponent } from './modules/doctor/doctor-blood-consumption/doctor-blood-consumption.component';
+import { AdmissionViewComponent } from "./modules/doctor/admission-view/admission-view.component";
+import { ManagerNewsPreviewComponent } from "./modules/hospital/manager-news-preview/manager-news-preview.component";
+import { ManagerRootComponent } from "./modules/manager/manager-root/manager-root.component";
+import { LoginComponent } from "./modules/login/login.component";
+import { IncognitoGuard } from "./auth/guards/incognito-guard.service";
+import { RoleGuardService as RoleGuard } from "./auth/guards/role-guard.service";
+import { DoctorRootComponent } from "./modules/doctor/doctor-root/doctor-root.component";
+import { ManagerRoutingModule } from "./modules/manager/manager-routing.module";
+//import { AgeStatisticsComponent } from './modules/patient-statistics/age-stManagerFeedbackComponentatistics/age-statistics.component';
+
+>>>>>>> develop
 const routes: Routes = [
 
   { path: 'managerFeedback', component: ManagerFeedbackComponent },
@@ -45,9 +67,8 @@ const routes: Routes = [
         (m) => m.DoctorRoutingModule
       ),
   },
-  { path: 'admission', component: AdmissionComponent },
+
   { path: 'vacations', component: DoctorVacationsComponent },
-  { path: 'admissionView', component: AdmissionViewComponent },
   { path: 'bloodConsumption', component: DoctorBloodConsumptionComponent },
   { path: 'managerNews', component: ManagerNewsPreviewComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -65,9 +86,12 @@ export const routingComponents = [
   HomeComponent,
   ManagerFeedbackComponent,
   DoctorAppointmentsComponent,
+<<<<<<< HEAD
   ManagerRequestReviewComponent,
   AdmissionComponent,
   DoctorBloodConsumptionComponent,
+=======
+>>>>>>> develop
   AdmissionComponent,
   ManagerNewsPreviewComponent,
   LoginComponent,

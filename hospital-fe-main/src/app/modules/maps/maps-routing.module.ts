@@ -5,15 +5,14 @@ import { FloorsComponent } from './mapDisplay/floors/floors.component';
 import { RoomsComponent } from './mapDisplay/rooms/rooms.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { MapsMainContainerComponent } from './containers/maps-main-container/maps-main-container.component';
+import { RoleGuardService } from 'src/app/auth/guards/role-guard.service';
+
 
 
 const routes: Routes = [
-  {   path: 'maps', component: MapsMainContainerComponent,
-      children: [{ path: 'building/:buildingId/floor/:id', component: RoomsComponent},
-                 { path: 'building/:id', component: FloorsComponent},
-                 { path: '', component: BuildingsComponent},
-                 ]
-  }
+  { path: '', component: BuildingsComponent },
+  { path: 'building/:buildingId/floor/:id', component: RoomsComponent},
+  { path: 'building/:id', component: FloorsComponent}
 ];
 
 

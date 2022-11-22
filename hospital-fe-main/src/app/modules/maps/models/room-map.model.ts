@@ -1,4 +1,4 @@
-import { Room } from "./room.model";
+import { Room } from "../../shared/model/room.model";
 
 export class RoomMap {
     id: string = '';

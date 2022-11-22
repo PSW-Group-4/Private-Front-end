@@ -1,5 +1,5 @@
-import { RoomService } from '../../services/RoomService/room.service';
-import { Room } from './../../models/room.model';
+import { RoomService } from '../../../shared/service/room.service';
+import { Room } from '../../../shared/model/room.model';
 import { Component, Inject, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { MatDialogRef, MAT_DIALOG_DATA, _closeDialogVia } from '@angular/material/dialog';

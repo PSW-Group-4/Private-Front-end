@@ -109,7 +109,7 @@ export class FloorsComponent implements OnInit {
   }
 
   goBack():void{
-    this.router.navigate(['/maps']);
+    this.router.navigate(['manager/maps']);
   }
     
 }
