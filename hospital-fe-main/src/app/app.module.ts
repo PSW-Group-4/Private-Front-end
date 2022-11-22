@@ -23,13 +23,13 @@ import {
   BloodBanksComponent,
   CheckBloodSuppliesDialog,
 } from './modules/hospital/blood-banks/blood-banks.component';
-import { AdmissionComponent } from './admission/admission.component';
+import { AdmissionComponent } from './modules/doctor/admission/admission.component';
 import { DoctorVacationModule } from "./modules/doctor-vacation/doctor-vacation.module";
 import { Ng2SearchPipeModule } from "ng2-search-filter";
 import { DoctorBloodConsumptionComponent } from './modules/doctor/doctor-blood-consumption/doctor-blood-consumption.component';
 import { CreateBloodConsumptionRecordComponent } from './modules/doctor/doctor-blood-consumption/create-blood-consumption-record/create-blood-consumption-record.component';
 import { RequestMoreBloodComponent } from './modules/doctor/doctor-blood-consumption/request-more-blood/request-more-blood.component';
-import { AdmissionViewComponent } from "./modules/admission-view/admission-view.component";
+import { AdmissionViewComponent } from "./modules/doctor/admission-view/admission-view.component";
 import { EquipmentMoveModule } from "./modules/equipment-move/equipment-move.module";
 import { ManagerNewsPreviewComponent } from './modules/hospital/manager-news-preview/manager-news-preview.component';
 import { ManagerModule } from './modules/manager/manager.module';

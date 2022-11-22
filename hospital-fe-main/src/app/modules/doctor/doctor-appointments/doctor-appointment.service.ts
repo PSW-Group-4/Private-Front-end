@@ -67,4 +67,12 @@ export class DoctorAppointmentService {
   getAdmissions(): Observable<Admission[]>{
     return this.http.get<Admission[]>(this.apiHost + 'api/Admission' , {headers: this.headers});
   }
+
+  getAdmission(id: any): Observable<any>{
+    return this.http.get<Admission[]>(this.apiHost + 'api/Admission/' + id  , {headers: this.headers});
+  }
+
+  createAdmissionHistory(admissionHistory: any): Observable<any>{
+    return this.http.post<any>(this.apiHost + 'api/AdmissionHistory', admissionHistory, {headers: this.headers});
+  }
 }
