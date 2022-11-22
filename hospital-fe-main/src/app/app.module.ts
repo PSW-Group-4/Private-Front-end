@@ -37,6 +37,7 @@ import { DoctorRoutingModule } from './modules/doctor/doctor-routing.module';
 import { DoctorRootComponent } from './modules/doctor/doctor-root/doctor-root.component';
 import { DoctorModule } from './modules/doctor/doctor.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { BloodRequestsModule } from './modules/blood-requests/blood-requests.module';
 
 @NgModule({
   declarations: [
@@ -76,6 +77,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     DoctorModule,
     DoctorRoutingModule,
     FlexLayoutModule,
+    BloodRequestsModule,
   ],
   providers: [
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },

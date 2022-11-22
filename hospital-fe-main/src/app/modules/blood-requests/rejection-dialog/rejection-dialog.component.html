@@ -2,13 +2,15 @@
     <div>
         <h2>Blood Bank Registration</h2>
             <mat-label>Name</mat-label>
-            <input matInput [(ngModel)]="bloodRequest.rejectionComment">
+            <input matInput type ="text" [formControl]="input">
         <br>
-        <button mat-stroked-button (click)="rejectRequest()" mat-dialog-close [disabled]="!bloodRequest.rejectionComment.length">
+        <mat-dialog-actions>
+        <button mat-stroked-button  (click)="rejectRequest()" [disabled]="!input.value.length">
             Submit
         </button>
-        <button mat-stroked-button mat-dialog-close>
+        <button mat-stroked-button  mat-dialog-close="cancel">
             Cancel
         </button>
+         </mat-dialog-actions>
     </div>
 </div>

@@ -40,7 +40,16 @@ export class ManagerRequestReviewComponent implements OnInit {
     })
   }
   rejectRequest(bloodRequest: BloodRequest): void{
-    this.dialog.open(RejectionDialogComponent,{data :{bloodRequest}} );
+    let dialog = this.dialog.open(RejectionDialogComponent );
+     dialog.afterClosed().subscribe(res=>{
+      let comment : string = res;
+      if(comment !== "cancel"){
+        bloodRequest.rejectionComment = comment;
+        this.bloodRequestService.update(bloodRequest).subscribe(res=>{
+          console.log(res);
+        })
+      }
+     })
   }
 
 }

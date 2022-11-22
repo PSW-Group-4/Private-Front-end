@@ -1,5 +1,5 @@
 export class BloodRequest {
-    requestId: String ='';
+    id: String ='';
     doctorId: String ='';
     bloodType: string = '';
     reasonsWhyBloodIsNeeded: String ='';
@@ -10,7 +10,7 @@ export class BloodRequest {
 
     public constructor(obj?: any) {
         if (obj) {
-            this.requestId = obj.requestId;
+            this.id = obj.id;
             this.doctorId = obj.doctorId;    
             this.bloodType = obj.bloodType; 
             this.reasonsWhyBloodIsNeeded = obj.reasonsWhyBloodIsNeeded;

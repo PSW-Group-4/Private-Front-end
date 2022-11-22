@@ -5,7 +5,9 @@ import { MatTableModule } from '@angular/material/table';
 import { RejectionDialogComponent } from './rejection-dialog/rejection-dialog.component';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
 @NgModule({
   declarations: [
     ManagerRequestReviewComponent,
@@ -16,7 +18,10 @@ import { FormsModule } from '@angular/forms';
     MatTableModule,
     MatFormFieldModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatDialogModule
 
   ]
 })
