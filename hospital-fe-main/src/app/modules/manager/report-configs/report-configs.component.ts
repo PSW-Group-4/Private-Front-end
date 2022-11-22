@@ -40,6 +40,16 @@ export class ReportConfigsComponent implements OnInit {
       }
     })
   }
+  createConfig(item: any){
+    this.updateSuccess=false;
+    item.requestFrequency = parseInt(item.requestFrequency.toString());
+    item.activeStatus = this.convertString(item.activeStatus);
+    this.reportConfigsService.createReport(item).subscribe(res=>{
+      if(res.id == item.id){
+        this.updateSuccess=true;
+      }
+    })
+  }
   flipNewFlag(){
     this.new = !this.new;
   }

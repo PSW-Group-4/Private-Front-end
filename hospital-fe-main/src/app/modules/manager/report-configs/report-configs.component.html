@@ -1,6 +1,6 @@
 <div class="center-wrapper">
     <h1>Report configurations</h1>
-    <h1 *ngIf="this.updateSuccess">Update successfull</h1>
+    <h1 *ngIf="this.updateSuccess">Database update successfull</h1>
     <div class="item-wrapper" *ngFor="let item of configs">
         <p>Bloodbank name: {{item.bloodBankName}}</p>
         <mat-label>Active status:</mat-label>
@@ -41,6 +41,6 @@
             <option value=183>Bi-Annualy</option>
             <option value=365>Annualy</option>
         </select>
-        <button>Save</button>
+        <button (click)="createConfig(newConfig)">Save</button>
     </div> 
 </div>      

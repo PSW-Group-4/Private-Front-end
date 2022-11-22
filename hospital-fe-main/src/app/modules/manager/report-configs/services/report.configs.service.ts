@@ -16,6 +16,10 @@ export class ReportConfigsService {
     return this.http.get<ReportConfigurationDto[]>('http://localhost:5000/'  + 'api/ReportConfiguration', { headers:  ConstSettings.standardHeader });
   }
   updateReport(report : ReportConfigurationDto): Observable<ReportConfigurationDto> {
+    return this.http.put<any>('http://localhost:5000/'  + 'api/ReportConfiguration',report, { headers:  ConstSettings.standardHeader });
+  }
+  createReport(report : ReportConfigurationDto): Observable<ReportConfigurationDto> {
     return this.http.post<any>('http://localhost:5000/'  + 'api/ReportConfiguration',report, { headers:  ConstSettings.standardHeader });
   }
+  
 }
