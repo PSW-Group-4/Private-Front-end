@@ -15,14 +15,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HospitalModule } from './modules/hospital/hospital.module';
 import { PagesModule } from './modules/pages/pages.module';
 import { ManagerFeedbackComponent } from './modules/manager/manager-feedback/manager-feedback.component';
-import { DoctorAppointmentsModule } from './modules/doctor/doctor-appointments/doctor-appointments.module';
-import { MatNativeDateModule } from '@angular/material/core';
-import { MapsModule } from './modules/maps/maps.module';
-import { CommonModule } from '@angular/common';
-import {
-  BloodBanksComponent,
-  CheckBloodSuppliesDialog,
-} from './modules/hospital/blood-banks/blood-banks.component';
+import { DoctorAppointmentsModule } from "./modules/doctor/doctor-appointments/doctor-appointments.module";
+import { MatNativeDateModule } from "@angular/material/core";
+import { MapsModule } from "./modules/maps/maps.module";
+import { CommonModule } from '@angular/common'; 
+import { BloodBanksComponent, CheckBloodSuppliesDialog } from './modules/hospital/blood-banks/blood-banks.component';
 import { AdmissionComponent } from './modules/doctor/admission/admission.component';
 import { DoctorVacationModule } from "./modules/doctor-vacation/doctor-vacation.module";
 import { Ng2SearchPipeModule } from "ng2-search-filter";
@@ -41,6 +38,7 @@ import { DoctorRoutingModule } from './modules/doctor/doctor-routing.module';
 import { DoctorRootComponent } from './modules/doctor/doctor-root/doctor-root.component';
 import { DoctorModule } from './modules/doctor/doctor.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { BloodRequestsModule } from './modules/blood-requests/blood-requests.module';
 
 @NgModule({
   declarations: [
@@ -70,8 +68,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     PagesModule,
     HospitalModule,
     MatNativeDateModule,
-    //PatientStatisticsModule,
-    NgChartsModule,
     Ng2SearchPipeModule,
     DoctorAppointmentsModule,
     MapsModule,
@@ -83,6 +79,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     DoctorModule,
     DoctorRoutingModule,
     FlexLayoutModule,
+    BloodRequestsModule,
   ],
   providers: [
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
