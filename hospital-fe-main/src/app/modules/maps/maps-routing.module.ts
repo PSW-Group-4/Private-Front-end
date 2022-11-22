@@ -15,9 +15,8 @@ const routes: Routes = [
                  { path: 'building/:id', component: FloorsComponent},
                  { path: '', component: BuildingsComponent},
                  ]
-  },
-  { path: 'managerVacation', component: ManagerVacationComponent},
-  { path: 'comment', component: CommentComponent}
+  }
+
 ];
 
 
@@ -30,6 +29,5 @@ export const routingComponents = [
   BuildingsComponent,
   FloorsComponent,
   RoomsComponent,
-  ManagerVacationComponent,
-  CommentComponent
+  ManagerVacationComponent
 ]
