@@ -17,11 +17,21 @@ export class ManagerNewsService {
     return this.http.get<ManagerNews[]>(this.apiHost + 'api/News', {headers: this.headers});
   }
 
-  publishNews(id: any): Observable<any> {
-    return new Observable;
+  getManagerNewsArchived(): Observable<ManagerNews[]> {
+    return this.http.get<ManagerNews[]>(this.apiHost + 'api/News/GetArchived', {headers: this.headers});
+  }
+  getManagerNewsPublished(): Observable<ManagerNews[]> {
+    return this.http.get<ManagerNews[]>(this.apiHost + 'api/News/GetPublished', {headers: this.headers});
+  }
+  getManagerNewsPending(): Observable<ManagerNews[]> {
+    return this.http.get<ManagerNews[]>(this.apiHost + 'api/News/GetPending', {headers: this.headers});
+  }
+
+  publishNews(id: any): Observable<ManagerNews> {
+    return this.http.post<ManagerNews>(this.apiHost + 'api/News/Publish' + '?id='+ id, {headers: this.headers});
   }
 
   archiveNews(id: any): Observable<any> {
-    return new Observable;
+    return this.http.post<ManagerNews>(this.apiHost + 'api/News/Archive' + '?id='+ id, {headers: this.headers});
   }
 }
