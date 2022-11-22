@@ -1,3 +1,4 @@
+import { ManagerVacationComponent } from './modules/maps/containers/managerVacations/manager-vacation/manager-vacation.component';
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 

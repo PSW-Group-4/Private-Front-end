@@ -16,6 +16,8 @@ import { FilterPipe } from './mapDisplay/search/filter-pipes/filter-pipe';
 import { FilterPipeEquipment } from './mapDisplay/search/filter-pipes/filter-equipment-pipe';
 import { MapsMainContainerComponent } from './containers/maps-main-container/maps-main-container.component';
 import { SharedModule } from '../shared/shared.module';
+import { ManagerVacationComponent } from './containers/managerVacations/manager-vacation/manager-vacation.component';
+import { CommentComponent } from './containers/managerVacations/manager-vacation/comment/comment.component';
 
 
 @NgModule({
@@ -29,7 +31,9 @@ import { SharedModule } from '../shared/shared.module';
     SearchComponent,
     FilterPipe,
     FilterPipeEquipment,
-    MapsMainContainerComponent
+    MapsMainContainerComponent,
+    ManagerVacationComponent,
+    CommentComponent
   ],
   imports: [
     CommonModule,
