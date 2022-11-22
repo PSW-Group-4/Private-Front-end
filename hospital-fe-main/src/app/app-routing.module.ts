@@ -4,10 +4,10 @@ import { Routes, RouterModule } from "@angular/router";
 import { HomeComponent } from "./modules/pages/home/home.component";
 import { ManagerFeedbackComponent } from "./modules/manager/manager-feedback/manager-feedback.component";
 import { DoctorAppointmentsComponent } from "./modules/doctor/doctor-appointments/doctor-appointments/doctor-appointments.component";
-import { AdmissionComponent } from "./admission/admission.component";
+import { AdmissionComponent } from "./modules/doctor/admission/admission.component";
 import { DoctorVacationsComponent } from "./modules/doctor-vacation/doctor-vacations/doctor-vacations.component";
 import { DoctorBloodConsumptionComponent } from './modules/doctor/doctor-blood-consumption/doctor-blood-consumption.component';
-import { AdmissionViewComponent } from "./modules/admission-view/admission-view.component";
+import { AdmissionViewComponent } from "./modules/doctor/admission-view/admission-view.component";
 import { ManagerNewsPreviewComponent } from "./modules/hospital/manager-news-preview/manager-news-preview.component";
 import { ManagerRootComponent } from "./modules/manager/manager-root/manager-root.component";
 import { LoginComponent } from "./modules/login/login.component";
@@ -40,9 +40,8 @@ const routes: Routes = [
         (m) => m.DoctorRoutingModule
       ),
   },
-  { path: 'admission', component: AdmissionComponent },
+
   { path: 'vacations', component: DoctorVacationsComponent },
-  { path: 'admissionView', component: AdmissionViewComponent },
   { path: 'bloodConsumption', component: DoctorBloodConsumptionComponent },
   { path: 'managerNews', component: ManagerNewsPreviewComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' },

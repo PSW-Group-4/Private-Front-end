@@ -30,7 +30,7 @@ export class AddOrEditAppointmentDialogComponent implements OnInit {
   doctor = new Doctor;
   minDate = new Date();
   isDate = true;
-  doctorId = '1412c639-c5e1-47a1-b29b-1fe935536612';
+  doctorId = '487d0767-1f8b-4a09-a593-4f076bdb9881';
   isEdit = false;
   isTerminChanged = false;
 

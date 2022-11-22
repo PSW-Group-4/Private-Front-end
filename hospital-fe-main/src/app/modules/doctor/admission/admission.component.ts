@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { DoctorAppointmentService } from '../modules/doctor/doctor-appointments/doctor-appointment.service';
-import { Patient } from '../modules/hospital/model/patient.model';
-import { Room } from '../modules/hospital/model/room.model';
-import { RoomService } from '../modules/hospital/services/room.service';
+import { DoctorAppointmentService } from '../doctor-appointments/doctor-appointment.service';
+import { Patient } from '../../hospital/model/patient.model';
+import { Room } from '../../hospital/model/room.model';
+import { RoomService } from '../../hospital/services/room.service';
 
 @Component({
   selector: 'app-admission',
