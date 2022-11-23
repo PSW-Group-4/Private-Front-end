@@ -1,0 +1,42 @@
+<table mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="doctorName">
+        <th mat-header-cell *matHeaderCellDef class="cell-center"> Doctor: </th>
+        <td mat-cell *matCellDef="let app" class="clickable cell-center" >{{app.doctor.name + ' ' + app.doctor.surname}}</td>
+    </ng-container>
+    <ng-container matColumnDef="reason">
+        <th mat-header-cell *matHeaderCellDef class="cell-center"> Reason for request: </th>
+        <td mat-cell *matCellDef="let app" class="cell-center">{{app.reason}}</td>
+    </ng-container>
+    <ng-container matColumnDef="urgent">
+        <th mat-header-cell *matHeaderCellDef class="cell-center"> Urgency:  </th>
+        <td mat-cell *matCellDef="let app" class="clickable cell-center" >{{app.urgent? 'DA' : 'NE'}}</td>
+    </ng-container>
+    <ng-container matColumnDef="dateStart">
+        <th mat-header-cell *matHeaderCellDef class="cell-center"> Start Date: </th>
+        <td mat-cell *matCellDef="let app" class="cell-center">{{app.dateStart | date : 'dd.MM.yyyy'}}</td>
+    </ng-container>
+    <ng-container matColumnDef="dateEnd">
+        <th mat-header-cell *matHeaderCellDef class="cell-center"> Finish Date: </th>
+        <td mat-cell *matCellDef="let app" class="cell-center">{{app.dateEnd | date : 'dd.MM.yyyy'}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="approve">
+        <th mat-header-cell *matHeaderCellDef class="cell-center"> Approve: </th>
+        <td mat-cell *matCellDef="let app" class="cell-center">
+            <button mat-icon-button (click)="acceptVacationRequest(app)" >
+                <mat-icon matTooltip="approve">cloud_done</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+    <ng-container matColumnDef="reject">
+        <th mat-header-cell *matHeaderCellDef class="cell-center"> Reject: </th>
+        <td mat-cell *matCellDef="let app" class="cell-center">
+            <button mat-icon-button  (click)="denyVacationRequest(app)" >
+                <mat-icon matTooltip="reject">cloud_off</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+

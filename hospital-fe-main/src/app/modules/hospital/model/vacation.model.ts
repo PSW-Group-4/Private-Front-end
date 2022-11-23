@@ -2,20 +2,26 @@ import { Doctor } from "./doctor.model";
 import { Patient } from "./patient.model";
 
 export class Vacation {
-    Id: string = "";
+    id: string = '';
     doctorId: string = '';
-    patientId: string = '';
-    roomId: string = '';
-    dateTime: string = '';
+    dateStart: string = ''
+    dateEnd: string = ''
+    reason: string = '';
+    urgency: boolean = false;
+    vacationStatus : number = 0;  //0 na cekanju, 1 prihvacen, 2 odbijen 
+    deniedRequestReason : string = '';
+
 
     public constructor(obj?: any) {
         if (obj) {
-            this.Id = obj.Id;
-            this.doctorId = obj.doctorId;
-            this.patientId = obj.patientId;
-            this.roomId = obj.roomId;
-            this.dateTime = obj.dateTime;     
+            this.id = obj.id;
+            this.doctorId = obj.doctorId; 
+            this.dateStart = obj.dateStart;
+            this.dateEnd = obj.dateEnd;
+            this.reason = obj.reason;
+            this.urgency = obj.urgency;
+            this.vacationStatus = obj.vacationStatus;
+            this.deniedRequestReason = obj.deniedRequestReason;   
         }
-
     }
 }

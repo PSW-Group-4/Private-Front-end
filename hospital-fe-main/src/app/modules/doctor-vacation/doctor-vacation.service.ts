@@ -47,4 +47,8 @@ export class DoctorVacationService {
   updateAppointment(vacation: any): Observable<any> {
     return this.http.put<any>(this.apiHost + 'api/AppoinDoctorVacationtment/' + vacation.Id, vacation, {headers: this.headers});
   }
+
+  updateVacation(vacation: Vacation): Observable<Vacation> {
+    return this.http.put<Vacation>(this.apiHost + 'api/Vacation/' + vacation.id, vacation, {headers: this.headers});
+  }
 }

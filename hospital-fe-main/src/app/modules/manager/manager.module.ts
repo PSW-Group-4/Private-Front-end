@@ -10,6 +10,8 @@ import { MaterialModule } from 'src/app/material/material.module';
 import { StatisticsService } from './patient-statistics/services/statistics.service';
 import { ReportConfigsComponent } from './report-configs/report-configs.component';
 import { FormsModule } from '@angular/forms';
+import { ManagerVacationsComponent } from './manager-vacations/manager-vacations.component';
+import { CommentComponent } from './manager-vacations/comment/comment/comment.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { FormsModule } from '@angular/forms';
     BarChartComponent,
     BarChartGenderComponent,
     ReportConfigsComponent,
+    ManagerVacationsComponent,
+    CommentComponent,
   ],
   imports: [CommonModule, AppRoutingModule, MaterialModule,FormsModule],
   providers: [StatisticsService],
