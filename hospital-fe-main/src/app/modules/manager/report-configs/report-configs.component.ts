@@ -45,9 +45,9 @@ export class ReportConfigsComponent implements OnInit {
     item.requestFrequency = parseInt(item.requestFrequency.toString());
     item.activeStatus = this.convertString(item.activeStatus);
     this.reportConfigsService.createReport(item).subscribe(res=>{
-      if(res.id == item.id){
+      /*if(res.bloodBank.id == item.bloodBankid){
         this.updateSuccess=true;
-      }
+      }*/
     })
   }
   flipNewFlag(){

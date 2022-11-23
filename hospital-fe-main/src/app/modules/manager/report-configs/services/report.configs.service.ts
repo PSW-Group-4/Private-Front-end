@@ -13,13 +13,13 @@ export class ReportConfigsService {
 
   }
   getAllConfigs() :Observable<ReportConfigurationDto[]>{
-    return this.http.get<ReportConfigurationDto[]>('http://localhost:5000/'  + 'api/ReportConfiguration', { headers:  ConstSettings.standardHeader });
+    return this.http.get<ReportConfigurationDto[]>('http://localhost:45488/'  + 'api/ReportConfiguration', { headers:  ConstSettings.standardHeader });
   }
   updateReport(report : ReportConfigurationDto): Observable<ReportConfigurationDto> {
-    return this.http.put<any>('http://localhost:5000/'  + 'api/ReportConfiguration',report, { headers:  ConstSettings.standardHeader });
+    return this.http.put<any>('http://localhost:45488/'  + 'api/ReportConfiguration',report, { headers:  ConstSettings.standardHeader });
   }
   createReport(report : ReportConfigurationDto): Observable<ReportConfigurationDto> {
-    return this.http.post<any>('http://localhost:5000/'  + 'api/ReportConfiguration',report, { headers:  ConstSettings.standardHeader });
+    return this.http.post<any>('http://localhost:45488/'  + 'api/ReportConfiguration',report, { headers:  ConstSettings.standardHeader });
   }
   
 }
