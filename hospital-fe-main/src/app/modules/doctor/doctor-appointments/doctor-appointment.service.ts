@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { AdmissionHistory } from '../../hospital/model/admission-history.model';
 import { Admission } from '../../hospital/model/admission.model';
 import { Appointment } from '../../hospital/model/appointment.model';
 import { Doctor } from '../../hospital/model/doctor.model';
@@ -74,5 +75,13 @@ export class DoctorAppointmentService {
 
   createAdmissionHistory(admissionHistory: any): Observable<any>{
     return this.http.post<any>(this.apiHost + 'api/AdmissionHistory', admissionHistory, {headers: this.headers});
+  }
+
+  getAdmissionHistories(): Observable<AdmissionHistory[]>{
+    return this.http.get<AdmissionHistory[]>(this.apiHost + 'api/AdmissionHistory' , {headers: this.headers});
+  }
+
+  getAdmissionHistory(id: any): Observable<any>{
+    return this.http.get<AdmissionHistory>(this.apiHost + 'api/AdmissionHistory/' + id  , {headers: this.headers});
   }
 }

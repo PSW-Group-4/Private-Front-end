@@ -1,0 +1,20 @@
+<div class="container mt-5 ml-5" >
+    <h2><b><p>Medicinski karton</p></b></h2>
+    <div class="container mt-5">
+        <h1><p [innerText]="admission.patient.name + ' ' + admission.patient.surname"></p></h1>
+        <b><label>Datum prijema :</label></b>
+        <p [innerText]="admission.arrivalDate | date : 'dd.MM.yyyy'"></p>
+        <b><label>Razlog prijema :</label></b>
+        <p [innerText]="admission.reason"></p>
+    </div>
+    <div class="container mt-5">
+        <b><label>Datum otpusta :</label></b>
+        <p [innerText]="admissionHistory.dischargeDate | date : 'dd.MM.yyyy'"></p>
+        <b><label>Razlog otpusta :</label></b>
+        <p [innerText]="admissionHistory.dischargeReason"></p>
+    </div>
+
+    <div class="container text-center">
+        <button mat-flat-button color="primary">Generisi izvestaj</button>
+    </div>
+    </div>
