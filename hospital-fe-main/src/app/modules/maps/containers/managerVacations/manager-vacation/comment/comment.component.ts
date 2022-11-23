@@ -11,7 +11,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class CommentComponent implements OnInit {
   
-  constructor(private doctorService: DoctorVacationService, private dialogRef: MatDialogRef<CommentComponent>,
+  constructor(private doctorService: DoctorVacationService,
     @Inject(MAT_DIALOG_DATA) public data : any) { //u data imamo vrednosti kliknutog elementa
 
      }
