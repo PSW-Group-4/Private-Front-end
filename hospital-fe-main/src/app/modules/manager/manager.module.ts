@@ -8,6 +8,8 @@ import { BarChartComponent } from './patient-statistics/bar-chart/bar-chart.comp
 import { GenderStatisticsComponent } from './patient-statistics/gender-statistics/gender-statistics.component';
 import { MaterialModule } from 'src/app/material/material.module';
 import { StatisticsService } from './patient-statistics/services/statistics.service';
+import { ReportConfigsComponent } from './report-configs/report-configs.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,8 +18,9 @@ import { StatisticsService } from './patient-statistics/services/statistics.serv
     AgeStatisticsComponent,
     BarChartComponent,
     BarChartGenderComponent,
+    ReportConfigsComponent,
   ],
-  imports: [CommonModule, AppRoutingModule, MaterialModule],
+  imports: [CommonModule, AppRoutingModule, MaterialModule,FormsModule],
   providers: [StatisticsService],
 })
 export class ManagerModule {}

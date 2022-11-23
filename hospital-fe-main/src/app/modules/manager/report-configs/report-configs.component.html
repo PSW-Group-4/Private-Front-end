@@ -1,0 +1,46 @@
+<div class="center-wrapper">
+    <h1>Report configurations</h1>
+    <h1 *ngIf="this.updateSuccess">Database update successfull</h1>
+    <div class="item-wrapper" *ngFor="let item of configs">
+        <p>Bloodbank name: {{item.bloodBankName}}</p>
+        <mat-label>Active status:</mat-label>
+        <select [(ngModel)]="item.activeStatus">
+            <option value="true">True</option>
+            <option value="false">False</option>
+        </select>
+        <mat-label>Report frequency:</mat-label>
+        <select [(ngModel)]="item.requestFrequency">
+            <option value=1>Daily</option>
+            <option value=7>Weekly</option>
+            <option value=15>Bi-Monthly</option>
+            <option value=30>Monthly</option>
+            <option value=183>Bi-Annualy</option>
+            <option value=365>Annualy</option>
+        </select>
+        <button (click)="updateConfig(item)">Update</button>
+    </div>
+    <button (click)="this.flipNewFlag()">Create new</button>
+    <div *ngIf="this.new" class="creation-wrapper"> 
+        <mat-label>BloodBank:</mat-label>
+        <select [(ngModel)]="newConfig.bloodBankid">
+            <option *ngFor="let bank of banks" [value]="bank.id">
+                {{bank.name}}
+            </option>
+        </select>
+        <mat-label>Active status:</mat-label>
+        <select [(ngModel)]="newConfig.activeStatus">
+            <option value="true">True</option>
+            <option value="false">False</option>
+        </select>
+        <mat-label>Report frequency:</mat-label>
+        <select [(ngModel)]="newConfig.requestFrequency">
+            <option value=1>Daily</option>
+            <option value=7>Weekly</option>
+            <option value=15>Bi-Monthly</option>
+            <option value=30>Monthly</option>
+            <option value=183>Bi-Annualy</option>
+            <option value=365>Annualy</option>
+        </select>
+        <button (click)="createConfig(newConfig)">Save</button>
+    </div> 
+</div>      

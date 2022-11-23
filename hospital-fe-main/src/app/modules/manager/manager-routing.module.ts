@@ -5,10 +5,12 @@ import { MapsMainContainerComponent } from '../maps/containers/maps-main-contain
 import { ManagerFeedbackComponent } from './manager-feedback/manager-feedback.component';
 import { ManagerRootComponent } from './manager-root/manager-root.component';
 import { AgeStatisticsComponent } from './patient-statistics/age-statistics/age-statistics.component';
+import { ReportConfigsComponent } from './report-configs/report-configs.component';
 
 const routes: Routes = [
   { path: 'feedbacks', component: ManagerFeedbackComponent },
   { path: 'patientStatistics', component: AgeStatisticsComponent },
+  { path: 'report-configs', component: ReportConfigsComponent},
   { path: 'maps', component: MapsMainContainerComponent,
     loadChildren: () =>
         import('../maps/maps-routing.module').then(
