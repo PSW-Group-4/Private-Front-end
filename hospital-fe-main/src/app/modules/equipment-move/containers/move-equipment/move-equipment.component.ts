@@ -75,6 +75,8 @@ export class MoveEquipmentComponent implements OnInit {
       this.dates = res;
     });
   }
+  
+  // https://stackoverflow.com/questions/40526102/how-do-you-format-a-date-time-in-typescript
   dateAsYYYYMMDDHHNNSS(date:any): string {
     return date.getFullYear()
               + '-' + this.leftpad(date.getMonth() + 1)
