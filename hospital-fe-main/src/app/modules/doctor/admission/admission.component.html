@@ -24,16 +24,17 @@
 
     <div class="container mt-5">
         <mat-form-field  appearance="fill">
-            <mat-label>Razlog</mat-label>
+            <mat-label>Razlog</mat-label>            
             <textarea matInput
                       cdkTextareaAutosize                      
                       cdkAutosizeMinRows="1"
-                      cdkAutosizeMaxRows="5"></textarea>
+                      cdkAutosizeMaxRows="5"
+                      [(ngModel)]="reason" name="reason"></textarea>
           </mat-form-field>
     </div>
     
     <div class="container mt-5 ml-5">
-        <button mat-raised-button color="primary" >Potvrdi</button>
+        <button mat-raised-button color="primary" (click)="confirm()">Potvrdi</button>
         
     </div>
     
