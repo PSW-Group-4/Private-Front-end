@@ -70,8 +70,6 @@ export class MoveEquipmentComponent implements OnInit {
   }
   
   recommendRelocation(){
-    var relocationStart = this.minDate.toDateString();
-    const datepipe: DatePipe = new DatePipe('en-US')
     this.formattedDate = this.dateAsYYYYMMDDHHNNSS(this.relocationStart);
     this.equipmentRelocationService.getAllRecommendations(this.formattedDate, this.duration, this.source.id, this.destination.id).subscribe(res=>{
       this.dates = res;
