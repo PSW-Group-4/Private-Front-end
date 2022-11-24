@@ -76,19 +76,17 @@
             </div>   
         </mat-step>
         <mat-step [editable]="true">
-            <ng-template matStepLabel>Choose appointment</ng-template>
-            <div>
-                <table>
-                    <tbody>
-                        <tr *ngFor="let d of dates">
-                            <td>{{d | date:'medium'}}</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <ng-template matStepLabel>Choose relocation start</ng-template>
+            <div class="spacer-div">
+                <mat-select placeholder="Choose relocation start" [(ngModel)]="selectedRelocationStart" >
+                    <mat-option *ngFor="let d of dates" [value]="d">
+                       {{d | date:'medium'}}
+                    </mat-option>
+                 </mat-select>
             </div>
             <div class="next-back-buttons spacer-div">
                 <button mat-raised-button color="secondary" class="spacer-buttons" matStepperPrevious>Back</button>
-                <button mat-raised-button color="primary"  class="spacer-buttons" matStepperNext>Next</button>
+                <button mat-raised-button color="primary"  class="spacer-buttons" matStepperNext (click)="selectDate()">Next</button>
             </div>  
         </mat-step>
         <mat-step>

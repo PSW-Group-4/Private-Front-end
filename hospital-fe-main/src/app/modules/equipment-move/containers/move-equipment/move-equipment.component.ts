@@ -37,6 +37,7 @@ export class MoveEquipmentComponent implements OnInit {
   dates: Date[] = [];
   formattedDate :String ='';
   relocationStart:Date = new Date;
+  selectedRelocationStart: Date = new Date;
   constructor(private facade : EquipmentMoveFacade, private equipmentRelocationService: EquipmentRelocationService) { }
 
   ngOnInit(): void {
@@ -88,5 +89,7 @@ export class MoveEquipmentComponent implements OnInit {
     return (String(leftpadChar).repeat(resultLength)
           + String(val)).slice(String(val).length);
   }
-
+  selectDate(){
+    console.log(this.selectedRelocationStart);
+  }
 }
