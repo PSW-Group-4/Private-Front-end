@@ -23,8 +23,18 @@ export class TreatmentDialogComponent implements OnInit {
         this.admission = res;
       })
     })
-
-    
+ 
   }
+
+  generatePdf(id:any): void{
+    this.doctorAppointmentService.generatePdf(this.data.admissionHistoryId).subscribe(data=>{
+        let fileName = 'medicalReport';
+        let blob: Blob = data.body as Blob;
+        let a = document.createElement('a');
+        a.download=fileName;
+        a.href = window.URL.createObjectURL(blob);
+        a.click();
+    }
+  )}
 
 }

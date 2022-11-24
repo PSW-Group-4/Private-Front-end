@@ -84,4 +84,12 @@ export class DoctorAppointmentService {
   getAdmissionHistory(id: any): Observable<any>{
     return this.http.get<AdmissionHistory>(this.apiHost + 'api/AdmissionHistory/' + id  , {headers: this.headers});
   }
+
+  generatePdf(id: any): Observable<any> {
+    const requestOptions: Object = {
+      observe: 'response',
+      responseType: 'blob'
+    }
+    return this.http.get<any>(this.apiHost + 'api/MedicalRecordReport/' + id, requestOptions);
+  }
 }
