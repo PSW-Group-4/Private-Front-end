@@ -54,7 +54,7 @@
             <div class="spacer-div">
                 <mat-form-field class="full-width" appearance="fill">
                     <mat-label>Choose a date</mat-label>
-                    <input matInput [min]="minDate" [matDatepicker]="picker">
+                    <input matInput [(ngModel)]="relocationStart" [min]="minDate" [matDatepicker]="picker">
                     <mat-hint>MM/DD/YYYY</mat-hint>
                     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
@@ -62,7 +62,7 @@
             </div>
             <div class="spacer-div">
                 <mat-form-field class="full-width" appearance="fill">
-                    <input matInput type="number" [value]="duration" [formControl]="numberValidator">
+                    <input matInput [(ngModel)]="duration" type="number" [value]="duration" [formControl]="numberValidator">
                     <mat-hint>Duration</mat-hint>
                     <mat-error *ngIf="numberValidator.hasError('required')">
                         Duration <strong>required</strong> and needs to be a <strong>number</strong>
@@ -72,11 +72,20 @@
             </div>
             <div class="next-back-buttons spacer-div">
                 <button mat-raised-button color="secondary" class="spacer-buttons" matStepperPrevious>Back</button>
-                <button mat-raised-button color="primary"  class="spacer-buttons" matStepperNext>Next</button>
+                <button mat-raised-button color="primary"  class="spacer-buttons" matStepperNext (click)="recommendRelocation()">Next</button>
             </div>   
         </mat-step>
         <mat-step [editable]="true">
             <ng-template matStepLabel>Choose appointment</ng-template>
+            <div>
+                <table>
+                    <tbody>
+                        <tr *ngFor="let d of dates">
+                            <td>{{d | date:'medium'}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
             <div class="next-back-buttons spacer-div">
                 <button mat-raised-button color="secondary" class="spacer-buttons" matStepperPrevious>Back</button>
                 <button mat-raised-button color="primary"  class="spacer-buttons" matStepperNext>Next</button>
