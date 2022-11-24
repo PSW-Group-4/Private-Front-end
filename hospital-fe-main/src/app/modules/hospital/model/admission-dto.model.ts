@@ -2,19 +2,17 @@ import { PatientRoom } from "./patient-room.model";
 import { Patient } from "./patient.model";
 import { Room } from "./room.model";
 
-export class Admission {
-    Id: string = "";
-    patient: Patient = new Patient();
+export class AdmissionDto {    
+    roomId: string = '';
+    patientId: string = '';
     reason: string = '';
-    room: PatientRoom = new PatientRoom();
     arrivalDate: string = '';
 
     public constructor(obj?: any) {
-        if (obj) {
-            this.Id = obj.Id;
-            this.patient = obj.patient;
+        if (obj) {            
+            this.patientId = obj.patient;
             this.reason = obj.reason;
-            this.room = obj.room;
+            this.roomId = obj.room;
             this.arrivalDate = obj.arrivalDate;     
         }
 
