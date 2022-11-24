@@ -6,7 +6,14 @@ import {
   OnInit,
   SimpleChanges,
 } from '@angular/core';
-import { Chart } from 'chart.js';
+import {
+  BarController,
+  BarElement,
+  CategoryScale,
+  Chart,
+  LinearScale,
+  registerables,
+} from 'chart.js';
 
 @Component({
   selector: 'app-bar-chart',
@@ -43,6 +50,7 @@ export class BarChartComponent implements OnInit, OnChanges {
       this.chartLabels.push(item.ageGroup.gropuName);
     }
 
+    Chart.register(BarController, CategoryScale, LinearScale, BarElement);
     this.chart = new Chart('MyChart', {
       type: 'bar', //this denotes tha type of chart
 
