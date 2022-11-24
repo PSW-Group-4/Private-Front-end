@@ -5,18 +5,24 @@ import { DoctorRoutingModule } from './doctor-routing.module';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { MatIconModule } from '@angular/material/icon';
 import { DischargeAdmissionDialogComponent } from './admission-view/discharge-admission-dialog/discharge-admission-dialog.component';
+import { AdmissionHistoryComponent } from './admission-view/admission-history/admission-history.component';
+import {MatTableModule} from '@angular/material/table';
+import { TreatmentDialogComponent } from './admission-view/admission-history/treatment-dialog/treatment-dialog.component';
 
 
 
 @NgModule({
   declarations: [
     DoctorRootComponent,
-    DischargeAdmissionDialogComponent
+    DischargeAdmissionDialogComponent,
+    AdmissionHistoryComponent,
+    TreatmentDialogComponent
   ],
   imports: [
     CommonModule,
     AppRoutingModule,
-    MatIconModule
+    MatIconModule,
+    MatTableModule
   ]
 })
 export class DoctorModule { }
