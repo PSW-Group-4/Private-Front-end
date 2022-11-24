@@ -20,7 +20,8 @@ export class VacationSchedulerComponent implements OnInit {
   isUrgent: string = '';
   whatStatus: string = ''
 
-  doctorId = '1412c639-c5e1-47a1-b29b-1fe935536612';
+  doctorId = 'e6fbebce-dd68-11e4-9e38-c66b98cc8197';
+  // mozda ni nema doktora
   constructor(private doctorVacationService: DoctorVacationService, public dialog: MatDialog) { }
 
   @Input() whatVacationIs:string | undefined
@@ -43,21 +44,21 @@ export class VacationSchedulerComponent implements OnInit {
   }
 
   public showCurrentVacatioRequests(): void {
-    this.doctorVacationService.getVacations().subscribe(res => {
+    this.doctorVacationService.GetDoctorVacationsFromSpecificStatus(0,this.doctorId).subscribe(res => {
       this.vacations = res;
       this.dataSource.data = this.vacations;
     })
   }
 
   public showDeniedVacationRequests(): void {
-    this.doctorVacationService.getDoctorsDeniedVacationRequests(this.doctorId).subscribe(res => {
+    this.doctorVacationService.GetDoctorVacationsFromSpecificStatus(2,this.doctorId).subscribe(res => {
       this.vacations = res;
       this.dataSource.data = this.vacations;
     })
   }
 
   public showOldVacationRequests(): void {
-    this.doctorVacationService.getDoctorsPastVacationRequests(this.doctorId).subscribe(res => {
+    this.doctorVacationService.GetDoctorVacationsFromSpecificStatus(1,this.doctorId).subscribe(res => {
       this.vacations = res;
       this.dataSource.data = this.vacations;
     })
