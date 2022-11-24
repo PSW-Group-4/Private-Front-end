@@ -7,7 +7,7 @@ export class Vacation {
     dateStart: string = ''
     dateEnd: string = ''
     reason: string = '';
-    urgency: boolean = false;
+    urgent?: boolean;
     vacationStatus : number = 0;  //0 na cekanju, 1 prihvacen, 2 odbijen 
     deniedRequestReason : string = '';
 
@@ -19,7 +19,7 @@ export class Vacation {
             this.dateStart = obj.dateStart;
             this.dateEnd = obj.dateEnd;
             this.reason = obj.reason;
-            this.urgency = obj.urgency;
+            this.urgent = obj.urgent;
             this.vacationStatus = obj.vacationStatus;
             this.deniedRequestReason = obj.deniedRequestReason;   
         }

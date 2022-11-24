@@ -12,8 +12,8 @@ export class DoctorVacationService {
 
   constructor(private http: HttpClient) { }
 
-  getDoctorsCurrentVacationRequests(id: String): Observable<Vacation[]> {
-    return this.http.get<Vacation[]>(this.apiHost + 'api/DoctorVacation/CurrentRequests/' + id, {headers: this.headers});
+  GetDoctorVacationsFromSpecificStatus(status: number, id: String): Observable<Vacation[]> {
+    return this.http.get<Vacation[]>(this.apiHost + 'api/Vacation/' + status + '/' + id, {headers: this.headers});
   }
 
   getDoctorsDeniedVacationRequests(id: String): Observable<Vacation[]> {
@@ -25,7 +25,7 @@ export class DoctorVacationService {
   }
 
   deleteDoctorsPendingVacationReques(id: any): Observable<any> {
-    return this.http.delete<any>(this.apiHost + 'api/DoctorVacation/PendingRequest/' + id, {headers: this.headers});
+    return this.http.delete<any>(this.apiHost + 'api/Vacation/' + id, {headers: this.headers});
   }
 
   getVacationsByID(id: any): Observable<Vacation[]> {
@@ -40,8 +40,8 @@ export class DoctorVacationService {
     return this.http.delete<any>(this.apiHost + 'api/DoctorVacation/' + id, {headers: this.headers});
   }
 
-  createAppointment(vacation: any): Observable<any> {
-    return this.http.post<any>(this.apiHost + 'api/DoctorVacation', vacation, {headers: this.headers});
+  createVacation(vacation: any): Observable<any> {
+    return this.http.post<any>(this.apiHost + 'api/Vacation', vacation, {headers: this.headers});
   }
 
   updateAppointment(vacation: any): Observable<any> {
