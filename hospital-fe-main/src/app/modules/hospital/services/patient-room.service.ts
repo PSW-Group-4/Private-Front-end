@@ -28,4 +28,8 @@ export class PatientRoomService {
   captureBed(patientRoom: any): Observable<any> {
     return this.http.put<any>(this.apiHost + 'Capture', patientRoom, {headers: this.headers});
   }
+
+  freeBed(patientRoom: any): Observable<any> {
+    return this.http.put<any>(this.apiHost + 'Free', patientRoom, {headers: this.headers});
+  }
 }
