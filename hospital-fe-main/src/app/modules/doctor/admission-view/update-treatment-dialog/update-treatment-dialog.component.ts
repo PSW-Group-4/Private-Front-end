@@ -110,7 +110,7 @@ export class UpdateTreatmentDialogComponent implements OnInit {
   createTreatment(): void{
     this.treatmentRequestDto.medicineId = this.selectedMedicine.id;
     this.treatmentRequestDto.bloodConsumptionRecordId = null;
-    this.treatmentRequestDto.dateChanged = Date.toString();
+    this.treatmentRequestDto.dateChanged = Date.now;
 
 
     this.doctorAppointmentService.createTreatment(this.treatmentRequestDto).subscribe(res => {

@@ -16,7 +16,7 @@ export class DoctorSchedulerComponent implements OnInit {
   public dataSource = new MatTableDataSource<Appointment>();
   public displayedColumns : string[] = [];
   public appointments: Appointment[] = [];
-  doctorId = '487d0767-1f8b-4a09-a593-4f076bdb9881';
+  doctorId = 'e6fbebce-dd68-11e4-9e38-c66b98cc8197';
   
   constructor(private doctorAppointmentService: DoctorAppointmentService, public dialog: MatDialog) { }
 
