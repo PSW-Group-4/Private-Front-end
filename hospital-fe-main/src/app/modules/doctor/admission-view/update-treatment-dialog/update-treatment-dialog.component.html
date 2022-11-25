@@ -45,5 +45,10 @@
     <button mat-raised-button color="primary" matTooltip="Promeni lek" (click) = "createBloodObject()">
        Transfuzija</button>
     </div>
+    <div class="container mt-2" >
+        
+            <mat-label>Poslednja izmena: {{treatment.dateChanged | date: 'dd/MM/yyyy hh:mm' }}</mat-label>            
+        
+    </div>
    
 </div>

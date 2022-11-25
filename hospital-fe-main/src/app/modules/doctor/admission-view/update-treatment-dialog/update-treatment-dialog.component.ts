@@ -25,7 +25,7 @@ export class UpdateTreatmentDialogComponent implements OnInit {
   admission : Admission = new Admission;
   treatment : Treatment = new Treatment;
   medicine : Medicine = new Medicine;
- selectedMedicine : Medicine = new Medicine;
+  selectedMedicine : Medicine = new Medicine;
   blood : BloodConsumptionRecord = new BloodConsumptionRecord;
   public medicines: Medicine[]= [];
   treatmentDto : TreatmentDto = new TreatmentDto;
@@ -110,7 +110,7 @@ export class UpdateTreatmentDialogComponent implements OnInit {
   createTreatment(): void{
     this.treatmentRequestDto.medicineId = this.selectedMedicine.id;
     this.treatmentRequestDto.bloodConsumptionRecordId = null;
-    this.treatmentRequestDto.dateChanged = Date.now;
+    this.treatmentRequestDto.dateChanged = Date.toString();
 
 
     this.doctorAppointmentService.createTreatment(this.treatmentRequestDto).subscribe(res => {
