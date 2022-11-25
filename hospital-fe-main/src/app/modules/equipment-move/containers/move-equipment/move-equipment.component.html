@@ -94,7 +94,8 @@
           <p>You are now done.</p>
           <div class="next-back-buttons">
             <button mat-raised-button color="secondary" class="spacer-buttons" matStepperPrevious>Back</button>
-            <button mat-raised-button color="primary"  class="spacer-buttons" (click)="stepper.reset()">Reset</button>
+            <button mat-raised-button color="warn"  class="spacer-buttons" (click)="stepper.reset()">Reset</button>
+            <button mat-raised-button color="primary"  class="spacer-buttons" (click)="confirmRelocation()">Done</button>
           </div>  
         </mat-step>
     </mat-stepper>

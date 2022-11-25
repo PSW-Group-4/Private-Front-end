@@ -6,6 +6,7 @@ import { EquipmentList } from 'src/app/modules/shared/model/equipment-list.model
 import { Equipment } from 'src/app/modules/shared/model/equipment.model';
 import { Room } from 'src/app/modules/shared/model/room.model';
 import { EquipmentMoveFacade } from '../../equipment-move.facade';
+import { MoveEquipmentTask } from '../../model/move-equipment-task.model';
 import { EquipmentRelocationService } from '../../service/equipment-relocation.service';
 
 @Component({
@@ -74,6 +75,24 @@ export class MoveEquipmentComponent implements OnInit {
     this.equipmentRelocationService.getAllRecommendations(this.formattedDate, this.duration, this.source.id, this.destination.id).subscribe(res=>{
       this.dates = res;
     });
+  }
+
+  confirmRelocation() {
+    var data : MoveEquipmentTask = new MoveEquipmentTask(); 
+    data.Date = this.selectedRelocationStart;
+    data.Duration = this.duration;
+    data.Amount = this.amount;
+    data.Equipment = this.selectedEquipment.equipment.id;
+    data.Source = this.source.id;
+    data.Destination = this.destination.id;
+    this.facade.createTask$(data).subscribe(
+      {
+        complete: () => {
+          alert('DONE')
+          location.reload()
+        }
+      }
+    );
   }
   
   // https://stackoverflow.com/questions/40526102/how-do-you-format-a-date-time-in-typescript
