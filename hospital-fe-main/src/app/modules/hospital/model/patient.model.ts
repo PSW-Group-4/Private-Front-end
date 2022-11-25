@@ -12,6 +12,7 @@ export class Patient{
     jmbg: string = '';
     email: string = '';
     phoneNumber: string = '';
+    bloodType: number = 0;
 
     public constructor(obj?: any) {
         if (obj) {
@@ -27,7 +28,8 @@ export class Patient{
             this.addressId = obj.addressId;
             this.jmbg = obj.jmbg;
             this.email = obj.email;
-            this.phoneNumber = obj.phoneNumber;       
+            this.phoneNumber = obj.phoneNumber;     
+            this.bloodType = obj.bloodType;  
         }
 
     }

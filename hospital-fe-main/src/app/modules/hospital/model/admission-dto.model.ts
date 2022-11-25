@@ -7,6 +7,7 @@ export class AdmissionDto {
     patientId: string = '';
     reason: string = '';
     arrivalDate: string = '';
+    
 
     public constructor(obj?: any) {
         if (obj) {            
@@ -14,6 +15,7 @@ export class AdmissionDto {
             this.reason = obj.reason;
             this.roomId = obj.room;
             this.arrivalDate = obj.arrivalDate;     
+            
         }
 
     }

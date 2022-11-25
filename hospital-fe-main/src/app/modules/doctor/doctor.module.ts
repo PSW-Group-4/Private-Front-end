@@ -8,6 +8,11 @@ import { DischargeAdmissionDialogComponent } from './admission-view/discharge-ad
 import { AdmissionHistoryComponent } from './admission-view/admission-history/admission-history.component';
 import {MatTableModule} from '@angular/material/table';
 import { TreatmentDialogComponent } from './admission-view/admission-history/treatment-dialog/treatment-dialog.component';
+import { UpdateTreatmentDialogComponent } from './admission-view/update-treatment-dialog/update-treatment-dialog.component';
+import {MatSelectModule} from '@angular/material/select';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
+
 
 
 
@@ -16,13 +21,20 @@ import { TreatmentDialogComponent } from './admission-view/admission-history/tre
     DoctorRootComponent,
     DischargeAdmissionDialogComponent,
     AdmissionHistoryComponent,
-    TreatmentDialogComponent
+    TreatmentDialogComponent,
+    UpdateTreatmentDialogComponent
   ],
   imports: [
     CommonModule,
     AppRoutingModule,
     MatIconModule,
-    MatTableModule
+    MatTableModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    FormsModule
+    
+    
   ]
+  
 })
 export class DoctorModule { }

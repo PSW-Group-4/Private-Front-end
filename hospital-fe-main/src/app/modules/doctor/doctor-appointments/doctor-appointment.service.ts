@@ -4,8 +4,11 @@ import { Observable } from 'rxjs';
 import { AdmissionHistory } from '../../hospital/model/admission-history.model';
 import { Admission } from '../../hospital/model/admission.model';
 import { Appointment } from '../../hospital/model/appointment.model';
+import { BloodConsumptionRecord } from '../../hospital/model/blood-consumption-record.model';
 import { Doctor } from '../../hospital/model/doctor.model';
+import { Medicine } from '../../hospital/model/medicine-model';
 import { Patient } from '../../hospital/model/patient.model';
+import { Treatment } from '../../hospital/model/treatment-model';
 
 @Injectable({
   providedIn: 'root'
@@ -96,4 +99,34 @@ export class DoctorAppointmentService {
     }
     return this.http.get<any>(this.apiHost + 'api/MedicalRecordReport/' + id, requestOptions);
   }
+
+  getTreatment(id: any): Observable<Treatment> {
+    return this.http.get<Treatment>(this.apiHost + 'api/Treatment/' + id, {headers: this.headers});
+  }
+  getMedicine(id: any): Observable<Medicine> {
+    return this.http.get<Medicine>(this.apiHost + 'api/Medicine/' + id, {headers: this.headers});
+  }
+  getMedicines(): Observable<Medicine[]> {
+    return this.http.get<Medicine[]>(this.apiHost + 'api/Medicine' , {headers: this.headers});
+  }
+
+  getBlood(id: any): Observable<BloodConsumptionRecord> {
+    return this.http.get<BloodConsumptionRecord>(this.apiHost + 'api/BloodConsumptionRecord/' + id, {headers: this.headers});
+  }
+
+  updateTreatmentMedicine(medicine: any, treatmentDto: any): Observable<any> {
+    return this.http.put<any>(this.apiHost + 'TreatmentMedicine/' + medicine, treatmentDto, {headers: this.headers});
+  }
+  createTreatment(treatment: any): Observable<any>{
+    return this.http.post<any>(this.apiHost + 'api/Treatment', treatment, {headers: this.headers});
+  }
+  createTreatmentInAdmission(treatmentId: any, admissionUpdateTreatmentDto: any): Observable<any> {
+    return this.http.put<any>(this.apiHost + 'api/Admission/' + treatmentId + '/' + admissionUpdateTreatmentDto, {headers: this.headers});
+  }
+
+  updateTreatmentBlood(blood: any, treatmentDto: any): Observable<any> {
+    return this.http.put<any>(this.apiHost + 'TreatmentBlood/' + blood, treatmentDto, {headers: this.headers});
+  }
+
+ 
 }
