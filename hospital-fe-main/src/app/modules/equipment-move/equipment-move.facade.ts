@@ -3,6 +3,8 @@ import { Observable, shareReplay } from "rxjs";
 import { Room } from "../shared/model/room.model";
 import { RoomService } from "../shared/service/room.service";
 import { MoveEquipmentRoomState } from "../shared/state/room-for-move.state";
+import { MoveEquipmentTask } from "./model/move-equipment-task.model";
+import { MoveEquipmentTaskService } from "./service/move-equipment-task.service";
 
 
 
@@ -11,7 +13,7 @@ import { MoveEquipmentRoomState } from "../shared/state/room-for-move.state";
 })
 export class EquipmentMoveFacade {
     rooms$ : Observable<Room[]>;
-    constructor(private roomService : RoomService, private moveEquipmentState : MoveEquipmentRoomState) {
+    constructor(private roomService : RoomService, private taskService : MoveEquipmentTaskService, private moveEquipmentState : MoveEquipmentRoomState) {
         this.rooms$ = this.roomService
             .getRooms()
             .pipe(shareReplay(1)); // cache the data
@@ -27,6 +29,10 @@ export class EquipmentMoveFacade {
 
     setSelectedRoom(room : Room) {
         return this.moveEquipmentState.setSelectedRoom(room);
-    } 
+    }
+    
+    createTask$(data : MoveEquipmentTask) {
+        return this.taskService.create(data);
+    }
       
 }
