@@ -6,13 +6,15 @@ import { DoctorBloodConsumptionComponent } from './doctor-blood-consumption/doct
 import { AdmissionViewComponent } from './admission-view/admission-view.component';
 import { AdmissionComponent } from './admission/admission.component';
 import { AdmissionHistoryComponent } from './admission-view/admission-history/admission-history.component';
+import { UpdateTreatmentDialogComponent } from './admission-view/update-treatment-dialog/update-treatment-dialog.component';
 
 const routes: Routes = [
   { path: 'appointments', component: DoctorAppointmentsComponent},
   { path: 'bloodConsumption', component: DoctorBloodConsumptionComponent},
   { path: 'admission', component: AdmissionComponent },
   { path: 'admissionView', component: AdmissionViewComponent },
-  { path: 'admissionHistory', component: AdmissionHistoryComponent}
+  { path: 'admissionHistory', component: AdmissionHistoryComponent},
+  { path: 'updateTreatment', component: UpdateTreatmentDialogComponent}
 ];
 
 @NgModule({
