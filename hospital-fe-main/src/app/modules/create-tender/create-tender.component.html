@@ -1,0 +1,45 @@
+<div class="centered-content">
+  <h1 class="title">Create tender</h1>
+  <div>
+    <mat-stepper [linear]="isLinear" #stepper>
+      <mat-step [stepControl]="firstFormGroup">
+        <form [formGroup]="firstFormGroup">
+          <ng-template matStepLabel>Select blood types</ng-template>
+          <mat-form-field appearance="fill">
+            <mat-label>Blood type</mat-label>
+            <mat-select multiple>
+              <mat-option (onSelectionChange)="onSelect(bloodType)" *ngFor="let bloodType of bloodTypes" [value]="bloodType">
+                {{bloodType.bloodGroup}}{{bloodType.rhFactor === "POSITIVE" ? "+" : "-"}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="secondFormGroup" label="Select amount">
+        <form [formGroup]="secondFormGroup">
+          <mat-form-field appearance="fill">
+            <mat-label>Address</mat-label>
+            <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
+                   required>
+          </mat-form-field>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        <p>You are now done.</p>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button (click)="stepper.reset()">Reset</button>
+        </div>
+      </mat-step>
+    </mat-stepper>
+
+  </div>
+</div>
