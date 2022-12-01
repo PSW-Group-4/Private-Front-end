@@ -32,6 +32,9 @@ export class CreateTenderComponent implements OnInit {
   public bloodProducts: BloodProduct[] = []
   public selected: BloodType[] = [];
   public isLinear: boolean = true;
+  public deadline: any;
+  public isDeadlineDisabled: boolean = false;
+
   ngOnInit(): void {
   }
   trackByIndex(index: number, obj: any): any {
@@ -47,7 +50,11 @@ export class CreateTenderComponent implements OnInit {
 
   public onClick() {
     if (!this.isValidInput()) return;
-    this.tenderService.create(this.tender).subscribe(res => {
+    let finalDeadline = this.isDeadlineDisabled ? null : this.deadline;
+    this.tenderService.create({
+      bloodProducts: this.bloodProducts,
+      deadline: finalDeadline
+    }).subscribe(res => {
       this.router.navigate(['/tenders']);
     });
   }
@@ -59,6 +66,10 @@ export class CreateTenderComponent implements OnInit {
       this.selected.push(bloodType);
     }
     this.generateBloodProducts();
+  }
+
+  deadlineCheck() {
+    this.isDeadlineDisabled = !this.isDeadlineDisabled;
   }
 
   generateBloodProducts() {

@@ -2,7 +2,7 @@ import {BloodProduct} from "./blood-product.model";
 
 export class Tender {
   bloodProducts: BloodProduct[] = [];
-  deadline: string = "";
+  deadline: string | null | undefined;
 
 
   public constructor(obj?: any) {
