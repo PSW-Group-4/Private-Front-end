@@ -5,6 +5,7 @@ import {TenderService} from "../hospital/services/tender.service";
 import {Router} from "@angular/router";
 import {BloodType} from "../hospital/model/blood-type.model";
 import {FormBuilder, Validators} from "@angular/forms";
+import {BloodProduct} from "../hospital/model/blood-product.model";
 
 @Component({
   selector: 'app-create-tender',
@@ -28,16 +29,20 @@ export class CreateTenderComponent implements OnInit {
       { bloodGroup: "O", rhFactor: "POSITIVE"},
       { bloodGroup: "O", rhFactor: "NEGATIVE"}
     ]
+  public bloodProducts: BloodProduct[] = []
   public selected: BloodType[] = [];
   public isLinear: boolean = true;
   ngOnInit(): void {
   }
+  trackByIndex(index: number, obj: any): any {
+    return index;
+  }
 
   firstFormGroup = this._formBuilder.group({
-    firstCtrl: ['', Validators.required],
+    selection: ['', Validators.required],
+
   });
   secondFormGroup = this._formBuilder.group({
-    secondCtrl: ['', Validators.required],
   });
 
   public onClick() {
@@ -53,9 +58,44 @@ export class CreateTenderComponent implements OnInit {
     } else {
       this.selected.push(bloodType);
     }
-    console.log(this.selected);
+    this.generateBloodProducts();
   }
 
+  generateBloodProducts() {
+    if(this.bloodProducts.length === 0) {
+      this.generateInitialBloodProducts();
+    } else {
+      for(let bloodType of this.bloodTypes) {
+        if(this.containsBloodType(bloodType) && !this.containsBloodTypeInSelected(bloodType)) {
+          this.bloodProducts = this.bloodProducts.filter(item => item.bloodType !== bloodType);
+        } else if(!this.containsBloodType(bloodType) && this.containsBloodTypeInSelected(bloodType)) {
+          this.bloodProducts.push({
+            bloodType: bloodType,
+            amount: 0
+          })
+        }
+      }
+    }
+  }
+
+  generateInitialBloodProducts() {
+    for(let bloodType of this.selected) {
+      this.bloodProducts.push({
+        bloodType: bloodType,
+        amount: 0
+      })
+    }
+  }
+
+  containsBloodType(bloodType: BloodType) {
+    return this.bloodProducts.filter(function(bloodProduct) { return bloodProduct.bloodType === bloodType; }).length > 0
+  }
+  containsBloodTypeInSelected(bloodType: BloodType) {
+    return this.selected.filter(function(type) { return type === bloodType; }).length > 0
+  }
+  seeBloodProducts() {
+    console.log(this.bloodProducts);
+  }
   private isValidInput(): boolean {
     return this.tender?.bloodProducts != [];
   }

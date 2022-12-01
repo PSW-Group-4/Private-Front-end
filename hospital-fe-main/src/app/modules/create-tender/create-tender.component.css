@@ -8,8 +8,15 @@
   text-align: left;
 }
 
+.centered-form {
+  display: flex;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
 .title {
   font-size: 24px;
+  color: white;
 }
 
 .checkbox-list {
@@ -21,4 +28,20 @@
 
 .mat-checkbox {
   margin-right: 1rem;
+  background-color: #56d087;
+}
+::ng-deep .mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+  color: unset;
+}
+
+::ng-deep .mat-option-pseudo-checkbox.mat-pseudo-checkbox-checked {
+  background-color: #56d087;
+}
+
+::ng-deep .mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
+  background-color: #56d087 !important;
+}
+
+.mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
+  background-color: #56d087!important
 }
