@@ -39,6 +39,7 @@ import { DoctorRootComponent } from './modules/doctor/doctor-root/doctor-root.co
 import { DoctorModule } from './modules/doctor/doctor.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BloodRequestsModule } from './modules/blood-requests/blood-requests.module';
+import { RoomRenovationModule } from './modules/room-renovation/room-renovation.module';
 
 @NgModule({
   declarations: [
@@ -80,6 +81,7 @@ import { BloodRequestsModule } from './modules/blood-requests/blood-requests.mod
     DoctorRoutingModule,
     FlexLayoutModule,
     BloodRequestsModule,
+    RoomRenovationModule
   ],
   providers: [
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },

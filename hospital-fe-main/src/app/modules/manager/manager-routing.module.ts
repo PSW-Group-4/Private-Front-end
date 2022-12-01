@@ -7,6 +7,7 @@ import { ManagerFeedbackComponent } from './manager-feedback/manager-feedback.co
 import { ManagerRootComponent } from './manager-root/manager-root.component';
 import { AgeStatisticsComponent } from './patient-statistics/age-statistics/age-statistics.component';
 import { ReportConfigsComponent } from './report-configs/report-configs.component';
+import { RoomRenovationComponent } from '../room-renovation/containers/room-renovation/room-renovation.component';
 
 const routes: Routes = [
   { path: 'feedbacks', component: ManagerFeedbackComponent },
@@ -24,7 +25,9 @@ const routes: Routes = [
           (m) => m.EquipmentMoveRoutingModule
         ),
   },
-  { path: 'vacationRequests', component: ManagerVacationsComponent}
+  { path: 'vacationRequests', component: ManagerVacationsComponent},
+  { path: 'room-renovation', component: RoomRenovationComponent }
+
 ];
 
 @NgModule({
