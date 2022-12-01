@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { MaterialModule } from './material/material.module';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
+import {MatStepperModule} from '@angular/material/stepper';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -18,7 +19,7 @@ import { ManagerFeedbackComponent } from './modules/manager/manager-feedback/man
 import { DoctorAppointmentsModule } from "./modules/doctor/doctor-appointments/doctor-appointments.module";
 import { MatNativeDateModule } from "@angular/material/core";
 import { MapsModule } from "./modules/maps/maps.module";
-import { CommonModule } from '@angular/common'; 
+import { CommonModule } from '@angular/common';
 import { BloodBanksComponent, CheckBloodSuppliesDialog } from './modules/hospital/blood-banks/blood-banks.component';
 import { AdmissionComponent } from './modules/doctor/admission/admission.component';
 import { DoctorVacationModule } from "./modules/doctor-vacation/doctor-vacation.module";
@@ -39,6 +40,7 @@ import { DoctorRootComponent } from './modules/doctor/doctor-root/doctor-root.co
 import { DoctorModule } from './modules/doctor/doctor.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BloodRequestsModule } from './modules/blood-requests/blood-requests.module';
+import { CreateTenderComponent } from './modules/create-tender/create-tender.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,7 @@ import { BloodRequestsModule } from './modules/blood-requests/blood-requests.mod
     RequestMoreBloodComponent,
     AdmissionComponent,
     ManagerNewsPreviewComponent,
+    CreateTenderComponent,
   ],
   imports: [
     CommonModule,

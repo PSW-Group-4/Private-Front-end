@@ -17,8 +17,10 @@ import { DoctorBloodConsumptionComponent } from './modules/doctor/doctor-blood-c
 import { AdmissionViewComponent } from "./modules/doctor/admission-view/admission-view.component";
 //import { AgeStatisticsComponent } from './modules/patient-statistics/age-stManagerFeedbackComponentatistics/age-statistics.component';
 import { ManagerRequestReviewComponent } from './modules/blood-requests/manager-request-review/manager-request-review.component';
+import {CreateTenderComponent} from "./modules/create-tender/create-tender.component";
 const routes: Routes = [
 
+  { path: 'tenders/create', component: CreateTenderComponent },
   { path: 'managerFeedback', component: ManagerFeedbackComponent },
   { path: 'doctorAppointments', component: DoctorAppointmentsComponent},
   { path: 'viewRequests', component: ManagerRequestReviewComponent},
