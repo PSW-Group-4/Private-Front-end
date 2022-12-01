@@ -51,10 +51,12 @@ export class CreateTenderComponent implements OnInit {
   public onClick() {
     if (!this.isValidInput()) return;
     let finalDeadline = this.isDeadlineDisabled ? null : this.deadline;
-    this.tenderService.create({
-      bloodProducts: this.bloodProducts,
-      deadline: finalDeadline
-    }).subscribe(res => {
+    let dto = {
+        bloodProducts: this.bloodProducts,
+        deadline: finalDeadline
+      };
+    console.log(dto);
+      this.tenderService.create(dto).subscribe(res => {
       this.router.navigate(['/tenders']);
     });
   }

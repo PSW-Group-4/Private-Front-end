@@ -8,7 +8,7 @@ import {Tender} from "../model/tender.model";
 })
 export class TenderService {
 
-  apiHost: string = 'http://localhost:45488/';
+  apiHost: string = 'http://localhost:5000/';
   headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
   constructor(private http: HttpClient) { }
@@ -19,7 +19,7 @@ export class TenderService {
 
   create(dto: any): Observable<any> {
     //let bloodBankDto : any = JSON.stringify(bloodBank);
-    return this.http.post<any>(this.apiHost + 'api/Tender/', dto, {headers: this.headers});
+    return this.http.post<any>(this.apiHost + 'api/Tender/', JSON.stringify(dto), {headers: this.headers});
   }
 
 }

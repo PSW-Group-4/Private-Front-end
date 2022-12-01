@@ -16,7 +16,7 @@ import { BloodRequestService } from './service/blood-request.service';
 })
 export class ManagerRequestReviewComponent implements OnInit {
   public dataSource = new MatTableDataSource<BloodRequest>();
-  public displayedColumns = ['Doctor', 'Reasons For Blood', 'Ammount of Bood Needed', 'Manage Request'];
+  public displayedColumns = ['Doctor', 'Reasons For Blood', 'Ammount of Blood Needed', 'Manage Request'];
   public bloodRequests: BloodRequest[] = [];
   bloodType: string = "";
 
