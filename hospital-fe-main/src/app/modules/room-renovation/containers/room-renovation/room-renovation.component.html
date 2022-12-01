@@ -1,31 +1,56 @@
 <div>
     <mat-stepper linear #stepper>
-        <mat-step [editable]="true">
-            <ng-template matStepLabel>Choose Type of Renovation</ng-template>
-            <div class="next-back-buttons spacer-div">
-                <button mat-raised-button color="secondary" class="spacer-buttons" matStepperPrevious>Back</button>
-                <button mat-raised-button color="primary"  class="spacer-buttons" matStepperNext>Next</button>
-            </div>  
+        <mat-step [editable]="true" [stepControl]="firstStepFormGroup">
+            <form [formGroup]="firstStepFormGroup">
+                <ng-template matStepLabel>Choose Type of Renovation</ng-template>
+                <div class="spacer-div">
+                    <mat-select placeholder="Choose Type of Renovation" formControlName="typeOfRenovation">
+                        <mat-option *ngFor="let choice of choices | keyvalue" [value]="choice.key">
+                            {{choice.value}}
+                        </mat-option>
+                    </mat-select>
+                </div>
+                <div class="next-back-buttons spacer-div">
+                    <button mat-raised-button color="secondary" class="spacer-buttons" matStepperPrevious>Back</button>
+                    <button mat-raised-button color="primary"  class="spacer-buttons" matStepperNext>Next</button>
+                </div>  
+            </form>
         </mat-step>
-        <mat-step [editable]="true">
-            <ng-template matStepLabel>Choose rooms to renovate</ng-template>
-            <div class="next-back-buttons spacer-div">
-                <button mat-raised-button color="secondary" class="spacer-buttons" matStepperPrevious>Back</button>
-                <button mat-raised-button color="primary"  class="spacer-buttons" matStepperNext>Next</button>
-            </div>  
+        <mat-step [editable]="true" [stepControl]="secondStepFormGroup">
+            <form [formGroup]="secondStepFormGroup">
+                <ng-template matStepLabel>Choose rooms to renovate</ng-template>
+                <div class="next-back-buttons spacer-div">
+                    <button mat-raised-button color="secondary" class="spacer-buttons" matStepperPrevious>Back</button>
+                    <button mat-raised-button color="primary"  class="spacer-buttons" matStepperNext>Next</button>
+                </div>  
+            </form>
         </mat-step>
-        <mat-step [editable]="true">
-            <ng-template matStepLabel>Choose date and duration</ng-template> 
+        <mat-step [editable]="true" [stepControl]="thirdStepFormGroup">
+            <form [formGroup]="thirdStepFormGroup">
+                <ng-template matStepLabel>Choose start and end date</ng-template>
+                <div class="next-back-buttons spacer-div">
+                    <button mat-raised-button color="secondary" class="spacer-buttons" matStepperPrevious>Back</button>
+                    <button mat-raised-button color="primary"  class="spacer-buttons" matStepperNext>Next</button>
+                </div>  
+            </form>
         </mat-step>
-        <mat-step [editable]="true">
-            <ng-template matStepLabel>Choose renovation date</ng-template>
+        <mat-step [editable]="true" [stepControl]="forthStepFormGroup">
+            <form [formGroup]="forthStepFormGroup">
+                <ng-template matStepLabel>Choose specific date</ng-template>
+                <div class="next-back-buttons spacer-div">
+                    <button mat-raised-button color="secondary" class="spacer-buttons" matStepperPrevious>Back</button>
+                    <button mat-raised-button color="primary"  class="spacer-buttons" matStepperNext>Next</button>
+                </div>  
+            </form>
         </mat-step>
-        <mat-step [editable]="true">
-            <ng-template matStepLabel>Fill in room data</ng-template>
-            <div class="next-back-buttons spacer-div">
-                <button mat-raised-button color="secondary" class="spacer-buttons" matStepperPrevious>Back</button>
-                <button mat-raised-button color="primary"  class="spacer-buttons" matStepperNext>Next</button>
-            </div>  
+        <mat-step [editable]="true" [stepControl]="fifthStepFormGroup">
+            <form [formGroup]="fifthStepFormGroup">
+                <ng-template matStepLabel>Fill in new room information</ng-template>
+                <div class="next-back-buttons spacer-div">
+                    <button mat-raised-button color="secondary" class="spacer-buttons" matStepperPrevious>Back</button>
+                    <button mat-raised-button color="primary"  class="spacer-buttons" matStepperNext>Next</button>
+                </div>  
+            </form>
         </mat-step>
         <mat-step>
           <ng-template matStepLabel>Done</ng-template>
