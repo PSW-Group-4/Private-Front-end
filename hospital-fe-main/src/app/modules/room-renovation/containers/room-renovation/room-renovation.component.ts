@@ -1,3 +1,4 @@
+import { StepperSelectionEvent } from '@angular/cdk/stepper';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatStepper } from '@angular/material/stepper';
@@ -65,18 +66,32 @@ export class RoomRenovationComponent implements OnInit {
       ]]
     });
     this.forthStepFormGroup = this._formBuilder.group({
-      typeOfRenovation: ['', [Validators.required]]
     });
     this.fifthStepFormGroup = this._formBuilder.group({
-      typeOfRenovation: ['', [Validators.required]]
+      name1: ['', [Validators.required]],
+      description1: ['', [Validators.required]],
+      number1: ['', [
+        Validators.required,
+        Validators.pattern('[0-9]+')]],
+
+      name2: ['', []],
+      description2: ['', []],
+      number2: ['', []]
     });
     
     
   }
 
-  public changeRenovationMethod() {
+  public changeRenovationMethod(stepper : MatStepper) {
     if (this.renovation.Type.toString() != this.firstStepFormGroup.value.typeOfRenovation) {
       this.renovation.Type = this.firstStepFormGroup.value.typeOfRenovation
+      var i = 0;
+      stepper.steps.forEach(element => {
+        if (i != 0) {
+          element.reset()
+        }
+        i++;
+      });
       this.secondStepFormGroup.reset()
       this.floors = []
       this.rooms = []
@@ -114,10 +129,50 @@ export class RoomRenovationComponent implements OnInit {
       this.secondStepFormGroup.controls['room2Control'].setValue('');
       this.secondStepFormGroup.controls['room2Control'].setValidators(Validators.required)
       this.secondStepFormGroup.controls['room2Control'].updateValueAndValidity();
+
+      this.fifthStepFormGroup.controls['name2'].clearValidators();
+      this.fifthStepFormGroup.controls['description2'].clearValidators();
+      this.fifthStepFormGroup.controls['number2'].clearValidators();
+      this.fifthStepFormGroup.controls['name2'].updateValueAndValidity();
+      this.fifthStepFormGroup.controls['description2'].updateValueAndValidity();
+      this.fifthStepFormGroup.controls['number2'].updateValueAndValidity();
     }
     else{
       this.secondStepFormGroup.controls['room2Control'].clearValidators();
       this.secondStepFormGroup.controls['room2Control'].updateValueAndValidity();
+
+      this.fifthStepFormGroup.controls['name2'].setValidators(Validators.required)
+      this.fifthStepFormGroup.controls['description2'].setValidators(Validators.required)
+      this.fifthStepFormGroup.controls['number2'].setValidators(Validators.required)
+      this.fifthStepFormGroup.controls['name2'].updateValueAndValidity();
+      this.fifthStepFormGroup.controls['description2'].updateValueAndValidity();
+      this.fifthStepFormGroup.controls['number2'].updateValueAndValidity();
+    }
+  }
+
+  checkNewData(stepper : MatStepper) {
+    if (this.renovation.Type == 'Merge') {
+      var room : Room = new Room();
+      room.name = this.fifthStepFormGroup.value.name1
+      room.description = this.fifthStepFormGroup.value.description1
+      room.number = this.fifthStepFormGroup.value.number1
+      this.renovation.Room3 = room
+    }
+    else{
+      var room : Room = new Room();
+      room.name = this.fifthStepFormGroup.value.name1
+      room.description = this.fifthStepFormGroup.value.description1
+      room.number = this.fifthStepFormGroup.value.number1
+      this.renovation.Room2 = room
+
+      var room : Room = new Room();
+      room.name = this.fifthStepFormGroup.value.name2
+      room.description = this.fifthStepFormGroup.value.description2
+      room.number = this.fifthStepFormGroup.value.number2
+      this.renovation.Room3 = room
+    }
+    if(this.fifthStepFormGroup.valid) {
+      stepper.next()
     }
   }
 
@@ -128,7 +183,7 @@ export class RoomRenovationComponent implements OnInit {
       this.renovation.Duration += this.thirdStepFormGroup.value.hoursControl * 60;
       this.renovation.Duration += this.thirdStepFormGroup.value.minutesControl;
     }
-    if(this.renovation.Duration >= 0) {
+    if(this.renovation.Duration >= 0 && this.thirdStepFormGroup.value.dateControl != '') {
       stepper.next()
       // TODO call function to get other dates
     }

@@ -4,14 +4,14 @@
             <form [formGroup]="firstStepFormGroup">
                 <ng-template matStepLabel>Choose Type of Renovation</ng-template>
                 <div class="spacer-div">
-                    <mat-select placeholder="Choose Type of Renovation" formControlName="typeOfRenovation">
+                    <mat-select placeholder="Choose Type of Renovation" formControlName="typeOfRenovation" (selectionChange)="changeRenovationMethod(stepper)">
                         <mat-option *ngFor="let choice of choices | keyvalue" [value]="choice.value">
                             {{choice.value}}
                         </mat-option>
                     </mat-select>
                 </div>
                 <div class="next-back-buttons spacer-div">
-                    <button mat-raised-button color="primary"  class="spacer-buttons" matStepperNext (click)="changeRenovationMethod()">Next</button>
+                    <button mat-raised-button color="primary"  class="spacer-buttons" matStepperNext>Next</button>
                 </div>  
             </form>
         </mat-step>
@@ -116,9 +116,73 @@
         <mat-step [editable]="true" [stepControl]="fifthStepFormGroup">
             <form [formGroup]="fifthStepFormGroup">
                 <ng-template matStepLabel>Fill in new room information</ng-template>
+                <div class="spacer-div" *ngIf="renovation.Type == 'Split'">
+                    <div class="spacer-div">
+                        Updated Room 1
+                    </div>
+                    <div class="spacer-div">
+                        <mat-form-field class="full-width" appearance="fill" >
+                            <input matInput type="text" formControlName="name1">
+                            <mat-hint>Name</mat-hint>
+                        </mat-form-field>  
+                    </div>
+                    <div class="spacer-div">
+                        <mat-form-field class="full-width" appearance="fill">
+                        <input matInput type="text" formControlName="description1">
+                        <mat-hint>Desctiption</mat-hint>
+                    </mat-form-field></div>
+                    <div class="spacer-div">
+                        <mat-form-field class="full-width" appearance="fill">
+                            <input matInput type="text" type="number" formControlName="number1">
+                            <mat-hint>Number</mat-hint>
+                        </mat-form-field>  
+                    </div>
+                    <div class="spacer-div">
+                        Updated Room 2
+                    </div>
+                    <div class="spacer-div">
+                        <mat-form-field class="full-width" appearance="fill" >
+                            <input matInput type="text" formControlName="name2">
+                            <mat-hint>Name</mat-hint>
+                        </mat-form-field>  
+                    </div>
+                    <div class="spacer-div">
+                        <mat-form-field class="full-width" appearance="fill">
+                        <input matInput type="text" formControlName="description2">
+                        <mat-hint>Desctiption</mat-hint>
+                    </mat-form-field></div>
+                    <div class="spacer-div">
+                        <mat-form-field class="full-width" appearance="fill">
+                            <input matInput type="text" type="number" formControlName="number2">
+                            <mat-hint>Number</mat-hint>
+                        </mat-form-field>  
+                    </div>
+                </div>
+                <div class="spacer-div" *ngIf="renovation.Type == 'Merge'">
+                    <div class="spacer-div">
+                        Updated Room
+                    </div>
+                    <div class="spacer-div">
+                        <mat-form-field class="full-width" appearance="fill">
+                            <input matInput type="text" formControlName="name1">
+                            <mat-hint>Name</mat-hint>
+                        </mat-form-field>  
+                    </div>
+                    <div class="spacer-div">
+                        <mat-form-field class="full-width" appearance="fill">
+                        <input matInput type="text" formControlName="description1">
+                        <mat-hint>Desctiption</mat-hint>
+                    </mat-form-field></div>
+                    <div class="spacer-div">
+                        <mat-form-field class="full-width" appearance="fill">
+                            <input matInput type="text" type="number" formControlName="number1">
+                            <mat-hint>Number</mat-hint>
+                        </mat-form-field>  
+                    </div>
+                </div>  
                 <div class="next-back-buttons spacer-div">
                     <button mat-raised-button color="secondary" class="spacer-buttons" matStepperPrevious>Back</button>
-                    <button mat-raised-button color="primary"  class="spacer-buttons" matStepperNext>Next</button>
+                    <button mat-raised-button color="primary"  class="spacer-buttons" (click)="checkNewData(stepper)">Next</button>
                 </div>  
             </form>
         </mat-step>
