@@ -5,20 +5,54 @@
                 <ng-template matStepLabel>Choose Type of Renovation</ng-template>
                 <div class="spacer-div">
                     <mat-select placeholder="Choose Type of Renovation" formControlName="typeOfRenovation">
-                        <mat-option *ngFor="let choice of choices | keyvalue" [value]="choice.key">
+                        <mat-option *ngFor="let choice of choices | keyvalue" [value]="choice.value">
                             {{choice.value}}
                         </mat-option>
                     </mat-select>
                 </div>
                 <div class="next-back-buttons spacer-div">
-                    <button mat-raised-button color="secondary" class="spacer-buttons" matStepperPrevious>Back</button>
-                    <button mat-raised-button color="primary"  class="spacer-buttons" matStepperNext>Next</button>
+                    <button mat-raised-button color="primary"  class="spacer-buttons" matStepperNext (click)="changeRenovationMethod()">Next</button>
                 </div>  
             </form>
         </mat-step>
         <mat-step [editable]="true" [stepControl]="secondStepFormGroup">
             <form [formGroup]="secondStepFormGroup">
                 <ng-template matStepLabel>Choose rooms to renovate</ng-template>
+                <div class="spacer-div">
+                    <mat-select placeholder="Building" formControlName="buildingControl" (selectionChange)="loadFloors()">
+                        <mat-option *ngFor="let building of buildings" [value]="building.id">
+                            {{building.name}}
+                        </mat-option>
+                    </mat-select>
+                </div>
+                <div class="spacer-div">
+                    <mat-select placeholder="Floor" formControlName="floorControl" (selectionChange)="loadRooms()">
+                        <mat-option *ngFor="let floor of floors" [value]="floor.id">
+                            {{floor.name}}
+                        </mat-option>
+                    </mat-select>
+                </div>
+                <div class="spacer-div">
+                    <mat-select placeholder="Room 1" formControlName="room1Control" (selectionChange)="setRenovationRoom1()">
+                        <mat-option *ngFor="let room of rooms" [value]="room">
+                            {{room.name}}
+                        </mat-option>
+                    </mat-select>
+                    <div class="spacer-div" *ngIf="renovation.Room1.name != ''">
+                        <app-show-room-info [selectedRoom]="selectedRoom1"></app-show-room-info>
+                    </div>
+                </div>
+                
+                <div class="spacer-div" *ngIf="renovation.Type == 'Merge'">
+                    <mat-select placeholder="Room 2" formControlName="room2Control" (selectionChange)="setRenovationRoom2()">
+                        <mat-option *ngFor="let room of rooms" [value]="room">
+                            {{room.name}}
+                        </mat-option>
+                    </mat-select>
+                    <div class="spacer-div" *ngIf="renovation.Room2.name != ''">
+                        <app-show-room-info [selectedRoom]="selectedRoom2"></app-show-room-info>
+                    </div>
+                </div>
                 <div class="next-back-buttons spacer-div">
                     <button mat-raised-button color="secondary" class="spacer-buttons" matStepperPrevious>Back</button>
                     <button mat-raised-button color="primary"  class="spacer-buttons" matStepperNext>Next</button>
