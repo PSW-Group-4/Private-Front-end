@@ -13,7 +13,7 @@ export class Renovation {
     // TODO
     // Pack them into dateRange, or make DTO that packs them into model 
     StartTime : Date = new Date();
-    EndTime : Date = new Date();
+    Duration : number = 0;
 
     public constructor(obj?: any) {
         if (obj) {  

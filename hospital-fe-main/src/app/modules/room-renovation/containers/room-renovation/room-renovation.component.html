@@ -62,10 +62,46 @@
         <mat-step [editable]="true" [stepControl]="thirdStepFormGroup">
             <form [formGroup]="thirdStepFormGroup">
                 <ng-template matStepLabel>Choose start and end date</ng-template>
+                <div class="spacer-div">
+                    <mat-form-field class="full-width" appearance="fill">
+                        <mat-label>Choose a date</mat-label>
+                        <input matInput formControlName="dateControl" [min]="minDate" [matDatepicker]="picker">
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>               
+                </div>
+                <div class="spacer-div">
+                    <mat-form-field class="full-width" appearance="fill">
+                        <input matInput formControlName="daysControl" type="number">
+                        <mat-hint>Days</mat-hint>
+                        <mat-error *ngIf="thirdStepFormGroup.controls['daysControl'].hasError('required')">
+                            Days <strong>required</strong> and needs to be a <strong>number</strong> (can be 0)
+                        </mat-error>
+                    </mat-form-field>   
+                </div>
+                <div class="spacer-div">
+                    <mat-form-field class="full-width" appearance="fill">
+                        <input matInput formControlName="hoursControl" type="number">
+                        <mat-hint>Hours</mat-hint>
+                        <mat-error *ngIf="thirdStepFormGroup.controls['hoursControl'].hasError('required')">
+                            Hours <strong>required</strong> and needs to be a <strong>number</strong> (can be 0)
+                        </mat-error>
+                    </mat-form-field>   
+                </div>
+                <div class="spacer-div">
+                    <mat-form-field class="full-width" appearance="fill">
+                        <input matInput formControlName="minutesControl" type="number">
+                        <mat-hint>Minutes</mat-hint>
+                        <mat-error *ngIf="thirdStepFormGroup.controls['minutesControl'].hasError('required')">
+                            Minutes <strong>required</strong> and needs to be a <strong>number</strong> (can be 0)
+                        </mat-error>
+                    </mat-form-field>   
+                </div>
                 <div class="next-back-buttons spacer-div">
                     <button mat-raised-button color="secondary" class="spacer-buttons" matStepperPrevious>Back</button>
-                    <button mat-raised-button color="primary"  class="spacer-buttons" matStepperNext>Next</button>
-                </div>  
+                    <button mat-raised-button color="primary"  class="spacer-buttons" (click)="recommendRenovation(stepper)">Next</button>
+                </div>   
             </form>
         </mat-step>
         <mat-step [editable]="true" [stepControl]="forthStepFormGroup">

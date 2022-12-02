@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatStepper } from '@angular/material/stepper';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Building } from 'src/app/modules/maps/models/building.model';
 import { Floor } from 'src/app/modules/maps/models/floor.model';
@@ -28,6 +29,7 @@ export class RoomRenovationComponent implements OnInit {
   thirdStepFormGroup!: FormGroup;
   forthStepFormGroup!: FormGroup;
   fifthStepFormGroup!: FormGroup;
+  minDate : Date = new Date(new Date().getFullYear(),new Date().getMonth(), new Date().getDate() + 2);
 
   constructor(private facade : RoomRenovationFacade, private _formBuilder: FormBuilder) {
       
@@ -48,7 +50,19 @@ export class RoomRenovationComponent implements OnInit {
       room2Control : ['']
     });
     this.thirdStepFormGroup = this._formBuilder.group({
-      typeOfRenovation: ['', [Validators.required]]
+      dateControl: ['', [Validators.required]],
+      daysControl: ['', [
+        Validators.required,
+        Validators.pattern('[0-9]+'),
+      ]],
+      hoursControl: ['', [
+        Validators.required,
+        Validators.pattern('[0-9]+'),
+      ]],
+      minutesControl: ['', [
+        Validators.required,
+        Validators.pattern('[0-9]+'),
+      ]]
     });
     this.forthStepFormGroup = this._formBuilder.group({
       typeOfRenovation: ['', [Validators.required]]
@@ -56,6 +70,7 @@ export class RoomRenovationComponent implements OnInit {
     this.fifthStepFormGroup = this._formBuilder.group({
       typeOfRenovation: ['', [Validators.required]]
     });
+    
     
   }
 
@@ -103,6 +118,22 @@ export class RoomRenovationComponent implements OnInit {
     else{
       this.secondStepFormGroup.controls['room2Control'].clearValidators();
       this.secondStepFormGroup.controls['room2Control'].updateValueAndValidity();
+    }
+  }
+
+  recommendRenovation(stepper : MatStepper) {
+    if(!this.thirdStepFormGroup.hasError('required')) {
+      this.renovation.Duration = 0;
+      this.renovation.Duration += this.thirdStepFormGroup.value.daysControl * 60 * 24;
+      this.renovation.Duration += this.thirdStepFormGroup.value.hoursControl * 60;
+      this.renovation.Duration += this.thirdStepFormGroup.value.minutesControl;
+    }
+    if(this.renovation.Duration >= 0) {
+      stepper.next()
+      // TODO call function to get other dates
+    }
+    else {
+      alert("Please enter a valid duration")
     }
   }
 
