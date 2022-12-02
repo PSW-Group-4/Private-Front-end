@@ -1,3 +1,4 @@
+import { VacationStatisticsComponent } from './manager-vacations/vacation-statistics/vacation-statistics/vacation-statistics.component';
 import { ManagerVacationsComponent } from './manager-vacations/manager-vacations.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -24,7 +25,8 @@ const routes: Routes = [
           (m) => m.EquipmentMoveRoutingModule
         ),
   },
-  { path: 'vacationRequests', component: ManagerVacationsComponent}
+  { path: 'vacationRequests', component: ManagerVacationsComponent},
+  { path: 'managerStatistics', component: VacationStatisticsComponent}
 ];
 
 @NgModule({
@@ -38,5 +40,6 @@ export const routingComponents = [
   ManagerFeedbackComponent,
   AgeStatisticsComponent,
   MapsMainContainerComponent,
-  ManagerVacationsComponent
+  ManagerVacationsComponent,
+  VacationStatisticsComponent
 ];

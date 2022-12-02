@@ -12,6 +12,7 @@ import { ReportConfigsComponent } from './report-configs/report-configs.componen
 import { FormsModule } from '@angular/forms';
 import { ManagerVacationsComponent } from './manager-vacations/manager-vacations.component';
 import { CommentComponent } from './manager-vacations/comment/comment/comment.component';
+import { VacationStatisticsComponent } from './manager-vacations/vacation-statistics/vacation-statistics/vacation-statistics.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { CommentComponent } from './manager-vacations/comment/comment/comment.co
     ReportConfigsComponent,
     ManagerVacationsComponent,
     CommentComponent,
+    VacationStatisticsComponent,
   ],
   imports: [CommonModule, AppRoutingModule, MaterialModule,FormsModule],
   providers: [StatisticsService],
