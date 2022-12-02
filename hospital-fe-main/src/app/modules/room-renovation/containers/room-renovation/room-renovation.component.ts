@@ -104,6 +104,7 @@ export class RoomRenovationComponent implements OnInit {
       this.facade.getFloorsByBuildingId$(this.secondStepFormGroup.value.buildingControl).subscribe({
         next: (v) => this.floors = v
       })
+      this.renovation.buildingId = this.secondStepFormGroup.value.buildingControl;
       this.setRoomValidationCheck();
   }
 
@@ -111,6 +112,7 @@ export class RoomRenovationComponent implements OnInit {
     this.facade.getRoomsByFloorId$(this.secondStepFormGroup.value.floorControl).subscribe({
       next: (v) => this.rooms = v
     })
+    this.renovation.floodId = this.secondStepFormGroup.value.floorControl
   }
 
   setRenovationRoom1() {
