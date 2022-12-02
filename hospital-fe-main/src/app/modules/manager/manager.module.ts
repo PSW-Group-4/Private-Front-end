@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { ManagerVacationsComponent } from './manager-vacations/manager-vacations.component';
 import { CommentComponent } from './manager-vacations/comment/comment/comment.component';
 import { VacationStatisticsComponent } from './manager-vacations/vacation-statistics/vacation-statistics/vacation-statistics.component';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { VacationStatisticsComponent } from './manager-vacations/vacation-statis
     CommentComponent,
     VacationStatisticsComponent,
   ],
-  imports: [CommonModule, AppRoutingModule, MaterialModule,FormsModule],
+  imports: [CommonModule, AppRoutingModule, MaterialModule,FormsModule, NgChartsModule],
   providers: [StatisticsService],
 })
 export class ManagerModule {}
