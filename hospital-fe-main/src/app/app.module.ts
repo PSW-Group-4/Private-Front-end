@@ -83,6 +83,7 @@ import { CreateTenderComponent } from './modules/create-tender/create-tender.com
     DoctorRoutingModule,
     FlexLayoutModule,
     BloodRequestsModule,
+    NgChartsModule,
   ],
   providers: [
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
