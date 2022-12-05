@@ -8,32 +8,36 @@ import { ManagerFeedbackComponent } from './manager-feedback/manager-feedback.co
 import { ManagerRootComponent } from './manager-root/manager-root.component';
 import { AgeStatisticsComponent } from './patient-statistics/age-statistics/age-statistics.component';
 import { ReportConfigsComponent } from './report-configs/report-configs.component';
+import { ManagerBlockingUserComponent } from './manager-blocking-user/manager-blocking-user/manager-blocking-user.component';
 
 const routes: Routes = [
   { path: 'feedbacks', component: ManagerFeedbackComponent },
+  { path: 'user-blocking', component: ManagerBlockingUserComponent },
   { path: 'patientStatistics', component: AgeStatisticsComponent },
-  { path: 'report-configs', component: ReportConfigsComponent},
-  { path: 'maps', component: MapsMainContainerComponent,
+  { path: 'report-configs', component: ReportConfigsComponent },
+  {
+    path: 'maps', component: MapsMainContainerComponent,
     loadChildren: () =>
-        import('../maps/maps-routing.module').then(
-          (m) => m.MapsRoutingModule
-        ),
+      import('../maps/maps-routing.module').then(
+        (m) => m.MapsRoutingModule
+      ),
   },
-  { path: 'move-equipment', component: MoveEquipmentComponent,
+  {
+    path: 'move-equipment', component: MoveEquipmentComponent,
     loadChildren: () =>
-        import('../equipment-move/equipment-move-routing.module').then(
-          (m) => m.EquipmentMoveRoutingModule
-        ),
+      import('../equipment-move/equipment-move-routing.module').then(
+        (m) => m.EquipmentMoveRoutingModule
+      ),
   },
-  { path: 'vacationRequests', component: ManagerVacationsComponent},
-  { path: 'managerStatistics', component: VacationStatisticsComponent}
+  { path: 'vacationRequests', component: ManagerVacationsComponent },
+  { path: 'managerStatistics', component: VacationStatisticsComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class ManagerRoutingModule {}
+export class ManagerRoutingModule { }
 
 export const routingComponents = [
   ManagerRootComponent,

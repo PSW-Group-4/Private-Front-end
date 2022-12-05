@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { MaterialModule } from './material/material.module';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
-import {MatStepperModule} from '@angular/material/stepper';
+import { MatStepperModule } from '@angular/material/stepper';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -41,6 +41,8 @@ import { DoctorModule } from './modules/doctor/doctor.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BloodRequestsModule } from './modules/blood-requests/blood-requests.module';
 import { CreateTenderComponent } from './modules/create-tender/create-tender.component';
+import { ManagerBlockingUserModule } from './modules/manager/manager-blocking-user/manager-blocking-user.module';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -84,6 +86,8 @@ import { CreateTenderComponent } from './modules/create-tender/create-tender.com
     FlexLayoutModule,
     BloodRequestsModule,
     NgChartsModule,
+    MatTableModule
+
   ],
   providers: [
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
@@ -97,4 +101,4 @@ import { CreateTenderComponent } from './modules/create-tender/create-tender.com
   ],
   bootstrap: [AppComponent, BloodBanksComponent],
 })
-export class AppModule {}
+export class AppModule { }

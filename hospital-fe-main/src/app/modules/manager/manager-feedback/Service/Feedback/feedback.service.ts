@@ -12,12 +12,12 @@ export class FeedbackService {
 
   constructor(private http: HttpClient) { }
 
-    getAllFeedbacks(): Observable<FeedbackManagerResponseDto[]> {
-    return this.http.get<FeedbackManagerResponseDto[]>(ConstSettings.apiHost  + 'api/Feedback', { headers:  ConstSettings.standardHeader });
+  getAllFeedbacks(): Observable<FeedbackManagerResponseDto[]> {
+    return this.http.get<FeedbackManagerResponseDto[]>(ConstSettings.apiHost + 'api/Feedback', { headers: ConstSettings.standardHeader });
   }
 
 
-   publishHideFeedback(id: any,PublishHideDTO: any): Observable<any> {
-    return this.http.patch<any>(ConstSettings.apiHost + 'api/feedback/publishhide/' + id,PublishHideDTO, {headers: ConstSettings.patchHeader});
-   }
+  publishHideFeedback(id: any, PublishHideDTO: any): Observable<any> {
+    return this.http.patch<any>(ConstSettings.apiHost + 'api/feedback/publishhide/' + id, PublishHideDTO, { headers: ConstSettings.patchHeader });
+  }
 }
