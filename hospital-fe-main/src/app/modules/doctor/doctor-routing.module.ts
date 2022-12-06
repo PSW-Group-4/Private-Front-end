@@ -7,6 +7,7 @@ import { AdmissionViewComponent } from './admission-view/admission-view.componen
 import { AdmissionComponent } from './admission/admission.component';
 import { AdmissionHistoryComponent } from './admission-view/admission-history/admission-history.component';
 import { UpdateTreatmentDialogComponent } from './admission-view/update-treatment-dialog/update-treatment-dialog.component';
+import { DoctorVacationsComponent } from './doctor-vacation/doctor-vacations/doctor-vacations.component';
 
 const routes: Routes = [
   { path: 'appointments', component: DoctorAppointmentsComponent},
@@ -14,7 +15,8 @@ const routes: Routes = [
   { path: 'admission', component: AdmissionComponent },
   { path: 'admissionView', component: AdmissionViewComponent },
   { path: 'admissionHistory', component: AdmissionHistoryComponent},
-  { path: 'updateTreatment', component: UpdateTreatmentDialogComponent}
+  { path: 'updateTreatment', component: UpdateTreatmentDialogComponent},
+  { path: 'vacations', component: DoctorVacationsComponent}
 ];
 
 @NgModule({

@@ -22,7 +22,7 @@ import { MapsModule } from "./modules/maps/maps.module";
 import { CommonModule } from '@angular/common';
 import { BloodBanksComponent, CheckBloodSuppliesDialog } from './modules/hospital/blood-banks/blood-banks.component';
 import { AdmissionComponent } from './modules/doctor/admission/admission.component';
-import { DoctorVacationModule } from "./modules/doctor-vacation/doctor-vacation.module";
+//import { DoctorVacationModule } from "./modules/doctor-vacation/doctor-vacation.module";
 import { Ng2SearchPipeModule } from "ng2-search-filter";
 import { DoctorBloodConsumptionComponent } from './modules/doctor/doctor-blood-consumption/doctor-blood-consumption.component';
 import { CreateBloodConsumptionRecordComponent } from './modules/doctor/doctor-blood-consumption/create-blood-consumption-record/create-blood-consumption-record.component';
@@ -44,6 +44,7 @@ import { RoomRenovationModule } from './modules/room-renovation/room-renovation.
 import { CreateTenderComponent } from './modules/create-tender/create-tender.component';
 import { ManagerBlockingUserModule } from './modules/manager/manager-blocking-user/manager-blocking-user.module';
 import { MatTableModule } from '@angular/material/table';
+import { DoctorVacationModule } from './modules/doctor/doctor-vacation/doctor-vacation.module';
 
 
 @NgModule({

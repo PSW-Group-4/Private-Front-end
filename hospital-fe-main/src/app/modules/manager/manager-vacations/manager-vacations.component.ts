@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
-import { DoctorVacationService } from '../../doctor-vacation/doctor-vacation.service';
+import { DoctorVacationService } from '../../doctor/doctor-vacation/doctor-vacation.service';
+//import { DoctorVacationService } from '../../doctor-vacation/doctor-vacation.service';
 import { Vacation } from '../../hospital/model/vacation.model';
 import { CommentComponent } from './comment/comment/comment.component';
 

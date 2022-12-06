@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { catchError, EMPTY } from 'rxjs';
-import { Vacation } from '../../hospital/model/vacation.model';
+import { Vacation } from 'src/app/modules/hospital/model/vacation.model';
+//import { Vacation } from '../../hospital/model/vacation.model';
 import { DoctorVacationService } from '../doctor-vacation.service';
 
 @Component({

@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './modules/pages/home/home.component';
 import { ManagerFeedbackComponent } from './modules/manager/manager-feedback/manager-feedback.component';
 import { DoctorAppointmentsComponent } from './modules/doctor/doctor-appointments/doctor-appointments/doctor-appointments.component';
-import { DoctorVacationsComponent } from './modules/doctor-vacation/doctor-vacations/doctor-vacations.component';
+//import { DoctorVacationsComponent } from './modules/doctor-vacation/doctor-vacations/doctor-vacations.component';
 import { ManagerNewsPreviewComponent } from './modules/hospital/manager-news-preview/manager-news-preview.component';
 import { ManagerRootComponent } from './modules/manager/manager-root/manager-root.component';
 import { LoginComponent } from './modules/login/login.component';
@@ -25,7 +25,7 @@ const routes: Routes = [
   { path: 'doctorAppointments', component: DoctorAppointmentsComponent},
   { path: 'viewRequests', component: ManagerRequestReviewComponent},
   { path: 'admission', component: AdmissionComponent},
-  { path: 'vacations', component: DoctorVacationsComponent},
+  //{ path: 'vacations', component: DoctorVacationsComponent},
   { path: 'login', component: LoginComponent, canActivate: [IncognitoGuard] },
   { path: 'home', component: HomeComponent }, // Jel ovo treba nekome?
   {
@@ -49,7 +49,7 @@ const routes: Routes = [
       ),
   },
 
-  { path: 'vacations', component: DoctorVacationsComponent },
+  //{ path: 'vacations', component: DoctorVacationsComponent },
   { path: 'bloodConsumption', component: DoctorBloodConsumptionComponent },
   { path: 'managerNews', component: ManagerNewsPreviewComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
