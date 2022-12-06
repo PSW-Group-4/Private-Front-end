@@ -40,9 +40,11 @@ import { DoctorRootComponent } from './modules/doctor/doctor-root/doctor-root.co
 import { DoctorModule } from './modules/doctor/doctor.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BloodRequestsModule } from './modules/blood-requests/blood-requests.module';
+import { RoomRenovationModule } from './modules/room-renovation/room-renovation.module';
 import { CreateTenderComponent } from './modules/create-tender/create-tender.component';
 import { ManagerBlockingUserModule } from './modules/manager/manager-blocking-user/manager-blocking-user.module';
 import { MatTableModule } from '@angular/material/table';
+
 
 @NgModule({
   declarations: [
@@ -85,9 +87,9 @@ import { MatTableModule } from '@angular/material/table';
     DoctorRoutingModule,
     FlexLayoutModule,
     BloodRequestsModule,
+    RoomRenovationModule,
     NgChartsModule,
     MatTableModule
-
   ],
   providers: [
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },

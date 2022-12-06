@@ -8,6 +8,7 @@ import { ManagerFeedbackComponent } from './manager-feedback/manager-feedback.co
 import { ManagerRootComponent } from './manager-root/manager-root.component';
 import { AgeStatisticsComponent } from './patient-statistics/age-statistics/age-statistics.component';
 import { ReportConfigsComponent } from './report-configs/report-configs.component';
+import { RoomRenovationComponent } from '../room-renovation/containers/room-renovation/room-renovation.component';
 import { ManagerBlockingUserComponent } from './manager-blocking-user/manager-blocking-user/manager-blocking-user.component';
 
 const routes: Routes = [
@@ -29,7 +30,8 @@ const routes: Routes = [
         (m) => m.EquipmentMoveRoutingModule
       ),
   },
-  { path: 'vacationRequests', component: ManagerVacationsComponent },
+  { path: 'vacationRequests', component: ManagerVacationsComponent},
+  { path: 'room-renovation', component: RoomRenovationComponent },
   { path: 'managerStatistics', component: VacationStatisticsComponent }
 ];
 
