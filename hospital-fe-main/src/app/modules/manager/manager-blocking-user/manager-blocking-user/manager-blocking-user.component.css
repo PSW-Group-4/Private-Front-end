@@ -1,0 +1,19 @@
+.example-container {
+  height: 400px;
+  overflow: auto;
+  width: 70%;
+  margin: auto;
+  margin-top: 10px;
+  caret-color: transparent;
+}
+
+table {
+  width: 100%;
+}
+
+button {
+  margin: 5px;
+}
+.buttons {
+  width: 20%;
+}
