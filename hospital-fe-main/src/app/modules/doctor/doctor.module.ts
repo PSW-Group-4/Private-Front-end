@@ -6,15 +6,18 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
 import { MatIconModule } from '@angular/material/icon';
 import { DischargeAdmissionDialogComponent } from './admission-view/discharge-admission-dialog/discharge-admission-dialog.component';
 import { AdmissionHistoryComponent } from './admission-view/admission-history/admission-history.component';
-import {MatTableModule} from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
 import { TreatmentDialogComponent } from './admission-view/admission-history/treatment-dialog/treatment-dialog.component';
 import { UpdateTreatmentDialogComponent } from './admission-view/update-treatment-dialog/update-treatment-dialog.component';
-import {MatSelectModule} from '@angular/material/select';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInput, MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button'
 import { FormsModule } from '@angular/forms';
-
-
-
+import { CreateReportComponent } from './report/create-report/create-report.component';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatList, MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,8 @@ import { FormsModule } from '@angular/forms';
     DischargeAdmissionDialogComponent,
     AdmissionHistoryComponent,
     TreatmentDialogComponent,
-    UpdateTreatmentDialogComponent
+    UpdateTreatmentDialogComponent,
+    CreateReportComponent
   ],
   imports: [
     CommonModule,
@@ -31,10 +35,12 @@ import { FormsModule } from '@angular/forms';
     MatTableModule,
     MatSelectModule,
     MatFormFieldModule,
-    FormsModule
-    
-    
+    MatInputModule,
+    FormsModule,
+    MatStepperModule,
+    MatButtonModule,
+    MatDividerModule,
+    MatListModule
   ]
-  
 })
 export class DoctorModule { }

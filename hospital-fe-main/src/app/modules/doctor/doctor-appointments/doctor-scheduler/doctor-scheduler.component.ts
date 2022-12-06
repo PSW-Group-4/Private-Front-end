@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { Appointment } from '../../../hospital/model/appointment.model';
 import { AddOrEditAppointmentDialogComponent } from '../add-or-edit-appointment-dialog/add-or-edit-appointment-dialog.component';
 import { CancelAppointmentDialogComponent } from '../cancel-appointment-dialog/cancel-appointment-dialog.component';
@@ -18,7 +19,7 @@ export class DoctorSchedulerComponent implements OnInit {
   public appointments: Appointment[] = [];
   doctorId = 'e6fbebce-dd68-11e4-9e38-c66b98cc8197';
   
-  constructor(private doctorAppointmentService: DoctorAppointmentService, public dialog: MatDialog) { }
+  constructor(private doctorAppointmentService: DoctorAppointmentService, public dialog: MatDialog, private router: Router) { }
 
   @Input() isCurrentAppointment:boolean | undefined
   
@@ -31,7 +32,7 @@ export class DoctorSchedulerComponent implements OnInit {
       this.displayedColumns = ['doctorName', 'patientName', 'room', 'date','time', 'update', 'delete'];
       this.showCurrentAppointment();
     }else{
-      this.displayedColumns = ['doctorName', 'patientName', 'room', 'date', 'time'];
+      this.displayedColumns = ['doctorName', 'patientName', 'room', 'date', 'time', 'report'];
       this.showOldAppointment();
     }
   }
@@ -48,6 +49,11 @@ export class DoctorSchedulerComponent implements OnInit {
       this.appointments = res;
       this.dataSource.data = this.appointments;
     })
+  }
+
+  createReport(id: string): void {
+    localStorage.setItem('selectedPatient', id)
+    this.router.navigateByUrl('/doctor/report')
   }
 
   openEditDialog(id:number): void {

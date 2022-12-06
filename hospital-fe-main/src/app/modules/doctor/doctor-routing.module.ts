@@ -7,9 +7,11 @@ import { AdmissionViewComponent } from './admission-view/admission-view.componen
 import { AdmissionComponent } from './admission/admission.component';
 import { AdmissionHistoryComponent } from './admission-view/admission-history/admission-history.component';
 import { UpdateTreatmentDialogComponent } from './admission-view/update-treatment-dialog/update-treatment-dialog.component';
+import { CreateReportComponent } from './report/create-report/create-report.component';
 
 const routes: Routes = [
   { path: 'appointments', component: DoctorAppointmentsComponent},
+  { path: 'report', component: CreateReportComponent},
   { path: 'bloodConsumption', component: DoctorBloodConsumptionComponent},
   { path: 'admission', component: AdmissionComponent },
   { path: 'admissionView', component: AdmissionViewComponent },

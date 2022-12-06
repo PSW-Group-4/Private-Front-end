@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Doctor } from 'src/app/modules/hospital/model/doctor.model';
+import { DoctorService } from 'src/app/modules/hospital/services/doctor-service';
 import { BloodConsumptionRecord } from '../../../hospital/model/blood-consumption-record.model';
 import { BloodConsumptionRecordService } from '../doctor-blood-consumption.service';
 
@@ -9,7 +11,9 @@ import { BloodConsumptionRecordService } from '../doctor-blood-consumption.servi
 })
 export class CreateBloodConsumptionRecordComponent implements OnInit {
 
-  constructor(private bloodConsumptionRecordService: BloodConsumptionRecordService) { }
+  constructor(private bloodConsumptionRecordService: BloodConsumptionRecordService, private readonly doctorService: DoctorService) { }
+
+  loggedDoctor: Doctor = new Doctor()
 
   bloodConsumptionRecord: BloodConsumptionRecord = new BloodConsumptionRecord();
   bloodTypes = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'];
@@ -20,7 +24,9 @@ export class CreateBloodConsumptionRecordComponent implements OnInit {
   statusColor = '';
 
   ngOnInit(): void {
-
+    this.doctorService.getLoggedDoctor().subscribe(res =>{
+      this.loggedDoctor = res
+    })
   }
 
   createRecord() {
@@ -56,6 +62,6 @@ export class CreateBloodConsumptionRecordComponent implements OnInit {
     this.bloodConsumptionRecord.bloodType = this.selectedBloodType;
     this.bloodConsumptionRecord.reason = this.reason;
     this.bloodConsumptionRecord.dateTime = new Date(Date.now()).toDateString();
-    this.bloodConsumptionRecord.doctorId = '5c036fba-1118-4f4b-b153-90d75e60625e';
+    this.bloodConsumptionRecord.doctorId = this.loggedDoctor.id;
   }
 }
