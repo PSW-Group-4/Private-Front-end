@@ -12,6 +12,8 @@ import { UpdateTreatmentDialogComponent } from './admission-view/update-treatmen
 import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
+import { ConsiliumModule } from './consilium/consilium.module';
+import { DoctorVacationModule } from './doctor-vacation/doctor-vacation.module';
 
 
 
@@ -31,7 +33,9 @@ import { FormsModule } from '@angular/forms';
     MatTableModule,
     MatSelectModule,
     MatFormFieldModule,
-    FormsModule
+    FormsModule,
+    ConsiliumModule,
+    //DoctorVacationModule
     
     
   ]
