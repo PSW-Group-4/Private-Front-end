@@ -18,6 +18,7 @@ import { CreateReportComponent } from './report/create-report/create-report.comp
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatList, MatListModule } from '@angular/material/list';
+import { ShowReportsComponent } from './report/show-reports/show-reports.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { MatList, MatListModule } from '@angular/material/list';
     AdmissionHistoryComponent,
     TreatmentDialogComponent,
     UpdateTreatmentDialogComponent,
-    CreateReportComponent
+    CreateReportComponent,
+    ShowReportsComponent
   ],
   imports: [
     CommonModule,

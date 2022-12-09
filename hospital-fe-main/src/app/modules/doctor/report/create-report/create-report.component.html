@@ -1,4 +1,4 @@
-<h2>Kreiraj izveštaj</h2>
+<h2 style="color:white">Kreiraj izveštaj</h2>
 <mat-stepper linear="false" #stepper>
     <mat-step [completed]="selectedSymptoms.length > 0">
         <form style="display:flex; justify-content:center; align-items:center; flex-direction:column">
@@ -122,9 +122,10 @@
                 </mat-list>
             </div>
             <mat-divider style="width:100%"></mat-divider>
+            <h2 *ngIf="success" style="color:green">Uspešno kreiran izveštaj</h2>
             <div>
                 <button mat-raised-button matStepperPrevious color="accent" class="mt-4 mx-2">Back</button>
-                <button mat-raised-button [disabled]="!validateInput()" (click)="createReport()" color="primary" class="mt-4 mx-2">Kreiraj izveštaj</button>
+                <button mat-raised-button [disabled]="!validateInput() || disableButton" (click)="createReport()" color="primary" class="mt-4 mx-2">Kreiraj izveštaj</button>
             </div>
         </form>
     </mat-step>

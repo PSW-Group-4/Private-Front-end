@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { toJSDate } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-calendar';
 import { Doctor } from 'src/app/modules/hospital/model/doctor.model';
@@ -8,6 +8,7 @@ import { Report } from 'src/app/modules/hospital/model/report.model';
 import { Symptom } from 'src/app/modules/hospital/model/symptom.module';
 import { DoctorService } from 'src/app/modules/hospital/services/doctor-service';
 import { ReportService } from '../report.service';
+import { MatStepper } from '@angular/material/stepper';
 
 @Component({
   selector: 'app-create-report',
@@ -16,11 +17,14 @@ import { ReportService } from '../report.service';
 })
 export class CreateReportComponent implements OnInit {
 
+  @ViewChild('stepper',{read:MatStepper}) stepper: MatStepper | undefined;
+
   constructor(private _formBuilder: FormBuilder, private reportService: ReportService, private readonly doctorService: DoctorService) { }
 
   report: Report = new Report()
-
   loggedDoctor: Doctor = new Doctor()
+
+  success: boolean = false
 
   symptoms: Symptom[] = []
   selectedSymptom = ""
@@ -40,6 +44,8 @@ export class CreateReportComponent implements OnInit {
 
   displayedColumns: string[] = ['name', 'remove']
   displayedPrescriptionColumns: string[] = ['medicine', 'remove']
+
+  disableButton = false
 
   ngOnInit(): void {
     this.doctorService.getLoggedDoctor().subscribe(res =>{
@@ -107,16 +113,21 @@ export class CreateReportComponent implements OnInit {
 
   createReport(): void {
     if (this.validateInput()){
+      let date = new Date().toDateString()
+      this.prescriptions.forEach(prescription => prescription.dateTime = date)
       this.report.symptoms = [...this.selectedSymptoms]
       this.report.text = this.reportText
       this.report.prescriptions = [...this.prescriptions]
-      this.report.dateTime = new Date().toUTCString()
+      this.report.dateTime = date
       this.report.doctorId = this.loggedDoctor.id
       this.report.patientId = String(localStorage.getItem('selectedPatient'))
-      console.log(this.report)
+      this.reportService.createReport(this.report).subscribe(res => {
+        this.success = true
+        this.disableButton = true
+      })
     }
     else{
-      console.log('greška')
+      this.success = false
     }
   }
 
