@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Doctor } from 'src/app/modules/hospital/model/doctor.model';
 import { DoctorService } from 'src/app/modules/hospital/services/doctor-service';
 import { Appointment } from '../../../hospital/model/appointment.model';
+import { ReportService } from '../../report/report.service';
 import { AddOrEditAppointmentDialogComponent } from '../add-or-edit-appointment-dialog/add-or-edit-appointment-dialog.component';
 import { CancelAppointmentDialogComponent } from '../cancel-appointment-dialog/cancel-appointment-dialog.component';
 import { DoctorAppointmentService } from '../doctor-appointment.service';
@@ -21,7 +22,7 @@ export class DoctorSchedulerComponent implements OnInit {
   public appointments: Appointment[] = [];
   loggedDoctor: Doctor = new Doctor()
   
-  constructor(private doctorAppointmentService: DoctorAppointmentService, public dialog: MatDialog, private router: Router, private readonly doctorService: DoctorService) { }
+  constructor(private doctorAppointmentService: DoctorAppointmentService, public dialog: MatDialog, private router: Router, private readonly doctorService: DoctorService, private reportService: ReportService) { }
 
   @Input() isCurrentAppointment:boolean | undefined
   
@@ -57,8 +58,15 @@ export class DoctorSchedulerComponent implements OnInit {
   }
 
   createReport(id: string): void {
-    localStorage.setItem('selectedPatient', id)
-    this.router.navigateByUrl('/doctor/report/new')
+    this.reportService.getReports().subscribe(res => {
+      if (res.filter(report => report.appointmentId === id).length > 0){
+        alert('Ovaj termin već ima izveštaj')
+      }
+      else {
+        localStorage.setItem('selectedAppointment', id)
+        this.router.navigateByUrl('/doctor/report/new')
+      }
+    })
   }
 
   openEditDialog(id:number): void {

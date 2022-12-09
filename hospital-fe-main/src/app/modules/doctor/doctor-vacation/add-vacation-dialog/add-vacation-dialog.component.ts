@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { catchError, EMPTY } from 'rxjs';
+import { Doctor } from 'src/app/modules/hospital/model/doctor.model';
 import { Vacation } from 'src/app/modules/hospital/model/vacation.model';
+import { DoctorService } from 'src/app/modules/hospital/services/doctor-service';
 //import { Vacation } from '../../hospital/model/vacation.model';
 import { DoctorVacationService } from '../doctor-vacation.service';
 
@@ -20,15 +22,18 @@ export class AddVacationDialogComponent implements OnInit {
 
   vacation:Vacation = new Vacation();
 
-  doctorId = 'e6fbebce-dd68-11e4-9e38-c66b98cc8197'
+  loggedDoctor: Doctor = new Doctor();
 
-  constructor(private doctorVacationService: DoctorVacationService, public dialogRef: MatDialogRef<AddVacationDialogComponent>) { }
+  constructor(private doctorVacationService: DoctorVacationService, public dialogRef: MatDialogRef<AddVacationDialogComponent>, private readonly doctorService: DoctorService) { }
 
   ngOnInit(): void {
+    this.doctorService.getLoggedDoctor().subscribe(res => {
+      this.loggedDoctor = res
+    })
   }
 
   public createVacation(): void {
-    this.vacation.doctorId = this.doctorId;
+    this.vacation.doctorId = this.loggedDoctor.id;
     this.vacation.dateStart = this.startDate;
     this.vacation.dateEnd = this.endDate;
     this.vacation.deniedRequestReason = "";
