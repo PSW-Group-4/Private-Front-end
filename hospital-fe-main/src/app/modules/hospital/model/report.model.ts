@@ -3,8 +3,7 @@ import { Symptom } from "./symptom.module";
 
 export class Report {
     id: string = "";
-    patientId: string = "";
-    doctorId: string = "";
+    appointmentId: string = "";
     text: string = "";
     symptoms: Array<Symptom> = []
     prescriptions: Array<Prescription> = []
@@ -13,8 +12,7 @@ export class Report {
     public constructor(obj?: any) {
         if (obj) {
             this.id = obj.id;
-            this.patientId = obj.patientId;
-            this.doctorId = obj.doctorId;
+            this.appointmentId = obj.appointmentId;
             this.text = obj.text;
             this.symptoms = obj.symptoms;
             this.prescriptions = obj.prescriptions;

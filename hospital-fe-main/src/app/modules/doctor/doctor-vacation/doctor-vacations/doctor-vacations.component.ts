@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Doctor } from 'src/app/modules/hospital/model/doctor.model';
+import { DoctorService } from 'src/app/modules/hospital/services/doctor-service';
 import { AddVacationDialogComponent } from '../add-vacation-dialog/add-vacation-dialog.component';
 import { DoctorVacationService } from '../doctor-vacation.service';
 
@@ -10,11 +12,14 @@ import { DoctorVacationService } from '../doctor-vacation.service';
 })
 export class DoctorVacationsComponent implements OnInit {
 
-  constructor(private doctorVacationService: DoctorVacationService, public dialog: MatDialog) { }
+  constructor(private doctorVacationService: DoctorVacationService, public dialog: MatDialog, private readonly doctorService: DoctorService) { }
 
-  doctorId = 'e6fbebce-dd68-11e4-9e38-c66b98cc8197'
+  loggedDoctor: Doctor = new Doctor()
 
   ngOnInit(): void {
+    this.doctorService.getLoggedDoctor().subscribe(res => {
+      this.loggedDoctor = res
+    })
   }
 
   openAddDialog(): void {
@@ -29,10 +34,8 @@ export class DoctorVacationsComponent implements OnInit {
       //console.log('The dialog was closed');
       //this.animal = result;
       // osvjezi Waiting_for_approval requeste
-      this.doctorVacationService.GetDoctorVacationsFromSpecificStatus(0,this.doctorId).subscribe(res =>{
-      })
-
-      
+      this.doctorVacationService.GetDoctorVacationsFromSpecificStatus(0, this.loggedDoctor.id).subscribe(res =>{
+      })      
     });
   }
 }
