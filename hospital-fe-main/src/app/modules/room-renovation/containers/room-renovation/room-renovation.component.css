@@ -1,0 +1,14 @@
+.full-width{
+    width: 100%;
+}
+.next-back-buttons{
+    width: 100%;
+}
+.spacer-buttons{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.spacer-div {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { DoctorVacationService } from 'src/app/modules/doctor-vacation/doctor-vacation.service';
+import { DoctorVacationService } from 'src/app/modules/doctor/doctor-vacation/doctor-vacation.service';
+//import { DoctorVacationService } from 'src/app/modules/doctor-vacation/doctor-vacation.service';
 
 @Component({
   selector: 'app-comment',

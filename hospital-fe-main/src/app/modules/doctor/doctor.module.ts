@@ -14,6 +14,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInput, MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button'
 import { FormsModule } from '@angular/forms';
+import { ConsiliumModule } from './consilium/consilium.module';
+import { DoctorVacationModule } from './doctor-vacation/doctor-vacation.module';
 import { CreateReportComponent } from './report/create-report/create-report.component';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatDividerModule } from '@angular/material/divider';
@@ -37,6 +39,9 @@ import { ShowReportsComponent } from './report/show-reports/show-reports.compone
     MatTableModule,
     MatSelectModule,
     MatFormFieldModule,
+    FormsModule,
+    ConsiliumModule,
+    //DoctorVacationModule,
     MatInputModule,
     FormsModule,
     MatStepperModule,

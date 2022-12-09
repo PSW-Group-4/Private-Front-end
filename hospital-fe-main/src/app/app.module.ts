@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { MaterialModule } from './material/material.module';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
-import {MatStepperModule} from '@angular/material/stepper';
+import { MatStepperModule } from '@angular/material/stepper';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -22,7 +22,7 @@ import { MapsModule } from "./modules/maps/maps.module";
 import { CommonModule } from '@angular/common';
 import { BloodBanksComponent, CheckBloodSuppliesDialog } from './modules/hospital/blood-banks/blood-banks.component';
 import { AdmissionComponent } from './modules/doctor/admission/admission.component';
-import { DoctorVacationModule } from "./modules/doctor-vacation/doctor-vacation.module";
+//import { DoctorVacationModule } from "./modules/doctor-vacation/doctor-vacation.module";
 import { Ng2SearchPipeModule } from "ng2-search-filter";
 import { DoctorBloodConsumptionComponent } from './modules/doctor/doctor-blood-consumption/doctor-blood-consumption.component';
 import { CreateBloodConsumptionRecordComponent } from './modules/doctor/doctor-blood-consumption/create-blood-consumption-record/create-blood-consumption-record.component';
@@ -40,7 +40,12 @@ import { DoctorRootComponent } from './modules/doctor/doctor-root/doctor-root.co
 import { DoctorModule } from './modules/doctor/doctor.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BloodRequestsModule } from './modules/blood-requests/blood-requests.module';
+import { RoomRenovationModule } from './modules/room-renovation/room-renovation.module';
 import { CreateTenderComponent } from './modules/create-tender/create-tender.component';
+import { ManagerBlockingUserModule } from './modules/manager/manager-blocking-user/manager-blocking-user.module';
+import { MatTableModule } from '@angular/material/table';
+import { DoctorVacationModule } from './modules/doctor/doctor-vacation/doctor-vacation.module';
+
 
 @NgModule({
   declarations: [
@@ -83,7 +88,9 @@ import { CreateTenderComponent } from './modules/create-tender/create-tender.com
     DoctorRoutingModule,
     FlexLayoutModule,
     BloodRequestsModule,
+    RoomRenovationModule,
     NgChartsModule,
+    MatTableModule
   ],
   providers: [
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
@@ -97,4 +104,4 @@ import { CreateTenderComponent } from './modules/create-tender/create-tender.com
   ],
   bootstrap: [AppComponent, BloodBanksComponent],
 })
-export class AppModule {}
+export class AppModule { }

@@ -1,9 +1,10 @@
 import { DoctorAppointmentService } from './../../../../doctor/doctor-appointments/doctor-appointment.service';
-import { DoctorVacationService } from './../../../../doctor-vacation/doctor-vacation.service';
+//import { DoctorVacationService } from './../../../../doctor-vacation/doctor-vacation.service';
 import { Doctor } from './../../../../hospital/model/doctor.model';
 import { Component, OnInit } from '@angular/core';
 import { ChartConfiguration, ChartOptions } from 'chart.js';
 import { Vacation } from 'src/app/modules/hospital/model/vacation.model';
+import { DoctorVacationService } from 'src/app/modules/doctor/doctor-vacation/doctor-vacation.service';
 
 @Component({
   selector: 'app-vacation-statistics',
