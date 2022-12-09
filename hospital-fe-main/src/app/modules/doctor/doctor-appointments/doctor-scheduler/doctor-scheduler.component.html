@@ -9,15 +9,23 @@
     </ng-container>
     <ng-container matColumnDef="room">
         <th mat-header-cell *matHeaderCellDef class="cell-center"> Soba </th>
-        <td mat-cell *matCellDef="let app" class="clickable cell-center" >{{app.roomSchedule.room.name}}</td>
+        <td mat-cell *matCellDef="let app" class="clickable cell-center" >{{app.schedule.room.name}}</td>
     </ng-container>
     <ng-container matColumnDef="date">
         <th mat-header-cell *matHeaderCellDef class="cell-center"> Datum </th>
-        <td mat-cell *matCellDef="let app" class="cell-center">{{app.roomSchedule.dateTime | date : 'dd.MM.yyyy'}}</td>
+        <td mat-cell *matCellDef="let app" class="cell-center">{{app.schedule.dateTime | date : 'dd.MM.yyyy'}}</td>
     </ng-container>
     <ng-container matColumnDef="time">
         <th mat-header-cell *matHeaderCellDef class="cell-center"> Vreme </th>
-        <td mat-cell *matCellDef="let app" class="cell-center">{{app.roomSchedule.dateTime | date : 'h:mm'}}</td>
+        <td mat-cell *matCellDef="let app" class="cell-center">{{app.schedule.dateTime | date : 'h:mm'}}</td>
+    </ng-container>
+    <ng-container matColumnDef="report">
+        <th mat-header-cell *matHeaderCellDef class="cell-center"></th>
+        <td mat-cell *matCellDef="let app" class="cell-center">
+            <button mat-icon-button (click)="createReport(app.patient.id)">
+                <mat-icon matTooltip="report">edit</mat-icon>
+            </button>
+        </td>
     </ng-container>
     <ng-container matColumnDef="update">
         <th mat-header-cell *matHeaderCellDef class="cell-center"></th>

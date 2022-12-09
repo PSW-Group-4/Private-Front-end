@@ -1,6 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
+import { Doctor } from 'src/app/modules/hospital/model/doctor.model';
+import { DoctorService } from 'src/app/modules/hospital/services/doctor-service';
 import { Appointment } from '../../../hospital/model/appointment.model';
 import { AddOrEditAppointmentDialogComponent } from '../add-or-edit-appointment-dialog/add-or-edit-appointment-dialog.component';
 import { CancelAppointmentDialogComponent } from '../cancel-appointment-dialog/cancel-appointment-dialog.component';
@@ -16,14 +19,17 @@ export class DoctorSchedulerComponent implements OnInit {
   public dataSource = new MatTableDataSource<Appointment>();
   public displayedColumns : string[] = [];
   public appointments: Appointment[] = [];
-  doctorId = 'e6fbebce-dd68-11e4-9e38-c66b98cc8197';
+  loggedDoctor: Doctor = new Doctor()
   
-  constructor(private doctorAppointmentService: DoctorAppointmentService, public dialog: MatDialog) { }
+  constructor(private doctorAppointmentService: DoctorAppointmentService, public dialog: MatDialog, private router: Router, private readonly doctorService: DoctorService) { }
 
   @Input() isCurrentAppointment:boolean | undefined
   
   ngOnInit(): void {
-    this.changeDispledTable();
+    this.doctorService.getLoggedDoctor().subscribe(res => {
+      this.loggedDoctor = res
+      this.changeDispledTable();
+    })
   }
 
   changeDispledTable() {
@@ -31,23 +37,28 @@ export class DoctorSchedulerComponent implements OnInit {
       this.displayedColumns = ['doctorName', 'patientName', 'room', 'date','time', 'update', 'delete'];
       this.showCurrentAppointment();
     }else{
-      this.displayedColumns = ['doctorName', 'patientName', 'room', 'date', 'time'];
+      this.displayedColumns = ['doctorName', 'patientName', 'room', 'date', 'time', 'report'];
       this.showOldAppointment();
     }
   }
 
   public showCurrentAppointment(): void {
-    this.doctorAppointmentService.getDoctorsCurrentAppointments(this.doctorId).subscribe(res => {
+    this.doctorAppointmentService.getDoctorsCurrentAppointments(this.loggedDoctor.id).subscribe(res => {
       this.appointments = res;
       this.dataSource.data = this.appointments;
     })
   }
 
   public showOldAppointment(): void {
-    this.doctorAppointmentService.getDoctorsOldAppointments(this.doctorId).subscribe(res => {
+    this.doctorAppointmentService.getDoctorsOldAppointments(this.loggedDoctor.id).subscribe(res => {
       this.appointments = res;
       this.dataSource.data = this.appointments;
     })
+  }
+
+  createReport(id: string): void {
+    localStorage.setItem('selectedPatient', id)
+    this.router.navigateByUrl('/doctor/report/new')
   }
 
   openEditDialog(id:number): void {
