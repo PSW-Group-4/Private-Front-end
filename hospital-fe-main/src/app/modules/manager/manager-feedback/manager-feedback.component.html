@@ -1,15 +1,16 @@
 <div class="feedbackSection">
-  <table>
-    <th>Date:</th>
-    <th>Patient</th>
-    <th>Feedback</th>
-    <th>Desired visibility</th>
-    <th>Current visibility</th>
-
+  <table id="feedbacksTable">
+    <tr>
+      <th>Date:</th>
+      <th>Patient</th>
+      <th>Feedback</th>
+      <th>Desired visibility</th>
+      <th>Current visibility</th>
+    </tr>
     <tbody>
       <tr *ngFor="let feedback of feedbacksManager">
         <td class="dateWidth">
-          {{ feedback.date | date: "d/M/yyyy HH:mm" }}
+          {{ feedback.date | date : "d/M/yyyy HH:mm" }}
         </td>
         <td class="patientWidith">{{ feedback.patientFullname }}</td>
         <td class="feedbackTextWidith">
@@ -21,12 +22,14 @@
         <td class="currentVisibilityWidth">
           {{ convertStatus(feedback.status) }}
           <button
+            id="publishButton"
             *ngIf="feedback.status != 0 && feedback.isDesiredPublic"
             (click)="Publish(feedback.id)"
           >
             Publish
           </button>
           <button
+            id="hideButton"
             *ngIf="feedback.status != 1 && feedback.isDesiredPublic"
             (click)="Hide(feedback.id)"
           >
