@@ -58,18 +58,18 @@ export class AddConsiliumDialogComponent implements OnInit {
 
     if (this.selectedValue === 'doctor'){
       console.log(this.doctorValues)
-      this.consiliumRequest.isDoctors = true
+      this.consiliumRequest.isDoctor = true
       this.consiliumRequest.specialities = []
-      this.consiliumRequest.doctors = this.doctorValues
+      this.consiliumRequest.doctorsId = this.doctorValues
       this.consiliumService.sendConsiliumRequest(this.consiliumRequest).subscribe(res => {
         //this.specialities = res;
       })
     }
     else if(this.selectedValue === 'speciality'){
       console.log(this.specialitiesValues)
-      this.consiliumRequest.isDoctors = false
-      this.consiliumRequest.doctors = []
-      this.consiliumRequest.specialities = this.specialities
+      this.consiliumRequest.isDoctor = false
+      this.consiliumRequest.doctorsId = []
+      this.consiliumRequest.specialities = this.specialitiesValues
       this.consiliumService.sendConsiliumRequest(this.consiliumRequest).subscribe(res => {
         //this.specialities = res;
       })

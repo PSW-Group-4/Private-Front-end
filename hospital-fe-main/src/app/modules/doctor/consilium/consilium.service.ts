@@ -18,11 +18,11 @@ export class ConsiliumService {
     return this.http.get<Doctor[]>(this.apiHost + 'api/Doctor', {headers: this.headers});
   }
   getSpecialities(): Observable<string[]> {
-    return this.http.get<string[]>(this.apiHost + 'api/Specialities', {headers: this.headers});
+    return this.http.get<string[]>(this.apiHost + 'api/Doctor/specialties', {headers: this.headers});
   }
 
   sendConsiliumRequest(consiliumRequest:ConsiliumRequest): Observable<ConsiliumRequest> {
-    return this.http.post<ConsiliumRequest>(this.apiHost + 'api/ConsiliumRequest', consiliumRequest, {headers: this.headers});
+    return this.http.post<ConsiliumRequest>(this.apiHost + 'api/Consilium', consiliumRequest, {headers: this.headers});
   }
 }
 
