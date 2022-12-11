@@ -1,5 +1,5 @@
 <div class="feedbackSection">
-  <table>
+  <table id="feedbacksTable">
     <th>Date:</th>
     <th>Patient</th>
     <th>Feedback</th>
@@ -9,7 +9,7 @@
     <tbody>
       <tr *ngFor="let feedback of feedbacksManager">
         <td class="dateWidth">
-          {{ feedback.date | date: "d/M/yyyy HH:mm" }}
+          {{ feedback.date | date : "d/M/yyyy HH:mm" }}
         </td>
         <td class="patientWidith">{{ feedback.patientFullname }}</td>
         <td class="feedbackTextWidith">
