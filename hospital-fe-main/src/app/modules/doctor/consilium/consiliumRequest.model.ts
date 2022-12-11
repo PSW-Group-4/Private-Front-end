@@ -4,8 +4,8 @@ export class ConsiliumRequest {
     dateStart: string = ''
     dateEnd: string = ''
     duration: string = '';
-    isDoctors: boolean = true;
-    doctors: string[] = [];
+    isDoctor: boolean = true;
+    doctorsId: string[] = [];
     specialities: string[] = [];
 
 
@@ -16,8 +16,8 @@ export class ConsiliumRequest {
             this.dateStart = obj.dateStart;
             this.dateEnd = obj.dateEnd;
             this.duration = obj.duration;
-            this.isDoctors = obj.isDoctors;
-            this.doctors = obj.doctors;
+            this.isDoctor = obj.isDoctor;
+            this.doctorsId = obj.doctorsId;
             this.specialities = obj.specialities;
         }
     }
