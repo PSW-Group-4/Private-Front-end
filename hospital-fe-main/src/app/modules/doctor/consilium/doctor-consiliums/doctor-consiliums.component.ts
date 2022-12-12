@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AddConsiliumDialogComponent } from '../add-consilium-dialog/add-consilium-dialog.component';
+import { ConsiliumDoctorListDialogComponent } from './consilium-doctor-list-dialog/consilium-doctor-list-dialog.component';
 
 @Component({
   selector: 'app-doctor-consiliums',
@@ -10,8 +11,9 @@ import { AddConsiliumDialogComponent } from '../add-consilium-dialog/add-consili
 export class DoctorConsiliumsComponent implements OnInit {
 
   constructor(public dialog: MatDialog) { }
-
+  public displayedColumns : string[] = [];
   ngOnInit(): void {
+    this.displayedColumns = ['theme', 'room', 'date', 'duration','list'];
   }
 
   openAddDialog(): void {
@@ -28,6 +30,17 @@ export class DoctorConsiliumsComponent implements OnInit {
       //this.doctorVacationService.GetDoctorVacationsFromSpecificStatus(0,this.doctorId).subscribe(res =>{})
 
       
+    });
+  }
+
+  openDoctorListDialog(): void{
+    const dialogRef = this.dialog.open(ConsiliumDoctorListDialogComponent, {
+      data: {},
+      height: '400px',
+      width: '600px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
     });
   }
 

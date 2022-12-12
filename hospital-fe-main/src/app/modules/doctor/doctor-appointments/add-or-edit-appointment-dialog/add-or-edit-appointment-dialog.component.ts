@@ -9,6 +9,8 @@ import { AcceptAppointmentScheduleDialogComponent } from '../accept-appointment-
 import { WrongInputDialogComponent } from './wrong-input-dialog/wrong-input-dialog.component';
 import { formatDate } from '@angular/common';
 import { DoctorService } from 'src/app/modules/hospital/services/doctor-service';
+import { DateRange } from 'src/app/modules/hospital/model/daterange.model';
+import { LegendElement } from 'chart.js';
 
 @Component({
   selector: 'app-add-or-edit-appointment-dialog',
@@ -50,7 +52,7 @@ export class AddOrEditAppointmentDialogComponent implements OnInit {
       this.test="Izmena pregleda"
       this.isEdit = true;
       this.doctorAppointmentService.getAppointment(this.data.appointmentId).subscribe(res => {
-        this.selectedDate = new Date(res.schedule.dateTime);
+        this.selectedDate = new Date(res.startTime.toString());
         this.getSelectedDate();
         this.getSelectedPatient(res);
       })
@@ -61,7 +63,9 @@ export class AddOrEditAppointmentDialogComponent implements OnInit {
     if(this.selectedPatient.name != ''){
     var formatedDate = new Date(event.target.value).toDateString();
     this.doctorAppointmentService.getTermins(formatedDate).subscribe(res => {
-      this.termins= res;
+      for(var r of res){
+        this.termins.push(r.startTime);
+      }
     })
     this.isDate = false;
     }
@@ -72,7 +76,7 @@ export class AddOrEditAppointmentDialogComponent implements OnInit {
   }
 
   checkAppointment = () =>{
-    if((this.appointment.patientId != '') && (this.appointment.schedule.dateTime != this.minDate.toString()) && (this.appointment.schedule.roomId != ''))
+    if((this.appointment.patientId != '') && (this.appointment.startTime.toString() != this.minDate.toString()) && (this.appointment.roomId != ''))
       this.createAppointment();
     else {
       const dialogRef = this.dialog.open(WrongInputDialogComponent, {
@@ -101,7 +105,9 @@ export class AddOrEditAppointmentDialogComponent implements OnInit {
   getSelectedDate = async () => {
     var formatedDate = this.selectedDate.toDateString();
     this.doctorAppointmentService.getTermins(formatedDate).subscribe(res => {
-      this.termins= res;
+      for(var r of res){
+        this.termins.push(r.startTime)
+      }
       this.termins.push(this.selectedDate);
       this.selectedTermin = this.termins[this.termins.length - 1];
       this.termins.sort((a, b) => new Date(a).getTime() - new Date(b).getTime());
@@ -124,8 +130,8 @@ export class AddOrEditAppointmentDialogComponent implements OnInit {
     }
     this.appointment.doctorId = this.doctor.id;
     this.appointment.patientId = this.selectedPatient.id;
-    this.appointment.schedule.roomId = this.doctor.room.id.toString();
-    this.appointment.schedule.dateTime = this.selectedTermin.toString();
+    this.appointment.roomId = this.doctor.room.id.toString()
+    this.appointment.startTime = this.selectedTermin.toLocaleString()
     this.checkAppointment();
   }
 

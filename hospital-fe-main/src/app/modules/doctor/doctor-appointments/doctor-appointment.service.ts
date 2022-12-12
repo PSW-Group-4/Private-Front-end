@@ -5,6 +5,7 @@ import { AdmissionHistory } from '../../hospital/model/admission-history.model';
 import { Admission } from '../../hospital/model/admission.model';
 import { Appointment } from '../../hospital/model/appointment.model';
 import { BloodConsumptionRecord } from '../../hospital/model/blood-consumption-record.model';
+import { DateRange } from '../../hospital/model/daterange.model';
 import { Doctor } from '../../hospital/model/doctor.model';
 import { Medicine } from '../../hospital/model/medicine-model';
 import { Patient } from '../../hospital/model/patient.model';
@@ -45,7 +46,7 @@ export class DoctorAppointmentService {
   }
 
   createAppointment(appointment: any): Observable<any> {
-    return this.http.post<any>(this.apiHost + 'api/Appointment', appointment, {headers: this.headers});
+    return this.http.post<any>(this.apiHost + 'api/MedicalAppointment', appointment, {headers: this.headers});
   }
 
   updateAppointment(appointment: any): Observable<any> {
@@ -60,8 +61,8 @@ export class DoctorAppointmentService {
     return this.http.get<Patient>(this.apiHost + 'api/Patient/' + id, {headers: this.headers});
   }
 
-  getTermins(date : any): Observable<Date[]> {
-    return this.http.get<Date[]>(this.apiHost + 'api/Scheduling/' + date, {headers: this.headers});
+  getTermins(date : any): Observable<DateRange[]> {
+    return this.http.get<DateRange[]>(this.apiHost + 'api/Scheduling/' + date, {headers: this.headers});
   }
 
   getDoctor(id: any): Observable<Doctor> {
