@@ -9,7 +9,7 @@ export class EquipmentRelocationService {
 
   apiHost: string = 'http://localhost:16177/';
   headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
-  readonly API = 'api/EquipmentRelocation';
+  readonly API = 'api/Scheduling';
 
   constructor(private http: HttpClient) { }
 
