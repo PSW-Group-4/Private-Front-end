@@ -5,13 +5,15 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
 import { MaterialModule } from 'src/app/material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddConsiliumDialogComponent } from './add-consilium-dialog/add-consilium-dialog.component';
+import { ConsiliumDoctorListDialogComponent } from './doctor-consiliums/consilium-doctor-list-dialog/consilium-doctor-list-dialog.component';
 
 
 
 @NgModule({
   declarations: [
     DoctorConsiliumsComponent,
-    AddConsiliumDialogComponent
+    AddConsiliumDialogComponent,
+    ConsiliumDoctorListDialogComponent
   ],
   imports: [
     AppRoutingModule,
