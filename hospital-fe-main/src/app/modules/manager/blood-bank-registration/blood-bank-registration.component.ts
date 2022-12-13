@@ -18,7 +18,7 @@ export  class BloodBankRegistrationComponent implements OnInit {
   public createBloodBank() {
     if (!this.isValidInput()) return;
     this.bloodBankService.createBloodBank(this.bloodBank).subscribe(res => {
-      this.router.navigate(['/bloodBanks']);
+      this.router.navigate(['/manager/bloodBanks']);
     });
   }
 
