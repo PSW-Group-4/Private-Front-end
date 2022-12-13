@@ -35,7 +35,7 @@ export class BloodBanksComponent implements OnInit {
     })
   }
   public addBloodBank() {
-    this.router.navigate(['/bloodBanks/add']);
+    this.router.navigate(['bloodBanks/add']);
   }
 
   openDialog(): void {
