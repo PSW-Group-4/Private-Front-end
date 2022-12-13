@@ -1,1 +1,21 @@
-<p>consilium-doctor-list-dialog works!</p>
+<p>Prikaz svih lekara pozvanih na sastanak</p>
+<div>
+    
+    <table mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef class="cell-center"> Ime </th>
+            <td mat-cell *matCellDef="let app" class="clickable cell-center" >{{app.name}}</td>
+        </ng-container>
+        <ng-container matColumnDef="surname">
+            <th mat-header-cell *matHeaderCellDef class="cell-center"> Prezime </th>
+            <td mat-cell *matCellDef="let app" class="cell-center">{{app.surname}}</td>
+        </ng-container>
+        <ng-container matColumnDef="speciality">
+            <th mat-header-cell *matHeaderCellDef class="cell-center"> Specijalnost </th>
+            <td mat-cell *matCellDef="let app" class="cell-center">{{app.speciality}}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true" ></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>

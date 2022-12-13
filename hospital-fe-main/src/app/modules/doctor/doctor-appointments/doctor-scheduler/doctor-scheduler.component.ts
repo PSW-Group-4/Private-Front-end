@@ -59,7 +59,7 @@ export class DoctorSchedulerComponent implements OnInit {
 
   createReport(id: string): void {
     this.reportService.getReports().subscribe(res => {
-      if (res.filter(report => report.appointmentId === id).length > 0){
+      if (res.filter(report => report.medicalAppointmentId === id).length > 0){
         alert('Ovaj termin već ima izveštaj')
       }
       else {

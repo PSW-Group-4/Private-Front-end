@@ -31,5 +31,8 @@ export class ConsiliumService {
   getLoggedDoctor(): Observable<Doctor>{
     return this.http.get<Doctor>(this.apiHost + 'api/Doctor/loggedDoctor', {headers: this.headers});
   }
+  getConsiliumById(id: string): Observable<Consilium>{
+    return this.http.get<Consilium>(this.apiHost + 'api/Consilium/' + id, {headers: this.headers});
+  }
 }
 
