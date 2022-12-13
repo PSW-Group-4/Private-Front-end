@@ -1,4 +1,4 @@
-<table mat-table [dataSource]="dataSource">
+<table mat-table [dataSource]="dataSource" id="medicalAppointmentTable">
     <ng-container matColumnDef="doctorName">
         <th mat-header-cell *matHeaderCellDef class="cell-center"> Doktor </th>
         <td mat-cell *matCellDef="let app" class="clickable cell-center" >{{app.doctor.name + ' ' + app.doctor.surname}}</td>
@@ -30,7 +30,7 @@
     <ng-container matColumnDef="update">
         <th mat-header-cell *matHeaderCellDef class="cell-center"></th>
         <td mat-cell *matCellDef="let app" class="cell-center">
-            <button mat-icon-button (click)="openEditDialog(app.id)">
+            <button mat-icon-button (click)="openEditDialog(app.id)" id="editButton">
                 <mat-icon matTooltip="update">edit</mat-icon>
             </button>
         </td>
