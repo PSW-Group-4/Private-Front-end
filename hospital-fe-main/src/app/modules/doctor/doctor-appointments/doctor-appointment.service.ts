@@ -34,11 +34,11 @@ export class DoctorAppointmentService {
   }
 
   getAppointments(): Observable<Appointment[]> {
-    return this.http.get<Appointment[]>(this.apiHost + 'api/Appointment', {headers: this.headers});
+    return this.http.get<Appointment[]>(this.apiHost + 'api/MedicalAppointment', {headers: this.headers});
   }
 
   getAppointment(id: number): Observable<Appointment> {
-    return this.http.get<Appointment>(this.apiHost + 'api/Appointment/' + id, {headers: this.headers});
+    return this.http.get<Appointment>(this.apiHost + 'api/MedicalAppointment/' + id, {headers: this.headers});
   }
 
   deleteAppointment(id: any): Observable<any> {
@@ -50,7 +50,7 @@ export class DoctorAppointmentService {
   }
 
   updateAppointment(appointment: any): Observable<any> {
-    return this.http.put<any>(this.apiHost + 'api/Appointment/' + appointment.Id, appointment, {headers: this.headers});
+    return this.http.put<any>(this.apiHost + 'api/MedicalAppointment/' + appointment.Id, appointment, {headers: this.headers});
   }
 
   getPatients(): Observable<Patient[]> {
