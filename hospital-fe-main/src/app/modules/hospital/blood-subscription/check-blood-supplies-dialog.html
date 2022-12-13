@@ -53,7 +53,7 @@
             min="0"
             aria-label="Number"
             matInput
-            min="0" 
+            min="1" 
             max="26"
             formControlName="deliveryDay"
             [(ngModel)]="data.deliveryDay"
@@ -77,6 +77,6 @@
   </div>
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">Close</button>
-  <button mat-button (click)="onCheckClick(data.quantity, data.bloodType, data.name, data.urgent, data.activeStatus, data.deliveryDay)" cdkFocusInitial [disabled]="!data.bloodType.length">Check</button>
+  <button mat-button [mat-dialog-close]="false" (click)="onNoClick()">Close</button>
+  <button mat-button [mat-dialog-close]="true" (click)="onCheckClick(data.quantity, data.bloodType, data.name, data.urgent, data.activeStatus, data.deliveryDay)" cdkFocusInitial [disabled]="!data.bloodType.length">Check</button>
 </div>

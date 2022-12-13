@@ -44,8 +44,8 @@ export class BloodBanksSubComponent implements OnInit {
 
   ngOnInit(): void {
     this.bloodSubscribeService.getBloodSubscribes().subscribe(res => {
-    this.bloodSubscribes = res.map((bloodSubscribe) => new BloodSubscribe(bloodSubscribe));
-    this.dataSource.data = this.bloodSubscribes;
+      this.bloodSubscribes = res.map((bloodSubscribe) => new BloodSubscribe(bloodSubscribe));
+      this.dataSource.data = this.bloodSubscribes;
     })
   }
   public addBloodSubscribe() {
@@ -56,9 +56,15 @@ export class BloodBanksSubComponent implements OnInit {
     const dialogRef = this.dialog.open(AddSubscriptionDialog, {
       width: '250px',
       data: {bloodType: this.bloodType, quantity: this.quantity, name: this.name, deliveryDay: this.deliveryDay, urgent: this.urgent, activeStatus: this.activeStatus},
+    })
+    dialogRef.afterClosed().subscribe(result => { 
+      if(result){
+        this.bloodSubscribeService.getBloodSubscribes().subscribe(res => {
+          this.bloodSubscribes = res.map((bloodSubscribe) => new BloodSubscribe(bloodSubscribe));
+          this.dataSource.data = this.bloodSubscribes;
+        })
+      }
     });
-
-    dialogRef.componentInstance.location = 'http://localhost:8080/';
   }
 
 }
@@ -98,7 +104,7 @@ export class AddSubscriptionDialog {
   }
 
   onNoClick(): void {
-    this.dialogRef.close();
+    this.dialogRef.close(this.data);
   }
 
 
@@ -143,6 +149,7 @@ export class AddSubscriptionDialog {
     blood?.push(one);
     this.suscription.blood = blood;
     this.bloodSubService.update(this.suscription).subscribe()
+    this.dialogRef.close(this.data);
   }
 
   public form: FormGroup = new FormGroup({
