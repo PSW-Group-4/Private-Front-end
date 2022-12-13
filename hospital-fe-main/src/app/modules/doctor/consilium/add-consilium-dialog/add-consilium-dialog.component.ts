@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 import { catchError, EMPTY } from 'rxjs';
 import { Doctor } from 'src/app/modules/hospital/model/doctor.model';
 import { ConsiliumService } from '../consilium.service';
@@ -23,7 +24,7 @@ export class AddConsiliumDialogComponent implements OnInit {
   specialitiesValues:string[] = []
   consiliumRequest: ConsiliumRequest = new ConsiliumRequest
 
-  constructor(private consiliumService:ConsiliumService) { }
+  constructor(private consiliumService:ConsiliumService, public dialogRef: MatDialogRef<AddConsiliumDialogComponent>) { }
 
   ngOnInit(): void {
     this.getAllDoctors();
@@ -69,6 +70,7 @@ export class AddConsiliumDialogComponent implements OnInit {
         })
       ).subscribe(res => {
         //this.specialities = res;
+        this.dialogRef.close();
       })
     }
     else if(this.selectedValue === 'speciality'){
@@ -83,6 +85,7 @@ export class AddConsiliumDialogComponent implements OnInit {
         })
       ).subscribe(res => {
         //this.specialities = res;
+        this.dialogRef.close();
       })
     }
   }
