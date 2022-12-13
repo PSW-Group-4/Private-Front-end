@@ -27,8 +27,8 @@ export class DoctorConsiliumsComponent implements OnInit {
 
   openAddDialog(): void {
     const dialogRef = this.dialog.open(AddConsiliumDialogComponent, {
-      height: '400px',
-      width: '600px',
+      height: '600px',
+      width: '800px',
       //data: {name: this.name, animal: this.animal},
     });
 
@@ -37,7 +37,7 @@ export class DoctorConsiliumsComponent implements OnInit {
       //this.animal = result;
       // osvjezi Waiting_for_approval requeste
       //this.doctorVacationService.GetDoctorVacationsFromSpecificStatus(0,this.doctorId).subscribe(res =>{})
-
+      this.getConsiliums();
       
     });
   }
