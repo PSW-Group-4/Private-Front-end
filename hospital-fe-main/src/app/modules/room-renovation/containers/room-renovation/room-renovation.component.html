@@ -55,7 +55,7 @@
                 </div>
                 <div class="next-back-buttons spacer-div">
                     <button mat-raised-button color="secondary" class="spacer-buttons" matStepperPrevious>Back</button>
-                    <button mat-raised-button color="primary"  class="spacer-buttons" matStepperNext>Next</button>
+                    <button mat-raised-button color="primary"  class="spacer-buttons" (click)="checkRoomsAndReport(stepper)">Next</button>
                 </div>  
             </form>
         </mat-step>

@@ -15,6 +15,7 @@ import { RoomRenovationFacade } from '../../room-renovation.facade';
   styleUrls: ['./room-renovation.component.css']
 })
 export class RoomRenovationComponent implements OnInit {
+
   public renovation : Renovation = new Renovation();
   public choices = TypeOfRenovation;
 
@@ -191,6 +192,25 @@ export class RoomRenovationComponent implements OnInit {
     }
     else {
       alert("Please enter a valid duration")
+    }
+  }
+
+  checkRoomsAndReport(stepper : MatStepper) {
+    if(this.renovation.Type == 'Merge') {
+      this.facade.checkIfRoomsAreAdjacent$(this.selectedRoom1.value.id,this.selectedRoom2.value.id).subscribe({
+        next: (v) => {
+          if(v == true) {
+            stepper.next()
+          }
+          else {
+            alert("Rooms are not adjacent");
+          }
+        }
+  
+      })  
+    }
+    else {
+      stepper.next()
     }
   }
 

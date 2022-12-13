@@ -5,6 +5,7 @@ import { Floor } from '../maps/models/floor.model';
 import { Room } from '../shared/model/room.model';
 import { BuildingService } from './service/building.service';
 import { FloorService } from './service/floor.service';
+import { RoomMapService } from './service/room-map-service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class RoomRenovationFacade {
 
   private buildings$: Observable<Building[]>;
   
-  constructor(private buildingService: BuildingService, private floorService: FloorService) { 
+  constructor(private buildingService: BuildingService, private floorService: FloorService, private roomMapService: RoomMapService) { 
           this.buildings$ = this.buildingService
             .getBuildings()
             .pipe(shareReplay(1)); // cache the data    
@@ -30,5 +31,10 @@ export class RoomRenovationFacade {
   getRoomsByFloorId$(id : String) : Observable<Room[]> {
     return this.floorService.getRoomsByFloorId(id);
   }
+
+  checkIfRoomsAreAdjacent$(id1 : String, id2 : String) : Observable<Boolean> {
+    return this.roomMapService.checkIfRoomsAreAdjacent(id1, id2);
+  }
+
 
 }
