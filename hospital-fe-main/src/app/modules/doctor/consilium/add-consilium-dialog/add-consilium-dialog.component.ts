@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { catchError, EMPTY } from 'rxjs';
 import { Doctor } from 'src/app/modules/hospital/model/doctor.model';
 import { ConsiliumService } from '../consilium.service';
 import { ConsiliumRequest } from '../consiliumRequest.model';
@@ -61,7 +62,12 @@ export class AddConsiliumDialogComponent implements OnInit {
       this.consiliumRequest.isDoctor = true
       this.consiliumRequest.specialities = []
       this.consiliumRequest.doctorsId = this.doctorValues
-      this.consiliumService.sendConsiliumRequest(this.consiliumRequest).subscribe(res => {
+      this.consiliumService.sendConsiliumRequest(this.consiliumRequest).pipe(
+        catchError(() => {
+          this.greska = "Tada ne mozete zakazati sastanak"
+          return EMPTY;
+        })
+      ).subscribe(res => {
         //this.specialities = res;
       })
     }
@@ -70,7 +76,12 @@ export class AddConsiliumDialogComponent implements OnInit {
       this.consiliumRequest.isDoctor = false
       this.consiliumRequest.doctorsId = []
       this.consiliumRequest.specialities = this.specialitiesValues
-      this.consiliumService.sendConsiliumRequest(this.consiliumRequest).subscribe(res => {
+      this.consiliumService.sendConsiliumRequest(this.consiliumRequest).pipe(
+        catchError(() => {
+          this.greska = "Tada ne mozete zakazati sastanak"
+          return EMPTY;
+        })
+      ).subscribe(res => {
         //this.specialities = res;
       })
     }
