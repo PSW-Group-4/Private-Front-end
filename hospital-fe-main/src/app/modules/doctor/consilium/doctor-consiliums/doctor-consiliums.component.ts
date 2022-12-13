@@ -21,7 +21,7 @@ export class DoctorConsiliumsComponent implements OnInit {
   public dataSource = new MatTableDataSource<Consilium>();
 
   ngOnInit(): void {
-    this.displayedColumns = ['theme', 'room', 'date', 'duration','list'];
+    this.displayedColumns = ['theme', 'room', 'date', 'start','end','list'];
     this.getLogged();
   }
 
@@ -42,9 +42,9 @@ export class DoctorConsiliumsComponent implements OnInit {
     });
   }
 
-  openDoctorListDialog(): void{
+  openDoctorListDialog(id: string): void{
     const dialogRef = this.dialog.open(ConsiliumDoctorListDialogComponent, {
-      data: {},
+      data: {consiliumId:id},
       height: '400px',
       width: '600px',
     });
