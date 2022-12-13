@@ -10,6 +10,7 @@ import { UpdateRoomComponent } from "./update-room/update-room.component";
 import { AppRoutingModule } from "src/app/app-routing.module";
 import { BloodBankRegistrationComponent } from './blood-bank-registration/blood-bank-registration.component';
 import { BloodBanksComponent } from './blood-banks/blood-banks.component';
+import { BloodBanksSubComponent } from "./blood-subscription/blood-subscription.component";
 
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'rooms/:id/update', component: UpdateRoomComponent },
   { path: 'bloodBanks/add', component:  BloodBankRegistrationComponent},
   { path: 'bloodBanks', component:  BloodBanksComponent},
+  { path: 'bloodBanks/subscription', component:  BloodBanksSubComponent},
 ];
 
 @NgModule({
@@ -29,6 +31,7 @@ const routes: Routes = [
     UpdateRoomComponent,
     BloodBankRegistrationComponent,
     BloodBanksComponent,
+    BloodBanksSubComponent
   ],
   imports: [
     AppRoutingModule,
