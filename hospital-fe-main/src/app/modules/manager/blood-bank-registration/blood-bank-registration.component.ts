@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BloodBank } from 'src/app/modules/hospital/model/blood-bank.model';
-import { BloodBankService } from '../services/blood-bank.service';
+import { BloodBankService } from '../../hospital/services/blood-bank.service';
 
 @Component({
   selector: 'app-blood-bank-registration',
