@@ -36,6 +36,7 @@ export class AddOrEditAppointmentDialogComponent implements OnInit {
   loggedDoctor: Doctor = new Doctor();
   isEdit = false;
   isTerminChanged = false;
+  dateRange = new DateRange();
 
   ngOnInit(): void {
     this.isDate = true;
@@ -52,7 +53,8 @@ export class AddOrEditAppointmentDialogComponent implements OnInit {
       this.test="Izmena pregleda"
       this.isEdit = true;
       this.doctorAppointmentService.getAppointment(this.data.appointmentId).subscribe(res => {
-        this.selectedDate = new Date(res.startTime.toString());
+        this.dateRange = new DateRange(res.startTime)
+        this.selectedDate = new Date(this.dateRange.startTime.toString());
         this.getSelectedDate();
         this.getSelectedPatient(res);
       })
@@ -63,6 +65,7 @@ export class AddOrEditAppointmentDialogComponent implements OnInit {
     if(this.selectedPatient.name != ''){
     var formatedDate = new Date(event.target.value).toDateString();
     this.doctorAppointmentService.getTermins(formatedDate).subscribe(res => {
+      this.termins = [];
       for(var r of res){
         this.termins.push(r.startTime);
       }
