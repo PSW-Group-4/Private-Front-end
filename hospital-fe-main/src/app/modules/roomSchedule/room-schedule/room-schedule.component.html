@@ -8,16 +8,17 @@
                     <th>Cancel</th>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let app of filteredMoveEquipmentAppointemts ">
+                    <tr *ngFor="let app of filteredMoveEquipmentAppointemts " >
                         <td>{{ app.dateRange.startTime }}</td>
                         <td>{{ app.dateRange.endTime }}</td>
-                        <td><button class="equipment-button" mat-raised-button matTooltip="Show equipment" color="warn" id ="button">Cancel</button></td>
+                        <td *ngIf="check(app.dateRange.startTime)"><button class="equipment-button" mat-raised-button matTooltip="Show equipment" color="warn" id ="button" (click)="cancelMoveEquipmentAppointment(app.id)">Cancel</button></td>
+                        <td *ngIf="!check(app.dateRange.startTime)">&nbsp;</td>
                     </tr>
                 </tbody>
             </table>
         
         </mat-tab>
-        <mat-tab label="Renovations"> 
+        <mat-tab label="Renovations" style="width:100%"> 
             <table>
                 <thead>
                     <th>Cancel</th>

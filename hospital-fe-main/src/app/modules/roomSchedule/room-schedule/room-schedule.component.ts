@@ -14,9 +14,11 @@ export class RoomScheduleComponent implements OnInit {
 
   displayedColumns = ['id'];
   clickedRoom: Room = new Room;  
+  today = new Date();
 
   moveEquipmentAppointments: Appointment[] = [];
   filteredMoveEquipmentAppointemts: Appointment[] = [];
+  
 
   medicalAppointments: Appointment[] = [];
   filteredMedicalAppointemts: Appointment[] = [];
@@ -44,4 +46,30 @@ export class RoomScheduleComponent implements OnInit {
     })
   }
 
+
+  cancelMoveEquipmentAppointment(id:any){
+    this.service.deleteMoveEquipmentAppointment(id).subscribe();
+  }
+
+  check(date:Date){
+    console.log(date);
+    console.log( new Date(Date.parse(this.dateAsYYYYMMDDHHNNSS(this.today))))
+    if(new Date(date) > this.today){
+      return true;
+    }
+    return false;
+  }
+
+  dateAsYYYYMMDDHHNNSS(date:any): string {
+    return date.getFullYear()
+              + '-' + this.leftpad(date.getMonth() + 1)
+              + '-' + this.leftpad(date.getDate())
+              + 'T' + this.leftpad(date.getHours())
+              + ':' + this.leftpad(date.getMinutes())
+              + ':' + this.leftpad(date.getSeconds());
+  }
+  leftpad(val:any, resultLength = 2, leftpadChar = '0'): string {
+    return (String(leftpadChar).repeat(resultLength)
+          + String(val)).slice(String(val).length);
+  }
 }

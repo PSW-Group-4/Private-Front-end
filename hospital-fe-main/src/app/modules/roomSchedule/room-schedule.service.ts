@@ -29,4 +29,8 @@ export class RoomScheduleService {
   getMedicalAppointments():Observable<Appointment[]>{
     return this.http.get<Appointment[]>(this.apiHost+ 'api/MedicalAppointment', {headers: this.headers})
   }
+
+  deleteMoveEquipmentAppointment(id: any): Observable<any> {
+    return this.http.delete<any>(this.apiHost + 'api/MoveEquipmentTask/' + id, {headers: this.headers});
+  }
 }
