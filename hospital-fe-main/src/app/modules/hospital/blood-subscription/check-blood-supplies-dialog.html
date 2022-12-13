@@ -65,18 +65,8 @@
     <br/>
     <mat-checkbox class="example-margin" formControlName="urgent" [(ngModel)]="data.urgent">Urgent!</mat-checkbox>
   </form>
-  <div *ngIf="!firstTime">
-    <div *ngIf="haveSupply; else elseBlock" class="bloodAvailable">
-      Blood is available for transfer
-    </div>
-    <ng-template #elseBlock>
-      <div class="bloodNotAvailable">
-        Blood is not available for transfer
-      </div>
-    </ng-template>
-  </div>
 </div>
 <div mat-dialog-actions>
   <button mat-button [mat-dialog-close]="false" (click)="onNoClick()">Close</button>
-  <button mat-button [mat-dialog-close]="true" (click)="onCheckClick(data.quantity, data.bloodType, data.name, data.urgent, data.activeStatus, data.deliveryDay)" cdkFocusInitial [disabled]="!data.bloodType.length">Check</button>
+  <button mat-button [mat-dialog-close]="true" (click)="onCheckClick(data.quantity, data.bloodType, data.name, data.urgent, data.activeStatus, data.deliveryDay)" cdkFocusInitial [disabled]="!(data.bloodType.length && data.name && data.quantity && data.deliveryDay)">Check</button>
 </div>
