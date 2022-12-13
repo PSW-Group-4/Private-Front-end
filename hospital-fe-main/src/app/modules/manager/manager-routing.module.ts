@@ -12,6 +12,7 @@ import { RoomRenovationComponent } from '../room-renovation/containers/room-reno
 import { ManagerBlockingUserComponent } from './manager-blocking-user/manager-blocking-user/manager-blocking-user.component';
 import { BloodBanksComponent } from '../hospital/blood-banks/blood-banks.component';
 import { BloodBanksSubComponent } from '../hospital/blood-subscription/blood-subscription.component';
+import { BloodRequestManagerComponent } from '../hospital/blood-request-manager/blood-request-manager.component';
 
 const routes: Routes = [
   { path: 'feedbacks', component: ManagerFeedbackComponent },
@@ -36,7 +37,8 @@ const routes: Routes = [
   { path: 'room-renovation', component: RoomRenovationComponent },
   { path: 'managerStatistics', component: VacationStatisticsComponent },
   { path: 'blood-banks', component: BloodBanksComponent },
-  { path: 'blood-subscriptions', component: BloodBanksSubComponent }
+  { path: 'blood-subscriptions', component: BloodBanksSubComponent },
+  { path: 'blood-request-manager', component: BloodRequestManagerComponent},
 ];
 
 @NgModule({

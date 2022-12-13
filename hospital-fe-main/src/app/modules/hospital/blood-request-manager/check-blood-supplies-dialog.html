@@ -1,0 +1,55 @@
+<h1 mat-dialog-title>New blood request</h1>
+<div mat-dialog-content>
+  <form [formGroup]="form">
+    
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Choose blood type</mat-label>
+      <input type="text"
+            autocomplete="off" required matInput
+            aria-label="Number"
+            formControlName="bloodType"
+            [matAutocomplete]="auto"
+            [(ngModel)]="data.bloodType">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Quantity [L]</mat-label>
+      <input type="number"
+            min="0"
+            aria-label="Number"
+            matInput
+            formControlName="quantity"
+            [(ngModel)]="data.quantity"
+            >
+      <mat-autocomplete #auto="matAutocomplete">
+      </mat-autocomplete>
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Choose blood bank</mat-label>
+      <!-- <input type="text"
+            autocomplete="off" required matInput
+            aria-label="Number"
+            formControlName="name"
+            [matAutocomplete]="auto"
+            [(ngModel)]="data.name">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let bank of bloodBanks">
+          {{bank.name}}
+        </mat-option>
+      </mat-autocomplete> -->
+      <mat-select formControlName="name" [(ngModel)]="data.name">
+        <mat-option *ngFor="let bank of bloodBanks" [value]="bank.name">
+          {{bank.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="false" (click)="onNoClick()">Close</button>
+  <button mat-button [mat-dialog-close]="true" (click)="onCheckClick(data.quantity, data.bloodType, data.name)" cdkFocusInitial [disabled]="!(data.bloodType.length && data.name && data.quantity)">Check</button>
+</div>
