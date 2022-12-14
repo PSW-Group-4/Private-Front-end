@@ -107,6 +107,13 @@
         <mat-step [editable]="true" [stepControl]="forthStepFormGroup">
             <form [formGroup]="forthStepFormGroup">
                 <ng-template matStepLabel>Choose specific date</ng-template>
+                <div class="spacer-div">
+                    <mat-select placeholder="Choose relocation start" [(ngModel)]="renovation.StartTime" >
+                        <mat-option *ngFor="let d of dates" [value]="d">
+                           {{d | date:'medium'}}
+                        </mat-option>
+                     </mat-select>
+                </div>
                 <div class="next-back-buttons spacer-div">
                     <button mat-raised-button color="secondary" class="spacer-buttons" matStepperPrevious>Back</button>
                     <button mat-raised-button color="primary"  class="spacer-buttons" matStepperNext>Next</button>
@@ -189,6 +196,9 @@
         <mat-step>
           <ng-template matStepLabel>Done</ng-template>
           <p>You are now done.</p>
+          <div class="next-back-buttons spacer-div">
+            <button mat-raised-button color="primary"  class="spacer-buttons" (click)="finish()">Confirm</button>
+        </div> 
         </mat-step>
     </mat-stepper>
 </div>
