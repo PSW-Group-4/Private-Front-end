@@ -2,7 +2,7 @@
 <div mat-dialog-content *ngIf="!data.isEdit">Da li ste sigurni da želite zakazati izabrani termin? </div>
 <div mat-dialog-content *ngIf="data.isEdit">Da li ste sigurni da želite pomeriti izabrani termin? </div>
 <div mat-dialog-actions>
-    <button mat-button *ngIf="!data.isEdit" (click)="scheduleAppointment()">Potvrdi</button>
+    <button mat-button *ngIf="!data.isEdit" (click)="scheduleAppointment()" id="finishAddBtn">Potvrdi</button>
     <button mat-button *ngIf="data.isEdit" (click)="rescheduleAppointment()" id="finishBtn">Potvrdi</button>
     <button mat-button mat-dialog-close>Otkazi</button>
 </div>
