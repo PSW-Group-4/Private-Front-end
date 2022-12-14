@@ -50,6 +50,9 @@ const routes: Routes = [
 
   //{ path: 'vacations', component: DoctorVacationsComponent },
   { path: 'bloodConsumption', component: DoctorBloodConsumptionComponent },
+  { path: 'managerNews', component: ManagerNewsPreviewComponent },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '**', redirectTo: 'login', pathMatch: 'full' },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: '**', redirectTo: 'login', pathMatch: 'full' },
   //{ path: 'managerFeedback', component: ManagerFeedbackComponent },

@@ -21,7 +21,7 @@ export interface DialogData {
 })
 export class BloodBanksComponent implements OnInit {
   public dataSource = new MatTableDataSource<BloodBank>();
-  public displayedColumns = ['Name', 'Server Address', 'Email Address', 'Blood supplies'];
+  public displayedColumns = ['Name', 'Server Address', 'Email Address', 'Blood supplies', 'Subscription'];
   public bloodBanks: BloodBank[] = [];
   quantity: number = 0;
   bloodType: string = "";
@@ -45,6 +45,10 @@ export class BloodBanksComponent implements OnInit {
     });
 
     dialogRef.componentInstance.location = 'http://localhost:8080/';
+  }
+
+  openSubscription(): void {
+    this.router.navigate(['bloodBanks/subscription']);
   }
 }
 
@@ -95,3 +99,4 @@ export class CheckBloodSuppliesDialog {
     return this.options.filter(option => option.toLowerCase().includes(filterValue));
   }
 }
+
