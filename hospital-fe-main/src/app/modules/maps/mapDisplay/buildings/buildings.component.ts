@@ -53,10 +53,10 @@ export class BuildingsComponent implements OnInit {
  
         buildings.append('rect')
         .attr("fill", '#04AA6D')
-        .attr("x", d => d.coordinateX)
-        .attr("y", d => d.coordinateY)
-        .attr("width", d => d.width)
-        .attr("height", d => d.height)
+        .attr("x", d => d.mapLocation.coordinateX)
+        .attr("y", d => d.mapLocation.coordinateY)
+        .attr("width", d => d.mapLocation.width)
+        .attr("height", d => d.mapLocation.height)
         .attr("stroke", "black")
         .attr("id", d=> d.id)
         .attr("name", d=> d.building.name)
@@ -66,8 +66,8 @@ export class BuildingsComponent implements OnInit {
         .text(function(d) {
           return d.building.name;
         })
-        .attr('x', d => d.coordinateX )
-        .attr('y', d=> d.coordinateY + d.height+10)
+        .attr('x', d => d.mapLocation.coordinateX )
+        .attr('y', d=> d.mapLocation.coordinateY + d.mapLocation.height+10)
 
   })
 

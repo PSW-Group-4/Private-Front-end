@@ -5,7 +5,7 @@ import { HomeComponent } from './modules/pages/home/home.component';
 import { ManagerFeedbackComponent } from './modules/manager/manager-feedback/manager-feedback.component';
 import { DoctorAppointmentsComponent } from './modules/doctor/doctor-appointments/doctor-appointments/doctor-appointments.component';
 //import { DoctorVacationsComponent } from './modules/doctor-vacation/doctor-vacations/doctor-vacations.component';
-import { ManagerNewsPreviewComponent } from './modules/hospital/manager-news-preview/manager-news-preview.component';
+import { ManagerNewsPreviewComponent } from './modules/manager/manager-news-preview/manager-news-preview.component';
 import { ManagerRootComponent } from './modules/manager/manager-root/manager-root.component';
 import { LoginComponent } from './modules/login/login.component';
 import { IncognitoGuard } from './auth/guards/incognito-guard.service';
@@ -17,10 +17,9 @@ import { DoctorBloodConsumptionComponent } from './modules/doctor/doctor-blood-c
 import { AdmissionViewComponent } from "./modules/doctor/admission-view/admission-view.component";
 //import { AgeStatisticsComponent } from './modules/patient-statistics/age-stManagerFeedbackComponentatistics/age-statistics.component';
 import { ManagerRequestReviewComponent } from './modules/blood-requests/manager-request-review/manager-request-review.component';
-import {CreateTenderComponent} from "./modules/create-tender/create-tender.component";
+import {CreateTenderComponent} from "./modules/manager/create-tender/create-tender.component";
 const routes: Routes = [
 
-  { path: 'tenders/create', component: CreateTenderComponent },
   { path: 'managerFeedback', component: ManagerFeedbackComponent },
   { path: 'doctorAppointments', component: DoctorAppointmentsComponent},
   { path: 'viewRequests', component: ManagerRequestReviewComponent},
@@ -51,9 +50,14 @@ const routes: Routes = [
 
   //{ path: 'vacations', component: DoctorVacationsComponent },
   { path: 'bloodConsumption', component: DoctorBloodConsumptionComponent },
+<<<<<<< HEAD
   { path: 'managerNews', component: ManagerNewsPreviewComponent },
   //{ path: '', redirectTo: 'login', pathMatch: 'full' },
   //{ path: '**', redirectTo: 'login', pathMatch: 'full' },
+=======
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '**', redirectTo: 'login', pathMatch: 'full' },
+>>>>>>> develop
   //{ path: 'managerFeedback', component: ManagerFeedbackComponent },
   //{ path: 'patientStatistics', component: AgeStatisticsComponent },
 ];
