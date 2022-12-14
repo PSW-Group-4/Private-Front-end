@@ -71,6 +71,10 @@ export class AppointmentForAnotherDoctorDialogComponent implements OnInit {
   }
 
   getTerminsForAnotherDoctor = async () => {
+    if(this.checkDatesAndPatient() == false){
+      alert('Pupunite polja!');
+      return;
+    }
     if(this.selectedDoctor != null && this.selectedPatient != null){
       var formatedDate1 = new Date(this.selectedStartDate).toDateString();
       var formatedDate2 = new Date(this.selectedEndDate).toDateString();
@@ -79,6 +83,9 @@ export class AppointmentForAnotherDoctorDialogComponent implements OnInit {
         this.termins = [];
         for(var r of res){
           this.termins.push(r.startTime);
+        }
+        if(this.termins.length === 0){
+          alert('NEMA SLOBODNIH TERMINA U IZABRANOM PERIODU!');
         }
       })
     } else {
@@ -112,6 +119,13 @@ export class AppointmentForAnotherDoctorDialogComponent implements OnInit {
 
   checkFrom(): boolean {
     if(this.selectedDoctor.id === '' || this.selectedPatient.id === '' || this.selectedStartDate === undefined || this.selectedEndDate === undefined || this.selectedTermin <= new Date()){
+      return false;
+    }
+    return true;
+  }
+
+  checkDatesAndPatient(): boolean {
+    if(this.selectedPatient.id === '' || this.selectedEndDate === undefined || this.selectedStartDate === undefined){
       return false;
     }
     return true;

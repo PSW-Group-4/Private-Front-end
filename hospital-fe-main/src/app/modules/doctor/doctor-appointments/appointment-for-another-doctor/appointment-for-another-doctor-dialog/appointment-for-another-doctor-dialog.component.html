@@ -14,13 +14,13 @@
     <div class="container mt-3">
       <mat-form-field appearance="fill">
           <mat-label>Odaberite specijalnost</mat-label>
-          <mat-select [(ngModel)]="selectedSpetiality" name="spetiality">
+          <mat-select [(ngModel)]="selectedSpetiality" name="spetiality" (selectionChange)="getDoctors()">
             <mat-option *ngFor="let n of spetialities" [value]="n">
               {{n}}
             </mat-option>
           </mat-select>
       </mat-form-field>
-      <button mat-raised-button color="primary" (click)="getDoctors()">Potvrdi</button>
+      
   </div>
 
     <div class="container mt-3">
@@ -43,14 +43,14 @@
 
     <div class="container mt-3">
         <mat-form-field appearance="fill">
-            <mat-label>Slobodni doktori:</mat-label>
-            <mat-select [(ngModel)]="selectedDoctor" name="doctor">
+            <mat-label>Doktori:</mat-label>
+            <mat-select [(ngModel)]="selectedDoctor" name="doctor" (selectionChange)="getTerminsForAnotherDoctor()">
               <mat-option *ngFor="let n of doctors" [value]="n">
                 {{n.name + " " + n.surname}}
               </mat-option>
             </mat-select>
         </mat-form-field>
-        <button mat-raised-button color="primary" (click)="getTerminsForAnotherDoctor()">Potvrdi</button>
+        
     </div>
 
     <div class="container mt-3">
