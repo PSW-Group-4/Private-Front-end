@@ -12,20 +12,32 @@
     </div>
 
     <div class="container mt-3">
+      <mat-form-field appearance="fill">
+          <mat-label>Odaberite specijalnost</mat-label>
+          <mat-select [(ngModel)]="selectedSpetiality" name="spetiality">
+            <mat-option *ngFor="let n of spetialities" [value]="n">
+              {{n}}
+            </mat-option>
+          </mat-select>
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="getDoctors()">Potvrdi</button>
+  </div>
+
+    <div class="container mt-3">
         <mat-form-field appearance="fill">
           <mat-label>Od:</mat-label>
-          <input matInput [matDatepicker]="picker" [min]="minDate" >
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
+          <input matInput [matDatepicker]="picker1" [min]="minDate" [(ngModel)]="selectedStartDate" >
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
         </mat-form-field>
     </div>
 
     <div class="container mt-3">
         <mat-form-field appearance="fill">
           <mat-label>Do:</mat-label>
-          <input matInput [matDatepicker]="picker" >
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
+          <input matInput [matDatepicker]="picker2" [(ngModel)]="selectedEndDate" >
+          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
         </mat-form-field>
     </div>
 
@@ -38,6 +50,7 @@
               </mat-option>
             </mat-select>
         </mat-form-field>
+        <button mat-raised-button color="primary" (click)="getTerminsForAnotherDoctor()">Potvrdi</button>
     </div>
 
     <div class="container mt-3">
@@ -45,7 +58,7 @@
             <mat-label>Odaberite termin</mat-label>
             <mat-select [(ngModel)]="selectedTermin" name="termins">
               <mat-option  *ngFor="let n of termins" [value]="n">
-                {{n | date:"h:mm"}}
+                {{n | date:"d.MM.  -  h:mm"}}
               </mat-option>
             </mat-select>
         </mat-form-field>
@@ -53,7 +66,7 @@
    
     
     <div class="container mt-5 ml-5">
-        <button mat-raised-button color="primary" >Potvrdi</button>
+        <button mat-raised-button color="primary" (click)="createAppointment()">Potvrdi</button>
         
     </div>
     

@@ -133,5 +133,16 @@ export class DoctorAppointmentService {
     return this.http.put<any>(this.apiHost + 'TreatmentBlood/' + blood, treatmentDto, {headers: this.headers});
   }
 
- 
+  getSpecialities(): Observable<string[]> {
+    return this.http.get<string[]>(this.apiHost + 'api/Doctor/specialties', {headers: this.headers});
+  }
+
+  getTerminsForAnotherDoctor(dateStart : any, dateEnd : any, patientId : any, doctorId : any): Observable<DateRange[]> {
+    return this.http.get<DateRange[]>(this.apiHost + 'api/Scheduling/Termins/' + dateStart + '/' + dateEnd + '/' + patientId + '/' + doctorId, {headers: this.headers});
+  }
+
+  getDoctorsWithSpecialty(specialty: any): Observable<Doctor[]> {
+    return this.http.get<Doctor[]>(this.apiHost + 'api/Doctor/specialties/' + specialty, {headers: this.headers})
+  }
+  
 }

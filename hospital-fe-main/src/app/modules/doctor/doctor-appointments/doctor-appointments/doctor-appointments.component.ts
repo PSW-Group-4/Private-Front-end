@@ -32,7 +32,7 @@ export class DoctorAppointmentsComponent implements OnInit {
   appointmentForAnotherDoctor(): void {
     const dialogRef = this.dialog.open(AppointmentForAnotherDoctorDialogComponent, {
       
-      height: '650px',
+      height: '750px',
       width: '600px',
       //data: {name: this.name, animal: this.animal},
     })
