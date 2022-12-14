@@ -1,0 +1,49 @@
+<div>
+    <mat-tab-group>
+        <mat-tab label="Equipment relocations"> 
+            <table style="width:100%">
+                <thead>
+                    <th>Start time</th>
+                    <th>End time</th>
+                    <th>Cancel</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let app of filteredMoveEquipmentAppointemts ">
+                        <td>{{ app.dateRange.startTime }}</td>
+                        <td>{{ app.dateRange.endTime }}</td>
+                        <td><button class="equipment-button" mat-raised-button matTooltip="Show equipment" color="warn" id ="button">Cancel</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        
+        </mat-tab>
+        <mat-tab label="Renovations"> 
+            <table>
+                <thead>
+                    <th>Cancel</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><button class="equipment-button" mat-raised-button matTooltip="Show equipment" color="warn" id ="button">Cancel</button></td>
+                    </tr>
+                </tbody>
+            </table>
+         </mat-tab>
+        <mat-tab label="Medical appointments"> 
+            <table style="width:100%">
+                <thead>
+                    <th>Start time</th>
+                    <th>End time</th>
+                    <th>Cancel</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let app of filteredMedicalAppointemts ">
+                        <td>{{ app.dateRange.startTime }}</td>
+                        <td>{{ app.dateRange.endTime }}</td>
+                        <td><button class="equipment-button" mat-raised-button matTooltip="Show equipment" color="warn" id ="button">Cancel</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </mat-tab>
+      </mat-tab-group>
+</div>
