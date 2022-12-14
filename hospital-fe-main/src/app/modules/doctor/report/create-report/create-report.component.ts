@@ -119,7 +119,7 @@ export class CreateReportComponent implements OnInit {
       this.report.text = this.reportText
       this.report.prescriptions = [...this.prescriptions]
       this.report.dateTime = date
-      this.report.appointmentId = String(localStorage.getItem('selectedAppointment'))
+      this.report.medicalAppointmentId = String(localStorage.getItem('selectedAppointment'))
       this.reportService.createReport(this.report).subscribe(res => {
         this.success = true
         this.disableButton = true

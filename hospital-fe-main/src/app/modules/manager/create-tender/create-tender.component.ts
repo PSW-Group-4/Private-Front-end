@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {BloodBank} from "../hospital/model/blood-bank.model";
-import {Tender} from "../hospital/model/tender.model";
-import {TenderService} from "../hospital/services/tender.service";
+import {BloodBank} from "../../hospital/model/blood-bank.model";
+import {Tender} from "../../hospital/model/tender.model";
+import {TenderService} from "../../hospital/services/tender.service";
 import {Router} from "@angular/router";
-import {BloodType} from "../hospital/model/blood-type.model";
+import {BloodType} from "../../hospital/model/blood-type.model";
 import {FormBuilder, Validators} from "@angular/forms";
-import {BloodProduct} from "../hospital/model/blood-product.model";
+import {BloodProduct} from "../../hospital/model/blood-product.model";
 
 @Component({
   selector: 'app-create-tender',

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
+import { catchError, EMPTY } from 'rxjs';
 import { Doctor } from 'src/app/modules/hospital/model/doctor.model';
 import { ConsiliumService } from '../consilium.service';
 import { ConsiliumRequest } from '../consiliumRequest.model';
@@ -22,7 +24,7 @@ export class AddConsiliumDialogComponent implements OnInit {
   specialitiesValues:string[] = []
   consiliumRequest: ConsiliumRequest = new ConsiliumRequest
 
-  constructor(private consiliumService:ConsiliumService) { }
+  constructor(private consiliumService:ConsiliumService, public dialogRef: MatDialogRef<AddConsiliumDialogComponent>) { }
 
   ngOnInit(): void {
     this.getAllDoctors();
@@ -58,20 +60,32 @@ export class AddConsiliumDialogComponent implements OnInit {
 
     if (this.selectedValue === 'doctor'){
       console.log(this.doctorValues)
-      this.consiliumRequest.isDoctors = true
+      this.consiliumRequest.isDoctor = true
       this.consiliumRequest.specialities = []
-      this.consiliumRequest.doctors = this.doctorValues
-      this.consiliumService.sendConsiliumRequest(this.consiliumRequest).subscribe(res => {
+      this.consiliumRequest.doctorsId = this.doctorValues
+      this.consiliumService.sendConsiliumRequest(this.consiliumRequest).pipe(
+        catchError(() => {
+          this.greska = "Tada ne mozete zakazati sastanak"
+          return EMPTY;
+        })
+      ).subscribe(res => {
         //this.specialities = res;
+        this.dialogRef.close();
       })
     }
     else if(this.selectedValue === 'speciality'){
       console.log(this.specialitiesValues)
-      this.consiliumRequest.isDoctors = false
-      this.consiliumRequest.doctors = []
-      this.consiliumRequest.specialities = this.specialities
-      this.consiliumService.sendConsiliumRequest(this.consiliumRequest).subscribe(res => {
+      this.consiliumRequest.isDoctor = false
+      this.consiliumRequest.doctorsId = []
+      this.consiliumRequest.specialities = this.specialitiesValues
+      this.consiliumService.sendConsiliumRequest(this.consiliumRequest).pipe(
+        catchError(() => {
+          this.greska = "Tada ne mozete zakazati sastanak"
+          return EMPTY;
+        })
+      ).subscribe(res => {
         //this.specialities = res;
+        this.dialogRef.close();
       })
     }
   }

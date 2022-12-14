@@ -10,15 +10,22 @@ import { AgeStatisticsComponent } from './patient-statistics/age-statistics/age-
 import { ReportConfigsComponent } from './report-configs/report-configs.component';
 import { RoomRenovationComponent } from '../room-renovation/containers/room-renovation/room-renovation.component';
 import { ManagerBlockingUserComponent } from './manager-blocking-user/manager-blocking-user/manager-blocking-user.component';
-import { BloodBanksComponent } from '../hospital/blood-banks/blood-banks.component';
 import { BloodBanksSubComponent } from '../hospital/blood-subscription/blood-subscription.component';
 import { BloodRequestManagerComponent } from '../hospital/blood-request-manager/blood-request-manager.component';
+import {CreateTenderComponent} from "./create-tender/create-tender.component";
+import {BloodBankRegistrationComponent} from "./blood-bank-registration/blood-bank-registration.component";
+import {BloodBanksComponent} from "./blood-banks/blood-banks.component";
+import {ManagerNewsPreviewComponent} from "./manager-news-preview/manager-news-preview.component";
 
 const routes: Routes = [
   { path: 'feedbacks', component: ManagerFeedbackComponent },
   { path: 'user-blocking', component: ManagerBlockingUserComponent },
   { path: 'patientStatistics', component: AgeStatisticsComponent },
   { path: 'report-configs', component: ReportConfigsComponent },
+  { path: 'tenders/create', component: CreateTenderComponent },
+  { path: 'bloodBanks/add', component:  BloodBankRegistrationComponent},
+  { path: 'bloodBanks', component:  BloodBanksComponent},
+  { path: 'managerNews', component: ManagerNewsPreviewComponent },
   {
     path: 'maps', component: MapsMainContainerComponent,
     loadChildren: () =>
