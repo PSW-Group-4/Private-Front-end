@@ -97,18 +97,24 @@ export class AppointmentForAnotherDoctorDialogComponent implements OnInit {
     this.appointment.startTime = this.selectedTermin.toLocaleString()    
   }
 
-  createAppointment():void{
-    this.appointment.doctorId = this.selectedDoctor.id;
-    this.appointment.patientId = this.selectedPatient.id;
-    this.appointment.roomId = this.selectedDoctor.room.id.toString()
-    this.appointment.startTime = this.selectedTermin.toLocaleString()
+  createAppointment():void{  
+    
+    if(this.checkFrom() == false){
+      alert('Popunite sva polja!');
+      return;
+    }
+    this.setAppointment();
     this.doctorAppointmentService.createAppointment(this.appointment).subscribe(res =>{
-      this.router.navigate(['doctor/appointments']);
-      console.log('kreirao!');
+      //this.router.navigate(['doctor/appointments']);      
       this.dialog.closeAll();
     })
   }
 
-  
+  checkFrom(): boolean {
+    if(this.selectedDoctor.id === '' || this.selectedPatient.id === '' || this.selectedStartDate === undefined || this.selectedEndDate === undefined || this.selectedTermin <= new Date()){
+      return false;
+    }
+    return true;
+  }
 
 }
