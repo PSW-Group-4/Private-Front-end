@@ -20,12 +20,8 @@ import { DoctorAppointmentsModule } from "./modules/doctor/doctor-appointments/d
 import { MatNativeDateModule } from "@angular/material/core";
 import { MapsModule } from "./modules/maps/maps.module";
 import { CommonModule } from '@angular/common';
-<<<<<<< HEAD
-import { BloodBanksComponent, CheckBloodSuppliesDialog } from './modules/hospital/blood-banks/blood-banks.component';
 import { BloodBanksSubComponent, AddSubscriptionDialog } from './modules/hospital/blood-subscription/blood-subscription.component'
-=======
 import { BloodBanksComponent, CheckBloodSuppliesDialog } from './modules/manager/blood-banks/blood-banks.component';
->>>>>>> develop
 import { AdmissionComponent } from './modules/doctor/admission/admission.component';
 //import { DoctorVacationModule } from "./modules/doctor-vacation/doctor-vacation.module";
 import { Ng2SearchPipeModule } from "ng2-search-filter";
