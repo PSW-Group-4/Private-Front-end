@@ -253,8 +253,8 @@ export class RoomRenovationComponent implements OnInit {
     renovationDto.Type = this.renovation.Type;
 
     renovationDto.EndTime.setMinutes(this.renovation.StartTime.getMinutes() + this.renovation.Duration);
-
-    renovationDto.StartTime = renovationDto.StartTime;
+    renovationDto.StartTime = this.renovation.StartTime;
+    
     this.facade.createNewRenovationAppointment$(renovationDto).subscribe({
       next: (v) => {
         location.reload()
