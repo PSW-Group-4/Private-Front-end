@@ -47,4 +47,13 @@ export class ReportService {
   deleteReport(id: any): Observable<any> {
     return this.http.delete<any>(this.apiHost + 'api/Report/' + id, {headers: this.headers});
   }
+
+  generatePdf(id: any, settings: any): Observable<any> {
+    const requestOptions: Object = {
+      observe: 'response',
+      responseType: 'blob'
+    }
+    return this.http.get<any>(this.apiHost + 'api/Report/GeneratePdf/' + id + "/" + settings, requestOptions);
+  }
+
 }

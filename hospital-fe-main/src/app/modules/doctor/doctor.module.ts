@@ -21,6 +21,8 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatList, MatListModule } from '@angular/material/list';
 import { ShowReportsComponent } from './report/show-reports/show-reports.component';
+import { ChoosePdfOptionsDialogComponent } from './report/choose-pdf-options-dialog/choose-pdf-options-dialog.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { ShowReportsComponent } from './report/show-reports/show-reports.compone
     TreatmentDialogComponent,
     UpdateTreatmentDialogComponent,
     CreateReportComponent,
-    ShowReportsComponent
+    ShowReportsComponent,
+    ChoosePdfOptionsDialogComponent
   ],
   imports: [
     CommonModule,
@@ -47,7 +50,8 @@ import { ShowReportsComponent } from './report/show-reports/show-reports.compone
     MatStepperModule,
     MatButtonModule,
     MatDividerModule,
-    MatListModule
+    MatListModule,
+    MatCheckboxModule
   ]
 })
 export class DoctorModule { }
