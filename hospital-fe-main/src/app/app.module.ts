@@ -21,6 +21,7 @@ import { MatNativeDateModule } from "@angular/material/core";
 import { MapsModule } from "./modules/maps/maps.module";
 import { CommonModule } from '@angular/common';
 import { BloodBanksSubComponent, AddSubscriptionDialog } from './modules/hospital/blood-subscription/blood-subscription.component'
+import { BloodRequestManagerComponent, AddManagerRequestDialog} from './modules/hospital/blood-request-manager/blood-request-manager.component';
 import { BloodBanksComponent, CheckBloodSuppliesDialog } from './modules/manager/blood-banks/blood-banks.component';
 import { AdmissionComponent } from './modules/doctor/admission/admission.component';
 //import { DoctorVacationModule } from "./modules/doctor-vacation/doctor-vacation.module";
@@ -54,6 +55,7 @@ import { DoctorVacationModule } from './modules/doctor/doctor-vacation/doctor-va
     ManagerFeedbackComponent,
     CheckBloodSuppliesDialog,
     AddSubscriptionDialog,
+    AddManagerRequestDialog,
     AdmissionViewComponent,
     DoctorBloodConsumptionComponent,
     CreateBloodConsumptionRecordComponent,
@@ -104,6 +106,6 @@ import { DoctorVacationModule } from './modules/doctor/doctor-vacation/doctor-va
     },
 
   ],
-  bootstrap: [AppComponent, BloodBanksComponent, BloodBanksSubComponent],
+  bootstrap: [AppComponent, BloodBanksComponent, BloodBanksSubComponent, BloodRequestManagerComponent],
 })
 export class AppModule { }

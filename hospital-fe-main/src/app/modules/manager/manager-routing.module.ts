@@ -11,6 +11,7 @@ import { ReportConfigsComponent } from './report-configs/report-configs.componen
 import { RoomRenovationComponent } from '../room-renovation/containers/room-renovation/room-renovation.component';
 import { ManagerBlockingUserComponent } from './manager-blocking-user/manager-blocking-user/manager-blocking-user.component';
 import { BloodBanksSubComponent } from '../hospital/blood-subscription/blood-subscription.component';
+import { BloodRequestManagerComponent } from '../hospital/blood-request-manager/blood-request-manager.component';
 import {CreateTenderComponent} from "./create-tender/create-tender.component";
 import {BloodBankRegistrationComponent} from "./blood-bank-registration/blood-bank-registration.component";
 import {BloodBanksComponent} from "./blood-banks/blood-banks.component";
@@ -43,7 +44,8 @@ const routes: Routes = [
   { path: 'room-renovation', component: RoomRenovationComponent },
   { path: 'managerStatistics', component: VacationStatisticsComponent },
   { path: 'blood-banks', component: BloodBanksComponent },
-  { path: 'blood-subscriptions', component: BloodBanksSubComponent }
+  { path: 'blood-subscriptions', component: BloodBanksSubComponent },
+  { path: 'blood-request-manager', component: BloodRequestManagerComponent},
 ];
 
 @NgModule({
