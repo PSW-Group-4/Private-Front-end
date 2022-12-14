@@ -8,7 +8,7 @@ import { BloodBank } from '../model/blood-bank.model';
 })
 export class BloodBankService {
 
-  apiHost: string = 'http://localhost:45488/';
+  apiHost: string = 'http://localhost:5000/';
   headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
   constructor(private http: HttpClient) { }

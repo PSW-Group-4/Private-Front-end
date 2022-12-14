@@ -45,6 +45,8 @@ import { CreateTenderComponent } from './modules/create-tender/create-tender.com
 import { ManagerBlockingUserModule } from './modules/manager/manager-blocking-user/manager-blocking-user.module';
 import { MatTableModule } from '@angular/material/table';
 import { DoctorVacationModule } from './modules/doctor/doctor-vacation/doctor-vacation.module';
+import { ViewAllTendersForReviewComponent } from './modules/tenders/view-all-tenders-for-review/view-all-tenders-for-review.component';
+import { TenderApplicationsForReviewComponent } from './modules/tender-applications/tender-applications-for-review/tender-applications-for-review/tender-applications-for-review.component';
 
 
 @NgModule({
@@ -59,6 +61,8 @@ import { DoctorVacationModule } from './modules/doctor/doctor-vacation/doctor-va
     AdmissionComponent,
     ManagerNewsPreviewComponent,
     CreateTenderComponent,
+    ViewAllTendersForReviewComponent,
+    TenderApplicationsForReviewComponent,
   ],
   imports: [
     CommonModule,
