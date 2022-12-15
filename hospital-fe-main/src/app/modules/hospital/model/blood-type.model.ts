@@ -1,6 +1,6 @@
 export class BloodType {
-  bloodGroup: String = "";
-  rhFactor: String = "";
+  bloodGroup: String = '';
+  rhFactor: String = '';
 
   public constructor(obj?: any) {
     if (obj) {

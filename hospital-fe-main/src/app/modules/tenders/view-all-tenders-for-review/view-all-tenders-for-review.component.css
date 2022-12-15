@@ -28,7 +28,12 @@ table {
     font-weight: bold;
     cursor: pointer;
 }
-
+.accept-button {
+    margin: 10px 20px 10px 10px;
+    color: darkorchid;
+    background-color: #edece5;
+    float: center;
+}
 .add-button {
     margin: 10px 20px 10px 10px;
     color: black;

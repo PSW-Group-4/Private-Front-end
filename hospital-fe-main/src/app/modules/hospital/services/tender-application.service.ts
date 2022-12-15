@@ -17,11 +17,11 @@ export class TenderApplicationService {
   get(): Observable<TenderApplication[]> {
     return this.http.get<TenderApplication[]>(this.apiHost + 'api/TenderApplication', {headers: this.headers});
   }
-  getByTender(tenderId : string) : Observable<TenderApplication[]> {
-    return this.http.post<TenderApplication[]>(this.apiHost + 'api/TenderApplication/tender', tenderId, {headers: this.headers});
+  GetByTender(tenderId : string) : Observable<TenderApplication[]> {
+    return this.http.post<any[]>(this.apiHost + 'api/TenderApplication/tender?tenderId='+ tenderId, {headers: this.headers});
   }
   acceptOffer(tenderApplication : TenderApplication){
-    return this.http.post<TenderApplication>(this.apiHost + 'api/TenderApplication/accept', tenderApplication, {headers: this.headers})
+    return this.http.post<any>(this.apiHost + 'api/TenderApplication/accept?applicationId='+ tenderApplication.applicationId, {headers: this.headers})
   }
   
 
