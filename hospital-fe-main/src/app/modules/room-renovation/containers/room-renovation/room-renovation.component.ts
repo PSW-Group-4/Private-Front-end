@@ -17,7 +17,6 @@ import { RoomRenovationFacade } from '../../room-renovation.facade';
 })
 export class RoomRenovationComponent implements OnInit {
 
-
   public renovation : Renovation = new Renovation();
   public choices = TypeOfRenovation;
 
@@ -70,6 +69,7 @@ export class RoomRenovationComponent implements OnInit {
       ]]
     });
     this.forthStepFormGroup = this._formBuilder.group({
+      selectedDate: ['', [Validators.required]],
     });
     this.fifthStepFormGroup = this._formBuilder.group({
       name1: ['', [Validators.required]],
@@ -252,8 +252,10 @@ export class RoomRenovationComponent implements OnInit {
 
     renovationDto.Type = this.renovation.Type;
 
-    renovationDto.EndTime.setMinutes(this.renovation.StartTime.getMinutes() + this.renovation.Duration);
-    renovationDto.StartTime = this.renovation.StartTime;
+    renovationDto.StartTime = new Date(this.forthStepFormGroup.value.selectedDate);
+    renovationDto.EndTime = new Date(this.forthStepFormGroup.value.selectedDate);
+    renovationDto.EndTime.setMinutes(renovationDto.StartTime.getMinutes() + this.renovation.Duration);
+    
     
     this.facade.createNewRenovationAppointment$(renovationDto).subscribe({
       next: (v) => {

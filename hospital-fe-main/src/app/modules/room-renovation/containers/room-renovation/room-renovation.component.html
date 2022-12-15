@@ -4,14 +4,14 @@
             <form [formGroup]="firstStepFormGroup">
                 <ng-template matStepLabel>Choose Type of Renovation</ng-template>
                 <div class="spacer-div">
-                    <mat-select placeholder="Choose Type of Renovation" formControlName="typeOfRenovation" (selectionChange)="changeRenovationMethod(stepper)">
-                        <mat-option *ngFor="let choice of choices | keyvalue" [value]="choice.value">
+                    <mat-select id="TypeOfRenovation" placeholder="Choose Type of Renovation" formControlName="typeOfRenovation" (selectionChange)="changeRenovationMethod(stepper)">
+                        <mat-option id="{{choice.value}}" *ngFor="let choice of choices | keyvalue" [value]="choice.value">
                             {{choice.value}}
                         </mat-option>
                     </mat-select>
                 </div>
                 <div class="next-back-buttons spacer-div">
-                    <button mat-raised-button color="primary"  class="spacer-buttons" matStepperNext>Next</button>
+                    <button mat-raised-button id="FirstStepButtonNext" color="primary"  class="spacer-buttons" matStepperNext>Next</button>
                 </div>  
             </form>
         </mat-step>
@@ -19,22 +19,22 @@
             <form [formGroup]="secondStepFormGroup">
                 <ng-template matStepLabel>Choose rooms to renovate</ng-template>
                 <div class="spacer-div">
-                    <mat-select placeholder="Building" formControlName="buildingControl" (selectionChange)="loadFloors()">
-                        <mat-option *ngFor="let building of buildings" [value]="building.id">
+                    <mat-select id="ChooseBuilding" placeholder="Building" formControlName="buildingControl" (selectionChange)="loadFloors()">
+                        <mat-option id="{{building.name}}" *ngFor="let building of buildings" [value]="building.id">
                             {{building.name}}
                         </mat-option>
                     </mat-select>
                 </div>
                 <div class="spacer-div">
-                    <mat-select placeholder="Floor" formControlName="floorControl" (selectionChange)="loadRooms()">
-                        <mat-option *ngFor="let floor of floors" [value]="floor.id">
+                    <mat-select id="ChooseFloor" placeholder="Floor" formControlName="floorControl" (selectionChange)="loadRooms()">
+                        <mat-option id="{{floor.name}}" *ngFor="let floor of floors" [value]="floor.id">
                             {{floor.name}}
                         </mat-option>
                     </mat-select>
                 </div>
                 <div class="spacer-div">
-                    <mat-select placeholder="Room 1" formControlName="room1Control" (selectionChange)="setRenovationRoom1()">
-                        <mat-option *ngFor="let room of rooms" [value]="room">
+                    <mat-select id="ChooseRoom1" placeholder="Room 1" formControlName="room1Control" (selectionChange)="setRenovationRoom1()">
+                        <mat-option id="{{room.name}}ChooseRoom1" *ngFor="let room of rooms" [value]="room">
                             {{room.name}}
                         </mat-option>
                     </mat-select>
@@ -44,8 +44,8 @@
                 </div>
                 
                 <div class="spacer-div" *ngIf="renovation.Type == 'Merge'">
-                    <mat-select placeholder="Room 2" formControlName="room2Control" (selectionChange)="setRenovationRoom2()">
-                        <mat-option *ngFor="let room of rooms" [value]="room">
+                    <mat-select id="ChooseRoom2" placeholder="Room 2" formControlName="room2Control" (selectionChange)="setRenovationRoom2()">
+                        <mat-option id="{{room.name}}ChooseRoom2" *ngFor="let room of rooms" [value]="room">
                             {{room.name}}
                         </mat-option>
                     </mat-select>
@@ -55,7 +55,7 @@
                 </div>
                 <div class="next-back-buttons spacer-div">
                     <button mat-raised-button color="secondary" class="spacer-buttons" matStepperPrevious>Back</button>
-                    <button mat-raised-button color="primary"  class="spacer-buttons" (click)="checkRoomsAndReport(stepper)">Next</button>
+                    <button id="SecondStepButtonNext" mat-raised-button color="primary"  class="spacer-buttons" (click)="checkRoomsAndReport(stepper)">Next</button>
                 </div>  
             </form>
         </mat-step>
@@ -65,7 +65,7 @@
                 <div class="spacer-div">
                     <mat-form-field class="full-width" appearance="fill">
                         <mat-label>Choose a date</mat-label>
-                        <input matInput formControlName="dateControl" [min]="minDate" [matDatepicker]="picker">
+                        <input id="DatePicker" matInput formControlName="dateControl" [min]="minDate" [matDatepicker]="picker">
                         <mat-hint>MM/DD/YYYY</mat-hint>
                         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
@@ -73,7 +73,7 @@
                 </div>
                 <div class="spacer-div">
                     <mat-form-field class="full-width" appearance="fill">
-                        <input matInput formControlName="daysControl" type="number">
+                        <input id="DaysDuration" matInput formControlName="daysControl" type="number">
                         <mat-hint>Days</mat-hint>
                         <mat-error *ngIf="thirdStepFormGroup.controls['daysControl'].hasError('required')">
                             Days <strong>required</strong> and needs to be a <strong>number</strong> (can be 0)
@@ -82,7 +82,7 @@
                 </div>
                 <div class="spacer-div">
                     <mat-form-field class="full-width" appearance="fill">
-                        <input matInput formControlName="hoursControl" type="number">
+                        <input id="HoursDuration" matInput formControlName="hoursControl" type="number">
                         <mat-hint>Hours</mat-hint>
                         <mat-error *ngIf="thirdStepFormGroup.controls['hoursControl'].hasError('required')">
                             Hours <strong>required</strong> and needs to be a <strong>number</strong> (can be 0)
@@ -91,7 +91,7 @@
                 </div>
                 <div class="spacer-div">
                     <mat-form-field class="full-width" appearance="fill">
-                        <input matInput formControlName="minutesControl" type="number">
+                        <input id="MinutesDuration" matInput formControlName="minutesControl" type="number">
                         <mat-hint>Minutes</mat-hint>
                         <mat-error *ngIf="thirdStepFormGroup.controls['minutesControl'].hasError('required')">
                             Minutes <strong>required</strong> and needs to be a <strong>number</strong> (can be 0)
@@ -100,7 +100,7 @@
                 </div>
                 <div class="next-back-buttons spacer-div">
                     <button mat-raised-button color="secondary" class="spacer-buttons" matStepperPrevious>Back</button>
-                    <button mat-raised-button color="primary"  class="spacer-buttons" (click)="recommendRenovation(stepper)">Next</button>
+                    <button id="ThirdStepButtonNext" mat-raised-button color="primary"  class="spacer-buttons" (click)="recommendRenovation(stepper)">Next</button>
                 </div>   
             </form>
         </mat-step>
@@ -108,15 +108,15 @@
             <form [formGroup]="forthStepFormGroup">
                 <ng-template matStepLabel>Choose specific date</ng-template>
                 <div class="spacer-div">
-                    <mat-select placeholder="Choose relocation start" [(ngModel)]="renovation.StartTime" >
-                        <mat-option *ngFor="let d of dates" [value]="d">
+                    <mat-select id="DatePickerSpecificDate" placeholder="Choose relocation start" formControlName="selectedDate" >
+                        <mat-option id="date" *ngFor="let d of dates; let i = index" [value]="d">
                            {{d | date:'medium'}}
                         </mat-option>
                      </mat-select>
                 </div>
                 <div class="next-back-buttons spacer-div">
                     <button mat-raised-button color="secondary" class="spacer-buttons" matStepperPrevious>Back</button>
-                    <button mat-raised-button color="primary"  class="spacer-buttons" matStepperNext>Next</button>
+                    <button id="ForthStepButtonNext" mat-raised-button color="primary"  class="spacer-buttons" matStepperNext>Next</button>
                 </div>  
             </form>
         </mat-step>
@@ -129,18 +129,18 @@
                     </div>
                     <div class="spacer-div">
                         <mat-form-field class="full-width" appearance="fill" >
-                            <input matInput type="text" formControlName="name1">
+                            <input id="AddRoom1Name" matInput type="text" formControlName="name1">
                             <mat-hint>Name</mat-hint>
                         </mat-form-field>  
                     </div>
                     <div class="spacer-div">
                         <mat-form-field class="full-width" appearance="fill">
-                        <input matInput type="text" formControlName="description1">
+                        <input id="AddRoom1Description" matInput type="text" formControlName="description1">
                         <mat-hint>Desctiption</mat-hint>
                     </mat-form-field></div>
                     <div class="spacer-div">
                         <mat-form-field class="full-width" appearance="fill">
-                            <input matInput type="text" type="number" formControlName="number1">
+                            <input id="AddRoom1Number" matInput type="text" type="number" formControlName="number1">
                             <mat-hint>Number</mat-hint>
                         </mat-form-field>  
                     </div>
@@ -149,18 +149,18 @@
                     </div>
                     <div class="spacer-div">
                         <mat-form-field class="full-width" appearance="fill" >
-                            <input matInput type="text" formControlName="name2">
+                            <input id="AddRoom2Name" matInput type="text" formControlName="name2">
                             <mat-hint>Name</mat-hint>
                         </mat-form-field>  
                     </div>
                     <div class="spacer-div">
                         <mat-form-field class="full-width" appearance="fill">
-                        <input matInput type="text" formControlName="description2">
+                        <input id="AddRoom2Description" matInput type="text" formControlName="description2">
                         <mat-hint>Desctiption</mat-hint>
                     </mat-form-field></div>
                     <div class="spacer-div">
                         <mat-form-field class="full-width" appearance="fill">
-                            <input matInput type="text" type="number" formControlName="number2">
+                            <input id="AddRoom2Number" matInput type="text" type="number" formControlName="number2">
                             <mat-hint>Number</mat-hint>
                         </mat-form-field>  
                     </div>
@@ -171,25 +171,25 @@
                     </div>
                     <div class="spacer-div">
                         <mat-form-field class="full-width" appearance="fill">
-                            <input matInput type="text" formControlName="name1">
+                            <input id="AddRoom3Name" matInput type="text" formControlName="name1">
                             <mat-hint>Name</mat-hint>
                         </mat-form-field>  
                     </div>
                     <div class="spacer-div">
                         <mat-form-field class="full-width" appearance="fill">
-                        <input matInput type="text" formControlName="description1">
+                        <input id="AddRoom3Description" matInput type="text" formControlName="description1">
                         <mat-hint>Desctiption</mat-hint>
                     </mat-form-field></div>
                     <div class="spacer-div">
                         <mat-form-field class="full-width" appearance="fill">
-                            <input matInput type="text" type="number" formControlName="number1">
+                            <input id="AddRoom3Number" matInput type="text" type="number" formControlName="number1">
                             <mat-hint>Number</mat-hint>
                         </mat-form-field>  
                     </div>
                 </div>  
                 <div class="next-back-buttons spacer-div">
                     <button mat-raised-button color="secondary" class="spacer-buttons" matStepperPrevious>Back</button>
-                    <button mat-raised-button color="primary"  class="spacer-buttons" (click)="checkNewData(stepper)">Next</button>
+                    <button id="FifthStepButtonNext" mat-raised-button color="primary"  class="spacer-buttons" (click)="checkNewData(stepper)">Next</button>
                 </div>  
             </form>
         </mat-step>
@@ -197,7 +197,7 @@
           <ng-template matStepLabel>Done</ng-template>
           <p>You are now done.</p>
           <div class="next-back-buttons spacer-div">
-            <button mat-raised-button color="primary"  class="spacer-buttons" (click)="finish()">Confirm</button>
+            <button id="FinishButton" mat-raised-button color="primary"  class="spacer-buttons" (click)="finish()">Confirm</button>
         </div> 
         </mat-step>
     </mat-stepper>
