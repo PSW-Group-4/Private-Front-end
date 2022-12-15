@@ -15,6 +15,11 @@ export class UserService {
     return this.http.get<SuspiciousUser[]>(ConstSettings.apiHost + 'api/User/GetAllSuspiciousUsers', { headers: ConstSettings.standardHeader });
   }
 
+  SuspiciousCount(): Observable<number> {
+    return this.http.get<number>(ConstSettings.apiHost + 'api/User/SuspiciousCount', { headers: ConstSettings.standardHeader });
+  }
+
+
   block(username: string): Observable<any> {
     return this.http.patch<any>(ConstSettings.apiHost + 'api/User/block-user/' + username, { headers: ConstSettings.standardHeader });
   }
