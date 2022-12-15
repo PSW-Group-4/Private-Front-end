@@ -1,9 +1,22 @@
 <h1 mat-dialog-title>Blood supplies {{data.bloodType}}</h1>
 <div mat-dialog-content>
   <form [formGroup]="form">
+    
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Quantity [L]</mat-label>
+      <input type="text" id="quantity"
+            min="0"
+            aria-label="Number"
+            matInput
+            formControlName="quantity"
+            [(ngModel)]="data.quantity"
+            >
+      <mat-autocomplete #auto="matAutocomplete">
+      </mat-autocomplete>
+    </mat-form-field>
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Choose blood type</mat-label>
-      <input type="text"
+      <input type="text" id="bloodType"
             autocomplete="off" required matInput
             aria-label="Number"
             formControlName="bloodType"
@@ -13,18 +26,6 @@
         <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
           {{option}}
         </mat-option>
-      </mat-autocomplete>
-    </mat-form-field>
-    <mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>Quantity [L]</mat-label>
-      <input type="number"
-            min="0"
-            aria-label="Number"
-            matInput
-            formControlName="quantity"
-            [(ngModel)]="data.quantity"
-            >
-      <mat-autocomplete #auto="matAutocomplete">
       </mat-autocomplete>
     </mat-form-field>
   </form>
@@ -41,5 +42,5 @@
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Close</button>
-  <button mat-button (click)="onCheckClick(data.quantity, data.bloodType)" cdkFocusInitial [disabled]="!data.bloodType.length">Check</button>
+  <button mat-button id="submit" (click)="onCheckClick(data.quantity, data.bloodType)" cdkFocusInitial [disabled]="!data.bloodType.length">Check</button>
 </div>
