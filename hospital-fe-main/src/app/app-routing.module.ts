@@ -17,7 +17,9 @@ import { DoctorBloodConsumptionComponent } from './modules/doctor/doctor-blood-c
 import { AdmissionViewComponent } from "./modules/doctor/admission-view/admission-view.component";
 //import { AgeStatisticsComponent } from './modules/patient-statistics/age-stManagerFeedbackComponentatistics/age-statistics.component';
 import { ManagerRequestReviewComponent } from './modules/blood-requests/manager-request-review/manager-request-review.component';
+import { ViewAllTendersForReviewComponent } from './modules/tenders/view-all-tenders-for-review/view-all-tenders-for-review.component';
 import {CreateTenderComponent} from "./modules/manager/create-tender/create-tender.component";
+
 const routes: Routes = [
 
   { path: 'managerFeedback', component: ManagerFeedbackComponent },
@@ -51,6 +53,7 @@ const routes: Routes = [
   //{ path: 'vacations', component: DoctorVacationsComponent },
   { path: 'bloodConsumption', component: DoctorBloodConsumptionComponent },
   { path: 'managerNews', component: ManagerNewsPreviewComponent },
+  { path:'tenders', component:ViewAllTendersForReviewComponent},
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: '**', redirectTo: 'login', pathMatch: 'full' },
   { path: '', redirectTo: 'login', pathMatch: 'full' },

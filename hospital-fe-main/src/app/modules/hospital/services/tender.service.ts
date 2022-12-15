@@ -16,7 +16,9 @@ export class TenderService {
   get(): Observable<Tender[]> {
     return this.http.get<Tender[]>(this.apiHost + 'api/Tender', {headers: this.headers});
   }
-
+  getForReview() : Observable<any[]> {
+    return this.http.get<Tender[]>(this.apiHost + 'api/Tender/active', {headers: this.headers});
+  }
   create(dto: any): Observable<any> {
     //let bloodBankDto : any = JSON.stringify(bloodBank);
     return this.http.post<any>(this.apiHost + 'api/Tender/', JSON.stringify(dto), {headers: this.headers});

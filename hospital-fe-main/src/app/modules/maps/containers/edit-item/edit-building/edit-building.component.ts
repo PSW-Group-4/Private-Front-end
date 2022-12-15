@@ -29,7 +29,7 @@ export class EditBuildingComponent implements OnInit {
   public updateBuilding(): void {
     this.buildingService.updateBuilding(this.buildingOutput).subscribe(res => {
     });
-    window.location.reload();
+    //window.location.reload();
 
   }
 

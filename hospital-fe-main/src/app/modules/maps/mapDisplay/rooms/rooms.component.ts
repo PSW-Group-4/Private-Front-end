@@ -7,6 +7,7 @@ import { MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import { EditItemComponent } from '../../containers/edit-item/edit-item.component';
 import { EquiptmentDialogComponent } from '../../../shared/components/equiptment-dialog/equiptment-dialog.component';
 import { shareReplay, Subscription } from 'rxjs';
+import { RoomScheduleComponent } from 'src/app/modules/roomSchedule/room-schedule/room-schedule.component';
 
 @Component({
   selector: 'app-rooms',
@@ -149,6 +150,18 @@ export class RoomsComponent implements OnInit {
   moveEquipmentRedirect() {
     this.mapsFacade.setSelectedRoom(this.temp.room);
     this.router.navigate(["/manager/move-equipment"])
+  }
+
+  openRoomScheduleDialog(): void {
+    const dialogConf = new MatDialogConfig();
+
+    dialogConf.data = {
+      room: this.temp.room,
+    };
+    dialogConf.width = "700px";
+    dialogConf.height = "800px";
+    this.dialog.open(RoomScheduleComponent , dialogConf);
+    
   }
 
 }
