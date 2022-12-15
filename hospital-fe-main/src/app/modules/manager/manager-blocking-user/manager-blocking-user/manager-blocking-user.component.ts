@@ -15,11 +15,18 @@ export interface SuspiciousUser {
 })
 export class ManagerBlockingUserComponent implements OnInit {
   dataSource: SuspiciousUser[] = []
+  susCount: number = 0;
 
   displayedColumns: string[] = ['username', 'numberOfRecentSuspiciousActivities', "isBlocked", "blockunblock"];
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+    this.userService.SuspiciousCount().subscribe(res => {
+      this.susCount = res;
+      console.log("Sus broj " + res);
+    })
+
+
     this.userService.GetAllSuspiciousUsers().subscribe(res => {
       this.dataSource = res;
     })
@@ -30,7 +37,10 @@ export class ManagerBlockingUserComponent implements OnInit {
 
   block(username: string) {
     this.userService.block(username).subscribe(res => {
-      this.ngOnInit()
+      const index = this.dataSource.findIndex(t => t.username === username);
+      this.dataSource[index].isBlocked = true;
+      this.dataSource = this.dataSource;
+
     }
       , err => {
         alert(err.error)
@@ -41,7 +51,11 @@ export class ManagerBlockingUserComponent implements OnInit {
 
   unblock(username: string) {
     this.userService.unblock(username).subscribe(res => {
-      this.ngOnInit()
+      const index = this.dataSource.findIndex(t => t.username === username);
+      this.dataSource[index].isBlocked = false;
+      if (this.dataSource[index].numberOfRecentSuspiciousActivities <= this.susCount)
+        this.dataSource = this.dataSource.filter(t => t.username !== username);
+      this.dataSource = this.dataSource;
 
 
     }

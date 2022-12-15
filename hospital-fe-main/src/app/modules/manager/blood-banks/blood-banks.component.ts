@@ -35,7 +35,7 @@ export class BloodBanksComponent implements OnInit {
     })
   }
   public addBloodBank() {
-    this.router.navigate(['/bloodBanks/add']);
+    this.router.navigate(['manager/bloodBanks/add']);
   }
 
   openDialog(): void {
@@ -45,6 +45,10 @@ export class BloodBanksComponent implements OnInit {
     });
 
     dialogRef.componentInstance.location = 'http://localhost:8080/';
+  }
+
+  openSubscription(): void {
+    this.router.navigate(['bloodBanks/subscription']);
   }
 }
 
@@ -95,3 +99,4 @@ export class CheckBloodSuppliesDialog {
     return this.options.filter(option => option.toLowerCase().includes(filterValue));
   }
 }
+

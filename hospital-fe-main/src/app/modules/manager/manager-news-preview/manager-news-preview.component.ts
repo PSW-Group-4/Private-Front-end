@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
-import { ManagerNews } from '../model/managerNews.model';
-import { ManagerNewsService } from '../services/managerNews.service';
-import { MatButtonModule } from '@angular/material/button';
+import { ManagerNews } from '../../hospital/model/managerNews.model';
+import { ManagerNewsService } from '../../hospital/services/managerNews.service';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 
 @Component({
@@ -48,7 +46,7 @@ export class ManagerNewsPreviewComponent implements OnInit {
       })
     },
     error => {
-      if (error.status = 500){
+      if (error.status == 500){
         this.openSnackBar('Can not archive news!', 'Close');
       }
     });
@@ -68,7 +66,7 @@ export class ManagerNewsPreviewComponent implements OnInit {
       })
     },
     error => {
-      if (error.status = 500){
+      if (error.status == 500){
         this.openSnackBar('Can not publish news!', 'Close');
       }
     });

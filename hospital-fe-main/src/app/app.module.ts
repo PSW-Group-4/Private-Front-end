@@ -20,7 +20,9 @@ import { DoctorAppointmentsModule } from "./modules/doctor/doctor-appointments/d
 import { MatNativeDateModule } from "@angular/material/core";
 import { MapsModule } from "./modules/maps/maps.module";
 import { CommonModule } from '@angular/common';
-import { BloodBanksComponent, CheckBloodSuppliesDialog } from './modules/hospital/blood-banks/blood-banks.component';
+import { BloodBanksSubComponent, AddSubscriptionDialog } from './modules/hospital/blood-subscription/blood-subscription.component'
+import { BloodRequestManagerComponent, AddManagerRequestDialog} from './modules/hospital/blood-request-manager/blood-request-manager.component';
+import { BloodBanksComponent, CheckBloodSuppliesDialog } from './modules/manager/blood-banks/blood-banks.component';
 import { AdmissionComponent } from './modules/doctor/admission/admission.component';
 //import { DoctorVacationModule } from "./modules/doctor-vacation/doctor-vacation.module";
 import { Ng2SearchPipeModule } from "ng2-search-filter";
@@ -29,7 +31,7 @@ import { CreateBloodConsumptionRecordComponent } from './modules/doctor/doctor-b
 import { RequestMoreBloodComponent } from './modules/doctor/doctor-blood-consumption/request-more-blood/request-more-blood.component';
 import { AdmissionViewComponent } from "./modules/doctor/admission-view/admission-view.component";
 import { EquipmentMoveModule } from "./modules/equipment-move/equipment-move.module";
-import { ManagerNewsPreviewComponent } from './modules/hospital/manager-news-preview/manager-news-preview.component';
+import { ManagerNewsPreviewComponent } from './modules/manager/manager-news-preview/manager-news-preview.component';
 import { ManagerModule } from './modules/manager/manager.module';
 import { LoginModule } from './modules/login/login.module';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
@@ -41,19 +43,22 @@ import { DoctorModule } from './modules/doctor/doctor.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BloodRequestsModule } from './modules/blood-requests/blood-requests.module';
 import { RoomRenovationModule } from './modules/room-renovation/room-renovation.module';
-import { CreateTenderComponent } from './modules/create-tender/create-tender.component';
+import { CreateTenderComponent } from './modules/manager/create-tender/create-tender.component';
 import { ManagerBlockingUserModule } from './modules/manager/manager-blocking-user/manager-blocking-user.module';
 import { MatTableModule } from '@angular/material/table';
 import { DoctorVacationModule } from './modules/doctor/doctor-vacation/doctor-vacation.module';
 import { ViewAllTendersForReviewComponent } from './modules/tenders/view-all-tenders-for-review/view-all-tenders-for-review.component';
 import { TenderApplicationsForReviewComponent } from './modules/tender-applications/tender-applications-for-review/tender-applications-for-review/tender-applications-for-review.component';
 
+import { RoomScheduleComponent } from './modules/roomSchedule/room-schedule/room-schedule.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ManagerFeedbackComponent,
     CheckBloodSuppliesDialog,
+    AddSubscriptionDialog,
+    AddManagerRequestDialog,
     AdmissionViewComponent,
     DoctorBloodConsumptionComponent,
     CreateBloodConsumptionRecordComponent,
@@ -63,6 +68,7 @@ import { TenderApplicationsForReviewComponent } from './modules/tender-applicati
     CreateTenderComponent,
     ViewAllTendersForReviewComponent,
     TenderApplicationsForReviewComponent,
+    RoomScheduleComponent,
   ],
   imports: [
     CommonModule,
@@ -106,6 +112,6 @@ import { TenderApplicationsForReviewComponent } from './modules/tender-applicati
     },
 
   ],
-  bootstrap: [AppComponent, BloodBanksComponent],
+  bootstrap: [AppComponent, BloodBanksComponent, BloodBanksSubComponent, BloodRequestManagerComponent],
 })
 export class AppModule { }

@@ -7,6 +7,7 @@ import { MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import { EditItemComponent } from '../../containers/edit-item/edit-item.component';
 import { EquiptmentDialogComponent } from '../../../shared/components/equiptment-dialog/equiptment-dialog.component';
 import { shareReplay, Subscription } from 'rxjs';
+import { RoomScheduleComponent } from 'src/app/modules/roomSchedule/room-schedule/room-schedule.component';
 
 @Component({
   selector: 'app-rooms',
@@ -64,10 +65,10 @@ export class RoomsComponent implements OnInit {
 
       rooms.append('rect')
       .attr("fill", '#999999')
-      .attr("x", d => d.coordinateX+100)
-      .attr("y", d => d.coordinateY+100)
-      .attr("width", d => d.width)
-      .attr("height", d => d.height)
+      .attr("x", d => d.mapLocation.coordinateX+100)
+      .attr("y", d => d.mapLocation.coordinateY+100)
+      .attr("width", d => d.mapLocation.width)
+      .attr("height", d => d.mapLocation.height)
       .attr("stroke", "black")
       .attr("id", d=> "rect"+d.id)
 
@@ -84,8 +85,8 @@ export class RoomsComponent implements OnInit {
       .text(function(d) {
         return d.room.name;
       })
-      .attr('x', d => d.coordinateX+100 )
-      .attr('y', d=> d.coordinateY+100 + d.height/2)      
+      .attr('x', d => d.mapLocation.coordinateX+100 )
+      .attr('y', d=> d.mapLocation.coordinateY+100 + d.mapLocation.height/2)      
       } )
 
   }
@@ -149,6 +150,18 @@ export class RoomsComponent implements OnInit {
   moveEquipmentRedirect() {
     this.mapsFacade.setSelectedRoom(this.temp.room);
     this.router.navigate(["/manager/move-equipment"])
+  }
+
+  openRoomScheduleDialog(): void {
+    const dialogConf = new MatDialogConfig();
+
+    dialogConf.data = {
+      room: this.temp.room,
+    };
+    dialogConf.width = "700px";
+    dialogConf.height = "800px";
+    this.dialog.open(RoomScheduleComponent , dialogConf);
+    
   }
 
 }

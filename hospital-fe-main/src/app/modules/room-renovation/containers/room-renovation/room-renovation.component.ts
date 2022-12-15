@@ -6,6 +6,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Building } from 'src/app/modules/maps/models/building.model';
 import { Floor } from 'src/app/modules/maps/models/floor.model';
 import { Room } from 'src/app/modules/shared/model/room.model';
+import { RenovationDto } from '../../models/renovation-dto.model';
 import { Renovation, TypeOfRenovation } from '../../models/renovation.model';
 import { RoomRenovationFacade } from '../../room-renovation.facade';
 
@@ -15,6 +16,8 @@ import { RoomRenovationFacade } from '../../room-renovation.facade';
   styleUrls: ['./room-renovation.component.css']
 })
 export class RoomRenovationComponent implements OnInit {
+
+
   public renovation : Renovation = new Renovation();
   public choices = TypeOfRenovation;
 
@@ -25,6 +28,8 @@ export class RoomRenovationComponent implements OnInit {
   selectedRoom1: BehaviorSubject<Room> = new BehaviorSubject(new Room);
   selectedRoom2: BehaviorSubject<Room> = new BehaviorSubject(new Room);
 
+  dates: Date[] = [];
+
   firstStepFormGroup!: FormGroup;
   secondStepFormGroup!: FormGroup;
   thirdStepFormGroup!: FormGroup;
@@ -33,7 +38,6 @@ export class RoomRenovationComponent implements OnInit {
   minDate : Date = new Date(new Date().getFullYear(),new Date().getMonth(), new Date().getDate() + 2);
 
   constructor(private facade : RoomRenovationFacade, private _formBuilder: FormBuilder) {
-      
       // Gets all buildings at start
       this.facade.getBuildings$().subscribe({
         next: (v) => this.buildings = v
@@ -186,12 +190,76 @@ export class RoomRenovationComponent implements OnInit {
       this.renovation.Duration += this.thirdStepFormGroup.value.minutesControl;
     }
     if(this.renovation.Duration >= 0 && this.thirdStepFormGroup.value.dateControl != '') {
-      stepper.next()
-      // TODO call function to get other dates
+      this.recommendDate(stepper);
     }
     else {
       alert("Please enter a valid duration")
     }
+  }
+
+  recommendDate(stepper : MatStepper){
+    var formattedDate = this.dateAsYYYYMMDDHHNNSS(this.thirdStepFormGroup.value.dateControl);
+    if(this.renovation.Type == 'Split') {
+      this.selectedRoom2 = this.selectedRoom1;
+    }
+    this.facade.getAllRecommendations$(formattedDate, this.renovation.Duration, this.selectedRoom1.value.id, this.selectedRoom2.value.id).subscribe({
+      next: (v) => {
+        this.dates = v;
+        stepper.next();
+      }
+
+    });
+  }
+
+  // https://stackoverflow.com/questions/40526102/how-do-you-format-a-date-time-in-typescript
+  dateAsYYYYMMDDHHNNSS(date:any): string {
+    return date.getFullYear()
+              + '-' + this.leftpad(date.getMonth() + 1)
+              + '-' + this.leftpad(date.getDate())
+              + 'T' + this.leftpad(date.getHours())
+              + ':' + this.leftpad(date.getMinutes())
+              + ':' + this.leftpad(date.getSeconds());
+  }
+  leftpad(val:any, resultLength = 2, leftpadChar = '0'): string {
+    return (String(leftpadChar).repeat(resultLength)
+          + String(val)).slice(String(val).length);
+  }
+
+  checkRoomsAndReport(stepper : MatStepper) {
+    if(this.renovation.Type == 'Merge') {
+      this.facade.checkIfRoomsAreAdjacent$(this.selectedRoom1.value.id,this.selectedRoom2.value.id).subscribe({
+        next: (v) => {
+          if(v == true) {
+            stepper.next()
+          }
+          else {
+            alert("Rooms are not adjacent");
+          }
+        }
+  
+      })  
+    }
+    else {
+      stepper.next()
+    }
+  }
+
+  finish() {
+    var renovationDto = new RenovationDto();
+    renovationDto.Room1 = this.renovation.Room1;
+    renovationDto.Room2 = this.renovation.Room2;
+    renovationDto.Room3 = this.renovation.Room3;
+
+    renovationDto.Type = this.renovation.Type;
+
+    renovationDto.EndTime.setMinutes(this.renovation.StartTime.getMinutes() + this.renovation.Duration);
+    renovationDto.StartTime = this.renovation.StartTime;
+    
+    this.facade.createNewRenovationAppointment$(renovationDto).subscribe({
+      next: (v) => {
+        location.reload()
+      }
+    })
   }
 
   logs() {

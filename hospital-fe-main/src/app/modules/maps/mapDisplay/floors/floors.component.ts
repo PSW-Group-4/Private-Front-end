@@ -70,10 +70,10 @@ export class FloorsComponent implements OnInit {
 
       floors.append('rect')
       .attr("fill", '#61B1DC')
-      .attr("x", d => d.coordinateX+100)
-      .attr("y", d => d.coordinateY+100)
-      .attr("width", d => d.width)
-      .attr("height", d => d.height)
+      .attr("x", d => d.mapLocation.coordinateX+100)
+      .attr("y", d => d.mapLocation.coordinateY+100)
+      .attr("width", d => d.mapLocation.width)
+      .attr("height", d => d.mapLocation.height)
       .attr("stroke", "black")
       .attr("id", d=> d.id)
       
@@ -82,8 +82,8 @@ export class FloorsComponent implements OnInit {
       .text(function(d) {
         return d.floor.name;
       })
-      .attr('x', d => d.coordinateX+100 )
-      .attr('y', d=> d.coordinateY+100 + d.height/2)
+      .attr('x', d => d.mapLocation.coordinateX+100 )
+      .attr('y', d=> d.mapLocation.coordinateY+100 + d.mapLocation.height/2)
     })
   }
 

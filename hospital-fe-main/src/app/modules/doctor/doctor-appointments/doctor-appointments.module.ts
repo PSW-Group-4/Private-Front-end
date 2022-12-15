@@ -10,6 +10,7 @@ import { MaterialModule } from "src/app/material/material.module";
 import { AppRoutingModule } from "src/app/app-routing.module";
 import { AcceptAppointmentScheduleDialogComponent } from './accept-appointment-schedule-dialog/accept-appointment-schedule-dialog.component';
 import { WrongInputDialogComponent } from './add-or-edit-appointment-dialog/wrong-input-dialog/wrong-input-dialog.component';
+import { AppointmentForAnotherDoctorDialogComponent } from './appointment-for-another-doctor/appointment-for-another-doctor-dialog/appointment-for-another-doctor-dialog.component';
 
 
 
@@ -20,7 +21,8 @@ import { WrongInputDialogComponent } from './add-or-edit-appointment-dialog/wron
     CancelAppointmentDialogComponent,
     AddOrEditAppointmentDialogComponent,
     AcceptAppointmentScheduleDialogComponent,
-    WrongInputDialogComponent
+    WrongInputDialogComponent,
+    AppointmentForAnotherDoctorDialogComponent
   ],
   imports: [
     AppRoutingModule,

@@ -6,7 +6,7 @@
                     <mat-label>Room name</mat-label>
                     <input type="tel" matInput placeholder="Search" name= "searchRoom" [(ngModel)]="searchText">
                 </mat-form-field>
-                <table class="styled-table">
+                <table class="styled-table" id="searchNameTable">
                     <thead>
                         <th>Name
                         </th>
@@ -14,7 +14,7 @@
                         </th>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let room of maps$  | filter:searchText" (click)="highlight(room)">
+                        <tr *ngFor="let room of maps$  | filter:searchText" (click)="highlight(room)" >
                             <td>{{ room.room.name }}</td>
                             <td>{{ room.room.number }}</td>
                           </tr>

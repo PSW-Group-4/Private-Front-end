@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 import { AddOrEditAppointmentDialogComponent } from '../add-or-edit-appointment-dialog/add-or-edit-appointment-dialog.component';
+import { AppointmentForAnotherDoctorDialogComponent } from '../appointment-for-another-doctor/appointment-for-another-doctor-dialog/appointment-for-another-doctor-dialog.component';
 
 @Component({
   selector: 'app-doctor-appointments',
@@ -26,5 +27,14 @@ export class DoctorAppointmentsComponent implements OnInit {
       //console.log('The dialog was closed');
       //this.animal = result;
     });
+  }
+
+  appointmentForAnotherDoctor(): void {
+    const dialogRef = this.dialog.open(AppointmentForAnotherDoctorDialogComponent, {
+      
+      height: '750px',
+      width: '600px',
+      //data: {name: this.name, animal: this.animal},
+    })
   }
 }
