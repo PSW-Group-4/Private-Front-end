@@ -10,7 +10,7 @@ export class MoveEquipmentTaskService {
 
   apiHost: string = 'http://localhost:16177/';
   headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
-  readonly API = 'api/MoveEquipmentTask';
+  readonly API = 'api/MoveEquipmentAppointment';
 
   constructor(private http: HttpClient) { }
 

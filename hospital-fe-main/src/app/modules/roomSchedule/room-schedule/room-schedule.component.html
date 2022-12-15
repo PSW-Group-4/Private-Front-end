@@ -1,7 +1,7 @@
 <div>
     <mat-tab-group>
-        <mat-tab label="Equipment relocations"> 
-            <table style="width:100%">
+        <mat-tab label="Equipment relocations" id="EquipmentRelocation"> 
+            <table style="width:100%" id = "equipmentRelocationTable">
                 <thead>
                     <th>Start time</th>
                     <th>End time</th>
@@ -11,7 +11,7 @@
                     <tr *ngFor="let app of filteredMoveEquipmentAppointemts " >
                         <td>{{ app.dateRange.startTime }}</td>
                         <td>{{ app.dateRange.endTime }}</td>
-                        <td *ngIf="check(app.dateRange.startTime)"><button class="equipment-button" mat-raised-button matTooltip="Show equipment" color="warn" id ="button" (click)="cancelMoveEquipmentAppointment(app.id)">Cancel</button></td>
+                        <td *ngIf="check(app.dateRange.startTime)"><button class="equipment-button" id="idCancelApp" mat-raised-button matTooltip="Show equipment" color="warn" id ="button" (click)="cancelMoveEquipmentAppointment(app.id)">Cancel</button></td>
                         <td *ngIf="!check(app.dateRange.startTime)">&nbsp;</td>
                     </tr>
                 </tbody>

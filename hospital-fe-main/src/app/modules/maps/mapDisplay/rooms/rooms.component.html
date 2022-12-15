@@ -4,7 +4,7 @@
     </div>
     <div class="col" id="roomMap">
     </div>
-    <div class="col ">
+    <div class="col " id = "divDialog">
         <div class="row">
             <div class="col position">
                 <mat-card  *ngIf="showRoomDetailComponent">
@@ -20,7 +20,7 @@
                     <button class="add-button" mat-mini-fab matTooltip="Edit room" (click)="openEditDialog()">Edit</button>
                     <button class="equipment-button" mat-raised-button matTooltip="Show equipment" color="primary" id ="button" (click)="openEqipmentDialog()">Equipment</button>
                     <button class="equipment-button" mat-raised-button matTooltip="Move equipment" color="primary" id ="button" (click)="moveEquipmentRedirect()">Move Equipment</button>
-                    <button class="equipment-button" mat-raised-button matTooltip="Room schedule" (click)="openRoomScheduleDialog()">Room schedule</button>
+                    <button class="equipment-button" mat-raised-button matTooltip="Room schedule" id="roomScheduleBtn" (click)="openRoomScheduleDialog()">Room schedule</button>
                 </mat-card>
             </div>
         </div>

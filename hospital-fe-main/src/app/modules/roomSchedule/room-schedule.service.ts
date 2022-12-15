@@ -19,7 +19,7 @@ export class RoomScheduleService {
   // }
 
   getMoveEquipmentAppointment():Observable<Appointment[]>{
-    return this.http.get<Appointment[]>(this.apiHost+ 'api/MoveEquipmentTask', {headers: this.headers})
+    return this.http.get<Appointment[]>(this.apiHost+ 'api/MoveEquipmentAppointment', {headers: this.headers})
   }
 
   //TODO when renovations are done
@@ -31,6 +31,6 @@ export class RoomScheduleService {
   }
 
   deleteMoveEquipmentAppointment(id: any): Observable<any> {
-    return this.http.delete<any>(this.apiHost + 'api/MoveEquipmentTask/' + id, {headers: this.headers});
+    return this.http.delete<any>(this.apiHost + 'api/MoveEquipmentAppointment/' + id, {headers: this.headers});
   }
 }

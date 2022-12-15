@@ -36,10 +36,10 @@ export class RoomScheduleComponent implements OnInit {
           this.filteredMoveEquipmentAppointemts.push(this.moveEquipmentAppointments[i]);
       }
     });
-
+    
     this.service.getMedicalAppointments().subscribe(res => {
       this.medicalAppointments = res;
-      for(var i = 0; i < this.moveEquipmentAppointments.length; i++){
+      for(var i = 0; i < this.medicalAppointments.length; i++){
         if(this.medicalAppointments[i].room.id == this.clickedRoom.id)
           this.filteredMedicalAppointemts.push(this.medicalAppointments[i]);
       }
@@ -48,7 +48,11 @@ export class RoomScheduleComponent implements OnInit {
 
 
   cancelMoveEquipmentAppointment(id:any){
-    this.service.deleteMoveEquipmentAppointment(id).subscribe();
+    this.service.deleteMoveEquipmentAppointment(id).subscribe(res=>{
+      
+    }
+    );
+    
   }
 
   check(date:Date){
