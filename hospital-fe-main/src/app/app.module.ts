@@ -48,6 +48,7 @@ import { ManagerBlockingUserModule } from './modules/manager/manager-blocking-us
 import { MatTableModule } from '@angular/material/table';
 import { DoctorVacationModule } from './modules/doctor/doctor-vacation/doctor-vacation.module';
 
+import { RoomScheduleComponent } from './modules/roomSchedule/room-schedule/room-schedule.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { DoctorVacationModule } from './modules/doctor/doctor-vacation/doctor-va
     AdmissionComponent,
     ManagerNewsPreviewComponent,
     CreateTenderComponent,
+    RoomScheduleComponent,
   ],
   imports: [
     CommonModule,
