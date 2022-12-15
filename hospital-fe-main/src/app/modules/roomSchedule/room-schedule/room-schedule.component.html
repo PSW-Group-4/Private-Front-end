@@ -19,13 +19,18 @@
         
         </mat-tab>
         <mat-tab label="Renovations" style="width:100%"> 
-            <table>
+            <table style="width:100%">
                 <thead>
+                    <th>Start time</th>
+                    <th>End time</th>
                     <th>Cancel</th>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td><button class="equipment-button" mat-raised-button matTooltip="Show equipment" color="warn" id ="button">Cancel</button></td>
+                    <tr *ngFor="let app of filteredRenovationAppointments " >
+                        <td>{{ app.dateRange.startTime }}</td>
+                        <td>{{ app.dateRange.endTime }}</td>
+                        <td *ngIf="check(app.dateRange.startTime)"><button class="equipment-button" id="idCancelApp" mat-raised-button matTooltip="Show equipment" color="warn" id ="button" (click)="cancelRenovationAppointment(app.id)">Cancel</button></td>
+                        <td *ngIf="!check(app.dateRange.startTime)">&nbsp;</td>
                     </tr>
                 </tbody>
             </table>
@@ -35,13 +40,25 @@
                 <thead>
                     <th>Start time</th>
                     <th>End time</th>
-                    <th>Cancel</th>
                 </thead>
                 <tbody>
                     <tr *ngFor="let app of filteredMedicalAppointemts ">
                         <td>{{ app.dateRange.startTime }}</td>
                         <td>{{ app.dateRange.endTime }}</td>
-                        <td><button class="equipment-button" mat-raised-button matTooltip="Show equipment" color="warn" id ="button">Cancel</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </mat-tab>
+        <mat-tab label="Consiliums"> 
+            <table style="width:100%">
+                <thead>
+                    <th>Start time</th>
+                    <th>End time</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let app of filteredConsiliumAppointments ">
+                        <td>{{ app.dateRange.startTime }}</td>
+                        <td>{{ app.dateRange.endTime }}</td>
                     </tr>
                 </tbody>
             </table>
