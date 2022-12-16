@@ -62,7 +62,7 @@ export class AdmissionComponent implements OnInit {
   confirm(){
     if(this.validateInput()){
      this.createAdmissionObject();
-      this.doctorAppointmentservice.createAdmission(this.admission).subscribe(res => alert("Pacijent uspesno primljen!"));    
+      this.doctorAppointmentservice.createAdmission(this.admission).subscribe(res => console.log("Pacijent uspesno primljen!"));    
       this.patientRoomService.captureBed(this.selectedRoom).subscribe(res => console.log('done')); 
       this.clearFields();
 
