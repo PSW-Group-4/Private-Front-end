@@ -25,52 +25,6 @@ export class VacationStatisticsComponent implements OnInit {
   private chartValues: string[] = [];
   private chartLabels: string[] = [];
 
-  // lineChartData: ChartConfiguration<'line'>['data'] = {
-    
-  //   labels: [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' ],
-  //   datasets: [
-  //     {
-  //       data: [ this.vacationPerMonthList[0], this.vacationPerMonthList[1], this.vacationPerMonthList[2], this.vacationPerMonthList[3], this.vacationPerMonthList[4], this.vacationPerMonthList[5], this.vacationPerMonthList[6], this.vacationPerMonthList[7], this.vacationPerMonthList[8], this.vacationPerMonthList[9], this.vacationPerMonthList[10], this.vacationPerMonthList[11], this.vacationPerMonthList[12] ], //ovo su podaci koji meni trebaju
-  //       label: 'Vacation requests',
-  //       fill: true,
-  //       tension: 0.5,
-  //       borderColor: 'black',
-  //       backgroundColor: 'rgba(128,0,100,0.3)',
-  //     }
-  //   ]
-
-  // };
-
-  // public lineChartOptions: ChartOptions<'line'> = {
-  //   responsive: false
-  // };
-
-  // vacationChart: Chart = new Chart('chart5', {
-  //   type: 'line',
-  //   data: {
-  //     labels: [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' ],
-  //     datasets: [
-  //       {
-  //         label: 'Iskorisceni godisnji dani po mesecu',
-  //         data: this.chart5_data, 
-  //         backgroundColor: 'rgba(128,0,100,0.3)',
-  //         borderColor: 'black',
-  //         borderWidth : 2,
-  //       },
-  //     ],
-  //   },
-  //   options:{
-  //     responsive : true,
-  //     scales:{
-  //       y: {
-  //         beginAtZero: true,
-  //       },
-  //     },
-  //   },
-  // });
-
-  // public lineChartLegend = true;
-
   constructor(private doctorService: DoctorVacationService, private doctorAppointmentService: DoctorAppointmentService) { }
   
   ngOnInit(): void {
@@ -123,7 +77,6 @@ export class VacationStatisticsComponent implements OnInit {
       },
       options:{
         maintainAspectRatio: false,
-        //aspectRatio: 3.5,
         plugins:{
           legend:{
             labels:{

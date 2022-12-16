@@ -41,6 +41,7 @@ const routes: Routes = [
       ),
   },
   { path: 'vacationRequests', component: ManagerVacationsComponent},
+  { path: 'managerStatistics', component: VacationStatisticsComponent},
   { path: 'room-renovation', component: RoomRenovationComponent },
   { path: 'managerStatistics', component: VacationStatisticsComponent },
   { path: 'blood-banks', component: BloodBanksComponent },
