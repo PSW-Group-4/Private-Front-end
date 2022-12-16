@@ -1,0 +1,25 @@
+<div>
+    <mat-form-field appearance="fill">
+        <mat-label>Id</mat-label>
+        <input matInput [(ngModel)]="room.room.id" disabled>
+    </mat-form-field><br>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput [(ngModel)]="room.room.name">
+    </mat-form-field><br>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Number</mat-label>
+        <input type="number" matInput [(ngModel)]="room.room.number">
+    </mat-form-field><br>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Description</mat-label>
+        <textarea  matInput [(ngModel)]="room.room.description" disabled></textarea>
+    </mat-form-field><br>
+    <button mat-stroked-button (click)="updateRoom()" [mat-dialog-close]="">
+        Submit
+    </button><br>
+</div>
+

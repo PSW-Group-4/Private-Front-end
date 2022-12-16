@@ -1,0 +1,15 @@
+<div>
+    <mat-form-field appearance="fill" id="idField">
+        <mat-label>Vacation Id: </mat-label>
+        <input matInput [(ngModel)]="data.id" disabled>
+    </mat-form-field><br>
+
+    <mat-form-field appearance="fill" id="commentField">
+        <mat-label>Comment: </mat-label>
+        <textarea  matInput [(ngModel)]="data.deniedRequestReason"></textarea>
+    </mat-form-field><br>
+
+    <button mat-stroked-button (click)="sendComment()" [mat-dialog-close]="">
+        Submit
+    </button><br>
+</div>

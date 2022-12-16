@@ -1,0 +1,70 @@
+<div class="centered-content">
+  <h1 class="title">Create tender</h1>
+  <div>
+    <mat-stepper  style="border: 1px solid transparent; border-radius: 1rem" [linear]="isLinear" #stepper>
+      <mat-step [stepControl]="firstFormGroup">
+        <form class="centered-form" [formGroup]="firstFormGroup">
+          <ng-template matStepLabel>Select blood types</ng-template>
+          <mat-form-field style="width: 30rem" appearance="fill">
+            <mat-label>Blood type</mat-label>
+            <mat-select formControlName="selection"  multiple>
+              <mat-option (onSelectionChange)="onSelect(bloodType)" *ngFor="let bloodType of bloodTypes" [value]="bloodType">
+                {{bloodType.bloodGroup}}{{bloodType.rhFactor === "POSITIVE" ? "+" : "-"}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step label="Select amount">
+        <form class="centered-form">
+            <mat-list class="centered-form">
+              <mat-list-item *ngFor="let bloodProduct of bloodProducts; let index = index; trackBy:trackByIndex;">
+                <mat-form-field style="width: 30rem">
+                  <mat-label>{{bloodProduct.bloodType?.bloodGroup}}{{bloodProduct.bloodType?.rhFactor === "POSITIVE" ? "+" : "-"}}</mat-label>
+                  <input name="{{'product'+index}}"  matInput type="number"
+                         [(ngModel)]="bloodProduct.amount"><span matSuffix>ml</span>
+                </mat-form-field>
+              </mat-list-item>
+            </mat-list>
+
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step label="Select deadline">
+        <form class="centered-form">
+          <mat-form-field style="width: 30rem">
+            <mat-label>Deadline</mat-label>
+            <input [disabled]="isDeadlineDisabled" name="date"  matInput type="date"
+                   [(ngModel)]="deadline">
+          </mat-form-field>
+          <mat-checkbox (change)="deadlineCheck()" >No deadline</mat-checkbox>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        <div class="centered-form">
+          <h3>You're about to make a tender for the following:</h3>
+          <p style="text-align: center; font-weight: bold" *ngFor="let bloodProduct of bloodProducts">
+            {{bloodProduct.bloodType?.bloodGroup}}{{bloodProduct.bloodType?.rhFactor === "POSITIVE" ? "+" : "-"}}, {{bloodProduct.amount}} ml
+          </p>
+          <p>Deadline: {{isDeadlineDisabled ? "None" : deadline }}</p>
+        </div>
+        <div style="display: flex; justify-content: center; align-items: center">
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-flat-button (click)="onClick()">Confirm</button>
+        </div>
+      </mat-step>
+    </mat-stepper>
+
+  </div>
+</div>

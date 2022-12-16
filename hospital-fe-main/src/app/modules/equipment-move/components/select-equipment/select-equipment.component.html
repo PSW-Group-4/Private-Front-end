@@ -1,0 +1,7 @@
+<div>
+    <mat-select placeholder="Choose equipment" [(ngModel)]="eq" (ngModelChange)="select()">
+        <mat-option *ngFor="let e of equipmentList " [value]="e">
+           {{e.equipment.name}}, {{e.amount}}
+        </mat-option>
+     </mat-select>
+</div>

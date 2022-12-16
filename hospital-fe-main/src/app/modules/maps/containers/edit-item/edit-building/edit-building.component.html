@@ -1,0 +1,15 @@
+<div>
+    <mat-form-field appearance="fill">
+        <mat-label>Id</mat-label>
+        <input matInput [(ngModel)]="building.building.id" disabled>
+    </mat-form-field><br>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput [(ngModel)]="building.building.name">
+    </mat-form-field><br>
+
+    <button mat-stroked-button (click)="updateBuilding()" [mat-dialog-close]="">
+        Submit
+    </button>
+</div>

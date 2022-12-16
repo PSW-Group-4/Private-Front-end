@@ -1,0 +1,14 @@
+.info-label {
+    font-size: larger;
+    font-weight: bold;
+}
+.center-div {
+    display: flex;
+    justify-content: center;
+
+}
+.center-div > mat-spinner {
+    /* Center vertically */
+    position: absolute;
+    top: 40%;
+  }

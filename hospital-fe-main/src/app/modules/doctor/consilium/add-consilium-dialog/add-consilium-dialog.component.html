@@ -1,0 +1,72 @@
+<div class="container mt-5 ml-5" >
+    <div class="container mt-5">
+        <div class="row mb-1">
+            <div class="form-outline">
+                <input id="reason" [(ngModel)]="reason" type="text" class="form-control form-control-lg" />
+                <label class="form-label">Razlog</label>
+            </div>
+        </div>
+        <div class="row mb-1">
+            <div class="col-6 mb-0">
+                <div class="form-outline mb-1">
+                    <input id="start" [(ngModel)]="startDate" type="date" class="form-control form-control-lg" />
+                    <label class="form-label">Pocetni datum</label>
+                </div>
+            </div>
+            <div class="col-6 mb-0">
+                <div class="form-outline mb-1">
+                    <input id="end" [(ngModel)]="endDate" type="date" class="form-control form-control-lg" />
+                    <label class="form-label">Krajnji datum</label>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-1">
+            <div class="form-outline">
+                <input id="numberOfTermins" [(ngModel)]="duration" type="number" min = '0' class="form-control form-control-lg" />
+                <label class="form-label">Broj termina (termin = 30min)</label>
+            </div>
+        </div>
+
+        <div class="row mb-1">
+            <div class="form-outline">
+                <label>Prioritet: </label>
+                <mat-radio-group [(ngModel)]="selectedValue">
+                    <mat-radio-button id="doctorRadio" value="doctor" (click)="onClearSelected()">Doktori</mat-radio-button>
+                    <mat-radio-button value="speciality" (click)="onClearSelected()">Specijalizacija</mat-radio-button>
+                </mat-radio-group>
+            </div>
+        </div>
+
+
+
+        <div class="row mb-1">
+            <div class="form-outline">
+                <mat-form-field *ngIf="selectedValue === 'doctor'" appearance="fill">
+                    <mat-label>Doktori</mat-label>
+                    <mat-select  id="doctorCombo" [(ngModel)]="doctorValues" multiple>
+                        <mat-option id="doctorOption" *ngFor="let doctor of doctors" [value]="doctor.id">{{doctor.name + ' ' + doctor.surname}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+
+                <mat-form-field *ngIf="selectedValue === 'speciality'" appearance="fill">
+                    <mat-label>Specijalizacija</mat-label>
+                    <mat-select [(ngModel)]="specialitiesValues" multiple>  
+                         <mat-option *ngFor="let speciality of specialities" [value]="speciality">{{speciality}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+
+            </div>
+        </div>
+        
+
+
+
+    </div>
+    <div style="color: red;" id="greska">{{greska}}</div>
+    <div class="container mt-5 ml-5">
+        <button id="createConsilium" mat-raised-button color="primary" (click)="createConsilium()">Zakazi</button>
+    </div>
+    
+</div>

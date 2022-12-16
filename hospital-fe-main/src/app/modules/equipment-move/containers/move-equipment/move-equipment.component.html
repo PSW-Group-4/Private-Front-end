@@ -1,0 +1,102 @@
+<div>
+    <mat-stepper linear #stepper>
+        <mat-step [editable]="true">
+            <ng-template matStepLabel>Choose source room</ng-template>
+            <div class="spacer-div">
+                <mat-select placeholder="Choose room" [(ngModel)]="source" (ngModelChange)="resestSourceForm()">
+                    <mat-option *ngFor="let r of roomList" [value]="r">
+                       {{r.name}}
+                    </mat-option>
+                 </mat-select>
+            </div>
+            <app-show-room-info [selectedRoom]="selectedSource" ></app-show-room-info>
+            <div class="next-back-buttons spacer-div">
+                <button mat-raised-button color="primary"  class="spacer-buttons" matStepperNext>Next</button>
+            </div>  
+        </mat-step>
+        
+        <mat-step [editable]="true">
+            <ng-template matStepLabel>Choose equipment and quantity</ng-template>
+            <div class="spacer-div">
+                <app-select-equipment [equipmentList]="source.roomsEquipment" (selectedEquipment)="setEquipment($event)"></app-select-equipment>
+            </div>
+            <div class="spacer-div">
+                <mat-select placeholder="Choose amount" [(ngModel)]="amount">
+                    <mat-option *ngFor="let i of amountList " [value]="i">
+                       {{i}}
+                    </mat-option>
+                 </mat-select>
+            </div>
+            <div class="next-back-buttons spacer-div">
+                <button mat-raised-button color="secondary" class="spacer-buttons" matStepperPrevious>Back</button>
+                <button mat-raised-button color="primary"  class="spacer-buttons" matStepperNext>Next</button>
+            </div>  
+        </mat-step>
+        <mat-step [editable]="true">
+            <ng-template matStepLabel>Choose destination room</ng-template>
+            <div class="spacer-div">
+                <mat-select placeholder="Choose room" [(ngModel)]="destination" (ngModelChange)="resestDestinationForm()">
+                    <mat-option *ngFor="let r of roomList" [value]="r">
+                       {{r.name}}
+                    </mat-option>
+                 </mat-select>
+            </div>
+            <div class="spacer-div">
+                <app-show-room-info [selectedRoom]="selectedDestination"></app-show-room-info>
+            </div>
+            <div class="next-back-buttons spacer-div">
+                <button mat-raised-button color="secondary" class="spacer-buttons" matStepperPrevious>Back</button>
+                <button mat-raised-button color="primary"  class="spacer-buttons" matStepperNext>Next</button>
+            </div>  
+        </mat-step>
+        <mat-step [editable]="true">
+            <ng-template matStepLabel>Choose date and duration</ng-template>
+            <div class="spacer-div">
+                <mat-form-field class="full-width" appearance="fill">
+                    <mat-label>Choose a date</mat-label>
+                    <input matInput [(ngModel)]="relocationStart" [min]="minDate" [matDatepicker]="picker">
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>               
+            </div>
+            <div class="spacer-div">
+                <mat-form-field class="full-width" appearance="fill">
+                    <input matInput [(ngModel)]="duration" type="number" [value]="duration" [formControl]="numberValidator">
+                    <mat-hint>Duration</mat-hint>
+                    <mat-error *ngIf="numberValidator.hasError('required')">
+                        Duration <strong>required</strong> and needs to be a <strong>number</strong>
+                    </mat-error>
+                </mat-form-field>   
+                 
+            </div>
+            <div class="next-back-buttons spacer-div">
+                <button mat-raised-button color="secondary" class="spacer-buttons" matStepperPrevious>Back</button>
+                <button mat-raised-button color="primary"  class="spacer-buttons" matStepperNext (click)="recommendRelocation()">Next</button>
+            </div>   
+        </mat-step>
+        <mat-step [editable]="true">
+            <ng-template matStepLabel>Choose relocation start</ng-template>
+            <div class="spacer-div">
+                <mat-select placeholder="Choose relocation start" [(ngModel)]="selectedRelocationStart" >
+                    <mat-option *ngFor="let d of dates" [value]="d">
+                       {{d | date:'medium'}}
+                    </mat-option>
+                 </mat-select>
+            </div>
+            <div class="next-back-buttons spacer-div">
+                <button mat-raised-button color="secondary" class="spacer-buttons" matStepperPrevious>Back</button>
+                <button mat-raised-button color="primary"  class="spacer-buttons" matStepperNext (click)="selectDate()">Next</button>
+            </div>  
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Done</ng-template>
+          <p>You are now done.</p>
+          <div class="next-back-buttons">
+            <button mat-raised-button color="secondary" class="spacer-buttons" matStepperPrevious>Back</button>
+            <button mat-raised-button color="warn"  class="spacer-buttons" (click)="stepper.reset()">Reset</button>
+            <button mat-raised-button color="primary"  class="spacer-buttons" (click)="confirmRelocation()">Done</button>
+          </div>  
+        </mat-step>
+    </mat-stepper>
+</div>

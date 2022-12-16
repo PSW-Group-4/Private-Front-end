@@ -1,0 +1,40 @@
+<div class="container mt-5 ml-5" >
+    
+    <div class="container mt-5">
+
+
+        <div class="form-outline mb-1">
+            <input  [(ngModel)]="startDate" type="date" class="form-control form-control-lg" />
+            <label class="form-label">Pocetak odmora</label>
+        </div>
+
+
+        <div class="form-outline mb-1">
+            <input  [(ngModel)]="endDate" type="date" class="form-control form-control-lg" />
+            <label class="form-label">Kraj odmora</label>
+        </div>
+
+        
+        
+
+        <div class="row mb-0">
+            <div class="col-8 mb-0">
+                <div class="form-outline">
+                    <input [(ngModel)]="reason" type="text" class="form-control form-control-lg" />
+                    <label class="form-label">Razlog</label>
+                </div>
+            </div>
+            <div class="col-4 mb-0">
+                <div class="form-outline">
+                    <mat-checkbox [(ngModel)]="urgent" class="example-margin">Hitno</mat-checkbox>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div style="color: red;" id="greska">{{greska}}</div>
+    <div class="container mt-5 ml-5">
+        <button mat-raised-button color="primary" (click)="createVacation()">Zakazi</button>
+    </div>
+    
+</div>
