@@ -23,7 +23,7 @@
     <ng-container matColumnDef="approve">
         <th mat-header-cell *matHeaderCellDef class="cell-center"> Approve: </th>
         <td mat-cell *matCellDef="let app" class="cell-center">
-            <button mat-icon-button (click)="acceptVacationRequest(app)" >
+            <button mat-icon-button (click)="acceptVacationRequest(app)" id="approveButton" >
                 <mat-icon matTooltip="approve">cloud_done</mat-icon>
             </button>
         </td>
@@ -31,7 +31,7 @@
     <ng-container matColumnDef="reject">
         <th mat-header-cell *matHeaderCellDef class="cell-center"> Reject: </th>
         <td mat-cell *matCellDef="let app" class="cell-center">
-            <button mat-icon-button  (click)="denyVacationRequest(app)" >
+            <button mat-icon-button  (click)="denyVacationRequest(app)" id="rejectButton" >
                 <mat-icon matTooltip="reject">cloud_off</mat-icon>
             </button>
         </td>

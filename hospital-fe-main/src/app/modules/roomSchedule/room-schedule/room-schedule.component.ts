@@ -23,12 +23,27 @@ export class RoomScheduleComponent implements OnInit {
   medicalAppointments: Appointment[] = [];
   filteredMedicalAppointemts: Appointment[] = [];
 
+  renovationAppointments: Appointment[] = [];
+  filteredRenovationAppointments: Appointment[] = [];
+
+  consiliumAppointments:Appointment[] = [];
+  filteredConsiliumAppointments: Appointment[] = [];
+
   constructor(private dialogRef: MatDialogRef<RoomScheduleComponent>, @Inject(MAT_DIALOG_DATA) data : any, private service:RoomScheduleService) {
     this.clickedRoom = data.room;
     
    }
 
   ngOnInit(): void {
+    
+    this.getMoveEquipmentAppointments();
+    this.getRenovationAppointments();
+    this.getMedicalAppointments();
+
+    
+  }
+
+  getMoveEquipmentAppointments(){
     this.service.getMoveEquipmentAppointment().subscribe(res =>{
       this.moveEquipmentAppointments = res;
       for(var i = 0; i < this.moveEquipmentAppointments.length; i++){
@@ -36,7 +51,18 @@ export class RoomScheduleComponent implements OnInit {
           this.filteredMoveEquipmentAppointemts.push(this.moveEquipmentAppointments[i]);
       }
     });
-    
+  }
+
+  getRenovationAppointments(){
+    this.service.getRenovationAppointments().subscribe(res=>{
+      this.renovationAppointments = res;
+      for(var i = 0; i < this.renovationAppointments.length; i++){
+        if(this.renovationAppointments[i].room.id == this.clickedRoom.id)
+          this.filteredRenovationAppointments.push(this.renovationAppointments[i]);
+      }
+    });
+  }
+  getMedicalAppointments(){
     this.service.getMedicalAppointments().subscribe(res => {
       this.medicalAppointments = res;
       for(var i = 0; i < this.medicalAppointments.length; i++){
@@ -46,9 +72,15 @@ export class RoomScheduleComponent implements OnInit {
     })
   }
 
-
   cancelMoveEquipmentAppointment(id:any){
     this.service.deleteMoveEquipmentAppointment(id).subscribe(res=>{
+      
+    }
+    );
+    
+  }
+  cancelRenovationAppointment(id:any){
+    this.service.deleteRenovationAppointment(id).subscribe(res=>{
       
     }
     );
@@ -57,7 +89,7 @@ export class RoomScheduleComponent implements OnInit {
 
   check(date:Date){
     console.log(date);
-    console.log( new Date(Date.parse(this.dateAsYYYYMMDDHHNNSS(this.today))))
+    //console.log( new Date(Date.parse(this.dateAsYYYYMMDDHHNNSS(this.today))))
     if(new Date(date) > this.today){
       return true;
     }

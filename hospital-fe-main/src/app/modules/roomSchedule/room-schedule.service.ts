@@ -22,15 +22,24 @@ export class RoomScheduleService {
     return this.http.get<Appointment[]>(this.apiHost+ 'api/MoveEquipmentAppointment', {headers: this.headers})
   }
 
-  //TODO when renovations are done
-  // getRenovationAppointment():Observable<Appointment[]>{
-  //   return this.http.get<Appointment[]>(this.apiHost+ 'api/MoveEquipmentTask', {headers: this.headers})
-  // }
+  getRenovationAppointments():Observable<Appointment[]>{
+    return this.http.get<Appointment[]>(this.apiHost+ 'api/RenovationAppointment', {headers: this.headers})
+  }
+
   getMedicalAppointments():Observable<Appointment[]>{
     return this.http.get<Appointment[]>(this.apiHost+ 'api/MedicalAppointment', {headers: this.headers})
   }
 
+  getConsiliumAppointments():Observable<Appointment[]>{
+    return this.http.get<Appointment[]>(this.apiHost+ 'api/ConsiliumAppointment', {headers: this.headers})
+  }
   deleteMoveEquipmentAppointment(id: any): Observable<any> {
     return this.http.delete<any>(this.apiHost + 'api/MoveEquipmentAppointment/' + id, {headers: this.headers});
   }
+
+  deleteRenovationAppointment(id: any): Observable<any> {
+    return this.http.delete<any>(this.apiHost + 'api/RenovationAppointment/' + id, {headers: this.headers});
+  }
+
+  
 }

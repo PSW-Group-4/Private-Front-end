@@ -2,18 +2,13 @@
 <div>
     <mat-form-field appearance="fill">
         <mat-label>Select doctor</mat-label>
-        <mat-select [(ngModel)]="selectedDoctor" name="doctor">
+        <mat-select [(ngModel)]="selectedDoctor" name="doctor" (selectionChange)="calculateDoctorsVacationLength(selectedDoctor)">
           <mat-option *ngFor="let d of doctors;" [value]="d">{{d.name + " " + d.surname}}</mat-option>
         </mat-select>
       </mat-form-field>  
 </div>
 
 <div style="display: block;" class="vacation-chart">
-    <canvas baseChart width="400" height="400" 
-      [type]="'line'"
-      [data]="lineChartData"
-      [options]="lineChartOptions"
-      [legend]="lineChartLegend">
-    </canvas>
+    <canvas baseChart width="400" height="400" id="MyChart">{{ chart }}</canvas>
 </div>
 
