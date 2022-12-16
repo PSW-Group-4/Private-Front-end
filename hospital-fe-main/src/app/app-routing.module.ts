@@ -16,7 +16,6 @@ import { AdmissionComponent } from "./modules/doctor/admission/admission.compone
 import { DoctorBloodConsumptionComponent } from './modules/doctor/doctor-blood-consumption/doctor-blood-consumption.component';
 import { AdmissionViewComponent } from "./modules/doctor/admission-view/admission-view.component";
 //import { AgeStatisticsComponent } from './modules/patient-statistics/age-stManagerFeedbackComponentatistics/age-statistics.component';
-import { ManagerRequestReviewComponent } from './modules/blood-requests/manager-request-review/manager-request-review.component';
 import { ViewAllTendersForReviewComponent } from './modules/tenders/view-all-tenders-for-review/view-all-tenders-for-review.component';
 import {CreateTenderComponent} from "./modules/manager/create-tender/create-tender.component";
 
@@ -24,7 +23,6 @@ const routes: Routes = [
 
   { path: 'managerFeedback', component: ManagerFeedbackComponent },
   { path: 'doctorAppointments', component: DoctorAppointmentsComponent},
-  { path: 'viewRequests', component: ManagerRequestReviewComponent},
   { path: 'admission', component: AdmissionComponent},
   //{ path: 'vacations', component: DoctorVacationsComponent},
   { path: 'login', component: LoginComponent, canActivate: [IncognitoGuard] },
@@ -71,7 +69,6 @@ export const routingComponents = [
   HomeComponent,
   ManagerFeedbackComponent,
   DoctorAppointmentsComponent,
-  ManagerRequestReviewComponent,
   DoctorBloodConsumptionComponent,
   AdmissionComponent,
   ManagerNewsPreviewComponent,

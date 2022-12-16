@@ -16,7 +16,7 @@ import {CreateTenderComponent} from "./create-tender/create-tender.component";
 import {BloodBankRegistrationComponent} from "./blood-bank-registration/blood-bank-registration.component";
 import {BloodBanksComponent} from "./blood-banks/blood-banks.component";
 import {ManagerNewsPreviewComponent} from "./manager-news-preview/manager-news-preview.component";
-
+import { ManagerRequestReviewComponent } from '../blood-requests/manager-request-review/manager-request-review.component';
 const routes: Routes = [
   { path: 'feedbacks', component: ManagerFeedbackComponent },
   { path: 'user-blocking', component: ManagerBlockingUserComponent },
@@ -26,6 +26,7 @@ const routes: Routes = [
   { path: 'bloodBanks/add', component:  BloodBankRegistrationComponent},
   { path: 'bloodBanks', component:  BloodBanksComponent},
   { path: 'managerNews', component: ManagerNewsPreviewComponent },
+  { path: 'viewRequests', component: ManagerRequestReviewComponent},
   {
     path: 'maps', component: MapsMainContainerComponent,
     loadChildren: () =>
@@ -47,6 +48,7 @@ const routes: Routes = [
   { path: 'blood-banks', component: BloodBanksComponent },
   { path: 'blood-subscriptions', component: BloodBanksSubComponent },
   { path: 'blood-request-manager', component: BloodRequestManagerComponent},
+  
 ];
 
 @NgModule({
