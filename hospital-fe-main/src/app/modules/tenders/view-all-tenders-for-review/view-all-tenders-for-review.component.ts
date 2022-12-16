@@ -22,7 +22,7 @@ export class ViewAllTendersForReviewComponent implements OnInit {
   public columnDefs : any[] = ['bloodType','amount']
   public tenderApplications : TenderApplication[] = [];
   public showTenders : number = 1;
-  public displayedColumns = ['BloodBank.Name', 'PriceInRSD', 'Accept Offer'];
+  public displayedColumns = ['BloodBank.Name', 'Price','Currency', 'Accept Offer'];
   constructor(private tenderService: TenderService, private tenderApplicationService: TenderApplicationService, private router: Router,private modalService: NgbModal, public dialog: MatDialog) { }
 
   ngOnInit(): void {
