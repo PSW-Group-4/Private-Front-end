@@ -8,7 +8,7 @@ import { BloodRequest } from '../../hospital/model/blood-request.model';
 })
 export class BloodRequestService {
 
-  apiHost: string = 'http://localhost:45488/'; // ili port: 45488
+  apiHost: string = 'http://localhost:5000/'; // ili port: 45488
   headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
   constructor(private http: HttpClient) { }
@@ -24,7 +24,7 @@ export class BloodRequestService {
   createBloodRequest(bloodRequest: any): Observable<any> {
     return this.http.post<any>(this.apiHost + 'api/BloodRequest', bloodRequest, {headers: this.headers});
   }
-  
+
   updateBloodRequest(bloodRequest: any): Observable<any> {
     return this.http.put<any>(this.apiHost + 'api/BloodRequest/' + bloodRequest.Id, bloodRequest, {headers: this.headers});
   }
