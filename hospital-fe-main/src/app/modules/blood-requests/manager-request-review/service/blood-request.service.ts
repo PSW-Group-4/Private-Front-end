@@ -17,7 +17,7 @@ export class BloodRequestService {
     return this.http.get<BloodRequest[]>(this.apiHost + 'api/BloodRequest', {headers: this.headers});
   }
   update(bloodRequest : any): Observable<BloodRequest>{
-    return this.http.post<BloodRequest>(this.apiHost + 'api/BloodRequest/update', bloodRequest);
+    return this.http.post<BloodRequest>(this.apiHost + 'api/BloodRequest/manage', bloodRequest);
   }
   getUnapproved(): Observable<BloodRequest[]>{
     return this.http.get<BloodRequest[]>(this.apiHost + 'api/BloodRequest/unapproved', {headers: this.headers});

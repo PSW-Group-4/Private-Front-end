@@ -7,8 +7,6 @@ import { BloodRequest } from '../blood-request.model';
 import { RejectionDialogComponent } from '../rejection-dialog/rejection-dialog.component';
 import { BloodRequestService } from './service/blood-request.service';
 
-
-
 @Component({
   selector: 'app-manager-request-review',
   templateUrl: './manager-request-review.component.html',
@@ -16,10 +14,9 @@ import { BloodRequestService } from './service/blood-request.service';
 })
 export class ManagerRequestReviewComponent implements OnInit {
   public dataSource = new MatTableDataSource<BloodRequest>();
-  public displayedColumns = ['Doctor', 'Reasons For Blood', 'Ammount of Blood Needed', 'Manage Request'];
+  public displayedColumns = ['Doctor', 'Reasons', 'Amount', 'Manage Request'];
   public bloodRequests: BloodRequest[] = [];
   bloodType: string = "";
-
 
   constructor(private bloodRequestService: BloodRequestService, private router: Router, private modalService: NgbModal, public dialog: MatDialog) { }
 
@@ -47,6 +44,7 @@ export class ManagerRequestReviewComponent implements OnInit {
         bloodRequest.rejectionComment = comment;
         this.bloodRequestService.update(bloodRequest).subscribe(res=>{
           console.log(res);
+          window.location.reload();
         })
       }
      })

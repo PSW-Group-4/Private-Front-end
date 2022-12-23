@@ -21,8 +21,8 @@ export class DoctorVacationService {
     return this.http.get<Vacation[]>(this.apiHost + 'api/DoctorVacation/DeniedRequests/' + id, {headers: this.headers});
   }
 
-  getDoctorsPastVacationRequests(id: String): Observable<Vacation[]> {
-    return this.http.get<Vacation[]>(this.apiHost + 'api/DoctorVacation/PastRequests/' + id, {headers: this.headers});
+  getDoctorsPastVacationRequests(doctorId: String): Observable <number[]> {
+    return this.http.get<number[]>(this.apiHost + 'api/pastVacations/' + doctorId, {headers: this.headers});
   }
 
   deleteDoctorsPendingVacationReques(id: any): Observable<any> {
@@ -34,7 +34,7 @@ export class DoctorVacationService {
   }
 
   getVacations(): Observable<Vacation[]> {
-    return this.http.get<Vacation[]>(this.apiHost + 'api/Vacation', {headers: this.headers});
+    return this.http.get<Vacation[]>(this.apiHost + 'api/managerGetAll', {headers: this.headers});
   }
 
   deleteAppointment(id: any): Observable<any> {
