@@ -12,50 +12,54 @@ import { RoomRenovationComponent } from '../room-renovation/containers/room-reno
 import { ManagerBlockingUserComponent } from './manager-blocking-user/manager-blocking-user/manager-blocking-user.component';
 import { BloodBanksSubComponent } from '../hospital/blood-subscription/blood-subscription.component';
 import { BloodRequestManagerComponent } from '../hospital/blood-request-manager/blood-request-manager.component';
-import {CreateTenderComponent} from "./create-tender/create-tender.component";
-import {BloodBankRegistrationComponent} from "./blood-bank-registration/blood-bank-registration.component";
-import {BloodBanksComponent} from "./blood-banks/blood-banks.component";
-import {ManagerNewsPreviewComponent} from "./manager-news-preview/manager-news-preview.component";
+import { CreateTenderComponent } from './create-tender/create-tender.component';
+import { BloodBankRegistrationComponent } from './blood-bank-registration/blood-bank-registration.component';
+import { BloodBanksComponent } from './blood-banks/blood-banks.component';
+import { ManagerNewsPreviewComponent } from './manager-news-preview/manager-news-preview.component';
 import { ManagerRequestReviewComponent } from '../blood-requests/manager-request-review/manager-request-review.component';
+import { CreateAppointmentStatisticsComponent } from './create-appointment-statistics/create-appointment-statistics.component';
 const routes: Routes = [
   { path: 'feedbacks', component: ManagerFeedbackComponent },
   { path: 'user-blocking', component: ManagerBlockingUserComponent },
   { path: 'patientStatistics', component: AgeStatisticsComponent },
+  {
+    path: 'create-appointment-statistics',
+    component: CreateAppointmentStatisticsComponent,
+  },
   { path: 'report-configs', component: ReportConfigsComponent },
   { path: 'tenders/create', component: CreateTenderComponent },
-  { path: 'bloodBanks/add', component:  BloodBankRegistrationComponent},
-  { path: 'bloodBanks', component:  BloodBanksComponent},
+  { path: 'bloodBanks/add', component: BloodBankRegistrationComponent },
+  { path: 'bloodBanks', component: BloodBanksComponent },
   { path: 'managerNews', component: ManagerNewsPreviewComponent },
-  { path: 'viewRequests', component: ManagerRequestReviewComponent},
+  { path: 'viewRequests', component: ManagerRequestReviewComponent },
   {
-    path: 'maps', component: MapsMainContainerComponent,
+    path: 'maps',
+    component: MapsMainContainerComponent,
     loadChildren: () =>
-      import('../maps/maps-routing.module').then(
-        (m) => m.MapsRoutingModule
-      ),
+      import('../maps/maps-routing.module').then((m) => m.MapsRoutingModule),
   },
   {
-    path: 'move-equipment', component: MoveEquipmentComponent,
+    path: 'move-equipment',
+    component: MoveEquipmentComponent,
     loadChildren: () =>
       import('../equipment-move/equipment-move-routing.module').then(
         (m) => m.EquipmentMoveRoutingModule
       ),
   },
-  { path: 'vacationRequests', component: ManagerVacationsComponent},
-  { path: 'managerStatistics', component: VacationStatisticsComponent},
+  { path: 'vacationRequests', component: ManagerVacationsComponent },
+  { path: 'managerStatistics', component: VacationStatisticsComponent },
   { path: 'room-renovation', component: RoomRenovationComponent },
   { path: 'managerStatistics', component: VacationStatisticsComponent },
   { path: 'blood-banks', component: BloodBanksComponent },
   { path: 'blood-subscriptions', component: BloodBanksSubComponent },
-  { path: 'blood-request-manager', component: BloodRequestManagerComponent},
-  
+  { path: 'blood-request-manager', component: BloodRequestManagerComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class ManagerRoutingModule { }
+export class ManagerRoutingModule {}
 
 export const routingComponents = [
   ManagerRootComponent,
@@ -63,5 +67,5 @@ export const routingComponents = [
   AgeStatisticsComponent,
   MapsMainContainerComponent,
   ManagerVacationsComponent,
-  VacationStatisticsComponent
+  VacationStatisticsComponent,
 ];

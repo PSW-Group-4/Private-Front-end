@@ -15,7 +15,12 @@ import { CommentComponent } from './manager-vacations/comment/comment/comment.co
 import { VacationStatisticsComponent } from './manager-vacations/vacation-statistics/vacation-statistics/vacation-statistics.component';
 import { NgChartsModule } from 'ng2-charts';
 import { MatTableModule } from '@angular/material/table';
-
+import { CreateAppointmentStatisticsComponent } from './create-appointment-statistics/create-appointment-statistics.component';
+import { AvgNumStepsCrAppComponent } from './create-appointment-statistics/avg-num-steps-cr-app/avg-num-steps-cr-app.component';
+import { TimeCrAppComponent } from './create-appointment-statistics/time-cr-app/time-cr-app.component';
+import { NumPatEachStepComponent } from './create-appointment-statistics/num-pat-each-step/num-pat-each-step.component';
+import { TimeEachStepComponent } from './create-appointment-statistics/time-each-step/time-each-step.component';
+import { StepTimePatAgeComponent } from './create-appointment-statistics/step-time-pat-age/step-time-pat-age.component';
 
 @NgModule({
   declarations: [
@@ -28,8 +33,22 @@ import { MatTableModule } from '@angular/material/table';
     ManagerVacationsComponent,
     CommentComponent,
     VacationStatisticsComponent,
+    CreateAppointmentStatisticsComponent,
+    CreateAppointmentStatisticsComponent,
+    AvgNumStepsCrAppComponent,
+    TimeCrAppComponent,
+    NumPatEachStepComponent,
+    TimeEachStepComponent,
+    StepTimePatAgeComponent,
   ],
-  imports: [CommonModule, AppRoutingModule, MaterialModule, FormsModule, NgChartsModule, MatTableModule],
+  imports: [
+    CommonModule,
+    AppRoutingModule,
+    MaterialModule,
+    FormsModule,
+    NgChartsModule,
+    MatTableModule,
+  ],
   providers: [StatisticsService],
 })
-export class ManagerModule { }
+export class ManagerModule {}
