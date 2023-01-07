@@ -56,4 +56,54 @@ export class StatisticsService {
       { headers: ConstSettings.standardHeader }
     );
   }
+
+  getAverageTimeSpentOnEachSelectionPerSession(): Observable<any> {
+    return this.http.get<any>(
+      ConstSettings.apiHost +
+        'api/MedAppSchedulingStatistics/time-spent-per-selection',
+      {
+        headers: ConstSettings.standardHeader,
+      }
+    );
+  }
+
+  getAverageClickCountPerSession(): Observable<any> {
+    return this.http.get<any>(
+      ConstSettings.apiHost +
+        'api/MedAppSchedulingStatistics/times-per-selection',
+      { headers: ConstSettings.standardHeader }
+    );
+  }
+
+  getTotalTimeSpentPerAgeGroup(): Observable<any> {
+    return this.http.get<any>(
+      ConstSettings.apiHost +
+        'api/MedAppSchedulingStatistics/total-time-spent-per-age-group',
+      { headers: ConstSettings.standardHeader }
+    );
+  }
+
+  getTotalStepCountPerAgeGroup(): Observable<any> {
+    return this.http.get<any>(
+      ConstSettings.apiHost +
+        'api/MedAppSchedulingStatistics/total-steps-per-age-group',
+      { headers: ConstSettings.standardHeader }
+    );
+  }
+
+  getSchedulingSuccessRatePerAgeGroup(): Observable<any> {
+    return this.http.get<any>(
+      ConstSettings.apiHost +
+        'api/MedAppSchedulingStatistics/scheduling-success-rate-per-age-group',
+      { headers: ConstSettings.standardHeader }
+    );
+  }
+
+  getChosenCounterForEachDoctor(): Observable<any> {
+    return this.http.get<any>(
+      ConstSettings.apiHost +
+        'api/MedAppSchedulingStatistics/number-of-chooses-per-doctor',
+      { headers: ConstSettings.standardHeader }
+    );
+  }
 }

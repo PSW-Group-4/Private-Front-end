@@ -1,0 +1,29 @@
+.title {
+  font-weight: bolder;
+  font-size: xx-large;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.chart {
+  margin: auto;
+  width: 60%;
+}
+
+.table {
+  margin: auto;
+  width: 100%;
+  font-size: xx-large;
+}
+
+.line {
+  margin-top: 4%;
+  border-top-width: 5px;
+  border-top-color: black;
+  border-top-style: solid;
+}
+
+th,
+td {
+  padding: 3%;
+}

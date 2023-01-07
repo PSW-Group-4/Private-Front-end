@@ -15,7 +15,13 @@ import { CommentComponent } from './manager-vacations/comment/comment/comment.co
 import { VacationStatisticsComponent } from './manager-vacations/vacation-statistics/vacation-statistics/vacation-statistics.component';
 import { NgChartsModule } from 'ng2-charts';
 import { MatTableModule } from '@angular/material/table';
-
+import { CreateAppointmentStatisticsComponent } from './create-appointment-statistics/create-appointment-statistics.component';
+import { StepClickCountPerSessionComponent } from './create-appointment-statistics/step-click-count-per-session/step-click-count-per-session.component';
+import { TimeSpentOnStepPerSessionComponent } from './create-appointment-statistics/time-spent-on-step-per-session/time-spent-on-step-per-session.component';
+import { TimeSpentOnSessionPerAgeGroupComponent } from './create-appointment-statistics/time-spent-on-session-per-age-group/time-spent-on-session-per-age-group.component';
+import { StepsOnSessionPerAgeGroupComponent } from './create-appointment-statistics/steps-on-session-per-age-group/steps-on-session-per-age-group.component';
+import { ScheduleSuccessRatePerAgeGroupComponent } from './create-appointment-statistics/schedule-success-rate-per-age-group/schedule-success-rate-per-age-group.component';
+import { ChosenDoctorCountPerDoctorComponent } from './create-appointment-statistics/chosen-doctor-count-per-doctor/chosen-doctor-count-per-doctor.component';
 
 @NgModule({
   declarations: [
@@ -28,8 +34,23 @@ import { MatTableModule } from '@angular/material/table';
     ManagerVacationsComponent,
     CommentComponent,
     VacationStatisticsComponent,
+    CreateAppointmentStatisticsComponent,
+    CreateAppointmentStatisticsComponent,
+    StepClickCountPerSessionComponent,
+    TimeSpentOnStepPerSessionComponent,
+    TimeSpentOnSessionPerAgeGroupComponent,
+    StepsOnSessionPerAgeGroupComponent,
+    ScheduleSuccessRatePerAgeGroupComponent,
+    ChosenDoctorCountPerDoctorComponent,
   ],
-  imports: [CommonModule, AppRoutingModule, MaterialModule, FormsModule, NgChartsModule, MatTableModule],
+  imports: [
+    CommonModule,
+    AppRoutingModule,
+    MaterialModule,
+    FormsModule,
+    NgChartsModule,
+    MatTableModule,
+  ],
   providers: [StatisticsService],
 })
-export class ManagerModule { }
+export class ManagerModule {}
