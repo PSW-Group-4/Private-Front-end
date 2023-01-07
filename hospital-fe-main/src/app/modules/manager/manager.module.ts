@@ -16,11 +16,12 @@ import { VacationStatisticsComponent } from './manager-vacations/vacation-statis
 import { NgChartsModule } from 'ng2-charts';
 import { MatTableModule } from '@angular/material/table';
 import { CreateAppointmentStatisticsComponent } from './create-appointment-statistics/create-appointment-statistics.component';
-import { AvgNumStepsCrAppComponent } from './create-appointment-statistics/avg-num-steps-cr-app/avg-num-steps-cr-app.component';
-import { TimeCrAppComponent } from './create-appointment-statistics/time-cr-app/time-cr-app.component';
-import { NumPatEachStepComponent } from './create-appointment-statistics/num-pat-each-step/num-pat-each-step.component';
-import { TimeEachStepComponent } from './create-appointment-statistics/time-each-step/time-each-step.component';
-import { StepTimePatAgeComponent } from './create-appointment-statistics/step-time-pat-age/step-time-pat-age.component';
+import { StepClickCountPerSessionComponent } from './create-appointment-statistics/step-click-count-per-session/step-click-count-per-session.component';
+import { TimeSpentOnStepPerSessionComponent } from './create-appointment-statistics/time-spent-on-step-per-session/time-spent-on-step-per-session.component';
+import { TimeSpentOnSessionPerAgeGroupComponent } from './create-appointment-statistics/time-spent-on-session-per-age-group/time-spent-on-session-per-age-group.component';
+import { StepsOnSessionPerAgeGroupComponent } from './create-appointment-statistics/steps-on-session-per-age-group/steps-on-session-per-age-group.component';
+import { ScheduleSuccessRatePerAgeGroupComponent } from './create-appointment-statistics/schedule-success-rate-per-age-group/schedule-success-rate-per-age-group.component';
+import { ChosenDoctorCountPerDoctorComponent } from './create-appointment-statistics/chosen-doctor-count-per-doctor/chosen-doctor-count-per-doctor.component';
 
 @NgModule({
   declarations: [
@@ -35,11 +36,12 @@ import { StepTimePatAgeComponent } from './create-appointment-statistics/step-ti
     VacationStatisticsComponent,
     CreateAppointmentStatisticsComponent,
     CreateAppointmentStatisticsComponent,
-    AvgNumStepsCrAppComponent,
-    TimeCrAppComponent,
-    NumPatEachStepComponent,
-    TimeEachStepComponent,
-    StepTimePatAgeComponent,
+    StepClickCountPerSessionComponent,
+    TimeSpentOnStepPerSessionComponent,
+    TimeSpentOnSessionPerAgeGroupComponent,
+    StepsOnSessionPerAgeGroupComponent,
+    ScheduleSuccessRatePerAgeGroupComponent,
+    ChosenDoctorCountPerDoctorComponent,
   ],
   imports: [
     CommonModule,

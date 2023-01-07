@@ -1,8 +1,65 @@
-<div>
-  <h1>Statistics for various parts of appointment creation</h1>
-  <h3>Average Number of steps to create an appointment</h3>
-  <h3>Time spent to create appointment</h3>
-  <h3>Number of times patient was on each step</h3>
-  <h3>Time spent on each step</h3>
-  <h3>Number of steps and time in correlation with patient age</h3>
+<div class="chart">
+  <div>
+    <p class="title">
+      Average time spent on each selection per session (in seconds)
+    </p>
+    <table class="table">
+      <tr>
+        <th>Date</th>
+        <th>Speciality</th>
+        <th>Doctor</th>
+        <th>Time</th>
+      </tr>
+      <tr>
+        <td>{{ getDate() }}</td>
+        <td>{{ getSpeciality() }}</td>
+        <td>{{ getDoctor() }}</td>
+        <td>{{ getTime() }}</td>
+      </tr>
+    </table>
+  </div>
+  <hr class="line" />
+
+  <div>
+    <p class="title">Selection click count per session</p>
+    <app-step-click-count-per-session
+      [chartData]="averageClickCountPerSession"
+    ></app-step-click-count-per-session>
+  </div>
+  <hr class="line" />
+
+  <div>
+    <p class="title">Total time spent on a session per age group</p>
+    <app-time-spent-on-session-per-age-group
+      [chartData]="totalTimeSpentPerAgeGroup"
+    ></app-time-spent-on-session-per-age-group>
+  </div>
+  <hr class="line" />
+
+  <div>
+    <p class="title">Step count on a session per age group</p>
+    <app-steps-on-session-per-age-group
+      [chartData]="totalStepCountPerAgeGroup"
+    ></app-steps-on-session-per-age-group>
+  </div>
+  <hr class="line" />
+
+  <div>
+    <p class="title">
+      Medical appointment scheduling success rate per age group
+    </p>
+    <app-schedule-success-rate-per-age-group
+      [chartData]="schedulingSuccessRatePerAgeGroup"
+    ></app-schedule-success-rate-per-age-group>
+  </div>
+  <hr class="line" />
+
+  <div>
+    <p class="title">
+      Number of times each doctor has been chosen for an appointment
+    </p>
+    <app-chosen-doctor-count-per-doctor
+      [chartData]="chosenCounterForEachDoctor"
+    ></app-chosen-doctor-count-per-doctor>
+  </div>
 </div>
