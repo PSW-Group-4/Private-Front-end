@@ -5,6 +5,34 @@
             <mat-icon> add </mat-icon>
         </button>
     </div>
+    
+    <mat-form-field appearance="fill" style="width:40%">
+        <mat-label>Enter a date range</mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+          <input matStartDate placeholder="Start date">
+          <input matEndDate placeholder="End date">
+        </mat-date-range-input>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      </mat-form-field>
+      
+    <!-- <mat-form-field appearance="outline">
+        <input matInput [matDatepicker]="PublishedFrom" placeholder="Publish FROM *"
+            formControlName="PublishedFrom">
+            <mat-label>Publish FROM *</mat-label>
+        <mat-datepicker-toggle matSuffix [for]="PublishedFrom"></mat-datepicker-toggle>
+        <mat-datepicker #PublishedFrom></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <input matInput [matDatepicker]="PublishedTo" placeholder="Publish To *"
+            formControlName="PublishedTo" [min]="minDate">
+            <mat-label>Publish TO *</mat-label>
+        <mat-datepicker-toggle matSuffix [for]="PublishedTo"></mat-datepicker-toggle>
+        <mat-datepicker #PublishedTo></mat-datepicker>
+    </mat-form-field> -->
+
+
     <table mat-table [dataSource]="dataSource">
         <ng-container matColumnDef="Blood Bank">
             <th mat-header-cell *matHeaderCellDef class="cell-center"> Blood Bank </th>
