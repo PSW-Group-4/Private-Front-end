@@ -9,7 +9,7 @@ import {Tender} from "../model/tender.model";
 })
 export class TenderApplicationService {
 
-  apiHost: string = 'http://localhost:5000/';
+  apiHost: string = 'http://localhost:45488/';
   headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
   constructor(private http: HttpClient) { }
