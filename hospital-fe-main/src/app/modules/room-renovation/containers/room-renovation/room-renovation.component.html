@@ -11,7 +11,7 @@
                     </mat-select>
                 </div>
                 <div class="next-back-buttons spacer-div">
-                    <button mat-raised-button id="FirstStepButtonNext" color="primary"  class="spacer-buttons" matStepperNext>Next</button>
+                    <button mat-raised-button id="FirstStepButtonNext" color="primary"  class="spacer-buttons" (click)="chooseType(stepper)">Next</button>
                 </div>  
             </form>
         </mat-step>
@@ -54,7 +54,7 @@
                     </div>
                 </div>
                 <div class="next-back-buttons spacer-div">
-                    <button mat-raised-button color="secondary" class="spacer-buttons" matStepperPrevious>Back</button>
+                    <button mat-raised-button color="secondary" class="spacer-buttons" (click)="returnToTypeSelection(stepper)">Back</button>
                     <button id="SecondStepButtonNext" mat-raised-button color="primary"  class="spacer-buttons" (click)="checkRoomsAndReport(stepper)">Next</button>
                 </div>  
             </form>
@@ -99,7 +99,7 @@
                     </mat-form-field>   
                 </div>
                 <div class="next-back-buttons spacer-div">
-                    <button mat-raised-button color="secondary" class="spacer-buttons" matStepperPrevious>Back</button>
+                    <button mat-raised-button color="secondary" class="spacer-buttons" (click)="returnToOldRoomsSelection(stepper)">Back</button>
                     <button id="ThirdStepButtonNext" mat-raised-button color="primary"  class="spacer-buttons" (click)="recommendRenovation(stepper)">Next</button>
                 </div>   
             </form>
@@ -115,8 +115,8 @@
                      </mat-select>
                 </div>
                 <div class="next-back-buttons spacer-div">
-                    <button mat-raised-button color="secondary" class="spacer-buttons" matStepperPrevious>Back</button>
-                    <button id="ForthStepButtonNext" mat-raised-button color="primary"  class="spacer-buttons" matStepperNext>Next</button>
+                    <button mat-raised-button color="secondary" class="spacer-buttons" (click)="returnToTimeframeCreation(stepper)">Back</button>
+                    <button id="ForthStepButtonNext" mat-raised-button color="primary"  class="spacer-buttons" (click)="chooseSpecificTime(stepper)">Next</button>
                 </div>  
             </form>
         </mat-step>
@@ -188,7 +188,7 @@
                     </div>
                 </div>  
                 <div class="next-back-buttons spacer-div">
-                    <button mat-raised-button color="secondary" class="spacer-buttons" matStepperPrevious>Back</button>
+                    <button mat-raised-button color="secondary" class="spacer-buttons" (click)="returnToSpecificTimeSelection(stepper)">Back</button>
                     <button id="FifthStepButtonNext" mat-raised-button color="primary"  class="spacer-buttons" (click)="checkNewData(stepper)">Next</button>
                 </div>  
             </form>
@@ -197,6 +197,7 @@
           <ng-template matStepLabel>Done</ng-template>
           <p>You are now done.</p>
           <div class="next-back-buttons spacer-div">
+            <button mat-raised-button color="secondary" class="spacer-buttons" (click)="returnToNewRoomCreation(stepper)">Back</button>
             <button id="FinishButton" mat-raised-button color="primary"  class="spacer-buttons" (click)="finish()">Confirm</button>
         </div> 
         </mat-step>

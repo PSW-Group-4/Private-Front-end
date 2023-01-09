@@ -7,6 +7,10 @@ import { Building } from 'src/app/modules/maps/models/building.model';
 import { Floor } from 'src/app/modules/maps/models/floor.model';
 import { Room } from 'src/app/modules/shared/model/room.model';
 import { RenovationDto } from '../../models/renovation-dto.model';
+import { RenovationSessionWDates } from '../../models/renovation-session-with-dates';
+import { RenovationSessionWId } from '../../models/renovation-session-with-id';
+import { RenovationSessionWRooms } from '../../models/renovation-session-with-rooms';
+import { RenovationSessionWType } from '../../models/renovation-session-with-type';
 import { Renovation, TypeOfRenovation } from '../../models/renovation.model';
 import { RoomRenovationFacade } from '../../room-renovation.facade';
 
@@ -16,9 +20,10 @@ import { RoomRenovationFacade } from '../../room-renovation.facade';
   styleUrls: ['./room-renovation.component.css']
 })
 export class RoomRenovationComponent implements OnInit {
-
   public renovation : Renovation = new Renovation();
   public choices = TypeOfRenovation;
+
+  public rootId : String = "";
 
   public buildings : Building[] = [];
   public floors : Floor[] = []
@@ -178,7 +183,16 @@ export class RoomRenovationComponent implements OnInit {
       this.renovation.Room3 = room
     }
     if(this.fifthStepFormGroup.valid) {
-      stepper.next()
+      var input = new RenovationSessionWRooms();
+      
+      if(this.renovation.Type == 'Split') {
+        input.RoomPlans.push(this.renovation.Room2);
+      }
+      input.RoomPlans.push(this.renovation.Room3);
+      input.AggregateId = this.rootId;
+      this.facade.createNewRooms$(input).subscribe({
+        complete: () => stepper.next()
+      })
     }
   }
 
@@ -205,9 +219,17 @@ export class RoomRenovationComponent implements OnInit {
     this.facade.getAllRecommendations$(formattedDate, this.renovation.Duration, this.selectedRoom1.value.id, this.selectedRoom2.value.id).subscribe({
       next: (v) => {
         this.dates = v;
-        stepper.next();
-      }
-
+      },
+      complete: () => {
+        var input = new RenovationSessionWDates();
+        input.AggregateId = this.rootId;
+        input.Start = new Date(formattedDate);
+        input.End = new Date(formattedDate);
+        input.End.setMinutes(input.End.getMinutes() + this.renovation.Duration);
+        this.facade.createTimeframe$(input).subscribe({
+          complete: () => stepper.next()
+        })
+      } 
     });
   }
 
@@ -230,7 +252,21 @@ export class RoomRenovationComponent implements OnInit {
       this.facade.checkIfRoomsAreAdjacent$(this.selectedRoom1.value.id,this.selectedRoom2.value.id).subscribe({
         next: (v) => {
           if(v == true) {
-            stepper.next()
+            var input = new RenovationSessionWRooms();
+            
+            var room1 = new Room();
+            room1.id = this.selectedRoom1.value.id;
+            var room2 = new Room();
+            room2.id = this.selectedRoom2.value.id;
+
+
+            input.RoomPlans.push(room1);
+            input.RoomPlans.push(room2);
+            input.AggregateId = this.rootId;
+
+            this.facade.chooseOldRooms$(input).subscribe({
+              complete : () => stepper.next()
+            });
           }
           else {
             alert("Rooms are not adjacent");
@@ -240,32 +276,97 @@ export class RoomRenovationComponent implements OnInit {
       })  
     }
     else {
-      stepper.next()
+      var input = new RenovationSessionWRooms();
+      var room1 = new Room();
+      room1.id = this.selectedRoom1.value.id;
+
+      input.RoomPlans.push(room1);
+      input.AggregateId = this.rootId;
+
+      this.facade.chooseOldRooms$(input).subscribe({
+        complete : () => stepper.next()
+      });
     }
   }
 
   finish() {
-    var renovationDto = new RenovationDto();
-    renovationDto.Room1 = this.renovation.Room1;
-    renovationDto.Room2 = this.renovation.Room2;
-    renovationDto.Room3 = this.renovation.Room3;
-
-    renovationDto.Type = this.renovation.Type;
-
-    renovationDto.StartTime = new Date(this.forthStepFormGroup.value.selectedDate);
-    renovationDto.EndTime = new Date(this.forthStepFormGroup.value.selectedDate);
-    renovationDto.EndTime.setMinutes(renovationDto.StartTime.getMinutes() + this.renovation.Duration);
-    
-    
-    this.facade.createNewRenovationAppointment$(renovationDto).subscribe({
-      next: (v) => {
-        location.reload()
-      }
+    var input = new RenovationSessionWId();
+    input.AggregateId = this.rootId;
+    this.facade.endSession$(input).subscribe({
+      complete : () => location.reload()
     })
   }
 
   logs() {
     console.log(this.secondStepFormGroup.value)
+  }
+
+  // Event sourcing
+  chooseType(stepper : MatStepper) {
+    this.facade.startSession$().subscribe({
+      next: (v) => {
+        this.rootId = v;
+      },
+      complete: () => {
+        var input = new RenovationSessionWType();
+        input.AggregateId = this.rootId;
+        input.Type = this.renovation.Type.toString();
+
+        this.facade.chooseType$(input).subscribe({
+          complete: () => stepper.next()
+        })
+      }
+    })
+  }
+
+  returnToTypeSelection(stepper : MatStepper) {
+    var input = new RenovationSessionWId();
+    input.AggregateId = this.rootId;
+    this.facade.returnToTypeSelection$(input).subscribe({
+      complete : () => stepper.previous()
+    })
+  }
+
+  returnToOldRoomsSelection(stepper: MatStepper) {
+    var input = new RenovationSessionWId();
+    input.AggregateId = this.rootId;
+    this.facade.returnToOldRoomsSelection$(input).subscribe({
+      complete : () => stepper.previous()
+    })
+  }
+
+  returnToTimeframeCreation(stepper: MatStepper) {
+    var input = new RenovationSessionWId();
+    input.AggregateId = this.rootId;
+    this.facade.returnToTimeframeCreation$(input).subscribe({
+      complete : () => stepper.previous()
+    })  
+  }
+
+  chooseSpecificTime(stepper: MatStepper) {
+    var input = new RenovationSessionWDates();
+    input.AggregateId = this.rootId;
+    input.Start = new Date(this.forthStepFormGroup.value.selectedDate);
+    input.End = new Date(this.forthStepFormGroup.value.selectedDate);
+    input.End.setMinutes(input.End.getMinutes() + this.renovation.Duration);
+    this.facade.chooseSpecificTime$(input).subscribe({
+      complete: () => stepper.next()
+    })
+  }
+
+  returnToSpecificTimeSelection(stepper: MatStepper) {
+    var input = new RenovationSessionWId();
+    input.AggregateId = this.rootId;
+    this.facade.returnToSpecificTimeSelection$(input).subscribe({
+      complete : () => stepper.previous()
+    })  }
+
+  returnToNewRoomCreation(stepper: MatStepper) {
+    var input = new RenovationSessionWId();
+    input.AggregateId = this.rootId;
+    this.facade.returnToNewRoomCreation$(input).subscribe({
+      complete : () => stepper.previous()
+    })
   }
       
 }
