@@ -22,6 +22,18 @@ import { TimeSpentOnSessionPerAgeGroupComponent } from './create-appointment-sta
 import { StepsOnSessionPerAgeGroupComponent } from './create-appointment-statistics/steps-on-session-per-age-group/steps-on-session-per-age-group.component';
 import { ScheduleSuccessRatePerAgeGroupComponent } from './create-appointment-statistics/schedule-success-rate-per-age-group/schedule-success-rate-per-age-group.component';
 import { ChosenDoctorCountPerDoctorComponent } from './create-appointment-statistics/chosen-doctor-count-per-doctor/chosen-doctor-count-per-doctor.component';
+import { ReportStatisticsComponent } from './report-statistics/report-statistics.component';
+import { NumberStepsComponent } from './report-statistics/number-steps/number-steps.component';
+import { NumberEachStepComponent } from './report-statistics/number-each-step/number-each-step.component';
+import { TimeStepsComponent } from './report-statistics/time-steps/time-steps.component';
+import { TimeEachStepComponent } from './report-statistics/time-each-step/time-each-step.component';
+import { DoctorTimeStepsComponent } from './report-statistics/doctor-time-steps/doctor-time-steps.component';
+import { DoctorTimeStepsChartComponent } from './report-statistics/doctor-time-steps-chart/doctor-time-steps-chart.component';
+import { TimeEachStepChartComponent } from './report-statistics/time-each-step-chart/time-each-step-chart.component';
+import { TimeStepsChartComponent } from './report-statistics/time-steps-chart/time-steps-chart.component';
+import { NumberStepsChartComponent } from './report-statistics/number-steps-chart/number-steps-chart.component';
+import { NumberEachStepChartComponent } from './report-statistics/number-each-step-chart/number-each-step-chart.component';
+
 
 @NgModule({
   declarations: [
@@ -35,13 +47,23 @@ import { ChosenDoctorCountPerDoctorComponent } from './create-appointment-statis
     CommentComponent,
     VacationStatisticsComponent,
     CreateAppointmentStatisticsComponent,
-    CreateAppointmentStatisticsComponent,
     StepClickCountPerSessionComponent,
     TimeSpentOnStepPerSessionComponent,
     TimeSpentOnSessionPerAgeGroupComponent,
     StepsOnSessionPerAgeGroupComponent,
     ScheduleSuccessRatePerAgeGroupComponent,
     ChosenDoctorCountPerDoctorComponent,
+    ReportStatisticsComponent,
+    NumberStepsComponent,
+    NumberEachStepComponent,
+    TimeStepsComponent,
+    TimeEachStepComponent,
+    DoctorTimeStepsComponent,
+    DoctorTimeStepsChartComponent,
+    TimeEachStepChartComponent,
+    TimeStepsChartComponent,
+    NumberStepsChartComponent,
+    NumberEachStepChartComponent,
   ],
   imports: [
     CommonModule,
@@ -50,6 +72,7 @@ import { ChosenDoctorCountPerDoctorComponent } from './create-appointment-statis
     FormsModule,
     NgChartsModule,
     MatTableModule,
+    
   ],
   providers: [StatisticsService],
 })

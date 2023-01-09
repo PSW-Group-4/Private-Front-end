@@ -1,0 +1,39 @@
+<div class="grid">
+    <div class="header">Patient Statistics</div>
+    <mat-grid-list cols="2" rowHeight="2:1">
+        <mat-grid-tile>
+            <app-number-steps></app-number-steps>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <app-number-steps-chart [chartData]="numberSteps"></app-number-steps-chart>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+            <app-time-steps></app-time-steps>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <app-time-steps-chart [chartData]="timeSteps"></app-time-steps-chart>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+            <app-number-each-step></app-number-each-step>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <app-number-each-step-chart [chartData]="numberEachStep"></app-number-each-step-chart>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+            <app-time-each-step></app-time-each-step>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <app-time-each-step-chart [chartData]="timeEachStep"></app-time-each-step-chart>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+            <app-doctor-time-steps></app-doctor-time-steps>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <app-doctor-time-steps-chart [chartData]="doctorTimeSteps"></app-doctor-time-steps-chart>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
