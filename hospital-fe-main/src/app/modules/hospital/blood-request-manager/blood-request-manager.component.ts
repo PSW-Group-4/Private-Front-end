@@ -25,7 +25,7 @@ export interface DialogData {
 export class BloodRequestManagerComponent implements OnInit {
 
   public dataSource = new MatTableDataSource<BloodRequestManager>();
-  public displayedColumns = ['Blood Bank', 'Manager', 'Amount', 'Blood type'];
+  public displayedColumns = ['Blood Bank', 'Manager', 'Amount', 'Blood type', 'Date'];
   public managerRequests: BloodRequestManager[] = [];
   quantity: number = 0;
   bloodType: string = "";
@@ -35,11 +35,18 @@ export class BloodRequestManagerComponent implements OnInit {
   minDate: Date = new Date();
   constructor(private bloodRequestManagerService: BloodRequestManagerService, private router: Router, private modalService: NgbModal, public dialog: MatDialog, private _formBuilder: FormBuilder) { }
 
+  range = new FormGroup({
+    start: new FormControl<Date | null>(null),
+    end: new FormControl<Date | null>(null),
+  });
+
   ngOnInit(): void {
     this.bloodRequestManagerService.getBloodRequestsManager().subscribe(res => {
       this.managerRequests = res//.map((bloodSubscribe) => new BloodRequestManager(bloodSubscribe));
       console.log(res)
+      this.managerRequests.forEach(obj => obj.date = new Date(2022, Math.floor(Math.random() * 12)+1, Math.floor(Math.random() * 28)+1));
       this.dataSource.data = this.managerRequests;
+      console.log(this.managerRequests)
     })
     
     this.Announcementform = this._formBuilder.group({
@@ -55,6 +62,15 @@ export class BloodRequestManagerComponent implements OnInit {
   }
 
  
+  applyDateFilter(start?:Date | null, end?:Date | null) {
+    if (start != undefined && end != undefined){
+      this.dataSource.data = this.managerRequests;
+      this.dataSource.data = this.dataSource.data.filter(e=> e.date >= start && e.date <= end);
+    }else{
+      this.dataSource.data = this.managerRequests;
+    }
+    }
+
 public addBloodSubscribe() {
   this.openDialog();
 }
