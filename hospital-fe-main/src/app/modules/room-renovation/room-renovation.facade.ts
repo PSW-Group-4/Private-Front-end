@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
+import { throwMatDuplicatedDrawerError } from '@angular/material/sidenav';
 import { Observable, shareReplay } from 'rxjs';
 import { Building } from '../maps/models/building.model';
 import { Floor } from '../maps/models/floor.model';
 import { Room } from '../shared/model/room.model';
 import { RenovationDto } from './models/renovation-dto.model';
+import { RenovationSessionWDates } from './models/renovation-session-with-dates';
 import { RenovationSessionWId } from './models/renovation-session-with-id';
 import { RenovationSessionWRooms } from './models/renovation-session-with-rooms';
 import { RenovationSessionWType } from './models/renovation-session-with-type';
@@ -52,40 +54,40 @@ export class RoomRenovationFacade {
     return this.renovationSessionService.chooseOldRooms(inputData);
   }
 
-  chooseSpecificTime$(inputData : RenovationDto): Observable<any> {
-    return new Observable<String>;
+  chooseSpecificTime$(inputData : RenovationSessionWDates): Observable<any> {
+    return this.renovationSessionService.chooseSpecificTime(inputData);
   }
 
   chooseType$(input : RenovationSessionWType): Observable<any> {
     return this.renovationSessionService.chooseType(input);
   }
 
-  createNewRooms$(inputData : RenovationDto): Observable<any> {
-    return new Observable<String>;
+  createNewRooms$(inputData : RenovationSessionWRooms): Observable<any> {
+    return this.renovationSessionService.createNewRooms(inputData);
   }
 
-  createTimeframe$(inputData : RenovationDto): Observable<any> {
-    return new Observable<String>;
+  createTimeframe$(inputData : RenovationSessionWDates): Observable<any> {
+    return this.renovationSessionService.createTimeframe(inputData);
   }
 
-  endSession$(inputData : RenovationDto): Observable<any> {
-    return new Observable<String>;
+  endSession$(inputData : RenovationSessionWId): Observable<any> {
+    return this.renovationSessionService.endSession(inputData);
   }
 
-  returnToNewRoomCreation$(inputData : RenovationDto): Observable<any> {
-    return new Observable<String>;
+  returnToNewRoomCreation$(inputData : RenovationSessionWId): Observable<any> {
+    return this.renovationSessionService.returnToNewRoomCreation(inputData);
   }
 
-  returnToOldRoomsSelection$(inputData : RenovationDto): Observable<any> {
-    return new Observable<String>;
+  returnToOldRoomsSelection$(inputData : RenovationSessionWId): Observable<any> {
+    return this.renovationSessionService.returnToOldRoomsSelection(inputData);
   }
 
-  returnToSpecificTimeSelection$(inputData : RenovationDto): Observable<any> {
-    return new Observable<String>;
+  returnToSpecificTimeSelection$(inputData : RenovationSessionWId): Observable<any> {
+    return this.renovationSessionService.returnToSpecificTimeSelection(inputData);
   }
 
-  returnToTimeframeCreation$(inputData : RenovationDto): Observable<any> {
-    return new Observable<String>;
+  returnToTimeframeCreation$(inputData : RenovationSessionWId): Observable<any> {
+    return this.renovationSessionService.returnToTimeframeCreation(inputData);
   }
 
   returnToTypeSelection$(inputData : RenovationSessionWId): Observable<any> {

@@ -7,6 +7,7 @@ import { Building } from 'src/app/modules/maps/models/building.model';
 import { Floor } from 'src/app/modules/maps/models/floor.model';
 import { Room } from 'src/app/modules/shared/model/room.model';
 import { RenovationDto } from '../../models/renovation-dto.model';
+import { RenovationSessionWDates } from '../../models/renovation-session-with-dates';
 import { RenovationSessionWId } from '../../models/renovation-session-with-id';
 import { RenovationSessionWRooms } from '../../models/renovation-session-with-rooms';
 import { RenovationSessionWType } from '../../models/renovation-session-with-type';
@@ -182,7 +183,16 @@ export class RoomRenovationComponent implements OnInit {
       this.renovation.Room3 = room
     }
     if(this.fifthStepFormGroup.valid) {
-      stepper.next()
+      var input = new RenovationSessionWRooms();
+      
+      if(this.renovation.Type == 'Split') {
+        input.RoomPlans.push(this.renovation.Room2);
+      }
+      input.RoomPlans.push(this.renovation.Room3);
+      input.AggregateId = this.rootId;
+      this.facade.createNewRooms$(input).subscribe({
+        complete: () => stepper.next()
+      })
     }
   }
 
@@ -209,9 +219,17 @@ export class RoomRenovationComponent implements OnInit {
     this.facade.getAllRecommendations$(formattedDate, this.renovation.Duration, this.selectedRoom1.value.id, this.selectedRoom2.value.id).subscribe({
       next: (v) => {
         this.dates = v;
-        stepper.next();
-      }
-
+      },
+      complete: () => {
+        var input = new RenovationSessionWDates();
+        input.AggregateId = this.rootId;
+        input.Start = new Date(formattedDate);
+        input.End = new Date(formattedDate);
+        input.End.setMinutes(input.End.getMinutes() + this.renovation.Duration);
+        this.facade.createTimeframe$(input).subscribe({
+          complete: () => stepper.next()
+        })
+      } 
     });
   }
 
@@ -272,7 +290,11 @@ export class RoomRenovationComponent implements OnInit {
   }
 
   finish() {
-   
+    var input = new RenovationSessionWId();
+    input.AggregateId = this.rootId;
+    this.facade.endSession$(input).subscribe({
+      complete : () => location.reload()
+    })
   }
 
   logs() {
@@ -301,6 +323,48 @@ export class RoomRenovationComponent implements OnInit {
     var input = new RenovationSessionWId();
     input.AggregateId = this.rootId;
     this.facade.returnToTypeSelection$(input).subscribe({
+      complete : () => stepper.previous()
+    })
+  }
+
+  returnToOldRoomsSelection(stepper: MatStepper) {
+    var input = new RenovationSessionWId();
+    input.AggregateId = this.rootId;
+    this.facade.returnToOldRoomsSelection$(input).subscribe({
+      complete : () => stepper.previous()
+    })
+  }
+
+  returnToTimeframeCreation(stepper: MatStepper) {
+    var input = new RenovationSessionWId();
+    input.AggregateId = this.rootId;
+    this.facade.returnToTimeframeCreation$(input).subscribe({
+      complete : () => stepper.previous()
+    })  
+  }
+
+  chooseSpecificTime(stepper: MatStepper) {
+    var input = new RenovationSessionWDates();
+    input.AggregateId = this.rootId;
+    input.Start = new Date(this.forthStepFormGroup.value.selectedDate);
+    input.End = new Date(this.forthStepFormGroup.value.selectedDate);
+    input.End.setMinutes(input.End.getMinutes() + this.renovation.Duration);
+    this.facade.chooseSpecificTime$(input).subscribe({
+      complete: () => stepper.next()
+    })
+  }
+
+  returnToSpecificTimeSelection(stepper: MatStepper) {
+    var input = new RenovationSessionWId();
+    input.AggregateId = this.rootId;
+    this.facade.returnToSpecificTimeSelection$(input).subscribe({
+      complete : () => stepper.previous()
+    })  }
+
+  returnToNewRoomCreation(stepper: MatStepper) {
+    var input = new RenovationSessionWId();
+    input.AggregateId = this.rootId;
+    this.facade.returnToNewRoomCreation$(input).subscribe({
       complete : () => stepper.previous()
     })
   }

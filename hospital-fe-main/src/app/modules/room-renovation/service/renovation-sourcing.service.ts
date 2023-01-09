@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { RenovationDto } from '../models/renovation-dto.model';
+import { RenovationSessionWDates } from '../models/renovation-session-with-dates';
 import { RenovationSessionWId } from '../models/renovation-session-with-id';
 import { RenovationSessionWRooms } from '../models/renovation-session-with-rooms';
 import { RenovationSessionWType } from '../models/renovation-session-with-type';
@@ -22,7 +23,7 @@ export class RenovationSessionService {
     return this.http.post(this.apiHost+this.API+"/choose-old-rooms", inputData ,{headers:this.headers});
   }
 
-  chooseSpecificTime(inputData : RenovationDto): Observable<any> {
+  chooseSpecificTime(inputData : RenovationSessionWDates): Observable<any> {
     return this.http.post(this.apiHost+this.API+"/choose-specific-time", inputData ,{headers:this.headers});
   }
 
@@ -30,31 +31,31 @@ export class RenovationSessionService {
     return this.http.post(this.apiHost+this.API+"/choose-type", inputData ,{headers:this.headers});
   }
 
-  createNewRooms(inputData : RenovationDto): Observable<any> {
+  createNewRooms(inputData : RenovationSessionWRooms): Observable<any> {
     return this.http.post(this.apiHost+this.API+"/create-new-rooms", inputData ,{headers:this.headers});
   }
 
-  createTimeframe(inputData : RenovationDto): Observable<any> {
+  createTimeframe(inputData : RenovationSessionWDates): Observable<any> {
     return this.http.post(this.apiHost+this.API+"/create-timeframe", inputData ,{headers:this.headers});
   }
 
-  endSession(inputData : RenovationDto): Observable<any> {
+  endSession(inputData : RenovationSessionWId): Observable<any> {
     return this.http.post(this.apiHost+this.API+"/end-session", inputData ,{headers:this.headers});
   }
 
-  returnToNewRoomCreation(inputData : RenovationDto): Observable<any> {
+  returnToNewRoomCreation(inputData : RenovationSessionWId): Observable<any> {
     return this.http.post(this.apiHost+this.API+"/return-to-new-room-creation", inputData ,{headers:this.headers});
   }
 
-  returnToOldRoomsSelection(inputData : RenovationDto): Observable<any> {
+  returnToOldRoomsSelection(inputData : RenovationSessionWId): Observable<any> {
     return this.http.post(this.apiHost+this.API+"/return-to-old-rooms-selection", inputData ,{headers:this.headers});
   }
 
-  returnToSpecificTimeSelection(inputData : RenovationDto): Observable<any> {
+  returnToSpecificTimeSelection(inputData : RenovationSessionWId): Observable<any> {
     return this.http.post(this.apiHost+this.API+"/return-to-specific-time-selection", inputData ,{headers:this.headers});
   }
 
-  returnToTimeframeCreation(inputData : RenovationDto): Observable<any> {
+  returnToTimeframeCreation(inputData : RenovationSessionWId): Observable<any> {
     return this.http.post(this.apiHost+this.API+"/return-to-timeframe-creation", inputData ,{headers:this.headers});
   }
 
