@@ -31,7 +31,7 @@ export class RoomScheduleService {
   }
 
   getConsiliumAppointments():Observable<Appointment[]>{
-    return this.http.get<Appointment[]>(this.apiHost+ 'api/ConsiliumAppointment', {headers: this.headers})
+    return this.http.get<Appointment[]>(this.apiHost+ 'api/Consilium', {headers: this.headers})
   }
   deleteMoveEquipmentAppointment(id: any): Observable<any> {
     return this.http.delete<any>(this.apiHost + 'api/MoveEquipmentAppointment/' + id, {headers: this.headers});
