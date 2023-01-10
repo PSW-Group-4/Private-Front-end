@@ -38,7 +38,7 @@ export class NumberEachStepChartComponent implements OnInit {
       ];
     }
 
-    this.chart = new Chart('MyChartStepClickCount', {
+    this.chart = new Chart('MyChart3', {
       type: 'bar',
 
       data: {
