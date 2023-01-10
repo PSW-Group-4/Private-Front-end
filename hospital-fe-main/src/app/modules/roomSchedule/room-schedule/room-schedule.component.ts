@@ -47,7 +47,7 @@ export class RoomScheduleComponent implements OnInit {
     this.service.getMoveEquipmentAppointment().subscribe(res =>{
       this.moveEquipmentAppointments = res;
       for(var i = 0; i < this.moveEquipmentAppointments.length; i++){
-        if(this.moveEquipmentAppointments[i].room.id == this.clickedRoom.id)
+        if(this.moveEquipmentAppointments[i].room.id == this.clickedRoom.id && !this.moveEquipmentAppointments[i].isDone)
           this.filteredMoveEquipmentAppointemts.push(this.moveEquipmentAppointments[i]);
       }
     });
@@ -57,16 +57,26 @@ export class RoomScheduleComponent implements OnInit {
     this.service.getRenovationAppointments().subscribe(res=>{
       this.renovationAppointments = res;
       for(var i = 0; i < this.renovationAppointments.length; i++){
-        if(this.renovationAppointments[i].room.id == this.clickedRoom.id)
+        if(this.renovationAppointments[i].room.id == this.clickedRoom.id && !this.renovationAppointments[i].isDone)
           this.filteredRenovationAppointments.push(this.renovationAppointments[i]);
       }
     });
   }
   getMedicalAppointments(){
+    this.service.getConsiliumAppointments().subscribe(res => {
+      this.consiliumAppointments = res;
+      for(var i = 0; i < this.consiliumAppointments.length; i++){
+        if(this.consiliumAppointments[i].room.id == this.clickedRoom.id && !this.consiliumAppointments[i].isDone)
+          this.filteredConsiliumAppointments.push(this.consiliumAppointments[i]);
+      }
+    })
+  }
+
+  getConsiliumAppointments(){
     this.service.getMedicalAppointments().subscribe(res => {
       this.medicalAppointments = res;
       for(var i = 0; i < this.medicalAppointments.length; i++){
-        if(this.medicalAppointments[i].room.id == this.clickedRoom.id)
+        if(this.medicalAppointments[i].room.id == this.clickedRoom.id && !this.medicalAppointments[i].isDone)
           this.filteredMedicalAppointemts.push(this.medicalAppointments[i]);
       }
     })
@@ -88,7 +98,6 @@ export class RoomScheduleComponent implements OnInit {
   }
 
   check(date:Date){
-    console.log(date);
     //console.log( new Date(Date.parse(this.dateAsYYYYMMDDHHNNSS(this.today))))
     if(new Date(date) > this.today){
       return true;
@@ -96,6 +105,7 @@ export class RoomScheduleComponent implements OnInit {
     return false;
   }
 
+ 
   dateAsYYYYMMDDHHNNSS(date:any): string {
     return date.getFullYear()
               + '-' + this.leftpad(date.getMonth() + 1)
