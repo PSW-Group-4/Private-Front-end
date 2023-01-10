@@ -31,10 +31,10 @@ export class NumberStepsChartComponent implements OnInit {
     let data1 = [' ', ' ', ' ', ' '];
     if (this.chartData != undefined) {
       data1 = [
-        this.chartData['Symptom'],
-        this.chartData['ReportText'],
-        this.chartData['Medicine'],
-        this.chartData['Review'],
+        this.chartData['Small'],
+        this.chartData['SmallNormal'],
+        this.chartData['BigNormal'],
+        this.chartData['Big'],
       ];
     }
 
@@ -42,7 +42,7 @@ export class NumberStepsChartComponent implements OnInit {
       type: 'bar',
 
       data: {
-        labels: ['Symptom', 'ReportText', 'Medicine', 'Review'],
+        labels: ['<<4', '4 - 8', '8 - 12', '12>>'],
         datasets: [
           {
             label: 'Click count',
