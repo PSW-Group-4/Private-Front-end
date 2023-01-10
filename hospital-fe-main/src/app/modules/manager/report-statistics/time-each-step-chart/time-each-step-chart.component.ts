@@ -45,9 +45,9 @@ export class TimeEachStepChartComponent implements OnInit {
         labels: ['Symptom', 'ReportText', 'Medicine', 'Review'],
         datasets: [
           {
-            label: 'Click count',
+            label: 'Average time',
             data: data1,
-            backgroundColor: 'rgb(87, 127, 219)',
+            backgroundColor: 'rgb(175, 255, 203)',
           },
         ],
       },
@@ -57,10 +57,10 @@ export class TimeEachStepChartComponent implements OnInit {
           // 'legend' now within object 'plugins {}'
           legend: {
             labels: {
-              color: 'black', // not 'fontColor:' anymore
+              color: 'white', // not 'fontColor:' anymore
               // fontSize: 18  // not 'fontSize:' anymore
               font: {
-                size: 18, // 'size' now within object 'font {}'
+                size: 21, // 'size' now within object 'font {}'
               },
             },
           },
@@ -69,20 +69,20 @@ export class TimeEachStepChartComponent implements OnInit {
           y: {
             // not 'yAxes: [{' anymore (not an array anymore)
             ticks: {
-              color: 'black', // not 'fontColor:' anymore
+              color: 'white', // not 'fontColor:' anymore
               // fontSize: 18,
               font: {
-                size: 18, // 'size' now within object 'font {}'
+                size: 24, // 'size' now within object 'font {}'
               },
             },
           },
           x: {
             // not 'xAxes: [{' anymore (not an array anymore)
             ticks: {
-              color: 'black', // not 'fontColor:' anymore
+              color: 'white', // not 'fontColor:' anymore
               //fontSize: 14,
               font: {
-                size: 14, // 'size' now within object 'font {}'
+                size: 28, // 'size' now within object 'font {}'
               },
             },
           },

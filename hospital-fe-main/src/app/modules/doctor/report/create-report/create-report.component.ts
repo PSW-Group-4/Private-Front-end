@@ -47,6 +47,7 @@ export class CreateReportComponent implements OnInit {
   selectedMedicine = ""
   medicineDataSource: Medicine[] = []
   selectedMedicines: Medicine[] = []
+  selectedMedicinesForEvent: Medicine[] = []
 
   prescriptions: Prescription[] = []
   newPrescription: Prescription = new Prescription()
@@ -101,7 +102,7 @@ export class CreateReportComponent implements OnInit {
       this.newPrescription.medicines = [...this.selectedMedicines]
       this.prescriptions.push(this.newPrescription)
       this.prescriptionsDataSource = [...this.prescriptions]
-
+      this.selectedMedicinesForEvent = this.selectedMedicines
       this.selectedMedicines = []
       this.medicineDataSource = [...this.selectedMedicines]
       this.newPrescription = new Prescription()
@@ -186,7 +187,7 @@ export class CreateReportComponent implements OnInit {
   {
     let dto : ChooseSymptom = {
       AggregateId : this.sessionId,
-      NumberOfSymptoms : 2,
+      NumberOfSymptoms : this.selectedSymptoms.length,
       OccurenceTime : new Date()
 
     }
@@ -209,7 +210,7 @@ export class CreateReportComponent implements OnInit {
   {
     let dto : ChooseMedicine = {
       AggregateId : this.sessionId,
-      NumberOfMedicines : 2,
+      NumberOfMedicines : this.selectedMedicinesForEvent.length,
       OccurenceTime : new Date()
 
     }
