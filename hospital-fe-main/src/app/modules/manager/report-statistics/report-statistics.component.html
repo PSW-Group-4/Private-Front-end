@@ -1,0 +1,46 @@
+<div class="grid">
+    <div class="header">Report Statistics</div>
+    <mat-grid-list cols="1" rowHeight="2:1">
+        <mat-grid-tile>
+            <div class="w-75 h-75">
+                <h1>Interesting facts</h1>
+                <app-report-table-chart [chartData]="reportTableData"></app-report-table-chart>
+            </div>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+            <div>
+                <h1>Average number of steps per session</h1>
+                <app-number-steps-chart [chartData]="numberSteps"></app-number-steps-chart>
+            </div>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+            <div>
+                <h1>Average time spent per session</h1>
+                <app-time-steps-chart [chartData]="timeSteps"></app-time-steps-chart>
+            </div>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+            <div>
+                <h1>Average activity on each step</h1>
+                <app-number-each-step-chart [chartData]="numberEachStep"></app-number-each-step-chart>
+            </div>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+            <div>
+                <h1>Average time spent on each step</h1>
+                <app-time-each-step-chart [chartData]="timeEachStep"></app-time-each-step-chart>
+            </div>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+            <div>
+                <h1>Average time spent per session depending on the doctor's age</h1>
+                <app-doctor-time-steps-chart [chartData]="doctorTimeSteps"></app-doctor-time-steps-chart>
+            </div>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>

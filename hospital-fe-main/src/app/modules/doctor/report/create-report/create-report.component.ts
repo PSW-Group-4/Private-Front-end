@@ -9,6 +9,13 @@ import { Symptom } from 'src/app/modules/hospital/model/symptom.module';
 import { DoctorService } from 'src/app/modules/hospital/services/doctor-service';
 import { ReportService } from '../report.service';
 import { MatStepper } from '@angular/material/stepper';
+import { GoBackToSelection, Selection } from '../event-sourcing/GoBackToSelection';
+import { ReportEventSourcingService } from '../report-event-sourcing.service';
+import { StartScheduling } from '../event-sourcing/StartScheduling';
+import { ChooseSymptom } from '../event-sourcing/ChooseSymptom';
+import { FinishScheduling } from '../event-sourcing/FinishScheduling';
+import { ChooseReportText } from '../event-sourcing/ChooseReportText';
+import { ChooseMedicine } from '../event-sourcing/ChooseMedicine';
 
 @Component({
   selector: 'app-create-report',
@@ -16,10 +23,13 @@ import { MatStepper } from '@angular/material/stepper';
   styleUrls: ['./create-report.component.css']
 })
 export class CreateReportComponent implements OnInit {
-
+  //Javascript things... (Component can only access types defined in its own .ts file)
+  public Selection = Selection
+  //Used for event sourcing
+  sessionId: string = "";
   @ViewChild('stepper',{read:MatStepper}) stepper: MatStepper | undefined;
 
-  constructor(private _formBuilder: FormBuilder, private reportService: ReportService, private readonly doctorService: DoctorService) { }
+  constructor(private _formBuilder: FormBuilder, private reportService: ReportService, private readonly doctorService: DoctorService, private readonly eventSourcingService:ReportEventSourcingService) { }
 
   report: Report = new Report()
   loggedDoctor: Doctor = new Doctor()
@@ -37,6 +47,7 @@ export class CreateReportComponent implements OnInit {
   selectedMedicine = ""
   medicineDataSource: Medicine[] = []
   selectedMedicines: Medicine[] = []
+  selectedMedicinesForEvent: Medicine[] = []
 
   prescriptions: Prescription[] = []
   newPrescription: Prescription = new Prescription()
@@ -57,6 +68,7 @@ export class CreateReportComponent implements OnInit {
     this.reportService.getMedicine().subscribe(res =>{
       this.medicine = res
     })
+    this.StartSchedulingSession();
   }
 
   addSymptom(event: any): void {
@@ -90,7 +102,7 @@ export class CreateReportComponent implements OnInit {
       this.newPrescription.medicines = [...this.selectedMedicines]
       this.prescriptions.push(this.newPrescription)
       this.prescriptionsDataSource = [...this.prescriptions]
-
+      this.selectedMedicinesForEvent = this.selectedMedicines
       this.selectedMedicines = []
       this.medicineDataSource = [...this.selectedMedicines]
       this.newPrescription = new Prescription()
@@ -113,6 +125,7 @@ export class CreateReportComponent implements OnInit {
 
   createReport(): void {
     if (this.validateInput()){
+      this.recordScheduleFinishing()
       let date = new Date().toDateString()
       this.prescriptions.forEach(prescription => prescription.dateTime = date)
       this.report.symptoms = [...this.selectedSymptoms]
@@ -137,4 +150,72 @@ export class CreateReportComponent implements OnInit {
     }
     return true
   }
+
+    // event sourcing
+  StartSchedulingSession = (): void => {
+    let dto : StartScheduling = {
+      OccurenceTime : new Date()
+    } 
+
+    this.eventSourcingService.startSchedulingSession(dto).subscribe((response : string) =>{
+      this.sessionId = response;
+    });
+  }
+
+  private recordScheduleFinishing() {
+    let Dto: FinishScheduling = {
+      AggregateId: this.sessionId,
+      OccurenceTime: new Date(),
+      Time: new Date()
+    };
+
+    this.eventSourcingService.finishScheduling(Dto).subscribe();
+  }
+
+  recordGoingBackToSelection(selection : Selection)
+  {
+    let dto : GoBackToSelection = {
+      AggregateId : this.sessionId,
+      OccurenceTime : new Date(),
+      Selection : selection
+    }
+
+    this.eventSourcingService.goBackToSelection(dto).subscribe();
+  }
+
+  ChooseSymptom = ():void =>
+  {
+    let dto : ChooseSymptom = {
+      AggregateId : this.sessionId,
+      NumberOfSymptoms : this.selectedSymptoms.length,
+      OccurenceTime : new Date()
+
+    }
+    this.eventSourcingService.chooseSymptom(dto).subscribe();
+  }
+
+  ChooseReportText = ():void =>
+  {
+    let dto : ChooseReportText = {
+      AggregateId : this.sessionId,
+      ReportText : this.reportText,
+      OccurenceTime : new Date()
+
+    }
+    this.eventSourcingService.chooseReportText(dto).subscribe();
+  }
+
+
+  ChooseMedicine = ():void =>
+  {
+    let dto : ChooseMedicine = {
+      AggregateId : this.sessionId,
+      NumberOfMedicines : this.selectedMedicinesForEvent.length,
+      OccurenceTime : new Date()
+
+    }
+    this.eventSourcingService.chooseMedicine(dto).subscribe();
+  }
+
+
 }
