@@ -18,6 +18,7 @@ import { BloodBanksComponent } from './blood-banks/blood-banks.component';
 import { ManagerNewsPreviewComponent } from './manager-news-preview/manager-news-preview.component';
 import { ManagerRequestReviewComponent } from '../blood-requests/manager-request-review/manager-request-review.component';
 import { CreateAppointmentStatisticsComponent } from './create-appointment-statistics/create-appointment-statistics.component';
+import { RenovationStatisticsComponent } from '../renovation-statistics/containers/renovation-statistics/renovation-statistics.component';
 const routes: Routes = [
   { path: 'feedbacks', component: ManagerFeedbackComponent },
   { path: 'user-blocking', component: ManagerBlockingUserComponent },
@@ -53,6 +54,7 @@ const routes: Routes = [
   { path: 'blood-banks', component: BloodBanksComponent },
   { path: 'blood-subscriptions', component: BloodBanksSubComponent },
   { path: 'blood-request-manager', component: BloodRequestManagerComponent },
+  { path: 'renovation-session-statistics', component: RenovationStatisticsComponent },
 ];
 
 @NgModule({

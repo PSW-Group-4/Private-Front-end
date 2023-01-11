@@ -1,0 +1,64 @@
+<div>
+    <br/>
+    <br/>
+    <br/>
+    <h1>Statistics for each finished session</h1>
+    <div>
+        <mat-table matSort #table [dataSource]="dataSource">
+    
+            <ng-container matColumnDef="startTime">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> Start Time </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.startTime}} </mat-cell>
+            </ng-container>
+        
+           
+            <ng-container matColumnDef="totalTime">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> Total Time Spent (in seconds) </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.totalTime}} </mat-cell>
+            </ng-container>
+    
+            <ng-container matColumnDef="timesGoneBack">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> Times Gone Back </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.timesGoneBack}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="avgTimeSpentOnChooseType">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> Avgerage Time Spent On Choose Type (in seconds)</mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.averageTime.avgTimeSpentOnChooseType}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="avgTimeSpentOnChooseOldRooms">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> Avgerage Time Spent On Old Rooms Selection (in seconds)</mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.averageTime.avgTimeSpentOnChooseOldRooms}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="avgTimeSpentOnCreateTimeframe">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> Avgerage Time Spent On Timeframe Creation (in seconds)</mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.averageTime.avgTimeSpentOnCreateTimeframe}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="avgTimeSpentOnCreateNewRooms">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> Avgerage Time Spent On New Rooms Creation (in seconds)</mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.averageTime.avgTimeSpentOnCreateNewRooms}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="avgTimeSpentOnSelectSpecificTime">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> Avgerage Time Spent On Choose Specific Time (in seconds)</mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.averageTime.avgTimeSpentOnSelectSpecificTime}} </mat-cell>
+            </ng-container>
+    
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+          </mat-table>
+        
+          <mat-paginator #paginator
+                         [pageSize]="10"
+                         [pageSizeOptions]="[5, 10, 20]"
+                         [showFirstLastButtons]="true">
+          </mat-paginator>
+    </div>
+    <br/>
+    <br/>
+    <h1>Completition statistics</h1>
+    <app-finished-unfinished-pie-chart [importData]="finishedUnfinishedData"></app-finished-unfinished-pie-chart>
+</div>
