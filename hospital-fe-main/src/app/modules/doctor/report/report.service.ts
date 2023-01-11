@@ -56,4 +56,12 @@ export class ReportService {
     return this.http.get<any>(this.apiHost + 'api/Report/GeneratePdf/' + id + "/" + settings, requestOptions);
   }
 
+  basicSearch(search: any): Observable<Report[]> {
+    return this.http.get<Report[]>(this.apiHost + 'api/Report/search/' + search, {headers: this.headers});
+  }
+
+  advancedSearch(search: any): Observable<Report[]> {
+    return this.http.get<Report[]>(this.apiHost + 'api/Report/advancedSearch/' + search, {headers: this.headers});
+  }
+
 }

@@ -15,6 +15,7 @@ export class ShowReportsComponent implements OnInit {
   constructor(private reportService: ReportService, public dialog: MatDialog) { }
   public displayedColumns : String[] = []
   reports : Report[] = []
+  searchText = ""
   public dataSource = new MatTableDataSource<Report>();
 
   ngOnInit(): void {
@@ -43,5 +44,27 @@ export class ShowReportsComponent implements OnInit {
       //this.showCurrentAppointment();
     });
   }
+
+  search(){
+    if(this.searchText.charAt(0) === "\"" && this.searchText.charAt(this.searchText.length - 1) === "\""){      
+      this.reportService.advancedSearch(this.searchText.substring(1, this.searchText.length-1)).subscribe(res => {
+        this.dataSource.data = res;
+      })
+    } else {
+      this.basicSearch();
+    }
+  }
+
+  basicSearch(){    
+    if(this.searchText === ""){
+      this.dataSource.data = this.reports;
+      return;
+    }
+    this.reportService.basicSearch(this.searchText).subscribe(res => {
+      this.dataSource.data = res;
+    })
+  }
+
+  
 
 }
