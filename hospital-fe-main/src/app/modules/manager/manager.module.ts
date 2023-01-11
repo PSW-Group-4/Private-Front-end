@@ -28,6 +28,7 @@ import { TimeEachStepChartComponent } from './report-statistics/time-each-step-c
 import { TimeStepsChartComponent } from './report-statistics/time-steps-chart/time-steps-chart.component';
 import { NumberStepsChartComponent } from './report-statistics/number-steps-chart/number-steps-chart.component';
 import { NumberEachStepChartComponent } from './report-statistics/number-each-step-chart/number-each-step-chart.component';
+import { ReportTableChartComponent } from './report-statistics/report-table-chart/report-table-chart.component';
 
 
 @NgModule({
@@ -54,6 +55,7 @@ import { NumberEachStepChartComponent } from './report-statistics/number-each-st
     TimeStepsChartComponent,
     NumberStepsChartComponent,
     NumberEachStepChartComponent,
+    ReportTableChartComponent,
   ],
   imports: [
     CommonModule,

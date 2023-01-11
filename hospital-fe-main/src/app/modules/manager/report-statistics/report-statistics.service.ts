@@ -12,6 +12,11 @@ export class ReportStatisticsService {
 
   constructor(private http: HttpClient) { }
   
+  getReportTable(): Observable<any> {
+    return this.http.get<any>(this.apiHost + 'api/MedAppReportStatistics/reportTable', { headers: this.headers }
+    );
+  }
+
   getNumberSteps(): Observable<any> {
     return this.http.get<any>(this.apiHost + 'api/MedAppReportStatistics/numberSteps', { headers: this.headers }
     );

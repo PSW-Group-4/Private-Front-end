@@ -7,6 +7,7 @@ import { ReportStatisticsService } from './report-statistics.service';
   styleUrls: ['./report-statistics.component.css']
 })
 export class ReportStatisticsComponent implements OnInit {
+  reportTableData: any
   numberSteps: any
   numberEachStep: any
   timeSteps: any
@@ -19,11 +20,19 @@ export class ReportStatisticsComponent implements OnInit {
   }
 
   private getAllReportStatistics():void{
+    this.getReportTable();
     this.getNumberSteps();
     this.getTimeSteps();
     this.getNumberEachStep();
     this.getTimeEachStep();
     this.getDoctorTimeSteps()
+  }
+
+  getReportTable() {
+    this.reportStatistic.getReportTable().subscribe((res) => {
+      this.reportTableData = res;
+      console.log(this.reportTableData)
+    })
   }
 
   getNumberSteps() {

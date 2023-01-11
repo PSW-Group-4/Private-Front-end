@@ -2,6 +2,13 @@
     <div class="header">Report Statistics</div>
     <mat-grid-list cols="1" rowHeight="2:1">
         <mat-grid-tile>
+            <div class="w-75 h-75">
+                <h1>Interesting facts</h1>
+                <app-report-table-chart [chartData]="reportTableData"></app-report-table-chart>
+            </div>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
             <div>
                 <h1>Average number of steps per session</h1>
                 <app-number-steps-chart [chartData]="numberSteps"></app-number-steps-chart>

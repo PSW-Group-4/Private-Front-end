@@ -16,7 +16,6 @@ export class DoctorTimeStepsChartComponent implements OnInit {
   }
 
   ngOnChanges(): void {
-    console.log(this.chartData)
     this.createChart();
     if (this.chartData) {
       this.createChart();
