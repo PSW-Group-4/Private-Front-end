@@ -47,8 +47,10 @@ export class RoomScheduleComponent implements OnInit {
     this.service.getMoveEquipmentAppointment().subscribe(res =>{
       this.moveEquipmentAppointments = res;
       for(var i = 0; i < this.moveEquipmentAppointments.length; i++){
-        if(this.moveEquipmentAppointments[i].room.id == this.clickedRoom.id)
+        if(!this.moveEquipmentAppointments[i].isDone){
+          if(this.moveEquipmentAppointments[i].room.id == this.clickedRoom.id)
           this.filteredMoveEquipmentAppointemts.push(this.moveEquipmentAppointments[i]);
+        }
       }
     });
   }
@@ -57,17 +59,35 @@ export class RoomScheduleComponent implements OnInit {
     this.service.getRenovationAppointments().subscribe(res=>{
       this.renovationAppointments = res;
       for(var i = 0; i < this.renovationAppointments.length; i++){
-        if(this.renovationAppointments[i].room.id == this.clickedRoom.id)
+        if(!this.renovationAppointments[i].isDone){
+          if(this.renovationAppointments[i].room.id == this.clickedRoom.id)
           this.filteredRenovationAppointments.push(this.renovationAppointments[i]);
+        }
       }
     });
   }
+
+  getConsiliumAppointments(){
+    this.service.getConsiliumAppointments().subscribe(res => {
+      this.consiliumAppointments = res;
+      for(var i = 0; i < this.consiliumAppointments.length; i++){
+        if(!this.consiliumAppointments[i].isDone) {
+          if(this.consiliumAppointments[i].room.id == this.clickedRoom.id)
+          this.filteredConsiliumAppointments.push(this.consiliumAppointments[i]);
+        }
+      }
+    })
+  }
+
   getMedicalAppointments(){
     this.service.getMedicalAppointments().subscribe(res => {
       this.medicalAppointments = res;
       for(var i = 0; i < this.medicalAppointments.length; i++){
-        if(this.medicalAppointments[i].room.id == this.clickedRoom.id)
+        if(!this.medicalAppointments[i].isDone){
+          if(this.medicalAppointments[i].room.id == this.clickedRoom.id)
           this.filteredMedicalAppointemts.push(this.medicalAppointments[i]);
+        }
+        
       }
     })
   }
@@ -88,7 +108,6 @@ export class RoomScheduleComponent implements OnInit {
   }
 
   check(date:Date){
-    console.log(date);
     //console.log( new Date(Date.parse(this.dateAsYYYYMMDDHHNNSS(this.today))))
     if(new Date(date) > this.today){
       return true;
@@ -96,6 +115,7 @@ export class RoomScheduleComponent implements OnInit {
     return false;
   }
 
+ 
   dateAsYYYYMMDDHHNNSS(date:any): string {
     return date.getFullYear()
               + '-' + this.leftpad(date.getMonth() + 1)
