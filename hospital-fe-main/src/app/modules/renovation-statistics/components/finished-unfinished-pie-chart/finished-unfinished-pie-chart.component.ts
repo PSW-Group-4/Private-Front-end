@@ -83,8 +83,6 @@ export class FinishedUnfinishedPieChartComponent implements OnInit {
           
         
         const data = this.clearData;
-        console.log(this.importData)
-        console.log(data);
 
         const pie = pieChart(data);
 
