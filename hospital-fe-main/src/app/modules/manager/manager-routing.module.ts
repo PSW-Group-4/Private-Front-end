@@ -20,6 +20,7 @@ import { ManagerRequestReviewComponent } from '../blood-requests/manager-request
 import { CreateAppointmentStatisticsComponent } from './create-appointment-statistics/create-appointment-statistics.component';
 import { RenovationStatisticsComponent } from '../renovation-statistics/containers/renovation-statistics/renovation-statistics.component';
 import { ReportStatisticsComponent } from './report-statistics/report-statistics.component';
+import { TenderReportComponent } from './tender-report/tender-report.component';
 
 const routes: Routes = [
   { path: 'feedbacks', component: ManagerFeedbackComponent },
@@ -34,6 +35,7 @@ const routes: Routes = [
   { path: 'bloodBanks/add', component: BloodBankRegistrationComponent },
   { path: 'bloodBanks', component: BloodBanksComponent },
   { path: 'managerNews', component: ManagerNewsPreviewComponent },
+  { path: 'tender-report', component: TenderReportComponent },
   { path: 'viewRequests', component: ManagerRequestReviewComponent },
   {
     path: 'maps',

@@ -29,6 +29,7 @@ import { TimeStepsChartComponent } from './report-statistics/time-steps-chart/ti
 import { NumberStepsChartComponent } from './report-statistics/number-steps-chart/number-steps-chart.component';
 import { NumberEachStepChartComponent } from './report-statistics/number-each-step-chart/number-each-step-chart.component';
 import { ReportTableChartComponent } from './report-statistics/report-table-chart/report-table-chart.component';
+import { TenderReportComponent } from './tender-report/tender-report.component';
 
 
 @NgModule({
@@ -56,6 +57,7 @@ import { ReportTableChartComponent } from './report-statistics/report-table-char
     NumberStepsChartComponent,
     NumberEachStepChartComponent,
     ReportTableChartComponent,
+    TenderReportComponent,
   ],
   imports: [
     CommonModule,
