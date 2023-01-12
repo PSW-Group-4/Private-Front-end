@@ -1,0 +1,103 @@
+<div>
+    <br/>
+    <br/>
+    <br/>
+    <h1>Statistics for each finished session</h1>
+    <div>
+        <mat-table matSort #table [dataSource]="dataSource">
+    
+            <ng-container matColumnDef="startTime">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> Start Time </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.startTime}} </mat-cell>
+            </ng-container>
+        
+           
+            <ng-container matColumnDef="totalTime">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> Total Time Spent (in seconds) </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.totalTime}} </mat-cell>
+            </ng-container>
+    
+            <ng-container matColumnDef="timesGoneBack">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> Times Gone Back </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.timesGoneBack}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="avgTimeSpentOnChooseType">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> Avgerage Time Spent On Choose Type (in seconds)</mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.averageTime.avgTimeSpentOnChooseType}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="avgTimeSpentOnChooseOldRooms">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> Avgerage Time Spent On Old Rooms Selection (in seconds)</mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.averageTime.avgTimeSpentOnChooseOldRooms}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="avgTimeSpentOnCreateTimeframe">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> Avgerage Time Spent On Timeframe Creation (in seconds)</mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.averageTime.avgTimeSpentOnCreateTimeframe}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="avgTimeSpentOnCreateNewRooms">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> Avgerage Time Spent On New Rooms Creation (in seconds)</mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.averageTime.avgTimeSpentOnCreateNewRooms}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="avgTimeSpentOnSelectSpecificTime">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> Avgerage Time Spent On Choose Specific Time (in seconds)</mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.averageTime.avgTimeSpentOnSelectSpecificTime}} </mat-cell>
+            </ng-container>
+    
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+          </mat-table>
+        
+          <mat-paginator #paginator
+                         [pageSize]="10"
+                         [pageSizeOptions]="[5, 10, 20]"
+                         [showFirstLastButtons]="true">
+          </mat-paginator>
+    </div>
+    <br/>
+    <br/>
+    <h1>Completition statistics</h1>
+    <app-finished-unfinished-pie-chart [importData]="finishedUnfinishedData"></app-finished-unfinished-pie-chart>
+    <br/>
+    <br/>
+    <h1>Average Time Spent On Step</h1>
+    <app-average-time-for-steps-chart [importData]="avgTimeSpentOnStep"></app-average-time-for-steps-chart>
+    <br/>
+    <br/>
+    <h1>Average Number Of Going Back For Each Step</h1>
+    <app-average-number-of-backs [importData]="avgNumberOfBacks"></app-average-number-of-backs>
+    <br/>
+    <br/>
+    <h1>Number Of Session Left Off On</h1>
+    <app-number-where-session-were-left-off-chart [importData]="numberOfTimesLeftOff"></app-number-where-session-were-left-off-chart>
+    <br/>
+    <br/>
+    <h1>Average Time Spent On Step For A Timeframe</h1>
+    <form [formGroup]="thirdStepFormGroup">
+      <mat-form-field class="full-width" appearance="fill">
+        <input matInput formControlName="startControl" type="number">
+        <mat-hint>Start Hours min 0 - max 23</mat-hint>
+        <mat-error *ngIf="thirdStepFormGroup.controls['startControl'].hasError('required')">
+            Hours <strong>required</strong> and needs to be a <strong>number</strong> (can be 0)
+        </mat-error>
+      </mat-form-field>   
+      <mat-form-field class="full-width" appearance="fill">
+        <input matInput formControlName="endControl" type="number">
+        <mat-hint>End Hours min 0 - max 23</mat-hint>
+        <mat-error *ngIf="thirdStepFormGroup.controls['endControl'].hasError('required')">
+            Hours <strong>required</strong> and needs to be a <strong>number</strong> (can be 0)
+        </mat-error>
+      </mat-form-field>
+      <div>
+        <button id="ThirdStepButtonNext" mat-raised-button color="primary"  class="spacer-buttons" (click)="search()">Show statistics</button>
+      </div>   
+    </form>
+    
+
+    <app-average-time-for-steps-timeframe-chart [importData]="avgTimeSpentOnStepTimeframe"></app-average-time-for-steps-timeframe-chart>
+    <br/>
+    <br/>
+</div>

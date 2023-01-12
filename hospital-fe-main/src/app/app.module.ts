@@ -50,6 +50,7 @@ import { DoctorVacationModule } from './modules/doctor/doctor-vacation/doctor-va
 import { ViewAllTendersForReviewComponent } from './modules/tenders/view-all-tenders-for-review/view-all-tenders-for-review.component';
 import { TenderApplicationsForReviewComponent } from './modules/tender-applications/tender-applications-for-review/tender-applications-for-review/tender-applications-for-review.component';
 import { RoomScheduleComponent } from './modules/roomSchedule/room-schedule/room-schedule.component';
+import { RenovationStatisticsModule } from './modules/renovation-statistics/renovation-statistics.module';
 
 @NgModule({
   declarations: [
@@ -99,7 +100,8 @@ import { RoomScheduleComponent } from './modules/roomSchedule/room-schedule/room
     BloodRequestsModule,
     RoomRenovationModule,
     NgChartsModule,
-    MatTableModule
+    MatTableModule,
+    RenovationStatisticsModule
   ],
   providers: [
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
