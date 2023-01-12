@@ -5,6 +5,8 @@ import { Observable } from 'rxjs';
 import { AverageNumberOfTimesWentBackPerStep } from '../models/average-number-back-per-step.model';
 import { FinishedUnfinishedStatistic } from '../models/finished-unfinished-statistic.model';
 import { StatisticForTable } from '../models/statistics-for-table.model';
+import { AverageTimeSpentOnSteps } from '../models/average-time-for-steps.model';
+import { NumberOfSessionLeftOff } from '../models/number-session-left-off-step.model';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +29,18 @@ export class RenovationStatisticsService {
 
   getFinishedSessionStatisticsForTable(): Observable<StatisticForTable[]> {
     return this.http.get<StatisticForTable[]>(this.apiHost + this.API +"/statistics-for-table", {headers: this.headers});
+  }
+
+  getAverageTimeSpentOnStepsInSession(): Observable<AverageTimeSpentOnSteps> {
+    return this.http.get<AverageTimeSpentOnSteps>(this.apiHost + this.API +"/average-time-spent-on-steps", {headers: this.headers});
+  }
+
+  getAverageTimeSpentOnStepsInSessionForTimeframe(start : Date, end : Date): Observable<AverageTimeSpentOnSteps> {
+    return this.http.get<AverageTimeSpentOnSteps>(this.apiHost + this.API + "/average-time-spent-on-steps-timeframe/" + start.getHours() + "," + end.getHours(), {headers: this.headers});
+  }
+
+  getNumberOfSessionLeftOffOnEachStep(): Observable<NumberOfSessionLeftOff> {
+    return this.http.get<NumberOfSessionLeftOff>(this.apiHost + this.API +"/statistics-where-session-was-left-off", {headers: this.headers});
   }
 
 }
