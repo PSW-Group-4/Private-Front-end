@@ -1,5 +1,5 @@
 <h2 style="color:white">Kreiraj izveštaj</h2>
-<mat-stepper linear="false" #stepper>
+<mat-stepper linear="true" #stepper>
     <mat-step [completed]="selectedSymptoms.length > 0">
         <form style="display:flex; justify-content:center; align-items:center; flex-direction:column">
             <ng-template matStepLabel>Unesite simptome</ng-template>
@@ -26,7 +26,7 @@
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             </table>
             <div>
-                <button mat-raised-button matStepperNext class="mt-4" color="primary">Next</button>
+                <button mat-raised-button matStepperNext (click)="ChooseSymptom()" class="mt-4" color="primary">Next</button>
             </div>
         </form>
     </mat-step>
@@ -38,8 +38,8 @@
                 <textarea matInput name="reportTextArea" [(ngModel)]="reportText" required></textarea>
             </mat-form-field>
             <div>
-                <button mat-raised-button matStepperPrevious color="accent" class="mt-4 mx-2">Back</button>
-                <button mat-raised-button matStepperNext color="primary" class="mt-4 mx-2">Next</button>
+                <button mat-raised-button matStepperPrevious (click)="recordGoingBackToSelection(Selection.Symptom)" color="accent" class="mt-4 mx-2">Back</button>
+                <button mat-raised-button matStepperNext (click)="ChooseReportText()" color="primary" class="mt-4 mx-2">Next</button>
             </div>
         </form>
     </mat-step>
@@ -88,8 +88,8 @@
                 <tr mat-row *matRowDef="let row; columns: displayedPrescriptionColumns;"></tr>
             </table>
             <div>
-                <button mat-raised-button matStepperPrevious color="accent" class="mt-4 mx-2">Back</button>
-                <button mat-raised-button matStepperNext color="primary" class="mt-4 mx-2">Next</button>
+                <button mat-raised-button matStepperPrevious (click)="recordGoingBackToSelection(Selection.ReportText)" color="accent" class="mt-4 mx-2">Back</button>
+                <button mat-raised-button matStepperNext (click)="ChooseMedicine()" color="primary" class="mt-4 mx-2">Next</button>
             </div>
         </form>
       </mat-step>
@@ -124,7 +124,7 @@
             <mat-divider style="width:100%"></mat-divider>
             <h2 *ngIf="success" style="color:green">Uspešno kreiran izveštaj</h2>
             <div>
-                <button mat-raised-button matStepperPrevious color="accent" class="mt-4 mx-2">Back</button>
+                <button mat-raised-button matStepperPrevious (click)="recordGoingBackToSelection(Selection.Medicine)" color="accent" class="mt-4 mx-2">Back</button>
                 <button mat-raised-button [disabled]="!validateInput() || disableButton" (click)="createReport()" color="primary" class="mt-4 mx-2">Kreiraj izveštaj</button>
             </div>
         </form>
