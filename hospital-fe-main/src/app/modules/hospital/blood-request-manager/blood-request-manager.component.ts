@@ -9,6 +9,7 @@ import { map, startWith } from 'rxjs/operators';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BloodRequestManagerService } from '../services/blood-request-manager.service';
 import { BloodRequestManager } from '../model/blood-request-manager.model';
+import { BloodRequestService } from '../../blood-requests/manager-request-review/service/blood-request.service';
 
 
 export interface DialogData {
@@ -33,7 +34,7 @@ export class BloodRequestManagerComponent implements OnInit {
   deliveryDay: number = 0;
   Announcementform: FormGroup = new FormGroup('');
   minDate: Date = new Date();
-  constructor(private bloodRequestManagerService: BloodRequestManagerService, private router: Router, private modalService: NgbModal, public dialog: MatDialog, private _formBuilder: FormBuilder) { }
+  constructor(private bloodRequestService: BloodRequestService, private bloodRequestManagerService: BloodRequestManagerService, private router: Router, private modalService: NgbModal, public dialog: MatDialog, private _formBuilder: FormBuilder) { }
 
   range = new FormGroup({
     start: new FormControl<Date | null>(null),
@@ -70,6 +71,14 @@ export class BloodRequestManagerComponent implements OnInit {
       this.dataSource.data = this.managerRequests;
     }
     }
+  generateReport(start?:Date | null, end?:Date | null){
+    if (start != undefined && end != undefined){
+      this.bloodRequestService.generateReportForDateRange(start,end);
+      alert("report successfully created");
+    } else{
+      alert("You need to select begining and ending dates in order to generate a repory.");
+    }
+  }
 
 public addBloodSubscribe() {
   this.openDialog();

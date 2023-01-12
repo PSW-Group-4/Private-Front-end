@@ -22,6 +22,9 @@
       <button class="add-button" mat-mini-fab matTooltip="New subscription" matTooltipPosition="right" (click)="applyDateFilter(range.value.start, range.value.end)">
         <mat-icon> event_available </mat-icon>
     </button>
+    <button class="add-button" mat-mini-fab matTooltip="New subscription" matTooltipPosition="right" (click)="generateReport(range.value.start, range.value.end)">
+        generate a report
+    </button>
 
     <table mat-table [dataSource]="dataSource">
         <ng-container matColumnDef="Blood Bank">

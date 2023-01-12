@@ -22,4 +22,7 @@ export class BloodRequestService {
   getUnapproved(): Observable<BloodRequest[]>{
     return this.http.get<BloodRequest[]>(this.apiHost + 'api/BloodRequest/unapproved', {headers: this.headers});
   }
+  generateReportForDateRange(begining : Date, end : Date){
+    return this.http.put<any>(this.apiHost + 'api/BloodRequest/report/'+begining+'/'+end, {headers: this.headers})
+  }
 }

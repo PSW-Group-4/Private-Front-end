@@ -19,4 +19,5 @@ export class BloodRequestManagerService {
   addBloodRequestManager(bloodRequestManager : any): Observable<BloodRequestManager>{
     return this.http.post<BloodRequestManager>(this.apiHost + 'api/ManagerRequest', bloodRequestManager, {headers: this.headers});
   }
+  
 }
