@@ -22,6 +22,7 @@ import { TimeSpentOnSessionPerAgeGroupComponent } from './create-appointment-sta
 import { StepsOnSessionPerAgeGroupComponent } from './create-appointment-statistics/steps-on-session-per-age-group/steps-on-session-per-age-group.component';
 import { ScheduleSuccessRatePerAgeGroupComponent } from './create-appointment-statistics/schedule-success-rate-per-age-group/schedule-success-rate-per-age-group.component';
 import { ChosenDoctorCountPerDoctorComponent } from './create-appointment-statistics/chosen-doctor-count-per-doctor/chosen-doctor-count-per-doctor.component';
+import { AppointmentStatisticsComponent } from './doctor-statistics/appointment-statistics/appointment-statistics.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { ChosenDoctorCountPerDoctorComponent } from './create-appointment-statis
     StepsOnSessionPerAgeGroupComponent,
     ScheduleSuccessRatePerAgeGroupComponent,
     ChosenDoctorCountPerDoctorComponent,
+    AppointmentStatisticsComponent,
   ],
   imports: [
     CommonModule,

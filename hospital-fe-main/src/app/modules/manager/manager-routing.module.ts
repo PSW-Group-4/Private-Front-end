@@ -1,3 +1,4 @@
+import { AppointmentStatisticsComponent } from './doctor-statistics/appointment-statistics/appointment-statistics.component';
 import { VacationStatisticsComponent } from './manager-vacations/vacation-statistics/vacation-statistics/vacation-statistics.component';
 import { ManagerVacationsComponent } from './manager-vacations/manager-vacations.component';
 import { NgModule } from '@angular/core';
@@ -53,6 +54,7 @@ const routes: Routes = [
   { path: 'blood-banks', component: BloodBanksComponent },
   { path: 'blood-subscriptions', component: BloodBanksSubComponent },
   { path: 'blood-request-manager', component: BloodRequestManagerComponent },
+  { path: 'appointmentStatistics', component: AppointmentStatisticsComponent}
 ];
 
 @NgModule({
@@ -68,4 +70,5 @@ export const routingComponents = [
   MapsMainContainerComponent,
   ManagerVacationsComponent,
   VacationStatisticsComponent,
+  AppointmentStatisticsComponent
 ];

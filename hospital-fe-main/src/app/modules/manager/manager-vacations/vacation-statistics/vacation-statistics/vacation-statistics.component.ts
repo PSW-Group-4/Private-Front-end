@@ -22,8 +22,6 @@ export class VacationStatisticsComponent implements OnInit {
   chart5_data: any = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   public chart: any | undefined;
   @Input() chartData: any;
-  private chartValues: string[] = [];
-  private chartLabels: string[] = [];
 
   constructor(private doctorService: DoctorVacationService, private doctorAppointmentService: DoctorAppointmentService) { }
   

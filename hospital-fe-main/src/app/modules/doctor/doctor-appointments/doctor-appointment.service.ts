@@ -29,6 +29,18 @@ export class DoctorAppointmentService {
     return this.http.get<Appointment[]>(this.apiHost + 'api/DoctorAppointment/Current/' + id, {headers: this.headers});
   }
 
+  getDoctorsAppointments(id: String): Observable<Appointment[]> {
+    return this.http.get<Appointment[]>(this.apiHost + 'api/DoctorAppointment/' + id, {headers: this.headers});
+  }
+
+  getYearlyDoctorAppointments(id: String, selectedYear: number): Observable <number[]> {
+    return this.http.get<number[]>(this.apiHost + 'api/DoctorAppointment/Yearly/' + id + '/' + selectedYear, {headers: this.headers});
+  }
+
+  getMonthlyDoctorAppointments(id: String, selectedYear: number, selectedMonth: number): Observable <number[]> {
+    return this.http.get<number[]>(this.apiHost + 'api/DoctorAppointment/Monthly/' + id + '/' + selectedYear + '/' + selectedMonth, {headers: this.headers});
+  }
+
   deleteAppointmentEndSendNotification(id: any): Observable<any> {
     return this.http.delete<any>(this.apiHost + 'api/DoctorAppointment/Email/' + id, {headers: this.headers});
   }
