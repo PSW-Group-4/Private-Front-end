@@ -31,6 +31,7 @@ import { NumberEachStepChartComponent } from './report-statistics/number-each-st
 import { ReportTableChartComponent } from './report-statistics/report-table-chart/report-table-chart.component';
 import { TenderReportComponent } from './tender-report/tender-report.component';
 
+import { AppointmentStatisticsComponent } from './doctor-statistics/appointment-statistics/appointment-statistics.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { TenderReportComponent } from './tender-report/tender-report.component';
     NumberEachStepChartComponent,
     ReportTableChartComponent,
     TenderReportComponent,
+    AppointmentStatisticsComponent,
   ],
   imports: [
     CommonModule,
