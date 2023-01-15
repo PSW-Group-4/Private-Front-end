@@ -1,0 +1,28 @@
+<div>
+    <mat-form-field appearance="fill" class="select" id="doctorSelect">
+        <mat-label>Select doctor</mat-label>
+        <mat-select [(ngModel)]="selectedDoctor" name="doctor" (selectionChange)="doctorSelect(selectedDoctor)">
+            <mat-option>None</mat-option>
+          <mat-option *ngFor="let d of doctors;" [value]="d">{{d.name + " " + d.surname}};</mat-option> 
+        </mat-select>
+      </mat-form-field>  
+
+      <mat-form-field appearance="fill" *ngIf="isDoctorSelected == true" class="select">
+        <mat-label>Select year</mat-label>
+        <mat-select [(ngModel)]="selectedYear" name="year" (selectionChange)="yearSelect(selectedDoctor, selectedYear)">
+            <mat-option *ngFor="let y of years;" [value]="y">{{y}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" *ngIf="isYearSelected == true && isDoctorSelected == true" class="select">
+        <mat-label>Select month</mat-label>
+        <mat-select [(ngModel)]="selectedMonth" name="month" (selectionChange)="monthSelect(selectedDoctor, selectedYear, selectedMonth)">
+            <mat-option *ngFor="let m of months;" [value]="m">{{m}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
+
+
+<div style="display: block;" class="appointment-chart">
+    <canvas baseChart width="350" height="450" id="YearChart">{{ chart }}</canvas>
+</div>
