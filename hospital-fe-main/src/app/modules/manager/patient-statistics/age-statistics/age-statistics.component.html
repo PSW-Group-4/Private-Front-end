@@ -5,15 +5,9 @@
       <div>
         <div>
           <label for="doctor">Choose a doctor&nbsp;&nbsp;&nbsp;</label>
-          <select name="doctor" id="doctor">
-            <option value="noSelected" (click)="changeStatistics('all')">
-              all
-            </option>
-            <option
-              *ngFor="let item of doctors"
-              value="{{ item.id }}"
-              (click)="changeStatistics(item.id)"
-            >
+          <select name="doctor" id="doctor" (change)="onChange($event.target)">
+            <option value="all">all</option>
+            <option *ngFor="let item of doctors" value="{{ item.id }}">
               {{ item.name + " " + item.surname }}
             </option>
           </select>
