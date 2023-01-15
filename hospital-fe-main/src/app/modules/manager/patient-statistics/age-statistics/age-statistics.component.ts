@@ -33,8 +33,18 @@ export class AgeStatisticsComponent implements OnInit {
   }
 
   changeStatistics(input: string) {
+    console.log(input);
     this.service.getNumOfPatientsByAgeGroupByDoctor(input).subscribe((res) => {
       this.numOfPatientsByAgreGroup = res;
     });
+  }
+
+  onChange(event: any) {
+    console.log(event.value);
+    this.service
+      .getNumOfPatientsByAgeGroupByDoctor(event.value)
+      .subscribe((res) => {
+        this.numOfPatientsByAgreGroup = res;
+      });
   }
 }
