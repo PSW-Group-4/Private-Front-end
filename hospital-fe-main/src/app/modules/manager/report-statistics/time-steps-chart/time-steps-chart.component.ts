@@ -42,7 +42,7 @@ export class TimeStepsChartComponent implements OnInit {
       type: 'bar',
 
       data: {
-        labels: ['Small', 'SmallNormal', 'BigNormal', 'Big'],
+        labels: ['<<15', '15 - 30', '30 - 60', '60>>'],
         datasets: [
           {
             label: 'Average time',
