@@ -48,7 +48,11 @@ export class AppointmentStatisticsComponent implements OnInit {
       this.appointments = res;
       console.log(this.appointments);
       this.isDoctorSelected = true;
-      //this.se
+
+      if (selectedDoctor.name == "None"){
+        this.isDoctorSelected = false;
+      }
+
     })
   } 
 
