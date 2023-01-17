@@ -18,7 +18,7 @@ export class BloodConsumptionRecordService {
     return this.http.get<BloodConsumptionRecord[]>(this.apiHost + 'api/BloodConsumptionRecord', {headers: this.headers});
   }
 
-  getBloodConsumptionRecord(id: number): Observable<BloodConsumptionRecord> {
+  getBloodConsumptionRecord(id: any): Observable<BloodConsumptionRecord> {
     return this.http.get<BloodConsumptionRecord>(this.apiHost + 'api/BloodConsumptionRecord/' + id, {headers: this.headers});
   }
 
