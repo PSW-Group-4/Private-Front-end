@@ -6,7 +6,7 @@
         <p [innerText]="admission.arrivalDate | date : 'dd.MM.yyyy'"></p>
 
         <b><label>Admission reason :</label></b>
-        <p [innerText]="admission.reasonText"></p>
+        <p [innerText]="admission.reasonText.text"></p>
     </div>
     <div class="container mt-5">
         <b><label>Discharge date :</label></b>
