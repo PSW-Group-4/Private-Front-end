@@ -48,7 +48,7 @@ export class AdmissionViewComponent implements OnInit {
   public openTreatmentDialog(admId:number): void {
     const dialogRef = this.dialog.open(UpdateTreatmentDialogComponent, {
       data: {admissionId: admId},
-      height: '500px',
+      height: '570px',
       width: '400px',
     })
   }
