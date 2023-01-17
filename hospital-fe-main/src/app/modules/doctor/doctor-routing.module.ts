@@ -22,7 +22,9 @@ const routes: Routes = [
   { path: 'admissionHistory', component: AdmissionHistoryComponent},
   { path: 'updateTreatment', component: UpdateTreatmentDialogComponent},
   { path: 'vacations', component: DoctorVacationsComponent},
-  { path: 'consiliums', component: DoctorConsiliumsComponent}
+  { path: 'consiliums', component: DoctorConsiliumsComponent},
+  { path: '', redirectTo: 'appointments', pathMatch: 'full' },
+  { path: '**', redirectTo: 'appointments', pathMatch: 'full' },
 ];
 
 @NgModule({
