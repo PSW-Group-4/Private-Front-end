@@ -60,7 +60,7 @@ export class UpdateTreatmentDialogComponent implements OnInit {
         this.getMedicine();
         this.getBlood();
         this.bloodConsumptionRecordService.getBloodConsumptionRecord(res.bloodConsumptionRecordId).subscribe(res => {
-          this.currentBlood = res.amount;
+          this.currentBlood = res.amount.value;
           console.log(res.amount);
         })
       })
@@ -131,7 +131,7 @@ export class UpdateTreatmentDialogComponent implements OnInit {
 
   createBloodObject():void{
     this.bloodRequest.reason = this.reason;
-    this.bloodRequest.amount = this.amount;
+    this.bloodRequest.amount.value = this.amount;
     this.bloodRequest.dateTime = new Date().toDateString();    
     this.doctorService.getLoggedDoctor().subscribe(res => { this.bloodRequest.doctorId = res.id; this.getBloodType() });
     ;
