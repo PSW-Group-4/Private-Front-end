@@ -1,15 +1,15 @@
-<div>
-    <mat-form-field appearance="fill">
-        <mat-label>Id</mat-label>
-        <input matInput [(ngModel)]="building.building.id" disabled>
-    </mat-form-field><br>
+<div style="background-color: #192830;">
+    <mat-form-field appearance="fill" style="background-color: #2e4450; border-color: #89dee2">
+        <mat-label style="color: #89dee2">Id</mat-label>
+        <input style="color: #89dee2" matInput [(ngModel)]="building.building.id" disabled>
+    </mat-form-field><br><br>
 
-    <mat-form-field appearance="fill">
-        <mat-label>Name</mat-label>
-        <input matInput [(ngModel)]="building.building.name">
-    </mat-form-field><br>
+    <mat-form-field appearance="fill" style="background-color: #2e4450;">
+        <mat-label style="color: #89dee2">Name</mat-label>
+        <input style="color: #89dee2" matInput [(ngModel)]="building.building.name">
+    </mat-form-field><br><br>
 
-    <button mat-stroked-button (click)="updateBuilding()" [mat-dialog-close]="">
+    <button mat-stroked-button style="color: #192830; background-color:#89dee2 ;" (click)="updateBuilding()" [mat-dialog-close]="">
         Submit
     </button>
 </div>

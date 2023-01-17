@@ -52,22 +52,22 @@ export class BuildingsComponent implements OnInit {
         .on('click', d => this.FooTemp(d.srcElement.__data__));
  
         buildings.append('rect')
-        .attr("fill", '#04AA6D')
+        .attr("fill", '#2e4450')
         .attr("x", d => d.mapLocation.coordinateX)
         .attr("y", d => d.mapLocation.coordinateY)
         .attr("width", d => d.mapLocation.width)
         .attr("height", d => d.mapLocation.height)
-        .attr("stroke", "black")
+        .attr("stroke", "#89dee2")
         .attr("id", d=> d.id)
         .attr("name", d=> d.building.name)
         
         buildings.append('text')
-        .style("fill", "black")
+        .style("fill", "#e3e2d4")
         .text(function(d) {
           return d.building.name;
         })
-        .attr('x', d => d.mapLocation.coordinateX )
-        .attr('y', d=> d.mapLocation.coordinateY + d.mapLocation.height+10)
+        .attr('x', d => d.mapLocation.coordinateX + d.mapLocation.width/2 - 40 )
+        .attr('y', d=> d.mapLocation.coordinateY + d.mapLocation.height/2)
 
   })
 
@@ -89,9 +89,9 @@ export class BuildingsComponent implements OnInit {
     };
     dialogConf.height = "400px";
     dialogConf.width = "600px";
+    dialogConf.panelClass  = 'custom-modalbox'
 
     const dialogRef = this.dialog.open(EditBuildingComponent , dialogConf);
-    
 
     dialogRef.afterClosed().subscribe(result => {
     });

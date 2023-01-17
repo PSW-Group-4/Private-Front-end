@@ -3,3 +3,8 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   text-align: center;
 }
+
+.custom-modalbox >  mat-dialog-container {
+  background-color: #192830;
+  border: 1px solid #89dee2;
+}

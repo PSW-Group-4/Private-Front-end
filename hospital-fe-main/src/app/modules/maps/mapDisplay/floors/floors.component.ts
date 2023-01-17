@@ -69,20 +69,20 @@ export class FloorsComponent implements OnInit {
       .on('click', d => this.FooTemp(d.srcElement.__data__));
 
       floors.append('rect')
-      .attr("fill", '#61B1DC')
+      .attr("fill", '#2e4450')
       .attr("x", d => d.mapLocation.coordinateX+100)
       .attr("y", d => d.mapLocation.coordinateY+100)
       .attr("width", d => d.mapLocation.width)
       .attr("height", d => d.mapLocation.height)
-      .attr("stroke", "black")
+      .attr("stroke", "#89dee2")
       .attr("id", d=> d.id)
       
       floors.append('text')
-      .style("fill", "black")
+      .style("fill", "#e3e2d4")
       .text(function(d) {
         return d.floor.name;
       })
-      .attr('x', d => d.mapLocation.coordinateX+100 )
+      .attr('x', d => d.mapLocation.coordinateX+100 + d.mapLocation.width/2 - 50 )
       .attr('y', d=> d.mapLocation.coordinateY+100 + d.mapLocation.height/2)
     })
   }
@@ -100,6 +100,7 @@ export class FloorsComponent implements OnInit {
     };
     dialogConf.height = "400px";
     dialogConf.width = "600px";
+    dialogConf.panelClass = 'custom-modalbox'
 
     const dialogRef = this.dialog.open(EditFloorComponent , dialogConf);
     

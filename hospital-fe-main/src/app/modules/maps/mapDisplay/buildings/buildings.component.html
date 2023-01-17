@@ -1,19 +1,19 @@
 <div class = "row">
 
-    <div class="col" id="buildingMap">   
+    <div class="col" id="buildingMap" style="background-color: #192830; margin-left: 5%; margin-top:5%">   
     </div>
     <div class="col">
             <div class="row">
                 <div class="col position">
-                    <mat-card  *ngIf="showBuildingDetailComponent">
-                        <mat-card-title>
+                    <mat-card  *ngIf="showBuildingDetailComponent" style="background-color: #192830; border: 1px solid black;">
+                        <mat-card-title style="color: #89dee2">
                             Building informations:
                         </mat-card-title>
-                        <mat-card-content>
+                        <mat-card-content style="color: #e3e2d4">
                         <p>Name: {{temp.building.name}}</p>
                         <p>Number of floors: {{temp.building.floorList.length}}</p>
                         </mat-card-content>
-                        <button class="add-button" mat-mini-fab matTooltip="Edit building" (click)="openEditDialog()">Edit</button>
+                        <button class="add-button" style="color: #192830; background-color:#89dee2 ;" mat-mini-fab matTooltip="Edit building" (click)="openEditDialog()">Edit</button>
                     </mat-card>   
                 </div>
             </div>

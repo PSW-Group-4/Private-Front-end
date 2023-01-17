@@ -1,10 +1,10 @@
-<mat-card>
+<mat-card style="background-color: #192830">
     <mat-card-content>
-        <mat-tab-group mat-align-tabs="center">
-            <mat-tab  label="Room search">
-                <mat-form-field appearance="fill" style="width: 100%;">
-                    <mat-label>Room name</mat-label>
-                    <input type="tel" matInput placeholder="Search" name= "searchRoom" [(ngModel)]="searchText">
+        <mat-tab-group mat-align-tabs="center" style="background-color: #2e4450">
+            <mat-tab style="color:red !important"   label="Room search">
+                <mat-form-field appearance="fill" style="width: 100%; background-color: #2e4450;">
+                    <mat-label style="color: #89dee2">Room name</mat-label>
+                    <input type="tel" style="color: #89dee2" matInput placeholder="Search" name= "searchRoom" [(ngModel)]="searchText">
                 </mat-form-field>
                 <table class="styled-table" id="searchNameTable">
                     <thead>

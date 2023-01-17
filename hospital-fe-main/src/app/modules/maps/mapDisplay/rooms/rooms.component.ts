@@ -64,29 +64,29 @@ export class RoomsComponent implements OnInit {
       .on('click', d => this.FooTemp(d.srcElement.__data__));
 
       rooms.append('rect')
-      .attr("fill", '#999999')
+      .attr("fill", '#2e4450')
       .attr("x", d => d.mapLocation.coordinateX+100)
       .attr("y", d => d.mapLocation.coordinateY+100)
       .attr("width", d => d.mapLocation.width)
       .attr("height", d => d.mapLocation.height)
-      .attr("stroke", "black")
+      .attr("stroke", "#89dee2")
       .attr("id", d=> "rect"+d.id)
 
       d3.selectAll("rect")
-        .attr("stroke","black")
+        .attr("stroke","#89dee2")
         .attr('stroke-width', '1')
 
       d3.select("#rect"+this.someId)
-        .attr("stroke","red")
+        .attr("stroke","#89dee2")
         .attr('stroke-width', '3')
       
       rooms.append('text')
-      .style("fill", "black")
+      .style("fill", "#e3e2d4")
       .text(function(d) {
         return d.room.name;
       })
-      .attr('x', d => d.mapLocation.coordinateX+100 )
-      .attr('y', d=> d.mapLocation.coordinateY+100 + d.mapLocation.height/2)      
+      .attr('x', d => d.mapLocation.coordinateX+100 + d.mapLocation.width/2 - 33)
+      .attr('y', d=> d.mapLocation.coordinateY+100 + d.mapLocation.height/2 + 5)      
       } )
 
   }
@@ -121,7 +121,8 @@ export class RoomsComponent implements OnInit {
       room: this.temp,
     };
     dialogConf.height = "400px";
-    dialogConf.width = "600px";
+    dialogConf.width = "700px";
+    dialogConf.panelClass = 'custom-modalbox'
 
     const dialogRef = this.dialog.open(EditItemComponent , dialogConf);
     
@@ -138,6 +139,7 @@ export class RoomsComponent implements OnInit {
     };
     dialogConf.width = "700px";
     dialogConf.height = "800px";
+    dialogConf.panelClass = 'custom-modalbox'
     this.dialog.open(EquiptmentDialogComponent , dialogConf);
     
   }
@@ -160,6 +162,7 @@ export class RoomsComponent implements OnInit {
     };
     dialogConf.width = "700px";
     dialogConf.height = "800px";
+    dialogConf.panelClass = 'custom-modalbox'
     this.dialog.open(RoomScheduleComponent , dialogConf);
     
   }

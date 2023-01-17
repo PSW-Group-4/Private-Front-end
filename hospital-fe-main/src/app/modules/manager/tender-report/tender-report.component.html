@@ -1,52 +1,55 @@
-<br><br>
-<mat-card style="width: 40%; margin-left: 30%;">
-    <mat-card-content>
-        <mat-tab-group mat-align-tabs="center">
-            <mat-tab  label="Price by Month">
-                    <div>
-                        <br>
-                        <mat-form-field appearance="fill" >
-                            <mat-label>Select Month</mat-label>
-                            <mat-select [(ngModel)]="selectedMonth" name="Month">
-                              <mat-option *ngFor="let d of months;" [value]="d">{{d}}</mat-option>
-                            </mat-select>
-                          </mat-form-field>  
+<div>
+  <br><br>
+  <mat-card style="width: 40%; margin-left: 30%;background-color: #192830 ">
+      <mat-card-content>
+          <mat-tab-group mat-align-tabs="center">
+              <mat-tab  label="Price by Month">
+                      <div>
                           <br>
-                          <mat-form-field appearance="fill">
-                            <mat-label>Select Year</mat-label>
-                            <mat-select [(ngModel)]="selectedYear" name="Year">
-                              <mat-option *ngFor="let d of years;" [value]="d">{{d}}</mat-option>
-                            </mat-select>
-                          </mat-form-field>
-                          <br>
-                          <button mat-stroked-button (click)="getPrice()" style="align-items: center;">
-                            Get Price
-                          </button><br><br>
-                          <mat-form-field appearance="fill">
-                            <mat-label>Result</mat-label>
-                            <input name="name" matInput [(ngModel)]="result">
-                          </mat-form-field><br>
-                    </div>
-            </mat-tab>
-            <mat-tab  label="Blood Usage by Blood Type">
-                <div>
-                    <br>
-                    <mat-form-field appearance="fill" >
-                        <mat-label>Select Blood Type</mat-label>
-                        <mat-select [(ngModel)]="selectedBloodType" name="Blood Type">
-                          <mat-option *ngFor="let d of bloodTypes;" [value]="d">{{d}}</mat-option>
-                        </mat-select>
-                      </mat-form-field>  
+                          <mat-form-field appearance="fill" >
+                              <mat-label>Select Month</mat-label>
+                              <mat-select [(ngModel)]="selectedMonth" name="Month">
+                                <mat-option *ngFor="let d of months;" [value]="d">{{d}}</mat-option>
+                              </mat-select>
+                            </mat-form-field>  
+                            <br>
+                            <mat-form-field appearance="fill">
+                              <mat-label>Select Year</mat-label>
+                              <mat-select [(ngModel)]="selectedYear" name="Year">
+                                <mat-option *ngFor="let d of years;" [value]="d">{{d}}</mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                            <br>
+                            <button mat-stroked-button (click)="getPrice()" style="align-items: center;">
+                              Get Price
+                            </button><br><br>
+                            <mat-form-field appearance="fill">
+                              <mat-label>Result</mat-label>
+                              <input name="name" matInput [(ngModel)]="result">
+                            </mat-form-field><br>
+                      </div>
+              </mat-tab>
+              <mat-tab  label="Blood Usage by Blood Type">
+                  <div>
                       <br>
-                      <button mat-stroked-button (click)="getAmountOfBlood()" style="align-items: center;">
-                        Get Amount Of Blood
-                      </button><br><br>
-                      <mat-form-field appearance="fill">
-                        <mat-label>Result</mat-label>
-                        <input name="name" matInput [(ngModel)]="resultBloodString">
-                      </mat-form-field><br>
-                </div>
-            </mat-tab>
-        </mat-tab-group>
-    </mat-card-content>
-</mat-card>
+                      <mat-form-field appearance="fill" >
+                          <mat-label>Select Blood Type</mat-label>
+                          <mat-select [(ngModel)]="selectedBloodType" name="Blood Type">
+                            <mat-option *ngFor="let d of bloodTypes;" [value]="d">{{d}}</mat-option>
+                          </mat-select>
+                        </mat-form-field>  
+                        <br>
+                        <button mat-stroked-button (click)="getAmountOfBlood()" style="align-items: center;">
+                          Get Amount Of Blood
+                        </button><br><br>
+                        <mat-form-field appearance="fill">
+                          <mat-label>Result</mat-label>
+                          <input name="name" matInput [(ngModel)]="resultBloodString">
+                        </mat-form-field><br>
+                  </div>
+              </mat-tab>
+          </mat-tab-group>
+      </mat-card-content>
+  </mat-card>
+  
+</div>

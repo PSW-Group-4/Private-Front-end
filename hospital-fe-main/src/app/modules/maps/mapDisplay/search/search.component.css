@@ -11,8 +11,8 @@
 }
 
 .styled-table th {
-    background-color: #3624aa;
-    color: #ffffff;
+    background-color: #89dee2;
+    color: #192830;
     text-align: center;
 }
 
@@ -22,18 +22,19 @@
 }
 
 .styled-table tbody tr {
-    border-bottom: 1px solid #dddddd;
+    border-bottom: 1px solid #2e4450;
+    background-color: #e3e2d4;
     overflow: scroll;
     height: 100%;
 }
 
-.styled-table tbody tr:nth-of-type(even) {
+/* .styled-table tbody tr:nth-of-type(even) {
     background-color: #f3f3f3;
 }
 
 .styled-table tbody tr:last-of-type {
     border-bottom: 2px solid #3624aa;
-}
+} */
 
 .styled-table tbody tr.active-row {
     font-weight: bold;

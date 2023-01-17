@@ -1,18 +1,18 @@
 <div>
-    <mat-tab-group>
-        <mat-tab label="Equipment relocations" id="EquipmentRelocation"> 
+    <mat-tab-group style="background-color: #e3e2d4;">
+        <mat-tab label="Equipment relocations" > 
             <table style="width:100%" id = "equipmentRelocationTable">
-                <thead>
+                <thead style="background-color: #89dee2">
                     <th>Start time</th>
                     <th>End time</th>
                     <th>Cancel</th>
                 </thead>
                 <tbody>
                     <tr *ngFor="let app of filteredMoveEquipmentAppointemts " >
-                        <td>{{ app.dateRange.startTime }}</td>
-                        <td>{{ app.dateRange.endTime }}</td>
-                        <td *ngIf="check(app.dateRange.startTime)"><button class="equipment-button" id="idCancelApp" mat-raised-button matTooltip="Show equipment" color="warn" id ="button" (click)="cancelMoveEquipmentAppointment(app.id)">Cancel</button></td>
-                        <td *ngIf="!check(app.dateRange.startTime)">&nbsp;</td>
+                        <td style="color: #e3e2d4">{{ app.dateRange.startTime }}</td>
+                        <td style="color: #e3e2d4">{{ app.dateRange.endTime }}</td>
+                        <td style="color: #e3e2d4" *ngIf="check(app.dateRange.startTime)"><button class="equipment-button" id="idCancelApp" mat-raised-button matTooltip="Show equipment" color="warn" id ="button" (click)="cancelMoveEquipmentAppointment(app.id)">Cancel</button></td>
+                        <td style="color: #e3e2d4" *ngIf="!check(app.dateRange.startTime)">&nbsp;</td>
                     </tr>
                 </tbody>
             </table>
@@ -20,45 +20,45 @@
         </mat-tab>
         <mat-tab label="Renovations" style="width:100%"> 
             <table style="width:100%">
-                <thead>
+                <thead style="background-color: #89dee2">
                     <th>Start time</th>
                     <th>End time</th>
                     <th>Cancel</th>
                 </thead>
                 <tbody>
                     <tr *ngFor="let app of filteredRenovationAppointments " >
-                        <td>{{ app.dateRange.startTime }}</td>
-                        <td>{{ app.dateRange.endTime }}</td>
-                        <td *ngIf="check(app.dateRange.startTime)"><button class="equipment-button" id="idCancelApp" mat-raised-button matTooltip="Show equipment" color="warn" id ="button" (click)="cancelRenovationAppointment(app.id)">Cancel</button></td>
-                        <td *ngIf="!check(app.dateRange.startTime)">&nbsp;</td>
+                        <td style="color: #e3e2d4">{{ app.dateRange.startTime }}</td>
+                        <td style="color: #e3e2d4">{{ app.dateRange.endTime }}</td>
+                        <td style="color: #e3e2d4" *ngIf="check(app.dateRange.startTime)"><button class="equipment-button" id="idCancelApp" mat-raised-button matTooltip="Show equipment" color="warn" id ="button" (click)="cancelRenovationAppointment(app.id)">Cancel</button></td>
+                        <td style="color: #e3e2d4" *ngIf="!check(app.dateRange.startTime)">&nbsp;</td>
                     </tr>
                 </tbody>
             </table>
          </mat-tab>
         <mat-tab label="Medical appointments"> 
             <table style="width:100%">
-                <thead>
+                <thead style="background-color: #89dee2">
                     <th>Start time</th>
                     <th>End time</th>
                 </thead>
                 <tbody>
                     <tr *ngFor="let app of filteredMedicalAppointemts ">
-                        <td>{{ app.dateRange.startTime }}</td>
-                        <td>{{ app.dateRange.endTime }}</td>
+                        <td style="color: #e3e2d4">{{ app.dateRange.startTime }}</td>
+                        <td style="color: #e3e2d4">{{ app.dateRange.endTime }}</td>
                     </tr>
                 </tbody>
             </table>
         </mat-tab>
         <mat-tab label="Consiliums"> 
             <table style="width:100%">
-                <thead>
+                <thead style="background-color: #89dee2">
                     <th>Start time</th>
                     <th>End time</th>
                 </thead>
                 <tbody>
                     <tr *ngFor="let app of filteredConsiliumAppointments ">
-                        <td>{{ app.dateRange.startTime }}</td>
-                        <td>{{ app.dateRange.endTime }}</td>
+                        <td style="color: #e3e2d4">{{ app.dateRange.startTime }}</td>
+                        <td style="color: #e3e2d4">{{ app.dateRange.endTime }}</td>
                     </tr>
                 </tbody>
             </table>
