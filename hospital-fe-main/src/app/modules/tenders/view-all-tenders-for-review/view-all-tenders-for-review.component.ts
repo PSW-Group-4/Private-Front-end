@@ -31,8 +31,8 @@ export class ViewAllTendersForReviewComponent implements OnInit {
       this.dataSource.data = this.tenders;
       })
   }
-      
-  
+
+
   viewApplications(tender : TenderForReview): void {
     this.tenderApplicationService.GetByTender(tender.id).subscribe(res =>{
       this.tenderApplications = res;
@@ -43,6 +43,9 @@ export class ViewAllTendersForReviewComponent implements OnInit {
     this.tenderApplicationService.acceptOffer(tenderApplication).subscribe(res =>{
       alert("Tender application winner was successfully selected");
       this.showTenders = 1;
+      this.tenderApplicationService.notify(tenderApplication).subscribe(res => {
+        alert('Emails sent.');
+      })
     })
   }
   cancel() : void{

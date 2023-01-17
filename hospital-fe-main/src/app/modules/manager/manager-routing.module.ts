@@ -22,6 +22,9 @@ import { CreateAppointmentStatisticsComponent } from './create-appointment-stati
 import { RenovationStatisticsComponent } from '../renovation-statistics/containers/renovation-statistics/renovation-statistics.component';
 import { ReportStatisticsComponent } from './report-statistics/report-statistics.component';
 import { TenderReportComponent } from './tender-report/tender-report.component';
+import {
+  ViewAllTendersForReviewComponent
+} from "../tenders/view-all-tenders-for-review/view-all-tenders-for-review.component";
 
 const routes: Routes = [
   { path: 'feedbacks', component: ManagerFeedbackComponent },
@@ -38,6 +41,7 @@ const routes: Routes = [
   { path: 'managerNews', component: ManagerNewsPreviewComponent },
   { path: 'tender-report', component: TenderReportComponent },
   { path: 'viewRequests', component: ManagerRequestReviewComponent },
+  { path:'tenders/applications', component:ViewAllTendersForReviewComponent},
   {
     path: 'maps',
     component: MapsMainContainerComponent,
@@ -61,7 +65,7 @@ const routes: Routes = [
   { path: 'blood-request-manager', component: BloodRequestManagerComponent },
   { path: 'renovation-session-statistics', component: RenovationStatisticsComponent },
   { path: 'reportStatistics', component: ReportStatisticsComponent},
-  
+
   { path: 'appointmentStatistics', component: AppointmentStatisticsComponent}
 ];
 
