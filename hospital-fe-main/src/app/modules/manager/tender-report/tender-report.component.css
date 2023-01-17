@@ -1,0 +1,7 @@
+::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label-active {
+    color:rgb(227, 226, 212);
+}
+    
+::ng-deep .mat-tab-list .mat-tab-labels {
+    color:rgb(227, 226, 212);
+}

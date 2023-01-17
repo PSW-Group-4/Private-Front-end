@@ -1,26 +1,60 @@
-<ul>
-  <li><a routerLink="vacationRequests">Vacation Requests</a></li>
+<!-- <ul>
   <li><a routerLink="feedbacks">Feedbacks</a></li>
-  <li><a routerLink="patientStatistics">Patient Statistics</a></li>
-  <li><a routerLink="maps" id="maps">Maps</a></li>
-  <li><a routerLink="move-equipment">Move equipment</a></li>
   <li><a routerLink="report-configs">Report Configurations</a></li>
-  <li><a routerLink="room-renovation">Room renovation</a></li>
   <li><a routerLink="user-blocking">User Blocking</a></li>
   <li><a routerLink="blood-subscriptions">Blood subscriptions</a></li>
-  <li><a routerLink="blood-request-manager">Blood requests</a></li>
-  <li><a routerLink="tenders/create">Create tender</a></li>
-  <li><a routerLink="bloodBanks">Blood banks</a></li>
-  <li><a routerLink="bloodBanks/add">Add blood bank</a></li>
-  <li><a routerLink="managerNews">Blood bank news</a></li>
-  <li><a routerLink="managerStatistics">Vacation statistics</a></li>
-  <li><a routerLink="renovation-session-statistics">Renovation session statistics</a></li>
-  <li><a routerLink="create-appointment-statistics">Appointment creation statistics</a></li>
-  <li><a routerLink="reportStatistics">Report statistics</a></li>
-  <li><a routerLink="tender-report">Tender Report</a></li>
-  <li><a routerLink="appointmentStatistics">Doctor appointment statistics</a></li>
 
   <li (click)="logout()" style="float: right"><a>Log out</a></li>
-</ul>
+</ul> -->
+
+<div class="navbar-container">
+  <div class="app-dropdown">
+    <div class="navbar-item" href="#">Statistics ▾</div>
+    <div class="app-content">
+      <a class="navbar-item" routerLink="patientStatistics">Patient Statistics</a>
+      <a class="navbar-item"  routerLink="managerStatistics">Vacation statistics</a>
+      <a class="navbar-item" routerLink="renovation-session-statistics">Renovation session statistics</a>
+      <a class="navbar-item" routerLink="create-appointment-statistics">Appointment creation statistics</a>
+      <a class="navbar-item" routerLink="reportStatistics">Report statistics</a>
+      <a class="navbar-item" routerLink="appointmentStatistics">Doctor appointment statistics</a>
+    </div>
+  </div>
+  <div class="app-dropdown">
+    <div class="navbar-item" href="#">Blood Banks ▾</div>
+    <div class="app-content">
+      <a class="navbar-item" routerLink="bloodBanks">Blood banks</a>
+      <a class="navbar-item" routerLink="bloodBanks/add">Add blood bank</a>
+      <a class="navbar-item" routerLink="managerNews">Blood bank news</a>
+      <a class="navbar-item" routerLink="blood-subscriptions">Blood subscriptions</a>
+    </div>
+  </div>
+  <div class="app-dropdown">
+    <div class="navbar-item" href="#">Tenders ▾</div>
+    <div class="app-content">
+      <a class="navbar-item" routerLink="tenders/create">Create tender</a>
+      <a class="navbar-item" routerLink="tender-report">Tender Report</a>
+    </div>
+  </div>
+  <div class="app-dropdown">
+    <div class="navbar-item" href="#">Maps & Rooms ▾</div>
+    <div class="app-content">
+      <a class="navbar-item" routerLink="maps" id="maps">Maps</a>
+      <a class="navbar-item" routerLink="move-equipment">Move equipment</a>
+      <a class="navbar-item" routerLink="room-renovation">Room renovation</a>
+    </div>
+  </div>
+  <div class="app-dropdown">
+    <div class="navbar-item" href="#">Requests ▾</div>
+    <div class="app-content">
+      <a class="navbar-item" routerLink="vacationRequests">Vacation Requests</a>
+      <a class="navbar-item" routerLink="blood-request-manager">Blood requests</a>
+    </div>
+  </div>
+  <a class="navbar-item" routerLink="feedbacks">Feedbacks</a>
+  <a class="navbar-item" routerLink="report-configs">Report Configurations</a>
+  
+  <a class="navbar-item" routerLink="user-blocking">User Blocking</a>
+  <br><br><div class="navbar-item" id="right" (click)="logout()"><a>Log out</a></div>
+</div>
 <!-- Ovaj navbar moze da se prebaci u posebnu komponentu navbar -->
 <router-outlet></router-outlet>
