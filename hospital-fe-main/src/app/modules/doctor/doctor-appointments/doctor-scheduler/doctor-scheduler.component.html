@@ -84,9 +84,9 @@
         </ng-container>
   
         <ng-container matColumnDef="doctor">
-          <th mat-header-cell *matHeaderCellDef>Doctor</th>
+          <th mat-header-cell *matHeaderCellDef>Patient</th>
           <td mat-cell *matCellDef="let appointment">
-            {{appointment.doctor.name + ' ' + appointment.doctor.surname}}
+            {{appointment.patient.name + ' ' + appointment.patient.surname}}
           </td>
         </ng-container>
   
@@ -111,6 +111,25 @@
             </button>
           </td>
         </ng-container>
+
+        <ng-container matColumnDef="report">
+          <th mat-header-cell *matHeaderCellDef [hidden]="!isDone"></th>
+          <td mat-cell *matCellDef="let app" [hidden]="!isDone">
+            <button
+              mat-button
+              color="primary"
+              id="cacnelBtn"
+              (click)="createReport(app.id)"
+              class="row-btn"
+            >
+            <mat-icon matTooltip="Create report">note_add</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+
+
+        
         
         <!--
         <ng-container matColumnDef="generatePdf">
