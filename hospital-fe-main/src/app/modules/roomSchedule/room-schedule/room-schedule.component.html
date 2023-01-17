@@ -11,7 +11,7 @@
                     <tr *ngFor="let app of filteredMoveEquipmentAppointemts " >
                         <td style="color: #e3e2d4">{{ app.dateRange.startTime }}</td>
                         <td style="color: #e3e2d4">{{ app.dateRange.endTime }}</td>
-                        <td style="color: #e3e2d4" *ngIf="check(app.dateRange.startTime)"><button class="equipment-button" id="idCancelApp" mat-raised-button matTooltip="Show equipment" color="warn" id ="button" (click)="cancelMoveEquipmentAppointment(app.id)">Cancel</button></td>
+                        <td style="color: #e3e2d4" *ngIf="check(app.dateRange.startTime)"><button class="equipment-button" style="background-color: #89dee2; color: #192830;" id="idCancelApp" mat-raised-button matTooltip="Show equipment" color="warn" id ="button" (click)="cancelMoveEquipmentAppointment(app.id)">Cancel</button></td>
                         <td style="color: #e3e2d4" *ngIf="!check(app.dateRange.startTime)">&nbsp;</td>
                     </tr>
                 </tbody>
