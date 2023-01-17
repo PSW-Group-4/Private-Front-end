@@ -9,7 +9,7 @@ import {Tender} from "../model/tender.model";
 })
 export class TenderApplicationService {
 
-  apiHost: string = 'http://localhost:45488/';
+  apiHost: string = 'http://localhost:5000/';
   headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
   constructor(private http: HttpClient) { }
@@ -18,11 +18,14 @@ export class TenderApplicationService {
     return this.http.get<TenderApplication[]>(this.apiHost + 'api/TenderApplication', {headers: this.headers});
   }
   GetByTender(tenderId : string) : Observable<TenderApplication[]> {
-    return this.http.post<any[]>(this.apiHost + 'api/TenderApplication/tender?tenderId='+ tenderId, {headers: this.headers});
+    return this.http.get<any[]>(`${this.apiHost}api/TenderApplication/tender/${tenderId}`, {headers: this.headers});
   }
   acceptOffer(tenderApplication : TenderApplication){
-    return this.http.post<any>(this.apiHost + 'api/TenderApplication/accept?applicationId='+ tenderApplication.applicationId, {headers: this.headers})
+    return this.http.put<any>(`${this.apiHost}api/Tender/${tenderApplication.tender.id}/winner/${tenderApplication.bloodBank.apiKey}`, {headers: this.headers})
   }
-  
+
+  notify(tenderApplication : TenderApplication) {
+    return this.http.post<any>(`${this.apiHost}api/TenderApplication/notify/${tenderApplication.id}`, {headers: this.headers})
+  }
 
 }
