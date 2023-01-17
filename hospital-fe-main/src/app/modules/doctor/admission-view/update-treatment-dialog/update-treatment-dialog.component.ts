@@ -59,10 +59,12 @@ export class UpdateTreatmentDialogComponent implements OnInit {
         this.treatmentDto.id = this.treatment.id;       
         this.getMedicine();
         this.getBlood();
+        if(res.bloodConsumptionRecordId != null){
         this.bloodConsumptionRecordService.getBloodConsumptionRecord(res.bloodConsumptionRecordId).subscribe(res => {
           this.currentBlood = res.amount.value;
           console.log(res.amount);
         })
+      }
       })
     })
   }
@@ -75,6 +77,7 @@ export class UpdateTreatmentDialogComponent implements OnInit {
   }
 
   getBlood(): void {
+    if(this.treatment.bloodConsumptionRecordId != null)
     this.doctorAppointmentService.getBlood(this.treatment.bloodConsumptionRecordId).subscribe(res =>{
       this.blood = res;
     })

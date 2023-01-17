@@ -33,6 +33,7 @@ export class DischargeAdmissionDialogComponent implements OnInit {
   dischargeAdmission():void{
     this.reason = (<HTMLInputElement>document.getElementById("reasonName")).value;
     this.setAdmissionHistory();
+    this.dialogRef.close();
   }
 
   setAdmissionHistory():void{
