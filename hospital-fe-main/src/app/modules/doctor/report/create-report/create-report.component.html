@@ -1,17 +1,17 @@
-<h2 style="color:white">Kreiraj izveštaj</h2>
+
 <mat-stepper linear="true" #stepper>
     <mat-step [completed]="selectedSymptoms.length > 0">
         <form style="display:flex; justify-content:center; align-items:center; flex-direction:column">
-            <ng-template matStepLabel>Unesite simptome</ng-template>
+            <ng-template matStepLabel>Choose symptoms</ng-template>
             <mat-form-field appearance="fill">
-                <mat-label>Simptomi</mat-label>
+                <mat-label>Symptoms</mat-label>
                 <mat-select name="symptoms" [(ngModel)]="selectedSymptom" (selectionChange)="addSymptom($event)">
                     <mat-option *ngFor="let s of symptoms" [value]="s">{{s.name}}</mat-option>
                 </mat-select>
             </mat-form-field>
-            <table mat-table [dataSource]="symptomsDataSource" class="mat-elevation-z8" *ngIf="symptomsDataSource.length > 0">
+            <table mat-table [dataSource]="symptomsDataSource" class="mat-elevation-z8 w-25" *ngIf="symptomsDataSource.length > 0">
                 <ng-container matColumnDef="name">
-                    <th mat-header-cell *matHeaderCellDef class="cell-center" style="text-align:center">Naziv</th>
+                    <th mat-header-cell *matHeaderCellDef class="cell-center" style="text-align:center">Symptom</th>
                     <td mat-cell *matCellDef="let symptom" class="clickable cell-center" >{{symptom.name}}</td>
                 </ng-container>
                 <ng-container matColumnDef="remove">
@@ -31,28 +31,30 @@
         </form>
     </mat-step>
     <mat-step [completed]="reportText !== ''">
-      <form>
-            <ng-template matStepLabel>Napišite tekst izveštaja</ng-template>
-            <mat-form-field appearance="fill">
-                <mat-label>Sadržaj</mat-label>
+      <form style="display:flex; justify-content:center; align-items:center; flex-direction:column">
+            <ng-template matStepLabel>Write report text</ng-template>
+            <mat-form-field appearance="fill" class="w-50 m-2" >
+                <mat-label>Text</mat-label>
                 <textarea matInput name="reportTextArea" [(ngModel)]="reportText" required></textarea>
             </mat-form-field>
+            
             <div>
-                <button mat-raised-button matStepperPrevious (click)="recordGoingBackToSelection(Selection.Symptom)" color="accent" class="mt-4 mx-2">Back</button>
-                <button mat-raised-button matStepperNext (click)="ChooseReportText()" color="primary" class="mt-4 mx-2">Next</button>
+                <button mat-raised-button matStepperPrevious (click)="recordGoingBackToSelection(Selection.Symptom)" color="accent" class="mt-4">Back</button>
+                <button mat-raised-button matStepperNext (click)="ChooseReportText()" color="primary" class="mt-4">Next</button>
             </div>
         </form>
     </mat-step>
+
     <mat-step [completed]="prescriptions.length > 0">
         <form style="display:flex; justify-content:center; align-items:center; flex-direction:column">
-            <ng-template matStepLabel>Napišite recepte</ng-template>
+            <ng-template matStepLabel>Write receipt</ng-template>
             <mat-form-field appearance="fill">
-                <mat-label>Unesite lekove</mat-label>
+                <mat-label>Choose medicine</mat-label>
                 <mat-select name="medicine" [(ngModel)]="selectedMedicine" (selectionChange)="addMedicine($event)">
                     <mat-option *ngFor="let m of medicine" [value]="m">{{m.name}}</mat-option>
                 </mat-select>
             </mat-form-field>
-            <table mat-table [dataSource]="medicineDataSource" class="mat-elevation-z8" *ngIf="medicineDataSource.length > 0">
+            <table mat-table [dataSource]="medicineDataSource" class="mat-elevation-z8 w-25" *ngIf="medicineDataSource.length > 0">
                 <ng-container matColumnDef="name">
                     <th mat-header-cell *matHeaderCellDef class="cell-center" style="text-align:center">Naziv</th>
                     <td mat-cell *matCellDef="let medicine" class="clickable cell-center" >{{medicine.name}}</td>
@@ -70,10 +72,10 @@
             </table>
             <button mat-raised-button *ngIf="medicineDataSource.length > 0" class="m-2" (click)="addPrescription()">Kreiraj recept</button>
             <mat-divider style="width:100%"></mat-divider>
-            <h2 *ngIf="prescriptionsDataSource.length > 0">Recepti</h2>
-            <table mat-table [dataSource]="prescriptionsDataSource" class="mat-elevation-z8" *ngIf="prescriptionsDataSource.length > 0">
+            <h2 *ngIf="prescriptionsDataSource.length > 0">Receipt</h2>
+            <table mat-table [dataSource]="prescriptionsDataSource" class="mat-elevation-z8 w-25" *ngIf="prescriptionsDataSource.length > 0">
                 <ng-container matColumnDef="medicine">
-                    <th mat-header-cell *matHeaderCellDef class="cell-center" style="text-align:center">Lekovi</th>
+                    <th mat-header-cell *matHeaderCellDef class="cell-center" style="text-align:center">Medicine</th>
                     <td mat-cell *matCellDef="let prescription" class="clickable cell-center" >{{prescriptionMedicineToString(prescription.medicines)}}</td>
                 </ng-container>
                 <ng-container matColumnDef="remove">
@@ -93,12 +95,12 @@
             </div>
         </form>
       </mat-step>
-    <mat-step label="Pregled izveštaja">
+    <mat-step label="Report rewiev">
         <form style="display:flex; justify-content:center; align-items:center; flex-direction:column">
-            <h2>Pregled izveštaja</h2>
+            <h2>Report rewiev</h2>
             <mat-divider style="width:100%"></mat-divider>
             <div>
-                <h2>Simptomi</h2>
+                <h2>Symptoms</h2>
                 <mat-list>
                     <mat-list-item *ngFor="let symptom of selectedSymptoms">
                         <mat-icon matListIcon>label_important</mat-icon>
@@ -108,12 +110,12 @@
             </div>
             <mat-divider style="width:100%"></mat-divider>
             <div>
-                <h2>Tekst izveštaja</h2>
+                <h2>Report text</h2>
                 <textarea matInput name="reportArea" [(ngModel)]="reportText"></textarea>
             </div>
             <mat-divider style="width:100%"></mat-divider>
             <div>
-                <h2>Recepti</h2>
+                <h2>Receipt</h2>
                 <mat-list>
                     <mat-list-item *ngFor="let prescription of prescriptions">
                         <mat-icon matListIcon>label_important</mat-icon>
@@ -122,10 +124,10 @@
                 </mat-list>
             </div>
             <mat-divider style="width:100%"></mat-divider>
-            <h2 *ngIf="success" style="color:green">Uspešno kreiran izveštaj</h2>
+            <h2 *ngIf="success" style="color:green">Success</h2>
             <div>
                 <button mat-raised-button matStepperPrevious (click)="recordGoingBackToSelection(Selection.Medicine)" color="accent" class="mt-4 mx-2">Back</button>
-                <button mat-raised-button [disabled]="!validateInput() || disableButton" (click)="createReport()" color="primary" class="mt-4 mx-2">Kreiraj izveštaj</button>
+                <button mat-raised-button [disabled]="!validateInput() || disableButton" (click)="createReport()" color="primary" class="mt-4 mx-2">Create report</button>
             </div>
         </form>
     </mat-step>

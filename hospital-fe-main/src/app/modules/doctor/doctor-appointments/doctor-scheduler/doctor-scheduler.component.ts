@@ -34,13 +34,16 @@ export class DoctorSchedulerComponent implements OnInit {
       this.changeDispledTable();
     })
   }
+  ngOnChanges(): void {
+    this.showCurrentAppointment();
+  }
 
   changeDispledTable() {
     if(this.isCurrentAppointment){
       this.displayedColumns = ['time', 'doctor', 'room', 'delete'];
       this.showCurrentAppointment();
     }else{
-      this.displayedColumns = ['time', 'doctor', 'room', 'delete'];
+      this.displayedColumns = ['time', 'doctor', 'room', 'delete', 'report'];
       this.showOldAppointment();
     }
   }

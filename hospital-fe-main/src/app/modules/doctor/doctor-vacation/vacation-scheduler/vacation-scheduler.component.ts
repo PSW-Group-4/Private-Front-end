@@ -31,9 +31,10 @@ export class VacationSchedulerComponent implements OnInit {
 
   ngOnInit(): void {
     this.doctorService.getLoggedDoctor().subscribe(res => {
-      this.loggedDoctor = res
+      this.loggedDoctor = res;
+      this.changeDispledTable();
     })
-    this.changeDispledTable();
+    
   }
 
   changeDispledTable() {

@@ -1,20 +1,20 @@
-<h1><p>Odaberite polja koja zelite u pdf izvestaju</p></h1>
+<h1><p>Choose fields you want in PDF report</p></h1>
 <div class="ml-5" style="text-align: left;">
     <section>
-        <mat-checkbox class="example-margin"[(ngModel)]="isCheckedInfo"><h2>Informacije o pacijentu</h2></mat-checkbox>
+        <mat-checkbox class="example-margin"[(ngModel)]="isCheckedInfo"><h2>Patient info</h2></mat-checkbox>
     </section>
     <section>
-        <mat-checkbox class="example-margin"[(ngModel)]="isCheckedDiag"><h2>Dijagnoza</h2></mat-checkbox>
+        <mat-checkbox class="example-margin"[(ngModel)]="isCheckedDiag"><h2>Diagnosis</h2></mat-checkbox>
     </section>
     <section>
-        <mat-checkbox class="example-margin"[(ngModel)]="isCheckedDrugs"><h2>Lekovi</h2></mat-checkbox>
+        <mat-checkbox class="example-margin"[(ngModel)]="isCheckedDrugs"><h2>Medicines</h2></mat-checkbox>
     </section>
     <section>
-        <mat-checkbox class="example-margin"[(ngModel)]="isCheckedSymptoms"><h2>Simptomi</h2></mat-checkbox>
+        <mat-checkbox class="example-margin"[(ngModel)]="isCheckedSymptoms"><h2>Symptoms</h2></mat-checkbox>
     </section>
 </div>
 
 <div style="text-align: center;">
     <button mat-raised-button color="primary" matTooltip="Generisi" (click)="generatePdf()">
-        Generisi pdf</button>
+        Generate PDF</button>
 </div>
