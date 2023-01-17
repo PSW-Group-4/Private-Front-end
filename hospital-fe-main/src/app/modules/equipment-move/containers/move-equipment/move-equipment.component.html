@@ -1,42 +1,43 @@
 <div>
-    <mat-stepper linear #stepper>
+    <mat-stepper linear #stepper class="backg">
         <mat-step [editable]="true">
             <ng-template matStepLabel>Choose source room</ng-template>
             <div class="spacer-div">
-                <mat-select placeholder="Choose room" [(ngModel)]="source" (ngModelChange)="resestSourceForm()">
-                    <mat-option *ngFor="let r of roomList" [value]="r">
+                <mat-select placeholder="Choose room" [(ngModel)]="source" (ngModelChange)="resestSourceForm()" class="selectParent">
+                    <mat-option *ngFor="let r of roomList" [value]="r" class="select">
                        {{r.name}}
                     </mat-option>
                  </mat-select>
             </div>
             <app-show-room-info [selectedRoom]="selectedSource" ></app-show-room-info>
             <div class="next-back-buttons spacer-div">
-                <button mat-raised-button color="primary"  class="spacer-buttons" matStepperNext>Next</button>
+                <button mat-raised-button color="secondary"  class="spacer-buttons" matStepperNext>Next</button>
             </div>  
         </mat-step>
         
         <mat-step [editable]="true">
             <ng-template matStepLabel>Choose equipment and quantity</ng-template>
             <div class="spacer-div">
-                <app-select-equipment [equipmentList]="source.roomsEquipment" (selectedEquipment)="setEquipment($event)"></app-select-equipment>
+                <app-select-equipment [equipmentList]="source.roomsEquipment" (selectedEquipment)="setEquipment($event)">
+                </app-select-equipment>
             </div>
             <div class="spacer-div">
-                <mat-select placeholder="Choose amount" [(ngModel)]="amount">
-                    <mat-option *ngFor="let i of amountList " [value]="i">
+                <mat-select placeholder="Choose amount" [(ngModel)]="amount" class="selectParent">
+                    <mat-option *ngFor="let i of amountList " [value]="i" class="select">
                        {{i}}
                     </mat-option>
                  </mat-select>
             </div>
             <div class="next-back-buttons spacer-div">
-                <button mat-raised-button color="secondary" class="spacer-buttons" matStepperPrevious>Back</button>
-                <button mat-raised-button color="primary"  class="spacer-buttons" matStepperNext>Next</button>
+                <button mat-raised-button color="primary" class="spacer-buttons" matStepperPrevious>Back</button>
+                <button mat-raised-button color="secondary"  class="spacer-buttons" matStepperNext>Next</button>
             </div>  
         </mat-step>
         <mat-step [editable]="true">
             <ng-template matStepLabel>Choose destination room</ng-template>
             <div class="spacer-div">
-                <mat-select placeholder="Choose room" [(ngModel)]="destination" (ngModelChange)="resestDestinationForm()">
-                    <mat-option *ngFor="let r of roomList" [value]="r">
+                <mat-select placeholder="Choose room" [(ngModel)]="destination" (ngModelChange)="resestDestinationForm()" class="selectParent">
+                    <mat-option *ngFor="let r of roomList" [value]="r" class="select">
                        {{r.name}}
                     </mat-option>
                  </mat-select>
@@ -45,8 +46,8 @@
                 <app-show-room-info [selectedRoom]="selectedDestination"></app-show-room-info>
             </div>
             <div class="next-back-buttons spacer-div">
-                <button mat-raised-button color="secondary" class="spacer-buttons" matStepperPrevious>Back</button>
-                <button mat-raised-button color="primary"  class="spacer-buttons" matStepperNext>Next</button>
+                <button mat-raised-button color="primary" class="spacer-buttons" matStepperPrevious>Back</button>
+                <button mat-raised-button color="secondary"  class="spacer-buttons" matStepperNext>Next</button>
             </div>  
         </mat-step>
         <mat-step [editable]="true">
@@ -71,31 +72,31 @@
                  
             </div>
             <div class="next-back-buttons spacer-div">
-                <button mat-raised-button color="secondary" class="spacer-buttons" matStepperPrevious>Back</button>
-                <button mat-raised-button color="primary"  class="spacer-buttons" matStepperNext (click)="recommendRelocation()">Next</button>
+                <button mat-raised-button color="primary" class="spacer-buttons" matStepperPrevious>Back</button>
+                <button mat-raised-button color="secondary"  class="spacer-buttons" matStepperNext (click)="recommendRelocation()">Next</button>
             </div>   
         </mat-step>
         <mat-step [editable]="true">
             <ng-template matStepLabel>Choose relocation start</ng-template>
             <div class="spacer-div">
-                <mat-select placeholder="Choose relocation start" [(ngModel)]="selectedRelocationStart" >
-                    <mat-option *ngFor="let d of dates" [value]="d">
+                <mat-select placeholder="Choose relocation start" [(ngModel)]="selectedRelocationStart" class="selectParent">
+                    <mat-option *ngFor="let d of dates" [value]="d" class="select">
                        {{d | date:'medium'}}
                     </mat-option>
                  </mat-select>
             </div>
             <div class="next-back-buttons spacer-div">
-                <button mat-raised-button color="secondary" class="spacer-buttons" matStepperPrevious>Back</button>
-                <button mat-raised-button color="primary"  class="spacer-buttons" matStepperNext (click)="selectDate()">Next</button>
+                <button mat-raised-button color="primary" class="spacer-buttons" matStepperPrevious>Back</button>
+                <button mat-raised-button color="secondary"  class="spacer-buttons" matStepperNext (click)="selectDate()">Next</button>
             </div>  
         </mat-step>
         <mat-step>
           <ng-template matStepLabel>Done</ng-template>
           <p>You are now done.</p>
           <div class="next-back-buttons">
-            <button mat-raised-button color="secondary" class="spacer-buttons" matStepperPrevious>Back</button>
+            <button mat-raised-button color="primary" class="spacer-buttons" matStepperPrevious>Back</button>
             <button mat-raised-button color="warn"  class="spacer-buttons" (click)="stepper.reset()">Reset</button>
-            <button mat-raised-button color="primary"  class="spacer-buttons" (click)="confirmRelocation()">Done</button>
+            <button mat-raised-button color="secondary"  class="spacer-buttons" (click)="confirmRelocation()">Done</button>
           </div>  
         </mat-step>
     </mat-stepper>

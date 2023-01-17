@@ -1,6 +1,6 @@
 <div>
-    <mat-select placeholder="Choose equipment" [(ngModel)]="eq" (ngModelChange)="select()">
-        <mat-option *ngFor="let e of equipmentList " [value]="e">
+    <mat-select placeholder="Choose equipment" [(ngModel)]="eq" (ngModelChange)="select()" style="background-color: #e3e2d4; border : 1px solid #16c2d5;">
+        <mat-option *ngFor="let e of equipmentList " [value]="e" class="select">
            {{e.equipment.name}}, {{e.amount}}
         </mat-option>
      </mat-select>

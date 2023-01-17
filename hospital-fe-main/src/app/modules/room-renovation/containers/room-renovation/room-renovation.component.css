@@ -1,9 +1,8 @@
 .full-width{
     width: 100%;
-    background-color: #2e4450;
+    background-color: #e3e2d4;
     color: #e3e2d4;
     border : 1px solid #16c2d5;
-
 }
 .next-back-buttons{
     width: 100%;
@@ -55,7 +54,7 @@
 }
 
 .selectParent{
-    background-color: #2e4450;
+    background-color: #e3e2d4;
     border : 1px solid #16c2d5;
     
 }

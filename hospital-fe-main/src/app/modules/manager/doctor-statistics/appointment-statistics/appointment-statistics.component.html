@@ -1,24 +1,27 @@
 <div class="header">Doctor Appointment Statistics</div>
 <div>
-    <mat-form-field appearance="fill" class="select" id="doctorSelect">
-        <mat-label>Select doctor</mat-label>
+    <mat-form-field appearance="fill" id="doctorSelect" style="margin-left: 2%;
+    margin-right: 2%;">
+        <mat-label class="selectParent">Select doctor</mat-label>
         <mat-select [(ngModel)]="selectedDoctor" name="doctor" (selectionChange)="doctorSelect(selectedDoctor)">
-            <mat-option>None</mat-option>
-          <mat-option *ngFor="let d of doctors;" [value]="d">{{d.name + " " + d.surname}};</mat-option> 
+            <mat-option >None</mat-option>
+          <mat-option *ngFor="let d of doctors;" [value]="d" class="select">{{d.name + " " + d.surname}};</mat-option> 
         </mat-select>
       </mat-form-field>  
 
-      <mat-form-field appearance="fill" *ngIf="isDoctorSelected == true" class="select">
-        <mat-label>Select year</mat-label>
+      <mat-form-field appearance="fill" *ngIf="isDoctorSelected == true" style="margin-left: 2%;
+      margin-right: 2%;">
+        <mat-label class="selectParent">Select year</mat-label>
         <mat-select [(ngModel)]="selectedYear" name="year" (selectionChange)="yearSelect(selectedDoctor, selectedYear)">
-            <mat-option *ngFor="let y of years;" [value]="y">{{y}}</mat-option>
+            <mat-option *ngFor="let y of years;" [value]="y" class="select">{{y}}</mat-option>
         </mat-select>
     </mat-form-field>
 
-    <mat-form-field appearance="fill" *ngIf="isYearSelected == true && isDoctorSelected == true" class="select">
-        <mat-label>Select month</mat-label>
+    <mat-form-field appearance="fill" *ngIf="isYearSelected == true && isDoctorSelected == true" style="margin-left: 2%;
+    margin-right: 2%;">
+        <mat-label class="selectParent">Select month</mat-label>
         <mat-select [(ngModel)]="selectedMonth" name="month" (selectionChange)="monthSelect(selectedDoctor, selectedYear, selectedMonth)">
-            <mat-option *ngFor="let m of months;" [value]="m">{{m}}</mat-option>
+            <mat-option *ngFor="let m of months;" [value]="m" class="select">{{m}}</mat-option>
         </mat-select>
     </mat-form-field>
 </div>
