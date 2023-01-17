@@ -49,15 +49,14 @@ export class CreateTenderComponent implements OnInit {
   });
 
   public onClick() {
-    if (!this.isValidInput()) return;
     let finalDeadline = this.isDeadlineDisabled ? null : this.deadline;
     let dto = {
-        bloodProducts: this.bloodProducts,
+        blood: this.bloodProducts,
         deadline: finalDeadline
       };
     console.log(dto);
       this.tenderService.create(dto).subscribe(res => {
-      this.router.navigate(['/tenders']);
+      this.router.navigate(['/']);
     });
   }
 
