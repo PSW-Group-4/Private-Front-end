@@ -1,20 +1,27 @@
 .full-width{
-    width: 100%;
+    width: 100%;;
     background-color: #e3e2d4;
-    color: #e3e2d4;
+    color: #192830;
     border : 1px solid #16c2d5;
 }
 .next-back-buttons{
     width: 100%;
 }
+
+.spacer-buttons-next{
+    margin-left: 25px;;
+    margin-right: 25px;
+    background-color: #16c2d5;
+}
 .spacer-buttons{
-    margin-left: 10px;
+    margin-left: 42%;
     margin-right: 25px;
     background-color: #16c2d5;
 }
 .spacer-div {
     margin-top: 20px;
     margin-bottom: 20px;
+    
 }
 
 ::ng-deep .mat-step-text-label {
@@ -54,8 +61,11 @@
 }
 
 .selectParent{
-    background-color: #e3e2d4;
+    height: 30px;
+    color:#192830;
+    background-color: white;
     border : 1px solid #16c2d5;
+    text-align: center;
     
 }
 

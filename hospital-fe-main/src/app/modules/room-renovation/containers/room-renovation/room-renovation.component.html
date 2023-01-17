@@ -11,7 +11,7 @@
                     </mat-select>
                 </div>
                 <div class="next-back-buttons spacer-div">
-                    <button mat-raised-button id="FirstStepButtonNext" class="spacer-buttons" (click)="chooseType(stepper)">Next</button>
+                    <button mat-raised-button id="FirstStepButtonNext" class="spacer-buttons" style="margin-left: 46%;" (click)="chooseType(stepper)">Next</button>
                 </div>  
             </form>
         </mat-step>
@@ -39,7 +39,7 @@
                         </mat-option>
                     </mat-select>
                     <div class="spacer-div" *ngIf="renovation.Room1.name != ''">
-                        <app-show-room-info [selectedRoom]="selectedRoom1"></app-show-room-info>
+                        <app-show-room-info style="text-align: center;" [selectedRoom]="selectedRoom1"></app-show-room-info>
                     </div>
                 </div>
                 
@@ -50,12 +50,12 @@
                         </mat-option>
                     </mat-select>
                     <div class="spacer-div" *ngIf="renovation.Room2.name != ''">
-                        <app-show-room-info [selectedRoom]="selectedRoom2"></app-show-room-info>
+                        <app-show-room-info style="text-align: center;" [selectedRoom]="selectedRoom2"></app-show-room-info>
                     </div>
                 </div>
                 <div class="next-back-buttons spacer-div">
                     <button mat-raised-button class="spacer-buttons" color="primary" (click)="returnToTypeSelection(stepper)">Back</button>
-                    <button id="SecondStepButtonNext" mat-raised-button color="secondary"  class="spacer-buttons" (click)="checkRoomsAndReport(stepper)">Next</button>
+                    <button id="SecondStepButtonNext" mat-raised-button color="secondary"  class="spacer-buttons-next" (click)="checkRoomsAndReport(stepper)">Next</button>
                 </div>  
             </form>
         </mat-step>
@@ -100,7 +100,7 @@
                 </div>
                 <div class="next-back-buttons spacer-div">
                     <button mat-raised-button color="primary" class="spacer-buttons" (click)="returnToOldRoomsSelection(stepper)">Back</button>
-                    <button id="ThirdStepButtonNext" mat-raised-button   class="spacer-buttons" (click)="recommendRenovation(stepper)">Next</button>
+                    <button id="ThirdStepButtonNext" mat-raised-button   class="spacer-buttons-next" (click)="recommendRenovation(stepper)">Next</button>
                 </div>   
             </form>
         </mat-step>
@@ -108,7 +108,7 @@
             <form [formGroup]="forthStepFormGroup">
                 <ng-template matStepLabel>Choose specific date</ng-template>
                 <div class="spacer-div">
-                    <mat-select id="DatePickerSpecificDate" placeholder="Choose relocation start" formControlName="selectedDate" >
+                    <mat-select id="DatePickerSpecificDate" placeholder="Choose relocation start" formControlName="selectedDate" style="background-color:white; height: 30px;">
                         <mat-option id="date" *ngFor="let d of dates; let i = index" [value]="d">
                            {{d | date:'medium'}}
                         </mat-option>
@@ -116,7 +116,7 @@
                 </div>
                 <div class="next-back-buttons spacer-div">
                     <button mat-raised-button color="primary" class="spacer-buttons" (click)="returnToTimeframeCreation(stepper)">Back</button>
-                    <button id="ForthStepButtonNext" mat-raised-button color="secondary" class="spacer-buttons" (click)="chooseSpecificTime(stepper)">Next</button>
+                    <button id="ForthStepButtonNext" mat-raised-button color="secondary" class="spacer-buttons-next" (click)="chooseSpecificTime(stepper)">Next</button>
                 </div>  
             </form>
         </mat-step>
@@ -189,16 +189,16 @@
                 </div>  
                 <div class="next-back-buttons spacer-div">
                     <button mat-raised-button color="primary" class="spacer-buttons" (click)="returnToSpecificTimeSelection(stepper)">Back</button>
-                    <button id="FifthStepButtonNext" mat-raised-button color="secondary"  class="spacer-buttons" (click)="checkNewData(stepper)">Next</button>
+                    <button id="FifthStepButtonNext" mat-raised-button color="secondary"  class="spacer-buttons-next" (click)="checkNewData(stepper)">Next</button>
                 </div>  
             </form>
         </mat-step>
         <mat-step>
           <ng-template matStepLabel>Done</ng-template>
-          <p>You are now done.</p>
+          <p style="color:white">You are now done.</p>
           <div class="next-back-buttons spacer-div">
             <button mat-raised-button color="primary" class="spacer-buttons" (click)="returnToNewRoomCreation(stepper)">Back</button>
-            <button id="FinishButton" mat-raised-button color="secondary"  class="spacer-buttons" (click)="finish()">Confirm</button>
+            <button id="FinishButton" mat-raised-button color="secondary"  class="spacer-buttons-next" (click)="finish()">Confirm</button>
         </div> 
         </mat-step>
     </mat-stepper>
