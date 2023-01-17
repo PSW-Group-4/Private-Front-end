@@ -1,5 +1,21 @@
+.mat-option{
+    margin-left: 1%;
+    margin-right: 1%;
+    background-color:'#16c2d5';
+}
+
 .vacation-chart{
     text-align:center;
-    margin-left: auto;
-    margin-right:auto;
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-top: 3%;
+}
+
+.header {
+    margin-top: 2%;
+    margin-bottom: 2%;
+    font-size: xx-large;
+    font-weight: bolder;
+    color: rgb(201, 201, 201);
+    text-align: center;
 }

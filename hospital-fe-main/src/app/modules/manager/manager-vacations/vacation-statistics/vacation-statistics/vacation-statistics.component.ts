@@ -57,18 +57,12 @@ export class VacationStatisticsComponent implements OnInit {
           {
             label: 'Number of used vacation days per month',
             data: [ monthlyVacations[0], monthlyVacations[1], monthlyVacations[2], monthlyVacations[3], monthlyVacations[4], monthlyVacations[5], monthlyVacations[6], monthlyVacations[7], monthlyVacations[8], monthlyVacations[9], monthlyVacations[10], monthlyVacations[11], monthlyVacations[12] ],
-            backgroundColor: 'rgb(200,200,160)', 
+            backgroundColor: '#89dee2', 
             barPercentage : 0.6,
             borderColor: [
-              'rgb(255, 99, 132)',
-              'rgb(255, 159, 64)',
-              'rgb(255, 205, 86)',
-              'rgb(75, 192, 192)',
-              'rgb(54, 162, 235)',
-              'rgb(153, 102, 255)',
-              'rgb(201, 203, 207)'
+              '#89dee2'
             ],
-            hoverBackgroundColor: 'gray',
+            hoverBackgroundColor: '#527c88',
             borderWidth: 1
           },
         ],
@@ -78,7 +72,7 @@ export class VacationStatisticsComponent implements OnInit {
         plugins:{
           legend:{
             labels:{
-              color: "black",
+              color: 'black',
               font:{
                 size: 17
               }
@@ -90,7 +84,7 @@ export class VacationStatisticsComponent implements OnInit {
             ticks: {
               color: "black", 
               font: {
-                size: 15, 
+                size: 14, 
               },
             }
           },
@@ -98,12 +92,11 @@ export class VacationStatisticsComponent implements OnInit {
             ticks: {
               color: "black",  
               font: {
-                size: 15
+                size: 14
               },
             }
           }
         }
-        
         
       }
     });

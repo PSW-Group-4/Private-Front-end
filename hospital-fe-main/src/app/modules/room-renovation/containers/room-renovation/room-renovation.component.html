@@ -1,40 +1,40 @@
-<div>
-    <mat-stepper linear #stepper>
+<div >
+    <mat-stepper linear #stepper class="backg">
         <mat-step [editable]="true" [stepControl]="firstStepFormGroup">
-            <form [formGroup]="firstStepFormGroup">
-                <ng-template matStepLabel>Choose Type of Renovation</ng-template>
+            <form [formGroup]="firstStepFormGroup" >
+                <ng-template matStepLabel >Choose Type of Renovation</ng-template>
                 <div class="spacer-div">
-                    <mat-select id="TypeOfRenovation" placeholder="Choose Type of Renovation" formControlName="typeOfRenovation" (selectionChange)="changeRenovationMethod(stepper)">
-                        <mat-option id="{{choice.value}}" *ngFor="let choice of choices | keyvalue" [value]="choice.value">
+                    <mat-select id="TypeOfRenovation" placeholder="Choose Type of Renovation" formControlName="typeOfRenovation" (selectionChange)="changeRenovationMethod(stepper)" class="selectParent">
+                        <mat-option id="{{choice.value}}" *ngFor="let choice of choices | keyvalue" [value]="choice.value" class="select">
                             {{choice.value}}
                         </mat-option>
                     </mat-select>
                 </div>
                 <div class="next-back-buttons spacer-div">
-                    <button mat-raised-button id="FirstStepButtonNext" color="primary"  class="spacer-buttons" (click)="chooseType(stepper)">Next</button>
+                    <button mat-raised-button id="FirstStepButtonNext" class="spacer-buttons" (click)="chooseType(stepper)">Next</button>
                 </div>  
             </form>
         </mat-step>
         <mat-step [editable]="true" [stepControl]="secondStepFormGroup">
             <form [formGroup]="secondStepFormGroup">
-                <ng-template matStepLabel>Choose rooms to renovate</ng-template>
+                <ng-template matStepLabel >Choose rooms to renovate</ng-template>
                 <div class="spacer-div">
-                    <mat-select id="ChooseBuilding" placeholder="Building" formControlName="buildingControl" (selectionChange)="loadFloors()">
-                        <mat-option id="{{building.name}}" *ngFor="let building of buildings" [value]="building.id">
+                    <mat-select id="ChooseBuilding" placeholder="Building" formControlName="buildingControl" (selectionChange)="loadFloors()" class="selectParent">
+                        <mat-option id="{{building.name}}" *ngFor="let building of buildings" [value]="building.id" class="select">
                             {{building.name}}
                         </mat-option>
                     </mat-select>
                 </div>
                 <div class="spacer-div">
-                    <mat-select id="ChooseFloor" placeholder="Floor" formControlName="floorControl" (selectionChange)="loadRooms()">
-                        <mat-option id="{{floor.name}}" *ngFor="let floor of floors" [value]="floor.id">
+                    <mat-select id="ChooseFloor" placeholder="Floor" formControlName="floorControl" (selectionChange)="loadRooms()" class="selectParent">
+                        <mat-option id="{{floor.name}}" *ngFor="let floor of floors" [value]="floor.id" class="select">
                             {{floor.name}}
                         </mat-option>
                     </mat-select>
                 </div>
                 <div class="spacer-div">
-                    <mat-select id="ChooseRoom1" placeholder="Room 1" formControlName="room1Control" (selectionChange)="setRenovationRoom1()">
-                        <mat-option id="{{room.name}}ChooseRoom1" *ngFor="let room of rooms" [value]="room">
+                    <mat-select id="ChooseRoom1" placeholder="Room 1" formControlName="room1Control" (selectionChange)="setRenovationRoom1()" class="selectParent">
+                        <mat-option id="{{room.name}}ChooseRoom1" *ngFor="let room of rooms" [value]="room" class="select">
                             {{room.name}}
                         </mat-option>
                     </mat-select>
@@ -44,8 +44,8 @@
                 </div>
                 
                 <div class="spacer-div" *ngIf="renovation.Type == 'Merge'">
-                    <mat-select id="ChooseRoom2" placeholder="Room 2" formControlName="room2Control" (selectionChange)="setRenovationRoom2()">
-                        <mat-option id="{{room.name}}ChooseRoom2" *ngFor="let room of rooms" [value]="room">
+                    <mat-select id="ChooseRoom2" placeholder="Room 2" formControlName="room2Control" (selectionChange)="setRenovationRoom2()" class="selectParent">
+                        <mat-option id="{{room.name}}ChooseRoom2" *ngFor="let room of rooms" [value]="room" class="select">
                             {{room.name}}
                         </mat-option>
                     </mat-select>
@@ -54,8 +54,8 @@
                     </div>
                 </div>
                 <div class="next-back-buttons spacer-div">
-                    <button mat-raised-button color="secondary" class="spacer-buttons" (click)="returnToTypeSelection(stepper)">Back</button>
-                    <button id="SecondStepButtonNext" mat-raised-button color="primary"  class="spacer-buttons" (click)="checkRoomsAndReport(stepper)">Next</button>
+                    <button mat-raised-button class="spacer-buttons" color="primary" (click)="returnToTypeSelection(stepper)">Back</button>
+                    <button id="SecondStepButtonNext" mat-raised-button color="secondary"  class="spacer-buttons" (click)="checkRoomsAndReport(stepper)">Next</button>
                 </div>  
             </form>
         </mat-step>
@@ -99,8 +99,8 @@
                     </mat-form-field>   
                 </div>
                 <div class="next-back-buttons spacer-div">
-                    <button mat-raised-button color="secondary" class="spacer-buttons" (click)="returnToOldRoomsSelection(stepper)">Back</button>
-                    <button id="ThirdStepButtonNext" mat-raised-button color="primary"  class="spacer-buttons" (click)="recommendRenovation(stepper)">Next</button>
+                    <button mat-raised-button color="primary" class="spacer-buttons" (click)="returnToOldRoomsSelection(stepper)">Back</button>
+                    <button id="ThirdStepButtonNext" mat-raised-button   class="spacer-buttons" (click)="recommendRenovation(stepper)">Next</button>
                 </div>   
             </form>
         </mat-step>
@@ -115,8 +115,8 @@
                      </mat-select>
                 </div>
                 <div class="next-back-buttons spacer-div">
-                    <button mat-raised-button color="secondary" class="spacer-buttons" (click)="returnToTimeframeCreation(stepper)">Back</button>
-                    <button id="ForthStepButtonNext" mat-raised-button color="primary"  class="spacer-buttons" (click)="chooseSpecificTime(stepper)">Next</button>
+                    <button mat-raised-button color="primary" class="spacer-buttons" (click)="returnToTimeframeCreation(stepper)">Back</button>
+                    <button id="ForthStepButtonNext" mat-raised-button color="secondary" class="spacer-buttons" (click)="chooseSpecificTime(stepper)">Next</button>
                 </div>  
             </form>
         </mat-step>
@@ -188,8 +188,8 @@
                     </div>
                 </div>  
                 <div class="next-back-buttons spacer-div">
-                    <button mat-raised-button color="secondary" class="spacer-buttons" (click)="returnToSpecificTimeSelection(stepper)">Back</button>
-                    <button id="FifthStepButtonNext" mat-raised-button color="primary"  class="spacer-buttons" (click)="checkNewData(stepper)">Next</button>
+                    <button mat-raised-button color="primary" class="spacer-buttons" (click)="returnToSpecificTimeSelection(stepper)">Back</button>
+                    <button id="FifthStepButtonNext" mat-raised-button color="secondary"  class="spacer-buttons" (click)="checkNewData(stepper)">Next</button>
                 </div>  
             </form>
         </mat-step>
@@ -197,8 +197,8 @@
           <ng-template matStepLabel>Done</ng-template>
           <p>You are now done.</p>
           <div class="next-back-buttons spacer-div">
-            <button mat-raised-button color="secondary" class="spacer-buttons" (click)="returnToNewRoomCreation(stepper)">Back</button>
-            <button id="FinishButton" mat-raised-button color="primary"  class="spacer-buttons" (click)="finish()">Confirm</button>
+            <button mat-raised-button color="primary" class="spacer-buttons" (click)="returnToNewRoomCreation(stepper)">Back</button>
+            <button id="FinishButton" mat-raised-button color="secondary"  class="spacer-buttons" (click)="finish()">Confirm</button>
         </div> 
         </mat-step>
     </mat-stepper>

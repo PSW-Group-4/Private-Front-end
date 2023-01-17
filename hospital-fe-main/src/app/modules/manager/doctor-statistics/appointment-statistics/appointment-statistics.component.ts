@@ -88,21 +88,15 @@ export class AppointmentStatisticsComponent implements OnInit {
         labels: [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' ],
         datasets: [
           {
-            label: `Number of appointments per month for year: ${selectedYear}`,
+            label: `Number of appointments per month for year (${selectedYear})`,
             
             data: [ monthlyAppointments[0], monthlyAppointments[0], monthlyAppointments[1], monthlyAppointments[2], monthlyAppointments[3], monthlyAppointments[4], monthlyAppointments[5], monthlyAppointments[6], monthlyAppointments[7], monthlyAppointments[8], monthlyAppointments[9], monthlyAppointments[10], monthlyAppointments[11] ],
-            backgroundColor: 'rgb(120,120,160)', 
+            backgroundColor: '#89dee2', 
             barPercentage : 0.6,
             borderColor: [
-              'rgb(255, 99, 132)',
-              'rgb(255, 159, 64)',
-              'rgb(255, 205, 86)',
-              'rgb(75, 192, 192)',
-              'rgb(54, 162, 235)',
-              'rgb(153, 102, 255)',
-              'rgb(201, 203, 207)'
+              '#89dee2'
             ],
-            hoverBackgroundColor: 'gray',
+            hoverBackgroundColor: '#527c88',
             borderWidth: 1
             
           },
@@ -125,7 +119,7 @@ export class AppointmentStatisticsComponent implements OnInit {
             ticks: {
               color: "black", 
               font: {
-                size: 15, 
+                size: 14, 
               },
             }
           },
@@ -133,7 +127,7 @@ export class AppointmentStatisticsComponent implements OnInit {
             ticks: {
               color: "black",  
               font: {
-                size: 15
+                size: 14
               },
             }
           }
@@ -155,21 +149,15 @@ export class AppointmentStatisticsComponent implements OnInit {
         labels: [ '1.', '2.', '3.', '4.', '5.', '6.', '7.', '8.', '9.', '10.', '11.', '12.', '13.', '14.', '15.', '16.', '17.', '18.', '19.', '20.', '21.', '22.', '23.', '24.', '25.', '26.', '27.', '28.', '29.', '30.', '31.', ],
         datasets: [
           {
-            label: `Number of appointments per day for month: ${selectedMonth}`,
+            label: `Number of appointments per day for month (${selectedMonth})`,
             
             data: [ dailyAppointments[0], dailyAppointments[1], dailyAppointments[2], dailyAppointments[3], dailyAppointments[4], dailyAppointments[5], dailyAppointments[6], dailyAppointments[7], dailyAppointments[8], dailyAppointments[9], dailyAppointments[10], dailyAppointments[11], dailyAppointments[12], dailyAppointments[13], dailyAppointments[14], dailyAppointments[15], dailyAppointments[16], dailyAppointments[17], dailyAppointments[18], dailyAppointments[19], dailyAppointments[20], dailyAppointments[21], dailyAppointments[22], dailyAppointments[23], dailyAppointments[24], dailyAppointments[25], dailyAppointments[26], dailyAppointments[27], dailyAppointments[28], dailyAppointments[29], dailyAppointments[30], ],
-            backgroundColor: 'rgb(120,120,160)', 
+            backgroundColor: '#89dee2', 
             barPercentage : 0.6,
             borderColor: [
-              'rgb(255, 99, 132)',
-              'rgb(255, 159, 64)',
-              'rgb(255, 205, 86)',
-              'rgb(75, 192, 192)',
-              'rgb(54, 162, 235)',
-              'rgb(153, 102, 255)',
-              'rgb(201, 203, 207)'
+              '#89dee2'
             ],
-            hoverBackgroundColor: 'gray',
+            hoverBackgroundColor: '#527c88',
             borderWidth: 1
             
           },
@@ -192,7 +180,7 @@ export class AppointmentStatisticsComponent implements OnInit {
             ticks: {
               color: "black", 
               font: {
-                size: 15, 
+                size: 14, 
               },
             }
           },
@@ -200,7 +188,7 @@ export class AppointmentStatisticsComponent implements OnInit {
             ticks: {
               color: "black",  
               font: {
-                size: 15
+                size: 14
               },
             }
           }

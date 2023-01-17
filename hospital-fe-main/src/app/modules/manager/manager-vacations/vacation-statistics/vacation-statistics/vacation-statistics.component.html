@@ -1,6 +1,6 @@
-
+<div class="header">Doctor Vacation Statistics</div>
 <div>
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="fill" id="doctorSelect">
         <mat-label>Select doctor</mat-label>
         <mat-select [(ngModel)]="selectedDoctor" name="doctor" (selectionChange)="calculateDoctorsVacationLength(selectedDoctor)">
           <mat-option *ngFor="let d of doctors;" [value]="d">{{d.name + " " + d.surname}}</mat-option>

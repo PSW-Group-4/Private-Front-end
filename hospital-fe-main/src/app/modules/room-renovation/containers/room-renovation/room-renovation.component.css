@@ -1,14 +1,62 @@
 .full-width{
     width: 100%;
+    background-color: #2e4450;
+    color: #e3e2d4;
+    border : 1px solid #16c2d5;
+
 }
 .next-back-buttons{
     width: 100%;
 }
 .spacer-buttons{
     margin-left: 10px;
-    margin-right: 10px;
+    margin-right: 25px;
+    background-color: #16c2d5;
 }
 .spacer-div {
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
+::ng-deep .mat-step-text-label {
+    color: #16c2d5;
+}
+
+::ng-deep .mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
+    background-color: #16c2d5;
+    color: black;
+}
+
+::ng-deep .mat-step-header .mat-step-icon-state-edit{
+    background-color: #16c2d5;
+    /* color: black; */
+}
+
+/* .text {
+    font-size: 20px;
+    color: #e3e2d4;
+} */
+
+.backg {
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    align-items: stretch;
+    margin: 2% auto;
+    gap: 10px;
+    background-color: #192830;
+    width: 80%;
+    height: 80%;
+    box-shadow: 0 4px 0px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.select{
+    background-color: #89dee2;
+}
+
+.selectParent{
+    background-color: #2e4450;
+    border : 1px solid #16c2d5;
+    
+}
+
