@@ -25,6 +25,11 @@ export class DoctorConsiliumsComponent implements OnInit {
     this.getLogged();
   }
 
+  ngOnChanges(): void {
+    this.getLogged();
+  }
+  
+
   openAddDialog(): void {
     const dialogRef = this.dialog.open(AddConsiliumDialogComponent, {
       height: '600px',

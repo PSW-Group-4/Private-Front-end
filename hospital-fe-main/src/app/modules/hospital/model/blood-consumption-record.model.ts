@@ -1,7 +1,9 @@
+import { Amount } from "./amount.model";
+
 export class BloodConsumptionRecord {
     Id: string = "";
     doctorId: string = '';
-    amount: number = 0;
+    amount: Amount = new Amount();
     bloodType: string = '';
     reason: string = '';
     dateTime: string = '';

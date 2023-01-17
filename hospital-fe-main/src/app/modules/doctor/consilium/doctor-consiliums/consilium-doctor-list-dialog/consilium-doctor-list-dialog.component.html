@@ -1,17 +1,16 @@
-<p>Prikaz svih lekara pozvanih na sastanak</p>
 <div>
     
     <table mat-table [dataSource]="dataSource">
         <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef class="cell-center"> Ime </th>
+            <th mat-header-cell *matHeaderCellDef class="cell-center"> Name </th>
             <td mat-cell *matCellDef="let app" class="clickable cell-center" >{{app.name}}</td>
         </ng-container>
         <ng-container matColumnDef="surname">
-            <th mat-header-cell *matHeaderCellDef class="cell-center"> Prezime </th>
+            <th mat-header-cell *matHeaderCellDef class="cell-center"> surname </th>
             <td mat-cell *matCellDef="let app" class="cell-center">{{app.surname}}</td>
         </ng-container>
         <ng-container matColumnDef="speciality">
-            <th mat-header-cell *matHeaderCellDef class="cell-center"> Specijalnost </th>
+            <th mat-header-cell *matHeaderCellDef class="cell-center"> Speciality/th>
             <td mat-cell *matCellDef="let app" class="cell-center">{{app.speciality}}</td>
         </ng-container>
 

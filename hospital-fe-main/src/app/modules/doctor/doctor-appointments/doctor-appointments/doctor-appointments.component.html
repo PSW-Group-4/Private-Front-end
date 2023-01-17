@@ -1,16 +1,27 @@
 <div class="container">
-    <p>Svi doktorovi pregledi</p>
-    <div class="table-header">
+    
+      <!--
       <button class="add-button" mat-mini-fab matTooltip="New room" (click)="openAddDialog()" id="addAppointment">
           <mat-icon>add</mat-icon>
       </button>
       <button color="add-button" mat-mini-fab aria-label="Admission for another doctor" (click)="appointmentForAnotherDoctor()">
         <mat-icon>bookmark</mat-icon>
       </button>
-    </div>
+      -->
+    <button class="m-4" mat-raised-button color="accent" matTooltip="New appointment" (click)="openAddDialog()">
+        <mat-icon>add_circle</mat-icon>
+        New appointment
+    </button>
+    <button class="mx-4 mb-2" mat-raised-button color="warn" matTooltip="Appointment for another doctor" (click)="appointmentForAnotherDoctor()">
+        <mat-icon>note_add</mat-icon>
+        Send to another doctor
+    </button>
     
+    <app-doctor-scheduler></app-doctor-scheduler>
+    <!--
     <mat-tab-group>
         <mat-tab label="Pregledi"><app-doctor-scheduler [isCurrentAppointment]="true"></app-doctor-scheduler></mat-tab>
         <mat-tab label="Prosli pregledi"><app-doctor-scheduler [isCurrentAppointment]="false"></app-doctor-scheduler></mat-tab>
     </mat-tab-group>
+    -->
   </div>

@@ -3,11 +3,13 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AdmissionUpdateTreatmentDto } from 'src/app/modules/hospital/model/admission-update-treatment-dto.model';
 import { Admission } from 'src/app/modules/hospital/model/admission.model';
 import { BloodConsumptionRecord } from 'src/app/modules/hospital/model/blood-consumption-record.model';
+import { Doctor } from 'src/app/modules/hospital/model/doctor.model';
 import { Medicine } from 'src/app/modules/hospital/model/medicine-model';
 import { Patient } from 'src/app/modules/hospital/model/patient.model';
 import { TreatmentDto } from 'src/app/modules/hospital/model/treatment-dto.model';
 import { Treatment } from 'src/app/modules/hospital/model/treatment-model';
 import { TreatmentRequestDto } from 'src/app/modules/hospital/model/treatment-request-dto.model';
+import { DoctorService } from 'src/app/modules/hospital/services/doctor-service';
 import { DoctorAppointmentService } from '../../doctor-appointments/doctor-appointment.service';
 import { BloodConsumptionRecordService } from '../../doctor-blood-consumption/doctor-blood-consumption.service';
 import { BloodRequestService } from '../../doctor-blood-consumption/doctor-blood-request.service';
@@ -19,7 +21,7 @@ import { BloodRequestService } from '../../doctor-blood-consumption/doctor-blood
 })
 export class UpdateTreatmentDialogComponent implements OnInit {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<UpdateTreatmentDialogComponent>,private doctorAppointmentService : DoctorAppointmentService,private bloodConsumptionRecordService: BloodConsumptionRecordService) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<UpdateTreatmentDialogComponent>,private doctorAppointmentService : DoctorAppointmentService,private bloodConsumptionRecordService: BloodConsumptionRecordService, private doctorService: DoctorService) { }
 
   createdTreatment : Treatment = new Treatment;
   admission : Admission = new Admission;
@@ -35,15 +37,15 @@ export class UpdateTreatmentDialogComponent implements OnInit {
   reason : string = '';
   createdBlood: string = '';
   bloodRequest : BloodConsumptionRecord = new BloodConsumptionRecord;
+  loggedDoctor : Doctor = new Doctor;
+  currentBlood : number = 0;
   
   
 
   ngOnInit(): void {
     this.getAdmission();
     this.getMedicines();
-    if(this.treatment.id === ''){
-      console.log('on je null');
-    }
+    
     this.admissionUpdateTreatmentDto.id =  this.data.admissionId;
   }
 
@@ -57,6 +59,10 @@ export class UpdateTreatmentDialogComponent implements OnInit {
         this.treatmentDto.id = this.treatment.id;       
         this.getMedicine();
         this.getBlood();
+        this.bloodConsumptionRecordService.getBloodConsumptionRecord(res.bloodConsumptionRecordId).subscribe(res => {
+          this.currentBlood = res.amount.value;
+          console.log(res.amount);
+        })
       })
     })
   }
@@ -89,7 +95,8 @@ export class UpdateTreatmentDialogComponent implements OnInit {
           alert('izaberite lek!');
         }
         else {
-          this.doctorAppointmentService.updateTreatmentMedicine(this.selectedMedicine?.id, this.treatmentDto).subscribe(res => {      
+          this.doctorAppointmentService.updateTreatmentMedicine(this.selectedMedicine?.id, this.treatmentDto).subscribe(res => {  
+          this.dialogRef.close();    
         }) 
         }     
       }
@@ -124,39 +131,37 @@ export class UpdateTreatmentDialogComponent implements OnInit {
 
   createBloodObject():void{
     this.bloodRequest.reason = this.reason;
-    this.bloodRequest.amount = this.amount;
-    this.bloodRequest.dateTime = new Date().toDateString();
-    this.bloodRequest.doctorId = 'a401926d-2cc7-43d3-af2e-1361212b2298';
-    this.getBloodType();
+    this.bloodRequest.amount.value = this.amount;
+    this.bloodRequest.dateTime = new Date().toDateString();    
+    this.doctorService.getLoggedDoctor().subscribe(res => { this.bloodRequest.doctorId = res.id; this.getBloodType() });
+    ;
+    this.dialogRef.close();
   }
 
   getBloodType(): void{
-    switch(this.admission.patient.bloodType){
+    switch(Number(this.admission.patient.bloodType.bloodGroup)){
       case 0: 
-        this.bloodRequest.bloodType = 'A+'; 
+        this.bloodRequest.bloodType = 'O'; 
         break;
       case 1: 
-        this.bloodRequest.bloodType = 'A-';
+        this.bloodRequest.bloodType = 'A';
         break;
       case 2: 
-        this.bloodRequest.bloodType = 'B+';
+        this.bloodRequest.bloodType = 'B';
         break;
       case 3: 
-        this.bloodRequest.bloodType = 'B-';
-        break;
-      case 4: 
-        this.bloodRequest.bloodType = 'O+';
-        break;
-      case 5: 
-        this.bloodRequest.bloodType = 'O-';
-        break;
-      case 6: 
-        this.bloodRequest.bloodType = 'AB+';
-        break;
-      case 7: 
-        this.bloodRequest.bloodType = 'AB-';
-        break;
+        this.bloodRequest.bloodType = 'AB';
+        break;      
         }
+    switch(Number(this.admission.patient.bloodType.rhFactor)){
+      case 0:
+        this.bloodRequest.bloodType += '+';
+        break;
+      case 1:
+        this.bloodRequest.bloodType += '-';
+        break;
+       }
+    console.log(this.bloodRequest);
         this.bloodConsumptionRecordService.createBloodConsumptionRecord(this.bloodRequest).subscribe( res => {
           if(res == null){
             alert('Nema dovoljno krvi!');
@@ -164,10 +169,12 @@ export class UpdateTreatmentDialogComponent implements OnInit {
             this.createdBlood = res.id;          
           this.doctorAppointmentService.updateTreatmentBlood(this.createdBlood, this.treatmentDto).subscribe(res => {
             this.blood.amount += res.bloodConsumptionRecord.amount;
+            
           })      
           }
           
         });
+      
 
         
   }

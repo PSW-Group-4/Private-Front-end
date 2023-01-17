@@ -1,32 +1,39 @@
-<div class="container text-center" style="display:table">
-    <div style="float:left; width: 20%;">
-        <h2 style="color:white; text-align: left;" class="m-4">Zalihe krvi</h2>
-        <table mat-table [dataSource]="bloodSupply" class="mat-elevation-z8 m-4">
-            <ng-container matColumnDef="type">
-                <th mat-header-cell *matHeaderCellDef class="cell-center" style="text-align:center">Tip</th>
-                <td mat-cell *matCellDef="let bloodSupply" class="clickable cell-center" >{{getBloodTypeString(bloodSupply.bloodType)}}</td>
-            </ng-container>
-            <ng-container matColumnDef="amount">
-                <th mat-header-cell *matHeaderCellDef class="cell-center">Količina</th>
-                <td mat-cell *matCellDef="let bloodSupply" class="cell-center">{{bloodSupply.amount}}</td>
-            </ng-container>
-            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table>
-    </div>
-    <div style="float:left; width: 60%;">
-        <button class="m-4" mat-raised-button color="accent" matTooltip="Kreiraj novu evidenciju o potrošnji krvi" (click)="displayBloodConsumptionRecord()">
-            <mat-icon>add_circle</mat-icon>
-            Nova evidencija
-        </button>
-        <button class="m-4" mat-raised-button color="warn" matTooltip="Zatraži još krvi" (click)="displayMoreBlood()">
-            <mat-icon>note_add</mat-icon>
-            Zatraži krv
-        </button>
-        <div>
-            <app-create-blood-consumption-record [hidden]="isDisplayingMoreBlood"></app-create-blood-consumption-record>
-            <app-request-more-blood [hidden]="!isDisplayingMoreBlood"></app-request-more-blood>
+
+
+<div class="container">
+    <button class="m-4" mat-raised-button color="accent" matTooltip="New consilium" (click)="displayBloodConsumptionRecord()">
+        <mat-icon>add_circle</mat-icon>
+        New blood evidention
+    </button>
+
+    <button class="mx-4 mb-2" mat-raised-button color="accent" matTooltip="New consilium" (click)="displayMoreBlood()">
+        <mat-icon>add_circle</mat-icon>
+        Request more blood
+    </button>
+    
+
+    <div class="container text-center" style="display:table">
+        <div style="float:left; width: 20%;">
+            <h2 style="text-align: center;" class="m-4">Blood supply</h2>
+            <table mat-table [dataSource]="bloodSupply" class="mat-elevation-z8 m-4 w-100">
+                <ng-container matColumnDef="type">
+                    <th mat-header-cell *matHeaderCellDef class="cell-center" style="text-align:center">Type</th>
+                    <td mat-cell *matCellDef="let bloodSupply" class="clickable cell-center" >{{getBloodTypeString(bloodSupply.bloodType)}}</td>
+                </ng-container>
+                <ng-container matColumnDef="amount">
+                    <th mat-header-cell *matHeaderCellDef class="cell-center">Amount</th>
+                    <td mat-cell *matCellDef="let bloodSupply" class="cell-center">{{bloodSupply.amount}}</td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
         </div>
+        <div style="float:left; width: 60%;">
+            <div>
+                <app-create-blood-consumption-record [hidden]="isDisplayingMoreBlood"></app-create-blood-consumption-record>
+                <app-request-more-blood [hidden]="!isDisplayingMoreBlood"></app-request-more-blood>
+            </div>
+        </div>
+        <div style="float:left; width: 20%;"></div>
     </div>
-    <div style="float:left; width: 20%;"></div>
 </div>

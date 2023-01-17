@@ -1,34 +1,32 @@
 <div class="container">
-    <p>Svi doktorovi sastanci</p>
-    <div class="table-header mb-2">
-      <button  id="addConsiliumButton" class="add-button" mat-mini-fab matTooltip="New consilium" (click)="openAddDialog()">
-          <mat-icon>add</mat-icon>
-      </button>
-    </div>
+    <button class="m-4" mat-raised-button color="accent" matTooltip="New consilium" (click)="openAddDialog()">
+        <mat-icon>add_circle</mat-icon>
+        New consilium
+    </button>
     
     <table mat-table [dataSource]="dataSource" id="consiliumTable">
         <ng-container matColumnDef="theme">
-            <th mat-header-cell *matHeaderCellDef class="cell-center"> Tema Konzilijuma </th>
+            <th mat-header-cell *matHeaderCellDef class="cell-center"> Topic </th>
             <td mat-cell *matCellDef="let app" class="clickable cell-center" >{{app.reason}}</td>
         </ng-container>
         <ng-container matColumnDef="room">
-            <th mat-header-cell *matHeaderCellDef class="cell-center"> Broj sobe </th>
+            <th mat-header-cell *matHeaderCellDef class="cell-center"> Room </th>
             <td mat-cell *matCellDef="let app" class="cell-center">{{app.room.number}}</td>
         </ng-container>
         <ng-container matColumnDef="date">
-            <th mat-header-cell *matHeaderCellDef class="cell-center"> Datum sastanka</th>
+            <th mat-header-cell *matHeaderCellDef class="cell-center"> Date</th>
             <td mat-cell *matCellDef="let app" class="clickable cell-center" >{{app.dateRange.startTime | date : 'dd.MM.yyyy'}}</td>
         </ng-container>
         <ng-container matColumnDef="start">
-            <th mat-header-cell *matHeaderCellDef class="cell-center"> Vreme pocetka</th>
+            <th mat-header-cell *matHeaderCellDef class="cell-center"> Start </th>
             <td mat-cell *matCellDef="let app" class="clickable cell-center" >{{app.dateRange.startTime | date : 'HH:mm'}}</td>
         </ng-container>
         <ng-container matColumnDef="end">
-            <th mat-header-cell *matHeaderCellDef class="cell-center"> Vreme zavrsetka</th>
+            <th mat-header-cell *matHeaderCellDef class="cell-center"> End </th>
             <td mat-cell *matCellDef="let app" class="cell-center">{{app.dateRange.endTime | date : 'HH:mm'}}</td>
         </ng-container>
         <ng-container matColumnDef="list">
-            <th mat-header-cell *matHeaderCellDef class="cell-center">Spisak lekara</th>
+            <th mat-header-cell *matHeaderCellDef class="cell-center">Doctor list</th>
             <td mat-cell *matCellDef="let app" class="cell-center">
                 <button mat-icon-button (click)="openDoctorListDialog(app.id)">
                     <mat-icon matTooltip="Lekari">assignment</mat-icon>

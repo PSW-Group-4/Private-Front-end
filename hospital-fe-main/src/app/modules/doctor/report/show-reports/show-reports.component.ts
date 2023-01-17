@@ -34,7 +34,7 @@ export class ShowReportsComponent implements OnInit {
     const dialogRef = this.dialog.open(ChoosePdfOptionsDialogComponent, {
       data: {reportId: id},
       height: '400px',
-      width: '400px',
+      width: '500px',
       //data: {name: this.name, animal: this.animal},
     });    
 

@@ -3,27 +3,27 @@
         <div class="row mb-1">
             <div class="form-outline">
                 <input id="reason" [(ngModel)]="reason" type="text" class="form-control form-control-lg" />
-                <label class="form-label">Razlog</label>
+                <label class="form-label">Reason</label>
             </div>
         </div>
         <div class="row mb-1">
             <div class="col-6 mb-0">
                 <div class="form-outline mb-1">
                     <input id="start" [(ngModel)]="startDate" type="date" class="form-control form-control-lg" />
-                    <label class="form-label">Pocetni datum</label>
+                    <label class="form-label">Start date </label>
                 </div>
             </div>
             <div class="col-6 mb-0">
                 <div class="form-outline mb-1">
                     <input id="end" [(ngModel)]="endDate" type="date" class="form-control form-control-lg" />
-                    <label class="form-label">Krajnji datum</label>
+                    <label class="form-label">End date </label>
                 </div>
             </div>
         </div>
         <div class="row mb-1">
             <div class="form-outline">
                 <input id="numberOfTermins" [(ngModel)]="duration" type="number" min = '0' class="form-control form-control-lg" />
-                <label class="form-label">Broj termina (termin = 30min)</label>
+                <label class="form-label">Number of termins (termin = 30min)</label>
             </div>
         </div>
 
@@ -31,8 +31,8 @@
             <div class="form-outline">
                 <label>Prioritet: </label>
                 <mat-radio-group [(ngModel)]="selectedValue">
-                    <mat-radio-button id="doctorRadio" value="doctor" (click)="onClearSelected()">Doktori</mat-radio-button>
-                    <mat-radio-button value="speciality" (click)="onClearSelected()">Specijalizacija</mat-radio-button>
+                    <mat-radio-button id="doctorRadio" value="doctor" (click)="onClearSelected()">Doctor</mat-radio-button>
+                    <mat-radio-button value="speciality" (click)="onClearSelected()">Speciality</mat-radio-button>
                 </mat-radio-group>
             </div>
         </div>
@@ -42,7 +42,7 @@
         <div class="row mb-1">
             <div class="form-outline">
                 <mat-form-field *ngIf="selectedValue === 'doctor'" appearance="fill">
-                    <mat-label>Doktori</mat-label>
+                    <mat-label>Doctors</mat-label>
                     <mat-select  id="doctorCombo" [(ngModel)]="doctorValues" multiple>
                         <mat-option id="doctorOption" *ngFor="let doctor of doctors" [value]="doctor.id">{{doctor.name + ' ' + doctor.surname}}</mat-option>
                     </mat-select>
@@ -50,7 +50,7 @@
 
 
                 <mat-form-field *ngIf="selectedValue === 'speciality'" appearance="fill">
-                    <mat-label>Specijalizacija</mat-label>
+                    <mat-label>Specialities</mat-label>
                     <mat-select [(ngModel)]="specialitiesValues" multiple>  
                          <mat-option *ngFor="let speciality of specialities" [value]="speciality">{{speciality}}</mat-option>
                     </mat-select>

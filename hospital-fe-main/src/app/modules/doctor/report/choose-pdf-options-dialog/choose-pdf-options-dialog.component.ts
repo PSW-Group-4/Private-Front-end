@@ -22,7 +22,6 @@ export class ChoosePdfOptionsDialogComponent implements OnInit {
 
   generatePdf():void{
     this.getChecked();
-    //let tab = window.open();
     this.reportService.generatePdf(this.data.reportId,this.set).subscribe(data=>{
       
       let fileName = 'appointmentReport';

@@ -1,8 +1,8 @@
-<div class="container mt-5 ml-5" >
+<div class="container mt-5 ml-5 text-center" >
     
     <div class="container mt-5">
         <mat-form-field appearance="fill">
-            <mat-label>Odaberite pacijenta</mat-label>
+            <mat-label>Choose patient</mat-label>
             <mat-select [(ngModel)]="selectedPatient" name="patient" id="selectPatient">
               <mat-option *ngFor="let n of patients" [value]="n" id="optionPatient">
                 {{n.name + " " + n.surname}}
@@ -13,10 +13,10 @@
 
     <div class="container mt-5">
         <mat-form-field appearance="fill">
-            <mat-label>Odaberite sobu</mat-label>
+            <mat-label>Choose room</mat-label>
             <mat-select [(ngModel)]="selectedRoom" name="room" id="selectRoom">
               <mat-option *ngFor="let n of rooms" [value]="n" id="optionRoom">
-                {{"broj sobe: " + n.number}}
+                {{"Room number: " + n.number}}
               </mat-option>
             </mat-select>
         </mat-form-field>
@@ -24,17 +24,17 @@
 
     <div class="container mt-5">
         <mat-form-field  appearance="fill">
-            <mat-label>Razlog</mat-label>            
+            <mat-label>Reason</mat-label>            
             <textarea matInput
                       cdkTextareaAutosize                      
                       cdkAutosizeMinRows="1"
                       cdkAutosizeMaxRows="5"
-                      [(ngModel)]="reason" id="reason" name="reason"></textarea>
+                      [(ngModel)]="reason.text" id="reason" name="reason"></textarea>
           </mat-form-field>
     </div>
     
     <div class="container mt-5 ml-5">
-        <button mat-raised-button color="primary" (click)="confirm()" id="confirm">Potvrdi</button>
+        <button mat-raised-button color="primary" (click)="confirm()" id="confirm">Confirm</button>
         
     </div>
     

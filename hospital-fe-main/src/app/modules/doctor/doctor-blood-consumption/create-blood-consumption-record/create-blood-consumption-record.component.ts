@@ -58,7 +58,7 @@ export class CreateBloodConsumptionRecordComponent implements OnInit {
   }
 
   createRecordObject() {
-    this.bloodConsumptionRecord.amount = this.amount;
+    this.bloodConsumptionRecord.amount.value = this.amount;
     this.bloodConsumptionRecord.bloodType = this.selectedBloodType;
     this.bloodConsumptionRecord.reason = this.reason;
     this.bloodConsumptionRecord.dateTime = new Date(Date.now()).toDateString();

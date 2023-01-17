@@ -1,3 +1,4 @@
+<!--
 <ul>
   <li><a routerLink="appointments">Appointments</a></li>
   <li><a routerLink="report">Reports</a></li>
@@ -8,5 +9,26 @@
   <li><a routerLink="consiliums">Consilium</a></li>
   <li (click)="logout()" style="float: right"><a>Log out</a></li>
 </ul>
+-->
+<div class="navbar-container">
+  <div class="app-dropdown">
+    <div class="navbar-item" href="#">Appointmens ▾</div>
+    <div class="app-content">
+      <a class="navbar-item" routerLink="appointments">View appointmens</a>
+      <a class="navbar-item" routerLink="report">Reports</a>
+    </div>
+  </div>
+  <a class="navbar-item" routerLink="bloodConsumption">Blood Consumption</a>
+  <div class="app-dropdown">
+    <div class="navbar-item" href="#">Admissions ▾</div>
+    <div class="app-content">
+      <a class="navbar-item" routerLink="admissionView">View admissions</a>
+      <a class="navbar-item" routerLink="admissionHistory">Admission history</a>
+    </div>
+  </div>
+  <a class="navbar-item" routerLink="vacations">Vacations</a>
+  <a class="navbar-item" routerLink="consiliums">Consilium</a>
+  <div class="navbar-item" id="right" (click)="logout()"><a>Log out</a></div>
+</div>
 <!-- Ovaj navbar moze da se prebaci u posebnu komponentu navbar -->
 <router-outlet></router-outlet>
