@@ -29,7 +29,7 @@ export class AdmissionHistoryComponent implements OnInit {
   public openDischargeDialog(id:number): void {
     const dialogRef = this.dialog.open(TreatmentDialogComponent, {
       data: {admissionHistoryId: id},
-      height: '500px',
+      height: '550px',
       width: '400px',
       //data: {name: this.name, animal: this.animal},
     });

@@ -1,20 +1,20 @@
 <div class="container mt-5 ml-5" >
-    <h2><b><p>Medicinski karton</p></b></h2>
+    <h2><b><p>Medical report</p></b></h2>
     <div class="container mt-5">
         <h1><p [innerText]="admission.patient.name + ' ' + admission.patient.surname"></p></h1>
-        <b><label>Datum prijema :</label></b>
+        <b><label>Admission date :</label></b>
         <p [innerText]="admission.arrivalDate | date : 'dd.MM.yyyy'"></p>
-        <b><label>Razlog prijema :</label></b>
+        <b><label>Admission reason :</label></b>
         <p [innerText]="admission.reason"></p>
     </div>
     <div class="container mt-5">
-        <b><label>Datum otpusta :</label></b>
+        <b><label>Discharge date :</label></b>
         <p [innerText]="admissionHistory.dischargeDate | date : 'dd.MM.yyyy'"></p>
-        <b><label>Razlog otpusta :</label></b>
+        <b><label>Discharge reason:</label></b>
         <p [innerText]="admissionHistory.dischargeReason"></p>
     </div>
 
     <div class="container text-center">
-        <button mat-flat-button color="primary" (click)="generatePdf(admissionHistory.Id)">Generisi izvestaj</button>
+        <button mat-flat-button color="primary" (click)="generatePdf(admissionHistory.Id)">Generate PDF</button>
     </div>
     </div>

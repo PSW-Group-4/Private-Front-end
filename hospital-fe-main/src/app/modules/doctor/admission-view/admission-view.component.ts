@@ -15,7 +15,7 @@ export class AdmissionViewComponent implements OnInit {
 
   constructor(private doctorAppointmentservice: DoctorAppointmentService,public dialog: MatDialog) { }
 
-  displayedColumns = ['id', 'patientName', 'room', 'date','reason', 'treatment' ,'delete'];
+  displayedColumns = ['patientName', 'room', 'date','reason', 'treatment' ,'delete'];
   list : Admission[] = [];
   public dataSource = new MatTableDataSource<Admission>();
 
