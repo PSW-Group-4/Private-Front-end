@@ -16,7 +16,7 @@
             <mat-label>Choose room</mat-label>
             <mat-select [(ngModel)]="selectedRoom" name="room" id="selectRoom">
               <mat-option *ngFor="let n of rooms" [value]="n" id="optionRoom">
-                {{"broj sobe: " + n.number}}
+                {{"Room number: " + n.number}}
               </mat-option>
             </mat-select>
         </mat-form-field>
