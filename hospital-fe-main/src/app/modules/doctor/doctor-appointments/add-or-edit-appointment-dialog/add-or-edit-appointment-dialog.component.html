@@ -23,7 +23,7 @@
     <mat-label>Odaberite termin</mat-label>
     <mat-select [disabled]="isDate" [(ngModel)]="selectedTermin" name="termins" (selectionChange)="checkTerminUpdate($event)" id="terminPick">
       <mat-option  *ngFor="let n of termins" [value]="n" id="terminPickOption">
-        {{n | date:"h:mm"}}
+        {{n | date:"HH:mm"}}
       </mat-option>
     </mat-select>
 </mat-form-field>

@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import * as d3 from 'd3';
-import { legendColor } from 'd3-svg-legend';
 import { Observable } from 'rxjs';
 
 @Component({

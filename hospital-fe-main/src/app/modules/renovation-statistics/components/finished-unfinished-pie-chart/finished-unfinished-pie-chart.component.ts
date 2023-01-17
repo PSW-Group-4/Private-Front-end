@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import * as d3 from 'd3';
-import { legendColor } from "d3-svg-legend";
+//import { legendColor } from "d3-svg-legend";
 import { Observable } from 'rxjs';
 
 @Component({
@@ -96,7 +96,7 @@ export class FinishedUnfinishedPieChartComponent implements OnInit {
           .attr("d", <any>arc) // Hack typing: https://stackoverflow.com/questions/35413072/compilation-errors-when-drawing-a-piechart-using-d3-js-typescript-and-angular/38021825
           .attr("fill", (d, i) => colors[i]); // TODO color ordinal
 
-        var legendOrdinal = legendColor().scale(ordinal);
+        //var legendOrdinal = legendColor().scale(ordinal);
 
         const legendLeft = margin.left;
         const legendTop = radius*2 + 10;
@@ -105,7 +105,7 @@ export class FinishedUnfinishedPieChartComponent implements OnInit {
           .append("g")
           .attr("transform", `translate(${legendLeft},${legendTop})`);
         
-        legendGroup.call(<any>legendOrdinal);
+        //legendGroup.call(<any>legendOrdinal);
           }
         })
 

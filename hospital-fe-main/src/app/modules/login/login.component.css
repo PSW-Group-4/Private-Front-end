@@ -1,5 +1,5 @@
 .login-form {
-  background: lightcyan;
+  background: var(--text-b);
   width: 500px;
   margin: auto;
   display: flex;
@@ -13,7 +13,7 @@ p {
 }
 
 .login-form .content {
-  padding: 0px 35px 35px 35px;
+  padding: 0px 35px 0px 35px;
   text-align: center;
 }
 .login-form .input-field {
@@ -24,12 +24,12 @@ p {
   display: block;
   width: 100%;
   padding: 10px 0px 10px 10px;
-  border: 2px solid #007f5c;
+  border: 2px solid var(--text-important);
   outline: none;
 }
 
 .login-form .input-field input:hover {
-  box-shadow: 0px 0px 15px #007f5c;
+  box-shadow: 0px 0px 15px var(--text-important);
 }
 
 .login-form .action {
@@ -43,15 +43,14 @@ p {
   width: 100%;
 }
 
-.login-form .action a .register {
-  background: lightgrey;
+.text {
+  color: var(--text);
+  font-size: 20px;
 }
-.login-form .action a .register:hover {
-  background-color: grey;
+.register {
+  background-color: lightblue;
 }
-.login-form .action a .login {
-  background: lightgreen;
-}
-.login-form .action a .login:hover {
-  background-color: greenyellow;
+
+button {
+  margin: 0px 10px;
 }

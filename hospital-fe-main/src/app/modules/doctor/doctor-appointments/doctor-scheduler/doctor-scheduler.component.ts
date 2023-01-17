@@ -17,9 +17,11 @@ import { DoctorAppointmentService } from '../doctor-appointment.service';
 })
 export class DoctorSchedulerComponent implements OnInit {
 
-  public dataSource = new MatTableDataSource<Appointment>();
+  public dataSource : Appointment[] = [];
   public displayedColumns : string[] = [];
   public appointments: Appointment[] = [];
+  public isFuture : boolean = true;
+  public isDone : boolean = false;
   loggedDoctor: Doctor = new Doctor()
   
   constructor(private doctorAppointmentService: DoctorAppointmentService, public dialog: MatDialog, private router: Router, private readonly doctorService: DoctorService, private reportService: ReportService) { }
@@ -35,25 +37,29 @@ export class DoctorSchedulerComponent implements OnInit {
 
   changeDispledTable() {
     if(this.isCurrentAppointment){
-      this.displayedColumns = ['doctorName', 'patientName', 'room', 'date','time', 'update', 'delete'];
+      this.displayedColumns = ['time', 'doctor', 'room', 'delete'];
       this.showCurrentAppointment();
     }else{
-      this.displayedColumns = ['doctorName', 'patientName', 'room', 'date', 'time', 'report'];
+      this.displayedColumns = ['time', 'doctor', 'room', 'delete'];
       this.showOldAppointment();
     }
   }
 
   public showCurrentAppointment(): void {
+    this.isFuture = true;
+    this.isDone = false;
     this.doctorAppointmentService.getDoctorsCurrentAppointments(this.loggedDoctor.id).subscribe(res => {
       this.appointments = res;
-      this.dataSource.data = this.appointments;
+      this.dataSource = this.appointments;
     })
   }
 
   public showOldAppointment(): void {
+    this.isFuture = false;
+    this.isDone = true;
     this.doctorAppointmentService.getDoctorsOldAppointments(this.loggedDoctor.id).subscribe(res => {
       this.appointments = res;
-      this.dataSource.data = this.appointments;
+      this.dataSource = this.appointments;
     })
   }
 
