@@ -33,6 +33,7 @@ export class DischargeAdmissionDialogComponent implements OnInit {
   dischargeAdmission():void{
     this.reason = (<HTMLInputElement>document.getElementById("reasonName")).value;
     this.setAdmissionHistory();
+    this.dialogRef.close();
   }
 
   setAdmissionHistory():void{
@@ -44,9 +45,7 @@ export class DischargeAdmissionDialogComponent implements OnInit {
 
   createAdmission(): void{
     this.doctorAppointmentService.createAdmissionHistory(this.admissionHistory).subscribe(res =>{
-      alert(res.id)
       this.patientRoomService.freeBed(this.admission.room).subscribe(res =>{
-        alert("Krevet oslobodjen!");
       })
     })
   }
