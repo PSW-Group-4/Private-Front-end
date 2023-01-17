@@ -44,9 +44,7 @@ export class DischargeAdmissionDialogComponent implements OnInit {
 
   createAdmission(): void{
     this.doctorAppointmentService.createAdmissionHistory(this.admissionHistory).subscribe(res =>{
-      alert(res.id)
       this.patientRoomService.freeBed(this.admission.room).subscribe(res =>{
-        alert("Krevet oslobodjen!");
       })
     })
   }
