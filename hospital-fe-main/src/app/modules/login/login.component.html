@@ -1,6 +1,9 @@
+<p style="font-size: 50px; text-align: center; color: white; margin-top: 5%; font-family: monospace;">First Choice Health</p>
 <div class="login-form">
-  <p>Login</p>
+  
+  <p style="font-family: monospace;">Login </p>
   <div class="content" [formGroup]="loginForm">
+    <img class="logo" src="assets/logo.png" alt="LOGO" style="width: 50px; align-items: center;" />
     <div class="input-field">
       <input
         id="username"
@@ -19,6 +22,6 @@
     </div>
   </div>
   <div class="action">
-    <button id="loginBtn" (click)="login()" class="login">Login</button>
+    <button id="loginBtn" (click)="login()" class="login" mat-raised-button >Login</button>
   </div>
 </div>
