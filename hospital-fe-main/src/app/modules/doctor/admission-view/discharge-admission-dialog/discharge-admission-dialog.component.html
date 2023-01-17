@@ -6,7 +6,7 @@
         <b><label>Datum prijema :</label></b>
         <p [innerText]="admission.arrivalDate | date : 'dd.MM.yyyy'"></p>
         <b><label>Razlog prijema :</label></b>
-        <p [innerText]="admission.reason"></p>
+        <p [innerText]="admission.reasonText.text"></p>
     </div>
     <div class="container mt-5">
         <label>Navedite razlog otpustanja:</label>
