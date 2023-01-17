@@ -1,10 +1,10 @@
 <div class="d-flex justify-content-center">
     <mat-card class="border rounded-3 border-3 mt-5 w-75">
-        <h2>Kreiraj novi zahtev za krv</h2>
+        <h2>Create new blood request</h2>
         <hr>
         <div class="my-2">
             <mat-form-field appearance="fill">
-                <mat-label>Tip krvi</mat-label>
+                <mat-label>Blood type</mat-label>
                 <mat-select name="bloodType" [(ngModel)]="selectedBloodType">
                     <mat-option *ngFor="let bt of bloodTypes" [value]="bt">{{bt}}</mat-option>
                 </mat-select>
@@ -12,13 +12,13 @@
         </div>
         <div class="my-2">
             <mat-form-field appearance="fill">
-                <mat-label>Količina</mat-label>
+                <mat-label>Amount</mat-label>
                 <input type="number" matInput [(ngModel)]="amount">
             </mat-form-field>
         </div>
         <div class="my-2">
             <mat-form-field appearance="fill">
-                <mat-label>Za kada je potrebna</mat-label>
+                <mat-label>When its needed</mat-label>
                 <input matInput [matDatepicker]="picker" [min]="minDate" [(ngModel)]="selectedDate">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
@@ -26,12 +26,12 @@
         </div>
         <div class="my-2">
             <mat-form-field appearance="fill">
-                <mat-label>Razlog</mat-label>
+                <mat-label>Reason</mat-label>
                 <textarea matInput [(ngModel)]="reason"></textarea>
             </mat-form-field>
         </div>
         <div class="mb-4">
-            <button mat-raised-button color="primary" (click)="createRequest()">Kreiraj</button>
+            <button mat-raised-button color="primary" (click)="createRequest()">Create</button>
         </div>
         <div style="color: {{statusColor}}">
             <h3>{{statusText}}</h3>

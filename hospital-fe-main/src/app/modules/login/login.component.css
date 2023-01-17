@@ -1,5 +1,5 @@
 .login-form {
-  background: lightcyan;
+  background: var(--text-b);
   width: 500px;
   margin: auto;
   display: flex;
@@ -13,7 +13,7 @@ p {
 }
 
 .login-form .content {
-  padding: 0px 35px 35px 35px;
+  padding: 0px 35px 0px 35px;
   text-align: center;
 }
 .login-form .input-field {
@@ -43,12 +43,14 @@ p {
   width: 100%;
 }
 
-.login-form .action a .register {
-  background: lightgrey;
+.text {
+  color: var(--text);
+  font-size: 20px;
 }
-.login-form .action a .register:hover {
-  background-color: grey;
+.register {
+  background-color: lightblue;
 }
+
 .login-form .action a .login {
   background: #194d50;
 }

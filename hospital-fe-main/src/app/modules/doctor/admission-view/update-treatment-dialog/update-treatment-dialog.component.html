@@ -1,23 +1,23 @@
 <div class="container mt-2 ml-5" >
-    <h2><p>Tretman</p></h2>
+    <h2><p>Treatment</p></h2>
     <div class="container mt-2">
-        <b><label>Naziv pacijenta :</label></b>
+        <b><label>Patient :</label></b>
         <p [innerText]="admission.patient.name + ' ' + admission.patient.surname"></p>        
         
     </div>
     <div class="container mt-2">
-        <b><label>Lek :</label></b>
+        <b><label>Medicine :</label></b>
         <p [innerText]="medicine.name"></p>        
         
     </div>
     <div class="container mt-2">
-        <b><label>Transfuzija u ml :</label></b>
-        <p [innerText]="blood.amount"></p>        
+        <b><label>Transfusion in ml :</label></b>
+        <p [innerText]="currentBlood"></p>        
         
     </div>
     <div class="container mt-2" >
         <mat-form-field appearance="fill">
-            <mat-label>Odaberite lek</mat-label>
+            <mat-label>Choose medicine</mat-label>
             <mat-select [(ngModel)]="selectedMedicine" name="medicine">
               <mat-option *ngFor="let n of medicines" [value]="n">
                 {{n.name}}
@@ -27,28 +27,28 @@
     </div>
     <div class="container text-center">
     <button mat-raised-button color="primary" matTooltip="Promeni lek" (click)="updateMedicine()">
-        Promeni lek</button>
+        Change medicine</button>
     </div>
     <div class="my-2">
         
-            <mat-label>Količina</mat-label>
+            <mat-label>Amount</mat-label>
             <input type="number" matInput [(ngModel)]="amount">
         
     </div>
     <div class="my-2">   
         
-            <mat-label>Razlog</mat-label>
-            <textarea matInput [(ngModel)]="reason"></textarea>
+            <mat-label>Reason</mat-label>
+            <textarea appearance="fill" matInput [(ngModel)]="reason"></textarea>
         
     </div>     
     <div>
     <button mat-raised-button color="primary" matTooltip="Promeni lek" (click) = "createBloodObject()">
-       Transfuzija</button>
+       Transfusion</button>
     </div>
-    <div class="container mt-2" >
+    <!-- <div class="container mt-2" >
         
             <mat-label>Poslednja izmena: {{treatment.dateChanged | date: 'dd/MM/yyyy hh:mm' }}</mat-label>            
         
-    </div>
+    </div> -->
    
 </div>

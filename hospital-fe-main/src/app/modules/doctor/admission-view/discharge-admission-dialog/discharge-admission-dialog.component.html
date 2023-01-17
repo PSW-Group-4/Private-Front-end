@@ -1,19 +1,21 @@
 <div class="container mt-5 ml-5" >
-    <h2><p>Prikaz prijema pacijenta</p></h2>
-    <div class="container mt-5">
-        <b><label>Naziv pacijenta :</label></b>
+    <h2><p>Patient admission info</p></h2>
+    <div class="container mt-2">
+        <b><label>Patient :</label></b>
         <p [innerText]="admission.patient.name + ' ' + admission.patient.surname"></p>
-        <b><label>Datum prijema :</label></b>
+        <b><label>Admission date :</label></b>
         <p [innerText]="admission.arrivalDate | date : 'dd.MM.yyyy'"></p>
-        <b><label>Razlog prijema :</label></b>
-        <p [innerText]="admission.reason"></p>
+
+        <b><label>Admission reason :</label></b>
+        <p [innerText]="admission.reasonText.text"></p>
+
     </div>
-    <div class="container mt-5">
-        <label>Navedite razlog otpustanja:</label>
+    <div class="container mt-5 text-center">
+        <label>Discharge reason :</label>
         <textarea id="reasonName"></textarea>
     </div>
     <div class="container text-center">
     <button mat-raised-button color="primary" matTooltip="Prijem novog pacijenta" (click)="dischargeAdmission()">
-        <mat-icon>check_circle</mat-icon>Otpusti</button>
+        <mat-icon>check_circle</mat-icon>Discharge</button>
     </div>
     </div>

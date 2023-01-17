@@ -8,6 +8,7 @@ import { PatientRoomService } from '../../hospital/services/patient-room.service
 import { PatientRoom } from '../../hospital/model/patient-room.model';
 import { Admission } from '../../hospital/model/admission.model';
 import { AdmissionDto } from '../../hospital/model/admission-dto.model';
+import { Reason } from '../../hospital/model/reason.model';
 
 @Component({
   selector: 'app-admission',
@@ -27,7 +28,7 @@ export class AdmissionComponent implements OnInit {
   
   //Id: string = "";
   
-  reason: string = '';
+  reason: Reason = new Reason();
   
   arrivalDate: string = '';
 
@@ -45,7 +46,7 @@ export class AdmissionComponent implements OnInit {
   }
 
   validateInput(): boolean {
-    if (this.selectedRoom === null || this.selectedPatient === null || this.reason === ''){
+    if (this.selectedRoom === null || this.selectedPatient === null || this.reason.text === ''){
       return false;
     }
     else
@@ -55,8 +56,8 @@ export class AdmissionComponent implements OnInit {
   createAdmissionObject(){
       this.admission.arrivalDate = new Date(Date.now()).toDateString();
       this.admission.patientId = this.selectedPatient.id;
-      this.admission.reason = this.reason;
-      this.admission.roomId = this.selectedRoom.id.toString();
+      this.admission.reasonText.text = this.reason.text;
+      this.admission.roomId = this.selectedRoom.id.toString();      
   }
 
   confirm(){
@@ -73,7 +74,7 @@ export class AdmissionComponent implements OnInit {
     
   }
   clearFields(){
-    this.reason = '';
+    this.reason.text = '';
     this.selectedPatient = new Patient();
     this.selectedRoom = new PatientRoom();
   }

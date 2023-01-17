@@ -23,6 +23,14 @@ export class DoctorBloodConsumptionComponent implements OnInit {
     })
   }
 
+  ngOnChanges(): void {
+    this.bloodConsumptionRecordService.getBloodSupply().subscribe(res => {
+      console.log(res)
+      this.bloodSupply = res
+      console.log(this.bloodSupply[0].amount)
+    })
+  }
+
   displayBloodConsumptionRecord(): void{
     this.isDisplayingMoreBlood = false;
   }

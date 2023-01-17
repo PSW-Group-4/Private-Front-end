@@ -25,7 +25,7 @@ export class DoctorVacationsComponent implements OnInit {
   openAddDialog(): void {
     const dialogRef = this.dialog.open(AddVacationDialogComponent, {
       data: {isAdd: true},
-      height: '400px',
+      height: '500px',
       width: '600px',
       //data: {name: this.name, animal: this.animal},
     });

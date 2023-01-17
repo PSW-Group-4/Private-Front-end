@@ -1,3 +1,5 @@
+import { BloodType } from "./blood-type.model";
+
 export class Patient{
     id: string = '';
     numLicenceNumber: string = '';
@@ -12,7 +14,7 @@ export class Patient{
     jmbg: string = '';
     email: string = '';
     phoneNumber: string = '';
-    bloodType: number = 0;
+    bloodType: BloodType = new BloodType();
 
     public constructor(obj?: any) {
         if (obj) {
@@ -29,7 +31,7 @@ export class Patient{
             this.jmbg = obj.jmbg;
             this.email = obj.email;
             this.phoneNumber = obj.phoneNumber;     
-            this.bloodType = obj.bloodType;  
+            this.bloodType = obj.bloodType;
         }
 
     }

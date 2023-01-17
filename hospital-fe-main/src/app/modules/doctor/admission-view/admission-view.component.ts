@@ -15,7 +15,7 @@ export class AdmissionViewComponent implements OnInit {
 
   constructor(private doctorAppointmentservice: DoctorAppointmentService,public dialog: MatDialog) { }
 
-  displayedColumns = ['id', 'patientName', 'room', 'date','reason', 'treatment' ,'delete'];
+  displayedColumns = ['patientName', 'room', 'date','reason', 'treatment' ,'delete'];
   list : Admission[] = [];
   public dataSource = new MatTableDataSource<Admission>();
 
@@ -48,7 +48,7 @@ export class AdmissionViewComponent implements OnInit {
   public openTreatmentDialog(admId:number): void {
     const dialogRef = this.dialog.open(UpdateTreatmentDialogComponent, {
       data: {admissionId: admId},
-      height: '500px',
+      height: '570px',
       width: '400px',
     })
   }
